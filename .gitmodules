@@ -1,0 +1,3 @@
+[submodule "themes/BluestNight"]
+	path = themes/BluestNight
+	url = https://github.com/madhead/BluestNight.git

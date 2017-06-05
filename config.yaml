@@ -1,0 +1,24 @@
+baseurl: http://madhead.me
+title: madhead
+author: madhead <siarhei.krukau@gmail.com>
+theme: BluestNight
+
+params:
+  tagline: Never tell me the odds!
+  hashover: false
+  widgets:
+    recent_articles: true
+    categories: true
+    tags: true
+    tags_counter: true
+
+menu:
+  main:
+    - name: Posts
+      weight: 1
+      url: "/post"
+
+outputs:
+  home:
+  - HTML
+  - CSS
