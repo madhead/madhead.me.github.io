@@ -11,6 +11,13 @@ params:
     categories: true
     tags: true
     tags_counter: true
+  social:
+    github: madhead
+    instagram: madhead_
+    linkedin: krukaus
+    reddit: mad-head
+    twitter: madhead_
+    steam: siarhei_k
 
 menu:
   main:
