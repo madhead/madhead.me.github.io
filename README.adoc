@@ -1,4 +1,4 @@
-image:https://travis-ci.org/madhead/madhead.github.io.svg?branch=master["Build Status", link="https://travis-ci.org/madhead/madhead.github.io"]
+image:https://travis-ci.org/madhead/madhead.github.io.svg?branch=source["Build Status", link="https://travis-ci.org/madhead/madhead.github.io"]
 
 = madhead's blog
 
