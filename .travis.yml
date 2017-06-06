@@ -5,8 +5,6 @@ rvm:
 branches:
   only:
   - source
-before_install:
-  - gem install asciidoctor
 install:
   - wget https://github.com/spf13/hugo/releases/download/v0.21/hugo_0.21_Linux-64bit.deb
   - sudo dpkg -i hugo_0.21_Linux-64bit.deb
