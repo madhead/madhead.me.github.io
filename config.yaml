@@ -2,6 +2,7 @@ baseurl: http://madhead.me/
 title: madhead
 author: madhead <siarhei.krukau@gmail.com>
 theme: BluestNight
+enableRobotsTXT: true
 
 params:
   tagline: Never tell me the odds!
@@ -32,3 +33,8 @@ outputs:
   home:
   - HTML
   - CSS
+  - RSS
+  - AMP
+  page:
+  - HTML
+  - AMP
