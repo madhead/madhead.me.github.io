@@ -19,6 +19,9 @@ params:
     reddit: mad-head
     twitter: madhead_
     steam: siarhei_k
+  color:
+    accent_color: '#5A339E'
+    alt_background_color: '#291252'
 
 menu:
   main:
