@@ -31,7 +31,7 @@ menu:
       url: "/post"
     - name: CV
       weight: 2
-      url: "/cv.html"
+      url: "/cv"
 
 outputs:
   home:

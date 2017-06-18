@@ -1,0 +1,244 @@
+general:
+  first_name: Siarhei
+  last_name: Krukau
+  birthdate: 1990-07-24
+  title: Software developer
+  personality: INTJ
+contacts:
+  email: siarhei.krukau@gmail.com
+  phone: '+375 293 73 72 79'
+  residence: Minsk, Belarus
+  languages:
+    - language: Russian
+    - language: Belarussian
+    - language: English
+      level: <a href="https://en.wikipedia.org/wiki/Common_European_Framework_of_Reference_for_Languages">CEFR</a> B2
+experience:
+  - start: 2015-02-01
+    company:
+      name: EPAM Systems, Inc.
+      site: https://epam.com
+    title: Senior Software Developer
+    domain: Travel & Hospitality
+    description: '"That guy"'
+    responsibilities:
+      - Supporting everything
+    technologies:
+      - Spring 3.x
+      - JAX-WS / Apache CXF
+      - Pivotal Gemfire
+      - RedHat JBoss Fuse
+      - Chef
+      - Jenkins
+      - ... you name it
+  - start: 2013-06-01
+    end: 2015-02-01
+    company:
+      name: EPAM Systems, Inc.
+      site: https://epam.com
+    title: Senior Software Developer
+    domain: Travel & Hospitality
+    description: Implementing administration & monitoring tool for hotel IT infrastructure upgrade project
+    responsibilities:
+      - Designing new functionality
+      - Implementing REST services
+      - Implementing UI screens
+    technologies:
+      - Spring 3.x
+      - Pivotal Gemfire
+      - Angular 1.x
+  - start: 2012-04-01
+    end: 2013-06-01
+    company:
+      name: EPAM Systems, Inc.
+      site: https://epam.com
+    title: Software Developer
+    domain: Travel & Hospitality
+    description: Working on internal SDK library
+    responsibilities:
+      - Refactoring existing monolith library into pieces
+    technologies:
+      - Spring 2.5.x
+      - JAX-WS / Apache CXF
+      - MyBatis
+  - start: 2011-10-01
+    end: 2012-04-01
+    company:
+      name: EPAM Systems, Inc.
+      site: https://epam.com
+    title: Junior Software Developer
+    domain: Travel & Hospitality
+    description: Implementing front-desk application for hotel network.
+    responsibilities:
+      - Fixing defects
+      - Occasionaly implementing new features
+    technologies:
+      - Spring 2.5.x
+      - JPA / Hibernate
+      - JMS / ActiveMQ
+      - JAX-WS / Apache CXF
+      - GWT, ExtGWT
+  - start: 2011-07-24
+    end: 2011-10-01
+    company:
+      name: EPAM Systems, Inc.
+      site: https://epam.com
+    title: Junior Software Developer
+    domain: SAP
+    description: Customizing and maintaining <a href="http://en.wikipedia.org/wiki/SAP_Sourcing">SAP-based supplier relationship management system</a>.
+    responsibilities:
+      - Fixing defects
+      - Implementing customizations for various clients
+      - Developing ad-hoc extensions for SRM installation
+    technologies:
+      - Pure Java 4 stack
+      - Beanshell
+      - Proprietary frameworks and libraries
+education:
+  - start: 2013-09-01
+    end: 2015-06-01
+    institution:
+      name: Belarusian State University of Informatics and Radioelectronics
+      site: https://bsuir.by
+      faculty:
+        name: Faculty of Information Technologies and Control
+        site: https://www.bsuir.by/ru/fitu
+    degree: Master degree in system analysis, control and processing of information
+    gpa: 8
+    disciplines:
+      - Relational databases
+      - Systems analysis, operations research
+  - start: 2008-09-01
+    end: 2013-07-01
+    institution:
+      name: Belarusian State University of Informatics and Radioelectronics
+      site: https://bsuir.by
+      faculty:
+        name: Faculty of Information Technologies and Control
+        site: https://www.bsuir.by/ru/fitu
+    degree: Bachelor of science degree in automated data processing systems
+    gpa: 8.4
+    disciplines:
+      - Programming languages (Java, C++, C#)
+      - Operational Systems (Windows, Linux)
+      - Relational databases
+      - Systems analysis, operations research
+skills:
+  languages:
+    - name: Java
+      level: I pay my bills coding on Java since 2011.
+    - name: Kotlin
+      level: My secret love since 2015.
+    - name: Groovy
+      level: It's hard for me to use it now, after Kotlin.
+    - name: JavaScript
+      level: I don't mind coding on JS, especially on ES 2016, however, I am not very proficient in backend JS (Node.js).
+    - name: Ruby
+      level: I'm not very fluent in Ruby, just using it for Chef.
+    - name: Python
+      level: I've never read PEP 8, but I can write simple scripts in Python to automate routine.
+    - name: Go
+      level: >
+        Tried it once in a <a href="https://github.com/madhead/saberlight">personal project</a>.
+        Didn't like.
+        Ironically, this blog and CV runs on <a href="https://gohugo.io/">Hugo</a>, site generator written in Go.
+    - name: Bash
+      level: I can do pretty much everything on Bash with Google.
+  libs_and_frameworks:
+    - name: Spring
+      level: This is the framework I'm mostly working with. Since 2012 I've touched most of it's modules, like spring-data, spring-jms, spring-orm and so on.
+    - name: Spring boot
+      level: I like Spring boot and I'm trying to start new projects on it since 2015.
+    - name: JPA / Hibernate
+      level: I've used both somewhere in 2012-2014 and didn't have much fun.
+    - name: MyBatis
+      level: I've completed one small production project using MyBatis.
+    - name: Apache Camel
+      level: We're using Camel widely on my current work.
+    - name: TestNG
+      level: I prefer TestNG over JUnit.
+  databases:
+    - name: Oracle
+      level: Using it since 2011 in production systems.
+    - name: MySQL
+      level: Using it since 2010 in personal projects.
+    - name: PostgreSQL
+      level: Using it since 2016 in personal projects.
+    - name: MongoDB
+      level: >
+        I've accomplished the very first 10gen's (now MongoDB, Inc.) cources
+        (<a href="http://university.mongodb.com/course_completion/cb1a8af3630e43579c999b20ea812d1b">M101: MongoDB for Developers</a>
+        and <a href="http://university.mongodb.com/course_completion/cb1a8af3630e43579c999b20ea812d1b">M102: MongoDB for DBAs</a>) in 2012,
+        since that time I've used MongoDB in various pet projects and in non-critical work projects.
+    - name: Pivotal Gemfire
+      level: You may tell me it's not a database, but a cache. But we're using it as a primary data source in a couple of projects I deal with.
+  build_tools:
+    - name: Gradle
+      level: >
+        I am a big fan of Gradle and I'm trying to use it anywhere it can be used since 2013.
+        Check out my <a href="https://drive.google.com/open?id=1X1IrclEwFcPI2B1Fmon3yJtpZnyINpqs0mn5zJ_DOYU">Gradle minique</a>!
+    - name: Ant
+      level: I've used Ant several times few years ago.
+    - name: Maven
+      level: Maven is the primary build tool on my current work. However I don't like it because Gradle is <i>obviously</i> better.
+    - name: Webpack
+      level: I've configured several front-end builds with NPM and Webpack using Google.
+  ci:
+    - name: Jenkins
+      level: I'm pretty proficient with Jenkins Pipelines. I'm using them on my current work widely. I also have some experience of Jenkins administration.
+    - name: Travis
+      level: I'm using Travis for my Github projects widely. Even this blog and CV is deployed using it.
+  front_end:
+    - name: HTML
+      level: I know the tags!
+    - name: CSS
+      level: "I know the theory: cascading, specificity, media queries and so on. The problem is: I am really bad at web design, never managed to create a good-looking page."
+    - name: LESS
+      level: I prefer LESS over CSS and SASS.
+    - name: Twitter Bootstrap
+      level: I've been using it in every front-end project I work on, it's a real resque for me.
+    - name: Angular 1.x
+      level: I've completed one pretty big production project on Angular 1.x.
+    - name: Angular 4.x
+      level: I know it's concepts and completed several hello-worlds.
+    - name: jQuery
+      level: Well, everybody knows jQuery, right?
+  os:
+    - name: Linux
+      level: >
+        Currently, <a href="https://manjaro.org/">Manjaro Linux</a> is my home distro, I'm using it for about two years now.
+        Before that I've used <a href="https://www.linuxmint.com/">Linux Mint</a> (also for two years) and <a href="http://www.kubuntu.org/">Kubuntu</a> (for five years).
+        I am a fan of <a href="https://kde.org">KDE</a> / <a href="https://www.kde.org/plasma-desktop">Plasma DE</a>.
+        I have experience with server Linux, such as <a href="https://ubuntu.com/server">Ubuntu</a> and <a href="https://centos.org">CentOS</a>, as well.
+        So, I'm pretty comfortable with Linux.
+    - name: Windows
+      level: Everybody is able to work on Windows, for sure!
+    - name: macOS
+      level: Not my kind of OS, really. I can use, but, you know...
+  devops:
+    - name: Docker
+      level: I have some Docker <a href="https://github.com/madhead/docker-oracle-xe">experience</a>.
+    - name: Vagrant
+      level: I'm using Vagrant as an auxiliary tool when testing Ansible's playbooks and Chef's cookbooks.
+    - name: Ansible
+      level: I love Ansible! I use it to <a href="https://github.com/madhead/fleet">configure</a> all the computers I own (even the laptop).
+    - name: Chef
+      level: Currently I'm using Chef on my work to automate deployments.
+  misc:
+    - name: Git
+      level: >
+        I think I'm pretty good at it.
+        I am <a href="https://github.com/progit/progit2-ru/commits?author=madhead">#4 contributor</a> to the <a href="https://git-scm.com/book/en/v2">"Pro Git 2nd Edition"</a> russian translation (although it is abandoned now) and I've read the whole book several times.
+        I also have some experience with <a href="https://eclipse.org/jgit/">JGit</a>.
+    - name: Liquibase
+      level: I know how to use this (and similar) tools, though we don't use it on my current work.
+hobbies:
+  - Snowboards
+  - Longboards
+  - Cycling
+  - Jogging
+  - Vector graphics
+  - Trendwatching
+  - Science fiction
+  - Quantified self
+  - Astronomy
