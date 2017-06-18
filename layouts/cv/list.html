@@ -1,0 +1,161 @@
+{{ define "main_content" }}
+{{ $.Scratch.Set "noSidebar" true }}
+<link rel="stylesheet" type="text/css" href="{{ "cv.css" | absLangURL }}">
+<div id="cv">
+  {{ with .Site.Data.madhead }}
+    <div id="general">
+      <div id="name">
+        <h1>{{ .general.first_name }} {{ .general.last_name }}</h1>
+        <h2>{{ .general.title }}</h2>
+      </div>
+      <div id="contacts">
+        <ul>
+          <li><strong>Email: </strong><a href="mailto:{{ .contacts.email }}">{{ .contacts.email }}</a></li>
+          <li><strong>Phone: </strong><a href="callto:{{ .contacts.phone }}">{{ .contacts.phone }}</a></li>
+          <li><strong>Residence: </strong>{{ .contacts.residence }}</li>
+          <li><strong>Languages: </strong>{{ range $index, $language := .contacts.languages }}{{ if $index}}, {{ end }}{{ $language.language }}{{ if $language.level }}&nbsp;({{ $language.level | safeHTML }}){{ end }}{{ end }}</li>
+        </ul>
+      </div>
+      <div class="clear">
+      </div>
+    </div>
+    <div id="details">
+      <section>
+        <header>
+          <h1>Personal profile</h1>
+        </header>
+        <div class="sectionContent">
+          <article>
+            <p>
+              I am a {{ lang.NumFmt 0 (div (now.Sub (time .general.birthdate)).Hours 8760) }} years old experienced but still open-minded {{ lower .general.title  }}.
+              Currently, my level is senior to lead, although I don't like titles.
+              I have a strong technical background but I don't skimp on a soft skills as well.
+              I am eager to be challenged in order to grow and improve myself.
+              Imperfection (of everything) motivates me.
+            </p>
+            <p>
+              My strenghts:
+              I am an <a href="https://www.16personalities.com/{{ lower .general.personality }}-personality">{{ .general.personality }}</a>.
+              I learn quickly.
+              I am agile (i.e. I can work with pretty much any stack / technology / methodology you want).
+            </p>
+            <p>
+              My weaknesses:
+              I am an <a href="https://www.16personalities.com/{{ lower .general.personality }}-personality">{{ .general.personality }}</a>.
+              I am a perfectionist.
+              I am selfish and sometimes intolerant to others.
+              I am not willing to concede in some situations.
+            </p>
+          </article>
+        </div>
+        <div class="clear"></div>
+      </section>
+      <section>
+        <header>
+          <h1>Experience</h1>
+        </header>
+        <div class="sectionContent">
+          {{ range .experience }}
+            <article>
+              <h2>
+                {{ (time .start).Format "Jan 2006" }} &ndash; {{ if .end }}{{ (time .end).Format "Jan 2006" }}{{ else }} present {{ end }}: <a href="{{ .company.site }}">{{ .company.name }}</a>
+              </h2>
+              <h3>
+                {{ .title }} {{ if .domain }}/ {{ .domain }} domain{{ end }}
+              </h3>
+              {{ if .description }}
+                <p>
+                  {{ .description | safeHTML }}
+                </p>
+              {{ end }}
+              {{ if .responsibilities }}
+                <p>
+                  My responsibilities:
+                </p>
+                <ul class="bulleted">
+                  {{ range .responsibilities }}
+                    <li>{{ . }}</li>
+                  {{ end }}
+                </ul>
+              {{ end }}
+              {{ if .technologies }}
+                <p>
+                  Key technologies:
+                </p>
+                <ul class="bulleted">
+                  {{ range .technologies }}
+                    <li>{{ . }}</li>
+                  {{ end }}
+                </ul>
+              {{ end }}
+            </article>
+          {{ end }}
+        </div>
+        <div class="clear"></div>
+      </section>
+      <section>
+        <header>
+          <h1>Education</h1>
+        </header>
+        <div class="sectionContent">
+          {{ range .education }}
+            <article>
+              <h2>
+                {{ (time .start).Format "Jan 2006" }} &ndash; {{ if .end }}{{ (time .end).Format "Jan 2006" }}{{ else }} present {{ end }}: <a href="{{ .institution.site }}">{{ .institution.name }}</a>
+              </h2>
+              <h3>
+                <a href="{{ .institution.faculty.site }}">{{ .institution.faculty.name }}</a>
+              </h3>
+              <p>
+                {{ if .degree }}{{ .degree }}.{{ end }}{{ if .gpa }} GPA: {{ .gpa }}.{{ end }}{{ if .disciplines}} Core disciplines:
+              </p>
+              <ul class="bulleted">
+                {{ range .disciplines }}
+                  <li>{{ . }}</li>
+                {{ end }}
+              </ul>
+              {{ else }}
+              </p>
+              {{ end }}
+            </article>
+          {{ end }}
+        </div>
+        <div class="clear"></div>
+      </section>
+      <section>
+        <header>
+          <h1>Skills</h1>
+        </header>
+        <div class="sectionContent">
+          {{ range (slice (slice "languages" "Programming languages") (slice "libs_and_frameworks" "Libraries and frameworks") (slice "databases" "Databases") (slice "front_end" "Front-end") (slice "build_tools" "Build tools") (slice "ci" "Continious Integration") (slice "devops" "DevOps tools") (slice "os" "OSes") (slice "misc" "Miscellaneous")) }}
+            <article>
+              <h2>{{ index . 1 }}</h2>
+              <ul class="bulleted">
+                {{ range (index $.Site.Data.madhead.skills (index . 0)) }}
+                  <li>
+                    <strong>{{ .name }}</strong>{{ if .level }}: {{ .level | safeHTML }}{{ end }}
+                  </li>
+                {{ end }}
+              </ul>
+            </article>
+          {{ end }}
+        </div>
+        <div class="clear"></div>
+      </section>
+      <section>
+        <header>
+          <h1>Hobbies</h1>
+        </header>
+        <div class="sectionContent">
+          <ul class="columns">
+            {{ range .hobbies }}
+            <li>{{ . }}</li>
+            {{ end }}
+          </ul>
+        </div>
+        <div class="clear"></div>
+      </section>
+    </div>
+  {{ end }}
+</div>
+{{ end }}
