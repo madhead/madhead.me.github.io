@@ -22,8 +22,8 @@ params:
     twitter: madhead_
     steam: siarhei_k
   color:
-    accent_color: '#5A339E'
-    alt_background_color: '#291252'
+    accent: '#5A339E'
+    alt_background: '#291252'
 
 menu:
   main:
