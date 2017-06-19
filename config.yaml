@@ -4,6 +4,7 @@ author: madhead <siarhei.krukau@gmail.com>
 theme: BluestNight
 enableRobotsTXT: true
 googleAnalytics: UA-101212543-1
+disqusShortname: madhead-me
 
 params:
   tagline: Never tell me the odds!
