@@ -7,8 +7,8 @@ branches:
   - source
 install:
   - bundle install --jobs=3 --retry=3
-  - wget https://github.com/spf13/hugo/releases/download/v0.21/hugo_0.21_Linux-64bit.deb
-  - sudo dpkg -i hugo_0.21_Linux-64bit.deb
+  - wget https://github.com/gohugoio/hugo/releases/download/v0.23/hugo_0.23_Linux-64bit.deb
+  - sudo dpkg -i hugo_0.23_Linux-64bit.deb
 script:
   - hugo
 deploy:
