@@ -15,6 +15,6 @@ You must install a preprocessor to be able to build it.
 link:Gemfile[`Gemfile`] is included in this repo to simplify things: just run `bundle install` to install the dependencies.
 
 And do not forget to clone the submodules of this repo!
-I beleive, `git submodule update --init --recursive` will do the trick.
+I believe, `git submodule update --init --recursive` will do the trick.
 
 Finally, run Hugo: `hugo server --watch` and open the link from its output.
