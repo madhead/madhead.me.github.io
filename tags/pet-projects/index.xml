@@ -5,7 +5,19 @@
     <link>https://madhead.me/tags/pet-projects/</link>
     <description>Recent content in pet projects on madhead</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 21 Jul 2021 21:43:00 +0200</lastBuildDate><atom:link href="https://madhead.me/tags/pet-projects/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 14 Sep 2021 09:00:00 +0300</lastBuildDate><atom:link href="https://madhead.me/tags/pet-projects/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tyzenhaus</title>
+      <link>https://madhead.me/posts/tyzenhaus/</link>
+      <pubDate>Tue, 14 Sep 2021 09:00:00 +0300</pubDate>
+      
+      <guid>https://madhead.me/posts/tyzenhaus/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://t.me/TyzenhausBot&#34;&gt;Tyzenhaus&lt;/a&gt; is a Telegram bot to simplify shared expenses in chats.
+It’s like Splitwise, but simpler and doesn’t required any apps except Telegram..&lt;/p&gt;
+&lt;/div&gt;</description>
+    </item>
+    
     <item>
       <title>Grand Guide Pedestrian</title>
       <link>https://madhead.me/posts/ggp/</link>

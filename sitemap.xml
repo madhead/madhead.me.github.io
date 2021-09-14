@@ -2,21 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://madhead.me/posts/ggp/</loc>
-    <lastmod>2021-07-21T21:43:00+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://ru.madhead.me/posts/ggp/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://madhead.me/posts/ggp/"
-                />
-  </url><url>
     <loc>https://madhead.me/</loc>
-    <lastmod>2021-07-21T21:43:00+02:00</lastmod>
+    <lastmod>2021-09-14T09:00:00+03:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ru"
@@ -29,7 +16,7 @@
                 />
   </url><url>
     <loc>https://madhead.me/tags/pet-projects/</loc>
-    <lastmod>2021-07-21T21:43:00+02:00</lastmod>
+    <lastmod>2021-09-14T09:00:00+03:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ru"
@@ -42,7 +29,7 @@
                 />
   </url><url>
     <loc>https://madhead.me/posts/</loc>
-    <lastmod>2021-07-21T21:43:00+02:00</lastmod>
+    <lastmod>2021-09-14T09:00:00+03:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ru"
@@ -55,7 +42,7 @@
                 />
   </url><url>
     <loc>https://madhead.me/tags/</loc>
-    <lastmod>2021-07-21T21:43:00+02:00</lastmod>
+    <lastmod>2021-09-14T09:00:00+03:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ru"
@@ -65,6 +52,45 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://madhead.me/tags/"
+                />
+  </url><url>
+    <loc>https://madhead.me/tags/telegram/</loc>
+    <lastmod>2021-09-14T09:00:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://ru.madhead.me/tags/telegram/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://madhead.me/tags/telegram/"
+                />
+  </url><url>
+    <loc>https://madhead.me/posts/tyzenhaus/</loc>
+    <lastmod>2021-09-14T09:00:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://ru.madhead.me/posts/tyzenhaus/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://madhead.me/posts/tyzenhaus/"
+                />
+  </url><url>
+    <loc>https://madhead.me/posts/ggp/</loc>
+    <lastmod>2021-07-21T21:43:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://ru.madhead.me/posts/ggp/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://madhead.me/posts/ggp/"
                 />
   </url><url>
     <loc>https://madhead.me/tags/bash-magic/</loc>
@@ -109,19 +135,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://madhead.me/posts/imgmacrobot/"
-                />
-  </url><url>
-    <loc>https://madhead.me/tags/telegram/</loc>
-    <lastmod>2021-03-16T09:00:00+03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://ru.madhead.me/tags/telegram/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://madhead.me/tags/telegram/"
                 />
   </url><url>
     <loc>https://madhead.me/tags/gradle/</loc>
