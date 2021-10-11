@@ -2,20 +2,22 @@
 <html lang='en' dir='auto'><head>
   <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<meta name='description' content=''>
+<meta name='description' content='GitHub Actions are great for sharing &amp; reusing logic across your CI/CD pipelines. However, sometimes sharing is not the highest priority. Sometimes you only want to hide the complexity by exctacting &amp; encapsulating multiple build steps and replacing them with a single action.
+ Anyway, you have to create a GitHub action.
+ You could use actions stored in the same repository as the workflow. Such actions must be either written in JavaScript or be Docker actions, i.'>
 
-<meta property='og:title' content='Tag: one-liner • madhead'>
-<meta property='og:description' content=''>
-<meta property='og:url' content='https://madhead.me/tags/one-liner/'>
+<meta property='og:title' content='Docker-based GitHub Actions in orphan branches • madhead'>
+<meta property='og:description' content='GitHub Actions are great for sharing &amp; reusing logic across your CI/CD pipelines. However, sometimes sharing is not the highest priority. Sometimes you only want to hide the complexity by exctacting &amp; encapsulating multiple build steps and replacing them with a single action.
+ Anyway, you have to create a GitHub action.
+ You could use actions stored in the same repository as the workflow. Such actions must be either written in JavaScript or be Docker actions, i.'>
+<meta property='og:url' content='https://madhead.me/posts/orphan-action/'>
 <meta property='og:site_name' content='madhead'>
-<meta property='og:type' content='website'><meta property='og:updated_time' content='2021-10-10T23:27:00&#43;02:00'/><meta name='twitter:card' content='summary'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='github actions'><meta property='article:published_time' content='2021-10-10T23:27:00&#43;02:00'/><meta property='article:modified_time' content='2021-10-10T23:27:00&#43;02:00'/><meta name='twitter:card' content='summary'>
 
 <meta name="generator" content="Hugo 0.88.1" />
 
-  <title>Tag: one-liner • madhead</title>
-  <link rel='canonical' href='https://madhead.me/tags/one-liner/'>
-  
-    <link href="https://madhead.me/tags/one-liner/index.xml" rel="alternate" type="application/rss+xml" title="madhead" />
+  <title>Docker-based GitHub Actions in orphan branches • madhead</title>
+  <link rel='canonical' href='https://madhead.me/posts/orphan-action/'>
   
   
   <link rel='icon' href='/favicon.ico'>
@@ -37,7 +39,7 @@ if (!doNotTrack) {
   
 
 </head>
-<body class='term type-tags taxonomy-tag has-sidebar'>
+<body class='page type-posts has-sidebar'>
 
   <div class='site'><div id='sidebar' class='sidebar'>
   <a class='screen-reader-text' href='#main-menu'>Skip to Main Menu</a>
@@ -201,44 +203,162 @@ if (!doNotTrack) {
       <main id='content'>
 
 
-<header class='header'>
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
   <div class='container sep-after'>
     <div class='header-info'>
-      <h1 class='title'><span class='taxonomy-name'>Tag: </span>one-liner</h1>
-
+      <h1 class='title'>Docker-based GitHub Actions in orphan branches</h1>
       
 
     </div>
+    <div class='entry-meta'>
+  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+</svg>
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='2021-10-10T23:27:00&#43;02:00'>2021-10-10</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+  
+</svg>
+2 mins to read
+</span>
+
+
+</div>
+
+
   </div>
 </header>
 
-
-
-
-<div class='container list-container'>
-  <ul class='list'>
-    
-      <li class='item'>
-  <div class='meta'>
-    <span>
-  <span class='screen-reader-text'>Posted on </span>
-  <time datetime='2018-07-04T04:47:00&#43;03:00'>2018-07-04</time>
-</span>
-
-  </div>
-  <header class='item-header'>
-    <h3 class='item-title'>
-      <a href='/posts/oneliners-1/'>AWS Lambda environment variables → AWS SSM parameters in one (long) bash line</a>
-    </h3>
-  </header>
-</li>
-
-    
-  </ul>
-
+  
   
 
+  <div class='container entry-content'>
+  <div class="paragraph">
+<p>GitHub Actions are great for sharing &amp; reusing logic across your CI/CD pipelines.
+However, sometimes sharing is not the highest priority.
+Sometimes you only want to hide the complexity by exctacting &amp; encapsulating multiple build steps and replacing them with a single action.</p>
 </div>
+<div class="paragraph">
+<p>Anyway, you have to create a GitHub action.</p>
+</div>
+<div class="paragraph">
+<p>You could use actions <a href="https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions#example-using-an-action-in-the-same-repository-as-the-workflow">stored in the same repository as the workflow</a>.
+Such actions must be either written in JavaScript or be Docker actions, i.e. have a <code>Dockerfile</code>.</p>
+</div>
+<div class="paragraph">
+<p>With JavaScript, at the time of the writing, actions must be written literally in JavaScript, no processing like compilation or transpilation allowed.
+In other words, it cannot be TypeScript: although you could use TypeScript to write an action, you’ll have to commit the <code>dist</code> then.</p>
+</div>
+<div class="paragraph">
+<p>Docker actions are slow because the caching doesn’t work well at the time of the writing.
+Images are built from scratch every time you run a pipeline.</p>
+</div>
+<div class="paragraph">
+<p>Finally, you may be against of polluting the main codebase with action’s code, and this is a valid argument too!</p>
+</div>
+<div class="paragraph">
+<figure class="align-center"><img src="//storage.googleapis.com/madheadme-static/posts/orphan-action/001.png"/>
+</figure>
+
+</div>
+<div class="paragraph">
+<p>Because of this issues — polluting main codebase, forcing you to use vanilla JavaScript or being slow with other languages and runtimes — in-repository actions might not look appealing to you.</p>
+</div>
+<div class="paragraph">
+<p>So you might want to take the hard way: to extract your action into a separate repository.
+But even then caching won’t work well with Docker actions and you’ll have to commit <code>dist</code> with JavaScript actions.
+However, in a separate repository you could at least have action’s own lifecycle and mitigate that with automation.</p>
+</div>
+<div class="paragraph">
+<p>😔 That’s some extra work…</p>
+</div>
+<div class="paragraph">
+<p>Try <a href="https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---orphanltnewbranchgt">orphan branches</a> instead!</p>
+</div>
+<div class="paragraph">
+<p>The idea is to create an orphan branch in your repository.
+Orphan means it wont have any intersections or common commits with the main branch, a completely separate one.
+GitHub won’t even allow you to make a PR to the main branch from the orphan one.</p>
+</div>
+<div class="paragraph">
+<p>Thinking about Git as a tree was a mistake, it’s actually a forest!</p>
+</div>
+<div class="paragraph">
+<p>Now you could store your whole action, written in any language, in this branch.
+It would have a completely different lifecycle by having completely different workflows in this branch’s <code>.github/workflows</code> directory.
+If it’s a Docker action, you could built and publish it to the GitHub packages of the same repository and use it the main branch’s workflows without rebuilding every time.</p>
+</div>
+<div class="paragraph">
+<figure class="align-center"><img src="//storage.googleapis.com/madheadme-static/posts/orphan-action/002.png"/>
+</figure>
+
+</div>
+<div class="paragraph">
+<p>All the issues are solved!</p>
+</div>
+<div class="paragraph">
+<p>✅ The codebase wouldn’t have any traces of the auxiliary actions code.<br/>
+✅ Actions would have a completely independent lifecycle.<br/>
+✅ Docker actions would be prebuilt.<br/></p>
+</div>
+
+</div>
+
+  
+<footer class='entry-footer'>
+  <div class='container sep-before'><div class='tags'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
+  <line x1="7" y1="7" x2="7" y2="7"/>
+  
+</svg>
+<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/github-actions/'>github actions</a></div>
+
+  </div>
+</footer>
+
+
+</article>
+
+
+<section id='comments' class='comments'>
+  <div class='container sep-before'>
+    <div class='comments-area'><div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "madhead-me" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+  </div>
+</section>
 
       </main>
 

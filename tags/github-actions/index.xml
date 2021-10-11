@@ -5,7 +5,18 @@
     <link>https://madhead.me/tags/github-actions/</link>
     <description>Recent content in github actions on madhead</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 28 Mar 2021 00:30:00 +0300</lastBuildDate><atom:link href="https://madhead.me/tags/github-actions/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 10 Oct 2021 23:27:00 +0200</lastBuildDate><atom:link href="https://madhead.me/tags/github-actions/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker-based GitHub Actions in orphan branches</title>
+      <link>https://madhead.me/posts/orphan-action/</link>
+      <pubDate>Sun, 10 Oct 2021 23:27:00 +0200</pubDate>
+      
+      <guid>https://madhead.me/posts/orphan-action/</guid>
+      <description>GitHub Actions are great for sharing &amp;amp; reusing logic across your CI/CD pipelines. However, sometimes sharing is not the highest priority. Sometimes you only want to hide the complexity by exctacting &amp;amp; encapsulating multiple build steps and replacing them with a single action.
+ Anyway, you have to create a GitHub action.
+ You could use actions stored in the same repository as the workflow. Such actions must be either written in JavaScript or be Docker actions, i.</description>
+    </item>
+    
     <item>
       <title>Reading Java properties in GitHub Actions</title>
       <link>https://madhead.me/posts/read-java-properties/</link>

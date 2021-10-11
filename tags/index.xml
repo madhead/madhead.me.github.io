@@ -5,7 +5,16 @@
     <link>https://madhead.me/tags/</link>
     <description>Recent content in Tags on madhead</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 14 Sep 2021 09:00:00 +0300</lastBuildDate><atom:link href="https://madhead.me/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 10 Oct 2021 23:27:00 +0200</lastBuildDate><atom:link href="https://madhead.me/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>github actions</title>
+      <link>https://madhead.me/tags/github-actions/</link>
+      <pubDate>Sun, 10 Oct 2021 23:27:00 +0200</pubDate>
+      
+      <guid>https://madhead.me/tags/github-actions/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>pet projects</title>
       <link>https://madhead.me/tags/pet-projects/</link>
@@ -48,15 +57,6 @@
       <pubDate>Sun, 28 Mar 2021 00:30:00 +0300</pubDate>
       
       <guid>https://madhead.me/tags/ci/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>github actions</title>
-      <link>https://madhead.me/tags/github-actions/</link>
-      <pubDate>Sun, 28 Mar 2021 00:30:00 +0300</pubDate>
-      
-      <guid>https://madhead.me/tags/github-actions/</guid>
       <description></description>
     </item>
     
