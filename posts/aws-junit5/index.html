@@ -28,7 +28,7 @@ Both AWS Java SDK v 2.x and v 1.x are supported.
 <meta property='og:site_name' content='madhead'>
 <meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='aws'><meta property='article:tag' content='junit'><meta property='article:tag' content='pet projects'><meta property='article:published_time' content='2019-09-26T09:00:00&#43;03:00'/><meta property='article:modified_time' content='2019-09-26T09:00:00&#43;03:00'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.88.1" />
+<meta name="generator" content="Hugo 0.92.0" />
 
   <title>JUnit 5 extensions for AWS • madhead</title>
   <link rel='canonical' href='https://madhead.me/posts/aws-junit5/'>
@@ -266,7 +266,7 @@ Do you use JUnit 5 in your tests?
 If you do both, I may have something useful for you.</p>
 </div>
 <div class="paragraph">
-<p><a href="https://gitlab.com/madhead/aws-junit5">JUnit 5 extensions for AWS</a>: a few JUnit 5 extensions that could be useful for testing AWS-related code.
+<p><a href="https://github.com/madhead/aws-junit5">JUnit 5 extensions for AWS</a>: a few JUnit 5 extensions that could be useful for testing AWS-related code.
 These extensions can be used to inject clients for AWS service mocks provided by tools like <a href="https://github.com/localstack/localstack">localstack</a>.
 Both AWS Java SDK v 2.x and v 1.x are supported.</p>
 </div>
@@ -308,7 +308,7 @@ The idea is to mock an AWS service using a low-cost, disposable (in-memory) impl
 Localstack already supports two dozen of AWS services and the list is growing!</p>
 </div>
 <div class="paragraph">
-<p>You only have to get the clients in your test classes, and <a href="https://gitlab.com/madhead/aws-junit5"><code>aws-junit5</code></a> will help you do with a minimal effor:</p>
+<p>You only have to get the clients in your test classes, and <a href="https://github.com/madhead/aws-junit5"><code>aws-junit5</code></a> will help you do with a minimal effor:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -367,14 +367,14 @@ Like configuring HTTP protocol details:</p>
 </div>
 <div class="paragraph">
 <p>In most cases only <code>@AWSClient</code> with <code>endpoint</code> is needed.
-You can use <a href="https://gitlab.com/madhead/aws-junit5"><code>aws-junit5</code></a> to inject clients for DynamoDB, Kinesis, S3, SES, SNS and SQS.</p>
+You can use <a href="https://github.com/madhead/aws-junit5"><code>aws-junit5</code></a> to inject clients for DynamoDB, Kinesis, S3, SES, SNS and SQS.</p>
 </div>
 <div class="paragraph">
 <p>Even if you use real AWS services for testing (i.e. you have a dedicated environment for tests) — you still can use these extensions to get the required clients.</p>
 </div>
 <div class="paragraph">
-<p>Read more in the <a href="https://madhead.gitlab.io/aws-junit5/asciidoc">user guide</a> and <a href="https://madhead.gitlab.io/aws-junit5/javadoc">Javadocs</a>.
-Submit <a href="https://gitlab.com/madhead/aws-junit5/issues/new">an issue</a> in case of any questions, problems, proposals or requests.</p>
+<p>Read more in the <a href="https://madhead.github.io/aws-junit5/asciidoc">user guide</a> and <a href="https://madhead.github.io/aws-junit5/javadoc">Javadocs</a>.
+Submit <a href="https://github.com/madhead/aws-junit5/issues/new">an issue</a> in case of any questions, problems, proposals or requests.</p>
 </div>
 <div class="paragraph">
 <p>And…</p>
