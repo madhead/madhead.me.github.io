@@ -25,10 +25,10 @@ It’s like Splitwise, but simpler and doesn’t required any apps except Telegr
       
       <guid>https://madhead.me/posts/ggp/</guid>
       <description>Let me tell about a pet project I did recently.
- It’s name is &amp;#34;Grand Guide Pedestrian&amp;#34;. It’s a virtual interactive experience where a player controls another human, a hero, who walks in the city like it’s a GTA game. No gunfire, no car thefts, no other crimes, though.
- Look at the demo:
-    And here is the data flow:
-   A hero streams a video from his camera to the restreamer, who then streams it back to a player.</description>
+It’s name is &amp;#34;Grand Guide Pedestrian&amp;#34;. It’s a virtual interactive experience where a player controls another human, a hero, who walks in the city like it’s a GTA game. No gunfire, no car thefts, no other crimes, though.
+Look at the demo:
+And here is the data flow:
+A hero streams a video from his camera to the restreamer, who then streams it back to a player.</description>
     </item>
     
     <item>

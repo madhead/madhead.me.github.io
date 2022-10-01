@@ -2,19 +2,19 @@
 <html lang='en' dir='auto'><head>
   <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<meta name='description' content='Original article.
- Change USB connection in settings on camera to PC Remote.
- sudo pacman -S gphoto2 v4l-utils v4l2loopback-dkms ffmpeg sudo modprobe v4l2loopback exclusive_caps=1 max_buffers=2 v4l2-ctl --list-devices gphoto2 --stdout --capture-movie | ffmpeg -i - -vcodec rawvideo -pix_fmt yuv420p -threads 8 -f v4l2 /dev/video&lt;N&gt; #from v4l2-ctl output   '>
+<meta name='description' content=' Original article.
+Change USB connection in settings on camera to PC Remote.
+sudo pacman -S gphoto2 v4l-utils v4l2loopback-dkms ffmpeg sudo modprobe v4l2loopback exclusive_caps=1 max_buffers=2 v4l2-ctl --list-devices gphoto2 --stdout --capture-movie | ffmpeg -i - -vcodec rawvideo -pix_fmt yuv420p -threads 8 -f v4l2 /dev/video&lt;N&gt; #from v4l2-ctl output '>
 
 <meta property='og:title' content='Sony α6300 as a webcam on Manjaro Lunux • madhead'>
-<meta property='og:description' content='Original article.
- Change USB connection in settings on camera to PC Remote.
- sudo pacman -S gphoto2 v4l-utils v4l2loopback-dkms ffmpeg sudo modprobe v4l2loopback exclusive_caps=1 max_buffers=2 v4l2-ctl --list-devices gphoto2 --stdout --capture-movie | ffmpeg -i - -vcodec rawvideo -pix_fmt yuv420p -threads 8 -f v4l2 /dev/video&lt;N&gt; #from v4l2-ctl output   '>
+<meta property='og:description' content=' Original article.
+Change USB connection in settings on camera to PC Remote.
+sudo pacman -S gphoto2 v4l-utils v4l2loopback-dkms ffmpeg sudo modprobe v4l2loopback exclusive_caps=1 max_buffers=2 v4l2-ctl --list-devices gphoto2 --stdout --capture-movie | ffmpeg -i - -vcodec rawvideo -pix_fmt yuv420p -threads 8 -f v4l2 /dev/video&lt;N&gt; #from v4l2-ctl output '>
 <meta property='og:url' content='https://madhead.me/posts/dslr-webcam/'>
 <meta property='og:site_name' content='madhead'>
 <meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='linux'><meta property='article:tag' content='bash magic'><meta property='article:published_time' content='2021-05-27T22:19:00&#43;02:00'/><meta property='article:modified_time' content='2021-05-27T22:19:00&#43;02:00'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.92.0" />
+<meta name="generator" content="Hugo 0.104.2" />
 
   <title>Sony α6300 as a webcam on Manjaro Lunux • madhead</title>
   <link rel='canonical' href='https://madhead.me/posts/dslr-webcam/'>
@@ -284,7 +284,7 @@ gphoto2 --stdout --capture-movie | ffmpeg -i - -vcodec rawvideo -pix_fmt yuv420p
   <div class='container sep-before'>
     <div class='comments-area'><div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

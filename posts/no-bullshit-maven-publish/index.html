@@ -36,7 +36,7 @@ It’s time to move your projects to Maven Central Repository, so I’ve gathere
 <meta property='og:site_name' content='madhead'>
 <meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='gradle'><meta property='article:tag' content='maven'><meta property='article:tag' content='rant'><meta property='article:published_time' content='2021-02-27T18:00:00&#43;03:00'/><meta property='article:modified_time' content='2021-02-27T18:00:00&#43;03:00'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.92.0" />
+<meta name="generator" content="Hugo 0.104.2" />
 
   <title>No-bullshit guide on publishing your Gradle projects to Maven Central • madhead</title>
   <link rel='canonical' href='https://madhead.me/posts/no-bullshit-maven-publish/'>
@@ -590,8 +590,11 @@ Only now your artifacts are in OSSRH!</p>
 <p>But not in the Central Maven Repository yet…</p>
 </div>
 <div class="paragraph">
-<p>You had to do one more thing, but only for the first time you publish a project: you have to <strong>go back to the issue you’ve opened for a namespace in OSSRH and ask the person it is assigned to turn on the sync of your artifacts to the Central</strong>.
-Successive publications will be synced automatically once the sync is turned on.</p>
+<p><del>
+You had to do one more thing, but only for the first time you publish a project: you have to <strong>go back to the issue you’ve opened for a namespace in OSSRH and ask the person it is assigned to turn on the sync of your artifacts to the Central</strong>.
+Successive publications will be synced automatically once the sync is turned on.
+</del>
+Maven Central team meber <a href="#comment-5900031092">said in the comments</a> that this step is not needed.</p>
 </div>
 <div class="paragraph">
 <p>It will take a few minutes for the artifacts to appear in the Central (<a href="https://repo1.maven.org/maven2" class="bare">https://repo1.maven.org/maven2</a>) after you release them, but the search (<a href="https://search.maven.org" class="bare">https://search.maven.org</a>) may be updating a few hours.</p>
@@ -702,7 +705,7 @@ nexusPublishing {
   <div class='container sep-before'>
     <div class='comments-area'><div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
