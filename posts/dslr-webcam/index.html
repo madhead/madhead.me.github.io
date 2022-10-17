@@ -5,6 +5,7 @@
 <meta name='description' content=' Original article.
 Change USB connection in settings on camera to PC Remote.
 sudo pacman -S gphoto2 v4l-utils v4l2loopback-dkms ffmpeg sudo modprobe v4l2loopback exclusive_caps=1 max_buffers=2 v4l2-ctl --list-devices gphoto2 --stdout --capture-movie | ffmpeg -i - -vcodec rawvideo -pix_fmt yuv420p -threads 8 -f v4l2 /dev/video&lt;N&gt; #from v4l2-ctl output '>
+<meta name="monetization" content='$ilp.uphold.com/wgzRi7wDbPFf'>
 
 <meta property='og:title' content='Sony α6300 as a webcam on Manjaro Lunux • madhead'>
 <meta property='og:description' content=' Original article.
