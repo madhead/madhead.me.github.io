@@ -1,0 +1,52 @@
+.admonitionblock>table {
+    border: none;
+    border-collapse: separate;
+    border: 0;
+    background: none;
+    width: 100%;
+    table-layout: auto;
+}
+
+.admonitionblock>table td {
+    border: none;
+}
+
+.admonitionblock>table td.icon {
+    text-align: center;
+    display: table-cell;
+}
+
+.admonitionblock>table td.icon img {
+    max-width: none;
+}
+
+.admonitionblock>table td.content {
+    padding-left: 1.125em;
+    padding-right: 1.25em;
+    border-left: 1px solid #ddddd8;
+    color: rgba(0, 0, 0, .6);
+}
+
+.admonitionblock>table td.content>:last-child>:last-child {
+    margin-bottom: 0;
+}
+
+.admonitionblock.caution>table td.icon>div.title {
+    content: url("/images/admonitions/caution.svg");
+}
+
+.admonitionblock.important>table td.icon>div.title {
+    content: url("/images/admonitions/important.svg");
+}
+
+.admonitionblock.note>table td.icon>div.title {
+    content: url("/images/admonitions/note.svg");
+}
+
+.admonitionblock.tip>table td.icon>div.title {
+    content: url("/images/admonitions/tip.svg");
+}
+
+.admonitionblock.warning>table td.icon>div.title {
+    content: url("/images/admonitions/warning.svg");
+}

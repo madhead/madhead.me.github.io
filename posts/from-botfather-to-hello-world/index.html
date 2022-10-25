@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<html lang='en' dir='auto'><head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='
+Great news everybody: a few days ago Telegram team updated their Bot API documentation!
+Among other things they now have an end-to-end tutorial on bot creation process: starting from bot registration in @BotFather, going all the way to database &amp; deployment options.
+
+
+Unfortunately, it features Java, Maven, and rubenlagus/TelegramBots library.
+
+
+So, I’ve decided to copycat it, upgrading the examples to Kotlin, Gradle and InsanusMokrassar/TelegramBotAPI!
+Read my version below 👇🏼
+
+
+
+
+
+Important
+
+
+
+Parts of the text below are shamelessly copy-pasted from the original tutorial.
+But don’t be tough on me: I respect copyright and authorship and in this case I’m appealing for the fair use doctrine, which, I believe, this article would fall into.
+
+
+
+
+'>
+<meta name="monetization" content='$ilp.uphold.com/wgzRi7wDbPFf'>
+
+<meta property='og:title' content='From BotFather to &#39;Hello World&#39; • madhead'>
+<meta property='og:description' content='
+Great news everybody: a few days ago Telegram team updated their Bot API documentation!
+Among other things they now have an end-to-end tutorial on bot creation process: starting from bot registration in @BotFather, going all the way to database &amp; deployment options.
+
+
+Unfortunately, it features Java, Maven, and rubenlagus/TelegramBots library.
+
+
+So, I’ve decided to copycat it, upgrading the examples to Kotlin, Gradle and InsanusMokrassar/TelegramBotAPI!
+Read my version below 👇🏼
+
+
+
+
+
+Important
+
+
+
+Parts of the text below are shamelessly copy-pasted from the original tutorial.
+But don’t be tough on me: I respect copyright and authorship and in this case I’m appealing for the fair use doctrine, which, I believe, this article would fall into.
+
+
+
+
+'>
+<meta property='og:url' content='https://madhead.me/posts/from-botfather-to-hello-world/'>
+<meta property='og:site_name' content='madhead'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='telegram'><meta property='article:published_time' content='2022-10-25T00:23:00&#43;02:00'/><meta property='article:modified_time' content='2022-10-25T00:23:00&#43;02:00'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.104.3" />
+
+  <title>From BotFather to &#39;Hello World&#39; • madhead</title>
+  <link rel='canonical' href='https://madhead.me/posts/from-botfather-to-hello-world/'>
+  
+  
+  <link rel='icon' href='/favicon.ico'>
+<link rel='stylesheet' href='/assets/css/main.eecc3c56.css'><link rel='stylesheet' href='/css/admonitions.css'><style>
+:root{--color-accent:#000000;}
+</style>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-101212543-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  
+
+</head>
+<body class='page type-posts has-sidebar'>
+
+  <div class='site'><div id='sidebar' class='sidebar'>
+  <a class='screen-reader-text' href='#main-menu'>Skip to Main Menu</a>
+
+  <div class='container'><section class='widget widget-about sep-after'>
+  <header>
+    
+    <div class='logo'>
+      <a href='/'>
+        <img src='/images/logo.svg'>
+      </a>
+    </div>
+    
+    <div class='desc'>
+    
+    </div>
+  </header>
+
+</section>
+<section class='widget widget-sidebar_menu sep-after'><nav id='sidebar-menu' class='menu sidebar-menu' aria-label='Sidebar Menu'>
+    <div class='container'>
+      <ul><li class='item'>
+  <a href='/posts/'>posts</a></li><li class='item'>
+  <a href='/tags/'>tags</a></li><li class='item'>
+  <a href='https://stackoverflow.com/cv/madhead'>cv</a></li></ul>
+    </div>
+  </nav>
+
+</section>
+
+<section class='widget widget-sidebar_menu sep-after'>
+  <nav id='sidebar-menu' class='menu sidebar-menu' aria-label='Sidebar Menu'>
+    <div class='container'>
+      <ul><li class='item'>
+          <a href='https://ru.madhead.me/'>RU</a>
+        </li></ul>
+    </div>
+  </nav>
+</section><section class='widget widget-social_menu sep-after'><nav aria-label='Social Menu'>
+    <ul><li>
+        <a href='mailto:siarhei.krukau@gmail.com' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Contact via Email</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+<polyline points="22,6 12,13 2,6" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://t.me/madheab' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Telegram account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M23.91 3.79L20.3 20.84c-.25 1.21-.98 1.5-2 .94l-5.5-4.07-2.66 2.57c-.3.3-.55.56-1.1.56-.72 0-.6-.27-.84-.95L6.3 13.7l-5.45-1.7c-1.18-.35-1.19-1.16.26-1.75l21.26-8.2c.97-.43 1.9.24 1.53 1.73z" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://gitlab.com/madhead' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Gitlab account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M22.65 14.39L12 22.13 1.35 14.39a.84.84 0 0 1-.3-.94l1.22-3.78 2.44-7.51A.42.42 0 0 1 4.82 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.49h8.1l2.44-7.51A.42.42 0 0 1 18.6 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.51L23 13.45a.84.84 0 0 1-.35.94z" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://github.com/madhead' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Github account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://stackoverflow.com/users/750510' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Stackoverflow account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><line x1="3.472" y1="18.689" x2="16.612" y2="18.689" />
+<line x1="4.017" y1="12.715" x2="16.884" y2="15.404" />
+<line x1="5.991" y1="6.673" x2="17.906" y2="12.238" />
+<line x1="9.582" y1="1.021" x2="19.692" y2="9.430" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://linkedin.com/in/krukaus' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Linkedin account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+<rect x="2" y="9" width="4" height="12" />
+<circle cx="4" cy="4" r="2" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://instagram.com/m.a.d.h.e.a.d' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Instagram account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+<line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://www.youtube.com/channel/UCO2UZ6hUzjn9XQIdwwkcXJQ' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Youtube account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
+<polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://twitter.com/m_a_d_h_e_a_d' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Twitter account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</section></div>
+
+  <div class='sidebar-overlay'></div>
+</div><div class='main'><nav id='main-menu' class='menu main-menu' aria-label='Main Menu'>
+  <div class='container'>
+    <a class='screen-reader-text' href='#content'>Skip to Content</a>
+
+<button id='sidebar-toggler' class='sidebar-toggler' aria-controls='sidebar'>
+  <span class='screen-reader-text'>Toggle Sidebar</span>
+  <span class='open'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><line x1="3" y1="12" x2="21" y2="12" />
+<line x1="3" y1="6" x2="21" y2="6" />
+<line x1="3" y1="18" x2="21" y2="18" />
+</svg>
+</span>
+  <span class='close'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><line x1="18" y1="6" x2="6" y2="18" />
+<line x1="6" y1="6" x2="18" y2="18" />
+</svg>
+</span>
+</button>
+    <ul></ul>
+  </div>
+</nav><div class='header-widgets'>
+        <div class='container'></div>
+      </div>
+
+      <header id='header' class='header site-header'>
+        <div class='container sep-after'>
+          <div class='header-info'><p class='site-title title'>madhead</p><p class='desc site-desc'></p>
+          </div>
+        </div>
+      </header>
+
+      <main id='content'>
+
+
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
+  <div class='container sep-after'>
+    <div class='header-info'>
+      <h1 class='title'>From BotFather to &#39;Hello World&#39;</h1>
+      
+
+    </div>
+    <div class='entry-meta'>
+  <span class='posted-on'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+<line x1="16" y1="2" x2="16" y2="6" />
+<line x1="8" y1="2" x2="8" y2="6" />
+<line x1="3" y1="10" x2="21" y2="10" />
+</svg>
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='2022-10-25T00:23:00&#43;02:00'>2022-10-25</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><circle cx="12" cy="12" r="10" />
+<polyline points="12 6 12 12 15 15" />
+</svg>
+19 mins to read
+</span>
+
+
+</div>
+
+
+  </div>
+</header>
+
+  
+  
+
+  <div class='container entry-content'>
+  <div class="paragraph">
+<p>Great news everybody: a few days ago Telegram team updated their Bot API documentation!
+Among other things they now have an <a href="https://core.telegram.org/bots/tutorial">end-to-end tutorial</a> on bot creation process: starting from bot registration in <a href="https://t.me/BotFather">@BotFather</a>, going all the way to database &amp; deployment options.</p>
+</div>
+<div class="paragraph">
+<p>Unfortunately, it features Java, Maven, and <a href="https://github.com/rubenlagus/TelegramBots">rubenlagus/TelegramBots</a> library.</p>
+</div>
+<div class="paragraph">
+<p>So, I’ve decided to copycat it, upgrading the examples to Kotlin, Gradle and <a href="https://github.com/InsanusMokrassar/TelegramBotAPI">InsanusMokrassar/TelegramBotAPI</a>!
+Read my version below 👇🏼</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Parts of the text below are shamelessly copy-pasted from the <a href="https://core.telegram.org/bots/tutorial">original tutorial</a>.
+But don’t be tough on me: I respect copyright and authorship and in this case I’m appealing for the <a href="https://en.wikipedia.org/wiki/Fair_use">fair use doctrine</a>, which, I believe, this article would fall into.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p>This guide will walk you through everything you need to know to build your first <strong>Telegram Bot</strong>.</p>
+</div>
+<div class="paragraph">
+<p>If you already know your way around some of the basic steps, you can jump directly to the part you’re missing.
+Equivalent examples are available in <a href="https://gitlab.com/Athamaxy/telegram-bot-tutorial/-/blob/main/TutorialBot.cs">C#</a>, <a href="https://gitlab.com/Athamaxy/telegram-bot-tutorial/-/blob/main/TutorialBot.py">Python</a>, <a href="https://gitlab.com/Athamaxy/telegram-bot-tutorial/-/blob/main/TutorialBot.go">Go</a> and <a href="https://gitlab.com/Athamaxy/telegram-bot-tutorial/-/tree/main/Nodejs">TypeScript</a>.</p>
+</div>
+<div class="paragraph">
+<p>TODO
+* <a href="#introduction">Introduction</a>
+* <a href="#getting-ready">Basic Tutorial</a>
+<strong> <a href="#getting-ready">Environment</a>
+</strong> <a href="#first-run">First Run</a>
+<strong> <a href="#echo-bot">Echo Bot</a>
+* <a href="#executing-commands">Advanced Tutorial</a>
+</strong> <a href="#executing-commands">Commands</a>
+<strong> <a href="#navigation">Navigation</a>
+</strong> <a href="#database">Database</a>
+** <a href="#hosting">Hosting</a>
+* <a href="#further-reading">Further Reading</a>
+TODO</p>
+</div>
+<div class="sect1">
+<h2 id="introduction">Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>At its core, you can think of the Telegram <a href="https://core.telegram.org/bots/api">Bot API</a> as software that provides <a href="https://en.wikipedia.org/wiki/JSON">JSON-encoded</a> responses to your queries.</p>
+</div>
+<div class="paragraph">
+<p>A bot, on the other hand, is essentially a routine, software or script that queries the API by means of an <a href="https://core.telegram.org/bots/api#making-requests">HTTPS request</a> and waits for a response.
+There are several types of <a href="https://core.telegram.org/bots/api#available-methods">requests</a> you can make, as well as many different <a href="https://core.telegram.org/bots/api#available-types">objects</a> that you can use and receive as responses.</p>
+</div>
+<div class="paragraph">
+<p>Since <strong>your browser</strong> is capable of sending HTTPS requests, you can use it to quickly try out the API.
+After <a href="https://core.telegram.org/bots/tutorial#obtain-your-bot-token">obtaining your token</a>, try pasting this string into your browser:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>https://api.telegram.org/bot&lt;YOUR_BOT_TOKEN&gt;/getMe</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In theory, you could interact with the API with <strong>basic requests</strong> like this, either via your browser or other tailor-made tools like <a href="https://curl.se">cURL</a>.
+While this can work for simple requests like the example above, it’s not practical for larger applications and doesn’t scale well.</p>
+</div>
+<div class="paragraph">
+<p>For that reason, this guide will show you how to use <a href="https://core.telegram.org/bots/samples">libraries and frameworks</a>, along with some <strong>basic programming skills</strong>, to build a more robust and scalable project.</p>
+</div>
+<div class="paragraph">
+<p>If you know how to code, you’ll fly right through each step in no time — and if you’re just starting out, this guide will show you everything you need to learn.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>We will use <a href="https://en.wikipedia.org/wiki/Kotlin_(programming_language)">Kotlin</a> throughout this guide as it’s one of the most popular programming languages, however, you can follow along with any language as all the steps are fundamentally the same.
+Since JVM is fully cross-platform, each code example will work with any operating system.
+If you pick another language, equivalent examples are available in <a href="https://gitlab.com/Athamaxy/telegram-bot-tutorial/-/blob/main/TutorialBot.cs">C#</a>, <a href="https://gitlab.com/Athamaxy/telegram-bot-tutorial/-/blob/main/TutorialBot.py">Python</a>, <a href="https://gitlab.com/Athamaxy/telegram-bot-tutorial/-/blob/main/TutorialBot.go">Go</a> and <a href="https://gitlab.com/Athamaxy/telegram-bot-tutorial/-/tree/main/Nodejs">TypeScript</a>.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="getting-ready">Getting Ready</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>First, we will briefly cover how to <strong>create your first project</strong>, obtain your <strong>API token</strong> and download all necessary <strong>dependencies and libraries</strong>.</p>
+</div>
+<div class="paragraph">
+<p>For the purposes of this guide, a similar bot from the <a href="https://core.telegram.org/bots/tutorial">original tutorial</a> is also live at <a href="https://t.me/tutorialbot">@TutorialBot</a> — feel free to check it out along the way to see how your own implementation should look after each step.</p>
+</div>
+<div class="sect2">
+<h3 id="_obtain_your_bot_token">Obtain Your Bot Token</h3>
+<div class="paragraph">
+<p>In this context, a <strong>token</strong> is a string that authenticates your bot (not your account) on the bot API.
+Each bot has a unique token which can also be revoked at any time via <a href="https://t.me/botfather">@BotFather</a>.</p>
+</div>
+<div class="paragraph">
+<p>Obtaining a token is as simple as contacting <a href="https://t.me/botfather">@BotFather</a>, issuing the <code>/newbot</code> command and following the steps until you’re given a new token.
+You can find a step-by-step guide <a href="https://core.telegram.org/bots/features#creating-a-new-bot">here</a>.</p>
+</div>
+<div class="paragraph">
+<p>Your token will look something like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>4839574812:AAFD39kkdpWt3ywyRZergyOLMaJhac60qc</code></pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Make sure to save your token in a secure place, treat it like a password and <strong>don’t share it with anyone</strong>.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_download_an_ide">Download an IDE</h3>
+<div class="paragraph">
+<p>To program in Java you’ll need an <a href="https://en.wikipedia.org/wiki/Integrated_development_environment">IDE</a> — a special text editor that will let you write, compile and run your code.
+In this tutorial, we’ll use <a href="https://www.jetbrains.com/idea">IntelliJ IDEA</a> — there are several free, open source alternatives like <a href="https://www.eclipse.org/ide">Eclipse</a> or <a href="https://netbeans.apache.org/download/index.html">NetBeans</a> which work in the exact same way.</p>
+</div>
+<div class="paragraph">
+<p>You will also need a <a href="https://en.wikipedia.org/wiki/Java_Development_Kit">JDK</a>, a software kit that allows your Java code to run.
+Most IDEs don’t include a JDK, so you should download a version compatible with your operating system separately.
+You can find a free, open source version <a href="https://adoptium.net/temurin/releases">here</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you use another language, the steps are identical.
+You will just have to download a different IDE and software development kit.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_pick_a_framework_or_library">Pick a Framework or Library</h3>
+<div class="paragraph">
+<p>You can think of a framework as software that handles all the low-level logic for you, including the API calls, and lets you focus on your bot-specific logic.</p>
+</div>
+<div class="paragraph">
+<p>In this tutorial, we’ll use <a href="https://github.com/InsanusMokrassar/TelegramBotAPI">InsanusMokrassar/TelegramBotAPI</a>, but you can follow along with any equivalent implementation, since all the underlying methods are either similar or exactly the same.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>You can find many frameworks, along with code examples, in <a href="https://core.telegram.org/bots/samples">our dedicated list</a>.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_create_your_project">Create Your Project</h3>
+<div class="paragraph">
+<p>In IntelliJ, go to <code>File &gt; New &gt; Project</code>.</p>
+</div>
+<div class="paragraph">
+<p>Fill in the fields accordingly:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Name</strong> — The name of your project.
+For example, <em>from-botfather-to-hello-world</em>.</p>
+</li>
+<li>
+<p><strong>Location</strong> — Where to store your project.
+You can use the default value.</p>
+</li>
+<li>
+<p><strong>Language</strong> — <em>Kotlin</em></p>
+</li>
+<li>
+<p><strong>Build System</strong> — The framework that will handle your dependencies. Pick <em>Gradle</em>.</p>
+</li>
+<li>
+<p><strong>JDK</strong> — Pick whichever version you downloaded.
+We’ll be using version <em>17</em>.</p>
+</li>
+<li>
+<p><strong>Gradle DSL</strong> — Select <em>Kotlin</em> as well.</p>
+</li>
+<li>
+<p><strong>Add Sample Code</strong> — Leave this <strong>selected</strong>, it will generate some needed files for you.</p>
+</li>
+<li>
+<p><strong>Advanced Settings &gt; GroupId</strong> — Use your reversed domain here, or <em>tutorial</em> for the sake of this guide.</p>
+</li>
+<li>
+<p><strong>Advanced Settings &gt; ArtifactId</strong> — You can use the default value.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<figure class="align-center"><img src="//storage.googleapis.com/madheadme-static/posts/from-botfather-to-hello-world/001.png"/>
+</figure>
+
+</div>
+<div class="paragraph">
+<p>After hitting <em>Create</em>, if you did everything correctly, your <strong>Project</strong> view in the top left should show a <strong>project structure</strong> along these lines:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>from-botfather-to-hello-world
+├── build.gradle.kts
+├── gradle
+│   └── wrapper
+│       ├── gradle-wrapper.jar
+│       └── gradle-wrapper.properties
+├── gradle.properties
+├── gradlew
+├── gradlew.bat
+├── settings.gradle.kts
+└── src
+    ├── main
+    │   ├── kotlin
+    │   │   └── Main.kt
+    │   └── resources
+    └── test
+        ├── kotlin
+        └── resources</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Other IDEs will follow a similar pattern.
+Your dependency management system will have a different name (or no name at all if it’s built-in) depending on the language you chose.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p>If this looks scary, don’t worry.
+We will only be using the <code>Main.kt</code> file and the <code>build.gradle.kts</code> file.
+In fact, to check that everything is working so far, double click on <em>Main</em> and click on the small green arrow on the left of <code>fun main</code>, then select the first option (<code>Run &#39;MainKt&#39;</code>).
+If you followed the steps correctly, <em>Hello World!</em> should appear in the console below.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_add_framework_dependency">Add Framework Dependency</h3>
+<div class="paragraph">
+<p>We will now instruct the IDE to download and configure everything needed to work with the API.
+This is very easy and happens automatically behind the scenes.</p>
+</div>
+<div class="paragraph">
+<p>First, locate your <code>build.gradle.kts</code> file on the left side of the screen.
+Open it by double-clicking and simply add the library to the <code>dependencies</code> section:</p>
+</div>
+<div class="paragraph">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span>dependencies {
+</span></span><span style="display:flex;"><span>    implementation(<span style="color:#e6db74">&#34;dev.inmo:tgbotapi:3.2.7&#34;</span>)
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
+</div>
+<div class="paragraph">
+<p>When you’re done, your <code>build.gradle.kts</code> should look something like <a href="https://github.com/madhead/from-botfather-to-hello-world/blob/2a07c12eb7cc96e4522ef9f87b7feb1f8032b4e8/build.gradle.kts#L15-L18">this</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_start_coding">Start Coding</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We are ready to start coding.
+If you’re a beginner, consider that being familiar with your language of choice will greatly help.
+With this tutorial, you’ll be able to teach your bot basic behaviors, though more advanced features will require some coding experience.</p>
+</div>
+<div class="sect2">
+<h3 id="_creating_a_bot">Creating a Bot</h3>
+<div class="paragraph">
+<p>There are two mutually exclusive ways of <a href="https://core.telegram.org/bots/api#getting-updates">receiving updates</a> in your bot: either by <strong>polling</strong> for them, or by receiving them via a <strong>webhook</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Polling essentially means <a href="https://core.telegram.org/bots/api#getupdates">asking for the updates</a> in an endless loop, i.e. you pull the updates from Telegram servers.
+With <a href="https://core.telegram.org/bots/api#setwebhook">webhooks</a> updates are pushed into your bot by Telegram via HTTPS.</p>
+</div>
+<div class="paragraph">
+<p>You decide which way suits you best, and the library provides you several methods to create bots depending on your choice.</p>
+</div>
+<div class="paragraph">
+<p>We’ll start with the <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.extensions.behaviour_builder/telegram-bot-with-behaviour-and-long-polling.html"><code>telegramBotWithBehaviourAndLongPolling</code></a>:</p>
+</div>
+<div class="paragraph">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">suspend</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">main</span>(args: Array&lt;String&gt;) {                            <span style="color:#75715e">// &lt;1&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">val</span> token = args[<span style="color:#ae81ff">0</span>]                                            <span style="color:#75715e">// &lt;2&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">val</span> <span style="color:#960050;background-color:#1e0010">(</span>_, job) = telegramBotWithBehaviourAndLongPolling(token) { <span style="color:#75715e">// &lt;3&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">this</span>
+</span></span><span style="display:flex;"><span>            .allUpdatesFlow                                        <span style="color:#75715e">// &lt;4&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            .onEach { println(<span style="color:#66d9ef">it</span>) }                                <span style="color:#75715e">// &lt;5&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            .launchIn(GlobalScope)                                 <span style="color:#75715e">// &lt;6&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    job.join()                                                     <span style="color:#75715e">// &lt;7&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}.</span></span></code></pre></div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Add a <code>suspend</code> modifier to your <code>main</code> function, as the library makes a heavy use of <a href="https://kotlinlang.org/docs/coroutines-overview.html">coroutines</a>.</p>
+</li>
+<li>
+<p>It’s better to pass the token as an argument for your program, then hardcoding it.</p>
+</li>
+<li>
+<p><code>telegramBotWithBehaviourAndLongPolling</code> returns a pair of values: <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.bot/index.html#-1167693203%2FClasslikes%2F-1982836883">the bot itself</a> and a <a href="https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-job/"><code>Job</code></a>.
+We’re not very interested in the <code>bot</code> value, so we do not assign it to any variable, that’s waht <code>_</code> means.
+And the <code>job</code> is useful for our purpose, read below.</p>
+</li>
+<li>
+<p><a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.updateshandlers/-flows-updates-filter/all-updates-flow.html"><code>allUpdatesFlow</code></a> is a <a href="https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-flow/"><code>Flow</code></a>, i.e. a lazy, potentially endless sequence of <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.types.update.abstracts/-update/index.html"><code>Updates</code></a>.
+Flows are used to listen or transform the values that <em>flow</em> through it.</p>
+</li>
+<li>
+<p>Here we just listen for the values and print them.</p>
+</li>
+<li>
+<p>This listening process should occur in a <a href="https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-coroutine-scope/"><code>CoroutineScope</code></a>.
+For this simple example we’ll use a <a href="https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-global-scope/"><code>GlobalScope</code></a>.</p>
+</li>
+<li>
+<p>Remember the job that we get at step #3?
+Here we wait for it’s completion.
+And this job would never actually complete on its own, because the number of updates your bot potentially receives is unbound.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>You might be confused by all this coroutines jobs, scopes, flows, and, especially, by the waiting of the completion of an endless loop — it sounds like a nonsense!
+But those are the very basic concepts and patterns of Kotlin Coroutines.
+After finishing this tutorial you might want to <a href="https://kotlinlang.org/docs/coroutines-overview.html">read more</a> about them.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_first_run">First Run</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>It’s time to <strong>run your bot</strong> for the first time.
+Hit the green arrow to the left of <code>fun main</code> and select the first option (<code>Run &#39;MainKt&#39;</code>).</p>
+</div>
+<div class="paragraph">
+<p><em>And then there was nothing.</em>
+Yes, a bit anticlimactic.
+This is because your bot <strong>has nothing to print</strong> – there are <strong>no new updates</strong> because nobody messaged it yet.</p>
+</div>
+<div class="paragraph">
+<p>If you try messaging the bot on Telegram, you’ll then see <strong>new updates</strong> pop up in the console.
+At this point, you have your very own Telegram Bot – quite the achievement.
+Now, on to making it a bit more intelligent.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If nothing pops up, make sure you messaged the right bot and that the token you pasted in the code is correct.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_receiving_messages">Receiving Messages</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Every time someone sends a <strong>private message</strong> to your bot, the <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling/on-content-message.html"><code>onContentMessage</code></a> callback will be called and you’ll be able to handle the update (named <code>it</code>, if you don’t override the name of the parameter), which contains the message, along with a great deal of other info which you can see detailed here.</p>
+</div>
+<div class="paragraph">
+<p>Let’s focus on two values for now:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>The user</strong> — Who sent the message.
+Access it via <code>it.from</code>.</p>
+</li>
+<li>
+<p><strong>The message</strong> — What was sent.
+Access it via <code>it.text</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Knowing this, we can make it a bit more clear in the <strong>console output</strong>.</p>
+</div>
+<div class="paragraph">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span><span style="color:#f92672">-this.allUpdatesFlow.onEach { println(it) }.launchIn(GlobalScope)
+</span></span></span><span style="display:flex;"><span><span style="color:#f92672"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">+onContentMessage {
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+    val user = it.from
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+    println(&#34;${user?.firstName ?: &#34;Unknown user&#34;} wrote ${it.text}&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+}
+</span></span></span></code></pre></div>
+</div>
+<div class="paragraph">
+<p>This is just a basic example – you can now play around with all the methods to see everything you can pull out of these objects.
+You can try <code>it.from.firstName</code>, <code>it.chat</code>, and dozens more.</p>
+</div>
+<div class="paragraph">
+<p>Knowing how to receive, process and print <strong>incoming messages</strong>, now it’s time to learn how to <strong>answer them</strong>.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Remember to stop and re-launch your bot after each change to the code.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_sending_messages">Sending Messages</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To send a private text message, you generally need <strong>three things</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The user <strong>must</strong> have contacted your bot first.
+(Unless the user sent a join request to a group where your bot is an admin, but that’s a more advanced scenario).</p>
+</li>
+<li>
+<p>You <strong>must</strong> have previously saved the <strong>User ID</strong> (<code>it.from.id</code>)</p>
+</li>
+<li>
+<p>A <code>String</code> object containing the message text, 1–4096 characters.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>With that out of the way, let’s send the first message:</p>
+</div>
+<div class="paragraph">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">suspend</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">main</span>(args: Array&lt;String&gt;) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> token = args[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> bot = telegramBot(token)                                   <span style="color:#75715e">// &lt;1&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 
+</span></span><span style="display:flex;"><span>    bot.sendTextMessage(ChatId(<span style="color:#ae81ff">1234</span>), <span style="color:#e6db74">&#34;Hello, World!&#34;</span>)             <span style="color:#75715e">// &lt;2&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}</span></span></code></pre></div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>As long as we don’t build a complex behaviour for the bot here, simple <code>telegramBot</code> is enough for this example.</p>
+</li>
+<li>
+<p>For this example, we’ll assume your ID is <code>1234</code>.
+You could get your real ID from the updates received in the previous steps, or by contacting <a href="https://t.me/myidbot">@myidbot</a></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>If you did everything correctly, your bot should text you Hello World! every time you launch your code.
+Sending messages to groups or channels – assuming you have the relevant permissions – is as simple as replacing <code>1234</code> with the ID of the respective chat.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Try experimenting with other types of messages, like <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.extensions.api.send.media/send-photo.html"><code>sendPhoto</code></a>, <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.extensions.api.send.media/send-sticker.html"><code>sendSticker</code></a>, <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.extensions.api.send/send-dice.html"><code>sendDice</code></a>…
+A full list is available starting <a href="https://core.telegram.org/bots/api#sendmessage">here</a>.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_echo_bot">Echo Bot</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Let’s practice everything we tried so far by coding an <strong>Echo Bot</strong>.
+Its functionality will be rather simple: every text message it receives will be sent right back to the user.</p>
+</div>
+<div class="sect2">
+<h3 id="_copying_text">Copying Text</h3>
+<div class="paragraph">
+<p>The most intuitive way of coding this is just replying to any message… with itself.</p>
+</div>
+<div class="paragraph">
+<p>In other words:</p>
+</div>
+<div class="paragraph">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">suspend</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">main</span>(args: Array&lt;String&gt;) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> token = args[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> bot = telegramBot(token)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    bot.buildBehaviourWithLongPolling {                            <span style="color:#75715e">// &lt;1&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        onContentMessage {                                         <span style="color:#75715e">// &lt;2&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            bot.reply(<span style="color:#66d9ef">it</span>, <span style="color:#66d9ef">it</span>)                                      <span style="color:#75715e">// &lt;3&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        }
+</span></span><span style="display:flex;"><span>    }.join()
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Here we’ll explore just another way to setup long polling and bot behaviour: <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.extensions.behaviour_builder/build-behaviour-with-long-polling.html"><code>buildBehaviourWithLongPolling</code></a>.</p>
+</li>
+<li>
+<p><a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling/on-content-message.html"><code>onContentMessage</code></a> will be called for every message with <em>content</em>, e.g. text, stickers, pictures.
+There are messages with no content as well, like <a href="https://core.telegram.org/bots/api#chatjoinrequest">join requests</a>.</p>
+</li>
+<li>
+<p>The <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.extensions.api.send/reply.html"><code>reply</code></a> simply replies to a message.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This tutorial assumes that updates always contain messages for the sake of simplicity.
+This may not always be true – be sure to implement all the proper checks in your code to handle every type of update with the appropriate methods.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_executing_commands">Executing Commands</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To learn what a command is and how it works, we recommend reading this <a href="https://core.telegram.org/bots/features#commands">dedicated summary</a>.
+In this guide, we’ll focus on the technical side of things.</p>
+</div>
+<div class="sect2">
+<h3 id="_creating_your_command">Creating Your Command</h3>
+<div class="paragraph">
+<p>Begin by opening <a href="https://t.me/botfather">@BotFather</a>.
+Type <code>/mybots</code> &gt; <em>Your_Bot_Name</em> &gt; Edit Bot &gt; Edit Commands.</p>
+</div>
+<div class="paragraph">
+<p>Now send a new command, followed by a brief description.
+For the purpose of this tutorial, we’ll implement two simple commands:</p>
+</div>
+<div class="paragraph">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>scream — Speak, I&#39;ll scream right back 
+</span></span><span style="display:flex;"><span>whisper — Shhhhhhh</span></span></code></pre></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_command_logic">Command Logic</h3>
+<div class="paragraph">
+<p>We want the <strong>Echo Bot</strong> to reply in uppercase when it’s in <strong>scream mode</strong> and normally otherwise.</p>
+</div>
+<div class="paragraph">
+<p>First, let’s <strong>create a variable</strong> to store the current mode.</p>
+</div>
+<div class="paragraph">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span>suspend fun main(args: Array&lt;String&gt;) {
+</span></span><span style="display:flex;"><span>    val token = args[0]
+</span></span><span style="display:flex;"><span>    val bot = telegramBot(token)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">+   var screaming = false
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e"></span>
+</span></span><span style="display:flex;"><span>    …
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+</div>
+<div class="paragraph">
+<p>Then, let’s change some logic to <strong>switch the mode</strong>.</p>
+</div>
+<div class="paragraph">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span>bot.buildBehaviourWithLongPolling {
+</span></span><span style="display:flex;"><span>    …
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">+   onCommand(&#34;scream&#34;) {
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+       screaming = true
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+   }
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+   onCommand(&#34;whisper&#34;) {
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+       screaming = false
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+   }
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e"></span>
+</span></span><span style="display:flex;"><span>    …
+</span></span><span style="display:flex;"><span>}.join()
+</span></span></code></pre></div>
+</div>
+<div class="paragraph">
+<p>The <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling/on-command.html"><code>onCommand</code></a> is called whenever the bot receives a comand that is passed as a parameter to the <code>onCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p>Next, let’s add an <a href="https://kotlinlang.org/docs/extensions.html">extension</a> for the <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.types.message.abstracts/-common-message/index.html"><code>CommonMessage</code></a> to check if it contains any commands.
+We’ll use this extention as a <em>filter</em> in the next step.</p>
+</div>
+<div class="paragraph">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">CommonMessage</span>&lt;*&gt;.hasCommands(): Boolean =
+</span></span><span style="display:flex;"><span>    (<span style="color:#66d9ef">this</span>.content <span style="color:#66d9ef">as</span>? TextContent)<span style="color:#f92672">?.</span>textSources<span style="color:#f92672">?.</span>any { <span style="color:#66d9ef">it</span>.botCommandTextSourceOrNull() <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> } <span style="color:#f92672">?:</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">CommonMessage</span>&lt;*&gt;.hasNoCommands(): Boolean = !<span style="color:#66d9ef">this</span>.hasCommands()</span></span></code></pre></div>
+</div>
+<div class="paragraph">
+<p>Probably when you’re reading these lines, these extensions are already <a href="https://github.com/InsanusMokrassar/TelegramBotAPI/pull/669">included</a> in the library.</p>
+</div>
+<div class="paragraph">
+<p>Finally, let’s tune our <code>onContentMessage</code> to support the modality.</p>
+</div>
+<div class="paragraph">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span>onContentMessage(
+</span></span><span style="display:flex;"><span>    initialFilter = CommonMessage&lt;MessageContent&gt;::hasNoCommands
+</span></span><span style="display:flex;"><span>) {
+</span></span><span style="display:flex;"><span>    val text = it.text
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    if (text != null) {
+</span></span><span style="display:flex;"><span>        bot.reply(it, if (screaming) text.uppercase() else text)
+</span></span><span style="display:flex;"><span>    } else {
+</span></span><span style="display:flex;"><span>        bot.reply(it, it)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+</div>
+<div class="paragraph">
+<p>As you can see, it checks if the message is a text.
+If it is, the bot additionally checks if it is in a screaming mode before it replies.</p>
+</div>
+<div class="paragraph">
+<p>And that’s it.
+Now the bot can <strong>execute commands</strong> and change its behavior accordingly.</p>
+</div>
+<div class="paragraph">
+<p>Naturally, this simplified logic will change the bot’s behavior for <strong>everyone</strong> – not just the person who sent the command.
+This can be fun for this tutorial but <strong>won’t work in a production environment</strong> – consider using a Map, dictionary or equivalent data structure to assign settings for individual users.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Remember to always implement a few basic <a href="https://core.telegram.org/bots/features#global-commands">global commands</a>.
+You can practice by implementing a simple feedback to the <code>/start</code> command, which we intentionally left out.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_buttons_and_keyboards">Buttons and Keyboards</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To streamline and simplify user interaction with your bot, you can replace many text-based exchanges with handy buttons.
+These buttons can perform a wide variety of actions and can be customized for each user.</p>
+</div>
+<div class="sect2">
+<h3 id="_button_types">Button Types</h3>
+<div class="paragraph">
+<p>There are two main types of buttons:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Reply Buttons</strong> — used to provide a list of predefined text <a href="https://core.telegram.org/bots/features#keyboards">reply options</a>.</p>
+</li>
+<li>
+<p><strong>Inline Buttons</strong> — used to offer quick navigation, shortcuts, URLs, games and <a href="https://core.telegram.org/bots/features##inline-keyboards">so much more</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Using these buttons is as easy as attaching a <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.types.buttons/-reply-keyboard-markup/index.html"><code>ReplyKeyboardMarkup</code></a> or an <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.types.buttons/-inline-keyboard-markup/index.html"><code>InlineKeyboardMarkup</code></a> to your message.</p>
+</div>
+<div class="paragraph">
+<p>This guide will focus on <strong>inline buttons</strong> since they only require a few extra lines of code.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_creating_buttons">Creating Buttons</h3>
+<div class="paragraph">
+<p>First of all, let’s create some buttons.</p>
+</div>
+<div class="paragraph">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> next = CallbackDataInlineKeyboardButton(text = <span style="color:#e6db74">&#34;Next&#34;</span>, callbackData = <span style="color:#e6db74">&#34;next&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> back = CallbackDataInlineKeyboardButton(text = <span style="color:#e6db74">&#34;Back&#34;</span>, callbackData = <span style="color:#e6db74">&#34;back&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> url = URLInlineKeyboardButton(text = <span style="color:#e6db74">&#34;Tutorial&#34;</span>, url = <span style="color:#e6db74">&#34;https://madhead.me/posts/from-botfather-to-hello-world&#34;</span>)</span></span></code></pre></div>
+</div>
+<div class="paragraph">
+<p>Let’s go back through the fields we specified:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Text</strong> — This is what the user will see, the text that appears on the button</p>
+</li>
+<li>
+<p><strong>Callback Data</strong> — This will be sent back to the code instance as part of a new <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.types.update/-callback-query-update/index.html"><code>CallbackQueryUpdate</code></a>, so we can quickly identify what button was clicked.</p>
+</li>
+<li>
+<p><strong>Url</strong> — A button that specifies a URL doesn’t specify callbackdata since its behavior is predefined – it will open the given link when tapped.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_creating_keyboards">Creating Keyboards</h3>
+<div class="paragraph">
+<p>The <strong>buttons</strong> we created can be assembled into two <strong>keyboards</strong>, which will then be used to navigate back and forth between two <strong>sample menus</strong>.</p>
+</div>
+<div class="paragraph">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> firstMenuMarkup = flatInlineKeyboard { next }
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> secondMenuMarkup = inlineKeyboard {
+</span></span><span style="display:flex;"><span>    row { back }
+</span></span><span style="display:flex;"><span>    row { url }
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>You can place this code wherever you prefer, the important thing is making sure that keyboard variables are accessible from the method call that will send the new menu.
+If you’re confused by this concept and don’t know where to put them, just paste them above the command processing flow.
+Or just look at the final code <a href="https://github.com/madhead/from-botfather-to-hello-world/blob/main/src/main/kotlin/Main.kt">here</a>.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sending_keyboards">Sending Keyboards</h3>
+<div class="paragraph">
+<p>Sending a keyboard only requires specifying a reply markup for the message.</p>
+</div>
+<div class="paragraph">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span>bot.sendMessage(
+</span></span><span style="display:flex;"><span>    chat = someChat,
+</span></span><span style="display:flex;"><span>    text = someText,
+</span></span><span style="display:flex;"><span>    replyMarkup = someReplyMarkup
+</span></span><span style="display:flex;"><span>)</span></span></code></pre></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_menu_trigger">Menu Trigger</h3>
+<div class="paragraph">
+<p>We could send a new menu for each new user, but for simplicity let’s add a new command that will spawn a menu.
+We can achieve this by adding a new <code>onCommand(&#34;menu&#34;)</code> clause to the previous <em>behaviour block</em>.</p>
+</div>
+<div class="paragraph">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span>onCommand(<span style="color:#e6db74">&#34;menu&#34;</span>) {
+</span></span><span style="display:flex;"><span>    bot.sendMessage(
+</span></span><span style="display:flex;"><span>        chat = <span style="color:#66d9ef">it</span>.chat,
+</span></span><span style="display:flex;"><span>        text = <span style="color:#e6db74">&#34;&lt;b&gt;Menu 1&lt;/b&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>        parseMode = HTMLParseMode,
+</span></span><span style="display:flex;"><span>        replyMarkup = firstMenuMarkup
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>You may have noticed that we also added a new parameter, <code>parseMode = HTMLParseMode</code>.
+This is called a formatting option and will allow us to use HTML tags and add formatting to the text later on.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p>Try sending <code>/menu</code> to your bot now.
+If you did everything correctly, you should see a brand new menu pop up.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>In a production environment, commands should be handled with an appropriate design pattern that isolates them into different executor classes – modular and separated from the main logic.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_navigation">Navigation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When building complex bots, navigation is essential.
+Your users must be able to move seamlessly from one menu to the next.</p>
+</div>
+<div class="paragraph">
+<p>In this example, we want the <code>Next</code> button to lead the user to the second menu.
+The <code>Back</code> button will send us back.
+To do that, we will start processing incoming <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.types.queries.callback/-message-data-callback-query/index.html"><code>MessageDataCallbackQueries</code></a>, which are the results we get after the user taps on a button.</p>
+</div>
+<div class="paragraph">
+<p>A <code>MessageDataCallbackQuery</code> is essentially composed of three main parameters:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>id</strong> — Needed to close the query.
+You <strong>must always</strong> close new queries after processing them – if you don’t, a loading symbol will keep showing on the user’s side on top of each button.</p>
+</li>
+<li>
+<p><strong>from</strong> — The user who pressed the button.</p>
+</li>
+<li>
+<p><strong>data</strong> — This identifies which button was pressed.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Processing in this context just means <strong>executing the action</strong> uniquely identified by the button, then <strong>closing the query</strong>.</p>
+</div>
+<div class="paragraph">
+<p>A very basic button handler could look something like:</p>
+</div>
+<div class="paragraph">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span>bot.buildBehaviourWithLongPolling() {
+</span></span><span style="display:flex;"><span>    onMessageDataCallbackQuery(<span style="color:#e6db74">&#34;next&#34;</span>) {
+</span></span><span style="display:flex;"><span>        bot.edit(
+</span></span><span style="display:flex;"><span>            chatId = <span style="color:#66d9ef">it</span>.message.chat.id,
+</span></span><span style="display:flex;"><span>            messageId = <span style="color:#66d9ef">it</span>.message.messageId,
+</span></span><span style="display:flex;"><span>            text = secondMenu,
+</span></span><span style="display:flex;"><span>            parseMode = HTMLParseMode,
+</span></span><span style="display:flex;"><span>            replyMarkup = secondMenuMarkup,
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    onMessageDataCallbackQuery(<span style="color:#e6db74">&#34;back&#34;</span>) {
+</span></span><span style="display:flex;"><span>        bot.edit(
+</span></span><span style="display:flex;"><span>            message = <span style="color:#66d9ef">it</span>.message <span style="color:#66d9ef">as</span> ContentMessage&lt;TextContent&gt;,
+</span></span><span style="display:flex;"><span>            text = firstMenu,
+</span></span><span style="display:flex;"><span>            parseMode = HTMLParseMode,
+</span></span><span style="display:flex;"><span>            replyMarkup = firstMenuMarkup,
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    onDataCallbackQuery {
+</span></span><span style="display:flex;"><span>        bot.answerCallbackQuery(<span style="color:#66d9ef">it</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}.join()</span></span></code></pre></div>
+</div>
+<div class="paragraph">
+<p>With these handlers, whenever a button is tapped, your bot will automatically navigate between inline menus.
+Expanding on this concept allows for endless combinations of navigable submenus, settings and dynamic pages.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_database">Database</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Telegram <strong>does not</strong> host an update database for you – once you process and consume an update, it will no longer be available.
+This means that features like user lists, message lists, current user inline menu, settings, etc.
+<strong>have to be implemented and maintained</strong> by bot developers.</p>
+</div>
+<div class="paragraph">
+<p>If your bot needs one of these features and you want to get started on <strong>data persistence</strong>, we recommend that you look into <a href="https://en.wikipedia.org/wiki/Serialization">serialization</a> practices and libraries for your language of choice, as well as available databases.</p>
+</div>
+<div class="paragraph">
+<p>Implementing a database is out of scope for this guide, however, several guides are available online for simple embedded <strong>open source</strong> software solutions like <a href="https://www.sqlite.org/index.html">SQLite</a>, <a href="https://hsqldb.org">HyperSQL</a>, <a href="https://db.apache.org/derby">Derby</a> and many more.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Your language of choice will also influence which databases are available and supported – the list above assumes you followed this Java tutorial.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_hosting">Hosting</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>So far, your bot has been running on your <strong>local machine</strong> – your PC.
+While this may be good for <strong>developing</strong>, <strong>testing</strong> and <strong>debugging</strong>, it is not ideal for a production environment.
+You’ll want your bot to be available and responsive at all times, but your computer might not always be online.</p>
+</div>
+<div class="paragraph">
+<p>This can be done in four steps:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Package your code</strong></p>
+<div class="paragraph">
+<p>Making your bot <strong>easy to move</strong> and <strong>runnable</strong> outside of an IDE is essential to <strong>host it elsewhere</strong>.
+If you followed this tutorial, this <a href="https://www.jetbrains.com/help/idea/compiling-applications.html#run_packaged_jar">standard guide</a> will work for you.
+If you didn’t, look into <strong>export or packaging guides</strong> for your IDE and language of choice – procedures may vary but the end result is the same.</p>
+</div>
+</li>
+<li>
+<p><strong>Purchase a VPS or equivalent service</strong></p>
+<div class="paragraph">
+<p>A server is essentially a machine that is always online and running, without you having to worry about anything.
+To host your bot, you can opt for a <a href="https://en.wikipedia.org/wiki/Virtual_private_server">VPS</a> which serves this purpose and can be rented from several different providers.
+Another option would be to purchase a network-capable <a href="https://en.wikipedia.org/wiki/Microcontroller">microcontroller</a>, which come in all different specs and sizes depending on your needs.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>You should ensure that all user data remains <strong>heavily encrypted at all times</strong> in your database to guarantee the privacy of your users.
+The same concept applies to your local instance, however, this becomes especially important once you transfer your database to a remote server.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+</li>
+<li>
+<p><strong>Upload your executable/package</strong></p>
+<div class="paragraph">
+<p>Once you have a working <a href="https://en.wikipedia.org/wiki/Secure_Shell">ssh</a> connection between your machine and your new server, you should upload your executable and all associated files.
+We will assume the runnable jar <code>TutorialBot.jar</code> and its database <code>dbase.db</code> are currently in the <code>/TBot</code> folder.</p>
+</div>
+<div class="paragraph">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ scp -r /TBot/ username@server_ip:/bots/TBotRemote/</span></span></code></pre></div>
+</div>
+</li>
+<li>
+<p><strong>Run your application</strong></p>
+<div class="paragraph">
+<p>Depending on which language you chose, you might have to configure your server environment differently.
+If you chose Java, you just need to install a compatible JDK.</p>
+</div>
+<div class="paragraph">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ apt install openjdk-17-jre
+</span></span><span style="display:flex;"><span>$ java -version</span></span></code></pre></div>
+</div>
+<div class="paragraph">
+<p>If you did everything correctly, you should see a Java version as the output, along with a few other values.
+This means you’re ready to run your application.</p>
+</div>
+<div class="paragraph">
+<p>Now, to run the executable:</p>
+</div>
+<div class="paragraph">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ cd /bots/TBotRemote/
+</span></span><span style="display:flex;"><span>$ java -jar TutorialBot.jar</span></span></code></pre></div>
+</div>
+<div class="paragraph">
+<p>Your bot is now online and users can interact with it at any time.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>To streamline and modularize this process, you could employ a specialized <a href="https://www.docker.com/resources/what-container/">docker container</a> or equivalent service.
+If you followed along in one of the equivalent examples (<a href="https://gitlab.com/Athamaxy/telegram-bot-tutorial/-/blob/main/TutorialBot.cs">C#</a>, <a href="https://gitlab.com/Athamaxy/telegram-bot-tutorial/-/blob/main/TutorialBot.py">Python</a>, <a href="https://gitlab.com/Athamaxy/telegram-bot-tutorial/-/blob/main/TutorialBot.go">Go</a> and <a href="https://gitlab.com/Athamaxy/telegram-bot-tutorial/-/tree/main/Nodejs">TypeScript</a>) you can find a detailed set of instructions to export and run your code <a href="https://github.com/madhead/from-botfather-to-hello-world/blob/main/README.adoc">here</a>.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_further_reading">Further Reading</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you got this far, you might be interested in these additional guides and docs:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://core.telegram.org/bots">General Bot Platform Overview</a></p>
+</li>
+<li>
+<p><a href="https://core.telegram.org/bots/features">Detailed List of Bot Features</a></p>
+</li>
+<li>
+<p><a href="https://core.telegram.org/bots/api">Full API Reference</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you encounter any issues while following this guide, you can contact us on Telegram at <a href="https://t.me/botsupport">@BotSupport</a>.</p>
+</div>
+</div>
+</div>
+</div>
+
+  
+<footer class='entry-footer'>
+  <div class='container sep-before'><div class='tags'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z" />
+<line x1="7" y1="7" x2="7" y2="7" />
+</svg>
+<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/telegram/'>telegram</a></div>
+
+  </div>
+</footer>
+
+
+</article>
+
+
+<section id='comments' class='comments'>
+  <div class='container sep-before'>
+    <div class='comments-area'><div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "madhead-me" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+  </div>
+</section>
+
+      </main>
+
+      <footer id='footer' class='footer'>
+        <div class='container sep-before'><div class='copyright'>
+  <p></p>
+</div>
+
+        </div>
+      </footer>
+
+    </div>
+  </div><script>window.__assets_js_src="/assets/js/"</script>
+
+<script src='/assets/js/main.f54bd0ac.js'></script>
+
+</body>
+
+</html>
+
