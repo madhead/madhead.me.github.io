@@ -522,7 +522,7 @@ tasks {
 <p>Use <code>org.jetbrains.kotlin:kotlin-serialization:1.3.21</code> as Gradle plugin.
 The resolution rule comes from <code>pluginManagement.resolutionStrategy</code> in <code>settings.gradle.kts</code> configured previously.
 One day, the plugin <a href="https://github.com/Kotlin/kotlinx.serialization/issues/256">will be published officially</a> and these lines could be removed.
-I recommend <a href="https://guides.gradle.org/migrating-build-logic-from-groovy-to-kotlin/#configuring-plugins">applying plugins via <code>plugins</code> block versus <code>apply</code></a> so that Kotlin extension functions are made available to configure them.</p>
+I recommend <a href="https://docs.gradle.org/current/userguide/migrating_from_groovy_to_kotlin_dsl.html#configuring-plugins">applying plugins via <code>plugins</code> block versus <code>apply</code></a> so that Kotlin extension functions are made available to configure them.</p>
 </li>
 <li>
 <p>kotlinx.serialization is not published in JCenter (yet), so we need that additional repository.</p>
@@ -542,7 +542,7 @@ Other <a href="https://kotlinlang.org/docs/reference/building-mpp-with-gradle.ht
 <p>As with good old Gradle’s <code>application</code> plugin, we need to specify the entry point.</p>
 </li>
 <li>
-<p>Just <a href="https://guides.gradle.org/migrating-build-logic-from-groovy-to-kotlin/#configurations-and-dependencies">a trick</a> to tell Gradle about the existing configuration and avoid using string literals within the <code>dependencies</code> block.</p>
+<p>Just <a href="https://docs.gradle.org/current/userguide/migrating_from_groovy_to_kotlin_dsl.html#configurations-and-dependencies">a trick</a> to tell Gradle about the existing configuration and avoid using string literals within the <code>dependencies</code> block.</p>
 </li>
 <li>
 <p>Finally, the libraries we need: Ktor HTTP client based on cURL and Ktor JSON facilities.</p>
@@ -681,7 +681,7 @@ The performance.
 Is it worth it or not?</p>
 </div>
 <div class="paragraph">
-<p>I <a href="https://gitlab.com/madhead/naive-lambda-benchmark">have tested</a> multiple different runtimes in a simple task of sending HTTP redirects (just like a Bash function above).
+<p>I have tested multiple different runtimes in a simple task of sending HTTP redirects (just like a Bash function above).
 Take a look at the results:</p>
 </div>
 <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTsyPILGIYuWs9DJ3zeo7toBzNMbKAxqxMzOXE9uXav55f4NC2OhFu43SlvmC7ndsaV7jsfWfBthCO5/pubhtml?widget=true&amp;headers=false" width="100%" height="600"></iframe>
