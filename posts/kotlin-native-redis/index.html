@@ -527,7 +527,7 @@ The last node will point to nothing, thereby marking the end of the list:</p>
 </div>
 <div class="paragraph">
 <p>Let’s finally write some code.
-<a href="https://gitlab.com/madhead-playgrounds/redis/-/blob/master/kn/src/linuxX64Main/kotlin/bracketsType.kt#L38">Here</a> is a Kotlin class for the single stack node for the parenthesis expression validation problem:</p>
+<a href="https://github.com/madhead/kn-redis/blob/master/kn/src/linuxX64Main/kotlin/bracketsType.kt#L38">Here</a> is a Kotlin class for the single stack node for the parenthesis expression validation problem:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -535,7 +535,7 @@ The last node will point to nothing, thereby marking the end of the list:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>And a class for the <a href="https://gitlab.com/madhead-playgrounds/redis/-/blob/master/kn/src/linuxX64Main/kotlin/bracketsType.kt#L40-71">whole expression</a>:</p>
+<p>And a class for the <a href="https://github.com/madhead/kn-redis/blob/master/kn/src/linuxX64Main/kotlin/bracketsType.kt#L40-71">whole expression</a>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -608,7 +608,7 @@ For the sake of simplicity, there are no other checks and validations:</p>
 </div>
 <div class="paragraph">
 <p>The implementation is neither perfect nor safe, but it’s just an example.
-There is a <a href="https://gitlab.com/madhead-playgrounds/redis/-/blob/master/kn/src/linuxX64Test/kotlin/BracketsTest.kt">test</a> for the <code>Brackets</code> class on my GitLab, take a look.
+There is a <a href="https://github.com/madhead/kn-redis/blob/master/kn/src/linuxX64Test/kotlin/BracketsTest.kt">test</a> for the <code>Brackets</code> class on my GitHub, take a look.
 Also, note that we used only pure Kotlin code here (for both the domain logic and the tests), without any platform-specific dependencies.
 This code could be shared across JVM, JS and Native targets if needed, and that’s a cool feature of Kotlin Multiplatform!</p>
 </div>
@@ -618,7 +618,7 @@ This code could be shared across JVM, JS and Native targets if needed, and that�
 <div class="paragraph">
 <p>Before being able to interact with Redis via bindings to its C API, we need to configure a <a href="https://kotlinlang.org/docs/reference/native/c_interop.html">C interop</a> with its <code>redismodule.h</code>.
 As the whole Redis API is defined in that single header, let’s just copy it from <a href="https://github.com/antirez/redis/blob/unstable/src/redismodule.h">their GitHub</a> to the <code>src/nativeInterop/cinterop/redismodule.h</code>.
-Next step is to define a <a href="https://gitlab.com/madhead-playgrounds/redis/-/blob/master/kn/src/nativeInterop/cinterop/redismodule.def"><code>src/nativeInterop/cinterop/redismodule.def</code></a> file describing what things to include into the binding:</p>
+Next step is to define a <a href="https://github.com/madhead/kn-redis/blob/master/kn/src/nativeInterop/cinterop/redismodule.def"><code>src/nativeInterop/cinterop/redismodule.def</code></a> file describing what things to include into the binding:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -772,7 +772,7 @@ Details are described in a separate <a href="#type">section</a>.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p><a href="https://gitlab.com/madhead-playgrounds/redis/-/blob/master/kn/src/linuxX64Main/kotlin/brackets.kt#L41-42"><code>initRedisModule</code></a> is a wrapper around <code>RedisModule_Init</code>, provided by Redis.
+<p><a href="https://github.com/madhead/kn-redis/blob/master/kn/src/linuxX64Main/kotlin/brackets.kt#L41-42"><code>initRedisModule</code></a> is a wrapper around <code>RedisModule_Init</code>, provided by Redis.
 Its parameters include module context, module name, module version, and target Redis API version.
 We’ll use &#34;brackets.kn&#34; as a module name and integer &#34;1&#34; as a module version, defined in a global constant <code>BRACKETS_KN_VERSION</code>.
 <code>REDISMODULE_APIVER_1</code> is provided by Redis in <code>redismodule.h</code>.</p>
@@ -784,7 +784,7 @@ We’ll use &#34;brackets.kn&#34; as a module name and integer &#34;1&#34; as a 
 </div>
 </div>
 <div class="paragraph">
-<p><a href="https://gitlab.com/madhead-playgrounds/redis/-/blob/master/kn/src/linuxX64Main/kotlin/brackets.kt#L44-45">Exporting a version function</a> is straightfowrard as well, the only interesting part is aquiring a pointer to a Kotlin function to pass as a callback to the <code>RedisModuleWrapper_CreateCommand</code> (which is a <a href="#wrappers">wrapper</a> around <a href="https://redis.io/topics/modules-api-ref#coderedismodulecreatecommandcode"><code>RedisModule_CreateCommand</code></a>) via <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlinx.cinterop/static-c-function.html"><code>staticCFunction</code></a>:</p>
+<p><a href="https://github.com/madhead/kn-redis/blob/master/kn/src/linuxX64Main/kotlin/brackets.kt#L44-45">Exporting a version function</a> is straightfowrard as well, the only interesting part is aquiring a pointer to a Kotlin function to pass as a callback to the <code>RedisModuleWrapper_CreateCommand</code> (which is a <a href="#wrappers">wrapper</a> around <a href="https://redis.io/topics/modules-api-ref#coderedismodulecreatecommandcode"><code>RedisModule_CreateCommand</code></a>) via <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlinx.cinterop/static-c-function.html"><code>staticCFunction</code></a>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -934,7 +934,7 @@ We’ll simply use <code>BRACKETS_KN_VERSION</code>, our module’s version, eve
 That’s what those cryptic <code>1, 1, 1</code> arguments mean.</p>
 </div>
 <div class="paragraph">
-<p>Let’s look at the <a href="https://gitlab.com/madhead-playgrounds/redis/-/blob/master/kn/src/linuxX64Main/kotlin/bracketsType.kt#L73-129"><code>bracketsKnPush</code></a>, the most complex function:</p>
+<p>Let’s look at the <a href="https://github.com/madhead/kn-redis/blob/master/kn/src/linuxX64Main/kotlin/bracketsType.kt#L73-129"><code>bracketsKnPush</code></a>, the most complex function:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1055,7 +1055,7 @@ Yes, you get the <a href="#persistence">AOF persistence</a> almost for free!</p>
 </ol>
 </div>
 <div class="paragraph">
-<p><a href="https://gitlab.com/madhead-playgrounds/redis/-/blob/master/kn/src/linuxX64Main/kotlin/bracketsType.kt#L131-165"><code>bracketsKnPrint</code></a> and <a href="https://gitlab.com/madhead-playgrounds/redis/-/blob/master/kn/src/linuxX64Main/kotlin/bracketsType.kt#L167-201"><code>bracketsKnValid</code></a> are similar to the <code>bracketsKnPush</code>: they open the key, check the type and call <code>.toString()</code> or <code>.valid</code> on the <code>Brackets</code> value.
+<p><a href="https://github.com/madhead/kn-redis/blob/master/kn/src/linuxX64Main/kotlin/bracketsType.kt#L131-165"><code>bracketsKnPrint</code></a> and <a href="https://github.com/madhead/kn-redis/blob/master/kn/src/linuxX64Main/kotlin/bracketsType.kt#L167-201"><code>bracketsKnValid</code></a> are similar to the <code>bracketsKnPush</code>: they open the key, check the type and call <code>.toString()</code> or <code>.valid</code> on the <code>Brackets</code> value.
 I won’t provide the code here, as this article became really big.</p>
 </div>
 <div class="paragraph">
@@ -1066,7 +1066,7 @@ They have nothing to do with our <a href="#stack">problem</a>, but they are requ
 <div class="sect3">
 <h4 id="util">Utility functions</h4>
 <div class="paragraph">
-<p><a href="https://gitlab.com/madhead-playgrounds/redis/-/blob/master/kn/src/linuxX64Main/kotlin/bracketsType.kt#L203-228"><code>bracketsRdbLoad</code></a> and <a href="https://gitlab.com/madhead-playgrounds/redis/-/blob/master/kn/src/linuxX64Main/kotlin/bracketsType.kt#L231-244"><code>bracketsRdbSave</code></a> callbacks are required by Redis to support <a href="#persistence">RDB persistence</a>.
+<p><a href="https://github.com/madhead/kn-redis/blob/master/kn/src/linuxX64Main/kotlin/bracketsType.kt#L203-228"><code>bracketsRdbLoad</code></a> and <a href="https://github.com/madhead/kn-redis/blob/master/kn/src/linuxX64Main/kotlin/bracketsType.kt#L231-244"><code>bracketsRdbSave</code></a> callbacks are required by Redis to support <a href="#persistence">RDB persistence</a>.
 Developers are free to use any kind of encoding for their types.
 The only limit is imagination and the set of available API functions:</p>
 </div>
@@ -1177,7 +1177,7 @@ BRACKETS.KN.PUSH key [</code></pre>
 <p>Obviously, by replaying this sequence, the original <code>Brackets</code> value can be recreated.</p>
 </div>
 <div class="paragraph">
-<p><a href="https://gitlab.com/madhead-playgrounds/redis/-/blob/master/kn/src/linuxX64Main/kotlin/bracketsType.kt#L260-264"><code>bracketsFree</code></a> simply disposes a <code>StableRef</code> that we created via <code>brackets.kn.push</code> command or in <code>bracketsRdbLoad</code>.
+<p><a href="https://github.com/madhead/kn-redis/blob/master/kn/src/linuxX64Main/kotlin/bracketsType.kt#L260-264"><code>bracketsFree</code></a> simply disposes a <code>StableRef</code> that we created via <code>brackets.kn.push</code> command or in <code>bracketsRdbLoad</code>.
 Kotlin/Native’s GC then will be able to recycle that object.</p>
 </div>
 <div class="listingblock">
@@ -1197,7 +1197,7 @@ Kotlin/Native’s GC then will be able to recycle that object.</p>
 <h2 id="testing">Testing</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You’ve already seen a few links to the source code for this article, but to be clear: <a href="https://gitlab.com/madhead-playgrounds/redis">madhead-playgrounds/redis</a> on GitLab or <a href="https://github.com/madhead/kn-redis">madhead/kn-redis</a> if you prefer GitHub.
+<p>You’ve already seen a few links to the source code for this article, but to be clear: <a href="https://github.com/madhead/kn-redis">madhead/kn-redis</a> on GitHub.
 Clone or fork, or just give it a star.
 If you want to get your hands dirty, follow the instructions in the <code>README</code>, you’ll need Docker Compose.
 I’ve tried to configure things so that you only need to build the code and start the container, the modules will be loaded automagically.</p>
