@@ -15,7 +15,7 @@
 &lt;p&gt;Those of you who have some experience with Redis may know that it is not just a simple cache or a plain key-value store, but actually a data structures server, supporting different kinds of values.
 Out of the box it supports binary-safe strings, sets, lists, hashes, bit arrays, streams and HyperLogLogs.
 Redis also &lt;a href=&#34;https://redis.io/topics/modules-native-types&#34;&gt;provides&lt;/a&gt; a simple C API for custom data structures, called native types.
-Some of the popular community-supported native types are &lt;a href=&#34;https://oss.redislabs.com/redisbloom&#34;&gt;Bloom filters&lt;/a&gt;, &lt;a href=&#34;https://oss.redislabs.com/redisgraph&#34;&gt;graphs&lt;/a&gt;, &lt;a href=&#34;https://oss.redislabs.com/redisjson&#34;&gt;JSON objects&lt;/a&gt;, and &lt;a href=&#34;https://oss.redislabs.com/redisai&#34;&gt;tensors&lt;/a&gt;.&lt;/p&gt;
+Some of the popular community-supported native types are &lt;a href=&#34;https://redis.io/docs/stack/bloom&#34;&gt;Bloom filters&lt;/a&gt;, &lt;a href=&#34;https://redis.io/docs/stack/graph&#34;&gt;graphs&lt;/a&gt;, &lt;a href=&#34;https://redis.io/docs/stack/json&#34;&gt;JSON objects&lt;/a&gt;, and &lt;a href=&#34;https://oss.redis.com/redisai&#34;&gt;tensors&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;paragraph&#34;&gt;
 &lt;p&gt;Let’s use Kotlin/Native to implement a simple data structure for parentheses expression validation just because we can.
@@ -36,7 +36,7 @@ Yes, it’s now possible to author a function on PHP, Perl, Pascal (anybody?) or
 &lt;/div&gt;
 &lt;div class=&#34;paragraph&#34;&gt;
 &lt;p&gt;Nice, isn’t it?
-Let’s build an AWS Lambda function with &lt;a href=&#34;https://kotlinlang.org/docs/reference/native-overview.html&#34;&gt;Kotlin/Native&lt;/a&gt;!&lt;/p&gt;
+Let’s build an AWS Lambda function with &lt;a href=&#34;https://kotlinlang.org/docs/native-overview.html&#34;&gt;Kotlin/Native&lt;/a&gt;!&lt;/p&gt;
 &lt;/div&gt;</description>
     </item>
     

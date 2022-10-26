@@ -330,7 +330,7 @@ Yes, it’s now possible to author a function on PHP, Perl, Pascal (anybody?) or
 </div>
 <div class="paragraph">
 <p>Nice, isn’t it?
-Let’s build an AWS Lambda function with <a href="https://kotlinlang.org/docs/reference/native-overview.html">Kotlin/Native</a>!</p>
+Let’s build an AWS Lambda function with <a href="https://kotlinlang.org/docs/native-overview.html">Kotlin/Native</a>!</p>
 </div>
 <div class="paragraph">
 <p>But first, let’s figure out what should be done.
@@ -532,11 +532,11 @@ I recommend <a href="https://docs.gradle.org/current/userguide/migrating_from_gr
 </li>
 <li>
 <p>We configure single Linux x64 binary as it is the platform <a href="https://docs.aws.amazon.com/lambda/latest/dg/current-supported-versions.html">used</a> by AWS Lambda.
-Other <a href="https://kotlinlang.org/docs/reference/building-mpp-with-gradle.html#supported-platforms">supported platforms</a> include Android ARM, iOS ARM and x64, other Linux variants, Windows, Mac OS and Web Assembly.</p>
+Other <a href="https://kotlinlang.org/docs/native-overview.html#target-platforms">supported platforms</a> include Android ARM, iOS ARM and x64, other Linux variants, Windows, Mac OS and Web Assembly.</p>
 </li>
 <li>
 <p>As long as we’re building an <a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format">executable file</a>, we need to say that to Gradle.
-<a href="https://kotlinlang.org/docs/reference/building-mpp-with-gradle.html#building-final-native-binaries">Other options</a> are dynamic and static libraries and Objective-C frameworks.</p>
+<a href="https://kotlinlang.org/docs/native-overview.html#interoperability">Other options</a> are dynamic and static libraries and Objective-C frameworks.</p>
 </li>
 <li>
 <p>As with good old Gradle’s <code>application</code> plugin, we need to specify the entry point.</p>
