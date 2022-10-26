@@ -21,17 +21,5 @@ I only use it in simple one-off playground repos that I don’t plan to support 
 &lt;/div&gt;</description>
     </item>
     
-    <item>
-      <title>Cleaning Git repos</title>
-      <link>https://madhead.me/posts/gitclean/</link>
-      <pubDate>Thu, 22 Mar 2018 20:19:00 +0300</pubDate>
-      
-      <guid>https://madhead.me/posts/gitclean/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;
-&lt;p&gt;I guess, all popular Git repositories allow you to delete source branch when the PR with this branch is accepted.
-But sometimes you forget to use this option and end up with hundreds or thousands of stale branches across dozens of projects.&lt;/p&gt;
-&lt;/div&gt;</description>
-    </item>
-    
   </channel>
 </rss>

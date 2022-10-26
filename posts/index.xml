@@ -364,17 +364,6 @@ So I made one to improve code reuse.&lt;/p&gt;
     </item>
     
     <item>
-      <title>(Alpine &#43; JFrog CLI) @ Docker</title>
-      <link>https://madhead.me/posts/lv-alpina/</link>
-      <pubDate>Sun, 16 Sep 2018 02:31:00 +0300</pubDate>
-      
-      <guid>https://madhead.me/posts/lv-alpina/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;
-&lt;p&gt;One more article about my Docker images.&lt;/p&gt;
-&lt;/div&gt;</description>
-    </item>
-    
-    <item>
       <title>(Alpine &#43; AWS CLI &#43; Ansible) @ Docker</title>
       <link>https://madhead.me/posts/awesible/</link>
       <pubDate>Sat, 15 Sep 2018 17:14:00 +0300</pubDate>
@@ -463,18 +452,6 @@ But you already have dozens of variables defined?&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;paragraph&#34;&gt;
 &lt;p&gt;Keep calm (tested in production) and use this one-liner.&lt;/p&gt;
-&lt;/div&gt;</description>
-    </item>
-    
-    <item>
-      <title>Cleaning Git repos</title>
-      <link>https://madhead.me/posts/gitclean/</link>
-      <pubDate>Thu, 22 Mar 2018 20:19:00 +0300</pubDate>
-      
-      <guid>https://madhead.me/posts/gitclean/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;
-&lt;p&gt;I guess, all popular Git repositories allow you to delete source branch when the PR with this branch is accepted.
-But sometimes you forget to use this option and end up with hundreds or thousands of stale branches across dozens of projects.&lt;/p&gt;
 &lt;/div&gt;</description>
     </item>
     
