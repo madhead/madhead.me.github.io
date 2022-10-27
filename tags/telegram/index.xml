@@ -13,14 +13,14 @@
       
       <guid>https://madhead.me/posts/from-botfather-to-hello-world/</guid>
       <description>&lt;div class=&#34;paragraph&#34;&gt;
-&lt;p&gt;Great news everybody: a few days ago Telegram team updated their Bot API documentation!
-Among other things they now have an &lt;a href=&#34;https://core.telegram.org/bots/tutorial&#34;&gt;end-to-end tutorial&lt;/a&gt; on bot creation process: starting from bot registration in &lt;a href=&#34;https://t.me/BotFather&#34;&gt;@BotFather&lt;/a&gt;, going all the way to database &amp;amp; deployment options.&lt;/p&gt;
+&lt;p&gt;Great news, everybody: a few days ago, Telegram team updated their Bot API documentation!
+Among other things, they now have an &lt;a href=&#34;https://core.telegram.org/bots/tutorial&#34;&gt;end-to-end tutorial&lt;/a&gt; on the bot creation process: starting from bot registration in &lt;a href=&#34;https://t.me/BotFather&#34;&gt;@BotFather&lt;/a&gt;, going all the way to database &amp;amp; deployment options.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;paragraph&#34;&gt;
 &lt;p&gt;Unfortunately, it features Java, Maven, and &lt;a href=&#34;https://github.com/rubenlagus/TelegramBots&#34;&gt;rubenlagus/TelegramBots&lt;/a&gt; library.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;paragraph&#34;&gt;
-&lt;p&gt;So, I’ve decided to copycat it, upgrading the examples to Kotlin, Gradle and &lt;a href=&#34;https://github.com/InsanusMokrassar/TelegramBotAPI&#34;&gt;InsanusMokrassar/TelegramBotAPI&lt;/a&gt;!
+&lt;p&gt;So, I’ve decided to copycat it, upgrading the examples to Kotlin, Gradle, and &lt;a href=&#34;https://github.com/InsanusMokrassar/TelegramBotAPI&#34;&gt;InsanusMokrassar/TelegramBotAPI&lt;/a&gt;!
 Read my version below 👇🏼&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;admonitionblock important&#34;&gt;
@@ -32,7 +32,7 @@ Read my version below 👇🏼&lt;/p&gt;
 &lt;td class=&#34;content&#34;&gt;
 &lt;div class=&#34;paragraph&#34;&gt;
 &lt;p&gt;Parts of the text below are shamelessly copy-pasted from the &lt;a href=&#34;https://core.telegram.org/bots/tutorial&#34;&gt;original tutorial&lt;/a&gt;.
-But don’t be tough on me: I respect copyright and authorship and in this case I’m appealing for the &lt;a href=&#34;https://en.wikipedia.org/wiki/Fair_use&#34;&gt;fair use doctrine&lt;/a&gt;, which, I believe, this article would fall into.&lt;/p&gt;
+But don’t be tough on me: I respect copyright and authorship and in this case, I’m appealing for the &lt;a href=&#34;https://en.wikipedia.org/wiki/Fair_use&#34;&gt;fair use doctrine&lt;/a&gt;, which, I believe, this article would fall into.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/td&gt;
 &lt;/tr&gt;

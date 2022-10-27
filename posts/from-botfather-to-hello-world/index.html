@@ -3,14 +3,14 @@
   <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 <meta name='description' content='
-Great news everybody: a few days ago Telegram team updated their Bot API documentation!
-Among other things they now have an end-to-end tutorial on bot creation process: starting from bot registration in @BotFather, going all the way to database &amp; deployment options.
+Great news, everybody: a few days ago, Telegram team updated their Bot API documentation!
+Among other things, they now have an end-to-end tutorial on the bot creation process: starting from bot registration in @BotFather, going all the way to database &amp; deployment options.
 
 
 Unfortunately, it features Java, Maven, and rubenlagus/TelegramBots library.
 
 
-So, I’ve decided to copycat it, upgrading the examples to Kotlin, Gradle and InsanusMokrassar/TelegramBotAPI!
+So, I’ve decided to copycat it, upgrading the examples to Kotlin, Gradle, and InsanusMokrassar/TelegramBotAPI!
 Read my version below 👇🏼
 
 
@@ -22,7 +22,7 @@ Important
 
 
 Parts of the text below are shamelessly copy-pasted from the original tutorial.
-But don’t be tough on me: I respect copyright and authorship and in this case I’m appealing for the fair use doctrine, which, I believe, this article would fall into.
+But don’t be tough on me: I respect copyright and authorship and in this case, I’m appealing for the fair use doctrine, which, I believe, this article would fall into.
 
 
 
@@ -32,14 +32,14 @@ But don’t be tough on me: I respect copyright and authorship and in this case 
 
 <meta property='og:title' content='From BotFather to &#39;Hello World&#39; • madhead'>
 <meta property='og:description' content='
-Great news everybody: a few days ago Telegram team updated their Bot API documentation!
-Among other things they now have an end-to-end tutorial on bot creation process: starting from bot registration in @BotFather, going all the way to database &amp; deployment options.
+Great news, everybody: a few days ago, Telegram team updated their Bot API documentation!
+Among other things, they now have an end-to-end tutorial on the bot creation process: starting from bot registration in @BotFather, going all the way to database &amp; deployment options.
 
 
 Unfortunately, it features Java, Maven, and rubenlagus/TelegramBots library.
 
 
-So, I’ve decided to copycat it, upgrading the examples to Kotlin, Gradle and InsanusMokrassar/TelegramBotAPI!
+So, I’ve decided to copycat it, upgrading the examples to Kotlin, Gradle, and InsanusMokrassar/TelegramBotAPI!
 Read my version below 👇🏼
 
 
@@ -51,7 +51,7 @@ Important
 
 
 Parts of the text below are shamelessly copy-pasted from the original tutorial.
-But don’t be tough on me: I respect copyright and authorship and in this case I’m appealing for the fair use doctrine, which, I believe, this article would fall into.
+But don’t be tough on me: I respect copyright and authorship and in this case, I’m appealing for the fair use doctrine, which, I believe, this article would fall into.
 
 
 
@@ -358,14 +358,14 @@ if (!doNotTrack) {
 
   <div class='container entry-content'>
   <div class="paragraph">
-<p>Great news everybody: a few days ago Telegram team updated their Bot API documentation!
-Among other things they now have an <a href="https://core.telegram.org/bots/tutorial">end-to-end tutorial</a> on bot creation process: starting from bot registration in <a href="https://t.me/BotFather">@BotFather</a>, going all the way to database &amp; deployment options.</p>
+<p>Great news, everybody: a few days ago, Telegram team updated their Bot API documentation!
+Among other things, they now have an <a href="https://core.telegram.org/bots/tutorial">end-to-end tutorial</a> on the bot creation process: starting from bot registration in <a href="https://t.me/BotFather">@BotFather</a>, going all the way to database &amp; deployment options.</p>
 </div>
 <div class="paragraph">
 <p>Unfortunately, it features Java, Maven, and <a href="https://github.com/rubenlagus/TelegramBots">rubenlagus/TelegramBots</a> library.</p>
 </div>
 <div class="paragraph">
-<p>So, I’ve decided to copycat it, upgrading the examples to Kotlin, Gradle and <a href="https://github.com/InsanusMokrassar/TelegramBotAPI">InsanusMokrassar/TelegramBotAPI</a>!
+<p>So, I’ve decided to copycat it, upgrading the examples to Kotlin, Gradle, and <a href="https://github.com/InsanusMokrassar/TelegramBotAPI">InsanusMokrassar/TelegramBotAPI</a>!
 Read my version below 👇🏼</p>
 </div>
 <div class="admonitionblock important">
@@ -377,7 +377,7 @@ Read my version below 👇🏼</p>
 <td class="content">
 <div class="paragraph">
 <p>Parts of the text below are shamelessly copy-pasted from the <a href="https://core.telegram.org/bots/tutorial">original tutorial</a>.
-But don’t be tough on me: I respect copyright and authorship and in this case I’m appealing for the <a href="https://en.wikipedia.org/wiki/Fair_use">fair use doctrine</a>, which, I believe, this article would fall into.</p>
+But don’t be tough on me: I respect copyright and authorship and in this case, I’m appealing for the <a href="https://en.wikipedia.org/wiki/Fair_use">fair use doctrine</a>, which, I believe, this article would fall into.</p>
 </div>
 </td>
 </tr>
@@ -388,7 +388,7 @@ But don’t be tough on me: I respect copyright and authorship and in this case 
 </div>
 <div class="paragraph">
 <p>If you already know your way around some of the basic steps, you can jump directly to the part you’re missing.
-Equivalent examples are available in <a href="https://gitlab.com/Athamaxy/telegram-bot-tutorial/-/blob/main/TutorialBot.cs">C#</a>, <a href="https://gitlab.com/Athamaxy/telegram-bot-tutorial/-/blob/main/TutorialBot.py">Python</a>, <a href="https://gitlab.com/Athamaxy/telegram-bot-tutorial/-/blob/main/TutorialBot.go">Go</a> and <a href="https://gitlab.com/Athamaxy/telegram-bot-tutorial/-/tree/main/Nodejs">TypeScript</a>.</p>
+Equivalent examples are available in <a href="https://gitlab.com/Athamaxy/telegram-bot-tutorial/-/blob/main/TutorialBot.cs">C#</a>, <a href="https://gitlab.com/Athamaxy/telegram-bot-tutorial/-/blob/main/TutorialBot.py">Python</a>, <a href="https://gitlab.com/Athamaxy/telegram-bot-tutorial/-/blob/main/TutorialBot.go">Go</a>, and <a href="https://gitlab.com/Athamaxy/telegram-bot-tutorial/-/tree/main/Nodejs">TypeScript</a>.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -495,10 +495,10 @@ If you pick another language, equivalent examples are available in <a href="http
 <h3 id="_obtain_your_bot_token">Obtain Your Bot Token</h3>
 <div class="paragraph">
 <p>In this context, a <strong>token</strong> is a string that authenticates your bot (not your account) on the bot API.
-Each bot has a unique token which can also be revoked at any time via <a href="https://t.me/botfather">@BotFather</a>.</p>
+Each bot has a unique token, which can also be revoked at any time via <a href="https://t.me/botfather">@BotFather</a>.</p>
 </div>
 <div class="paragraph">
-<p>Obtaining a token is as simple as contacting <a href="https://t.me/botfather">@BotFather</a>, issuing the <code>/newbot</code> command and following the steps until you’re given a new token.
+<p>Obtaining a token is as simple as contacting <a href="https://t.me/botfather">@BotFather</a>, issuing the <code>/newbot</code> command, and following the steps until you’re given a new token.
 You can find a step-by-step guide <a href="https://core.telegram.org/bots/features#creating-a-new-bot">here</a>.</p>
 </div>
 <div class="paragraph">
@@ -517,7 +517,7 @@ You can find a step-by-step guide <a href="https://core.telegram.org/bots/featur
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Make sure to save your token in a secure place, treat it like a password and <strong>don’t share it with anyone</strong>.</p>
+<p>Make sure to save your token in a secure place, treat it like a password, and <strong>don’t share it with anyone</strong>.</p>
 </div>
 </td>
 </tr>
@@ -527,11 +527,11 @@ You can find a step-by-step guide <a href="https://core.telegram.org/bots/featur
 <div class="sect2">
 <h3 id="_download_an_ide">Download an IDE</h3>
 <div class="paragraph">
-<p>To program in Java you’ll need an <a href="https://en.wikipedia.org/wiki/Integrated_development_environment">IDE</a> — a special text editor that will let you write, compile and run your code.
+<p>To program in Kotlin, you’ll need an <a href="https://en.wikipedia.org/wiki/Integrated_development_environment">IDE</a> — a special text editor that will let you write, compile and run your code.
 In this tutorial, we’ll use <a href="https://www.jetbrains.com/idea">IntelliJ IDEA</a> — there are several free, open source alternatives like <a href="https://www.eclipse.org/ide">Eclipse</a> or <a href="https://netbeans.apache.org/download/index.html">NetBeans</a> which work in the exact same way.</p>
 </div>
 <div class="paragraph">
-<p>You will also need a <a href="https://en.wikipedia.org/wiki/Java_Development_Kit">JDK</a>, a software kit that allows your Java code to run.
+<p>You will also need a <a href="https://en.wikipedia.org/wiki/Java_Development_Kit">JDK</a>, a software kit that allows your Kotlin code to run.
 Most IDEs don’t include a JDK, so you should download a version compatible with your operating system separately.
 You can find a free, open source version <a href="https://adoptium.net/temurin/releases">here</a>.</p>
 </div>
@@ -557,7 +557,7 @@ You will just have to download a different IDE and software development kit.</p>
 <p>You can think of a framework as software that handles all the low-level logic for you, including the API calls, and lets you focus on your bot-specific logic.</p>
 </div>
 <div class="paragraph">
-<p>In this tutorial, we’ll use <a href="https://github.com/InsanusMokrassar/TelegramBotAPI">InsanusMokrassar/TelegramBotAPI</a>, but you can follow along with any equivalent implementation, since all the underlying methods are either similar or exactly the same.</p>
+<p>In this tutorial, we’ll use <a href="https://github.com/InsanusMokrassar/TelegramBotAPI">InsanusMokrassar/TelegramBotAPI</a>, but you can follow along with any equivalent implementation since all the underlying methods are either similar or exactly the same.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -609,7 +609,7 @@ We’ll be using version <em>17</em>.</p>
 <p><strong>Add Sample Code</strong> — Leave this <strong>selected</strong>, it will generate some needed files for you.</p>
 </li>
 <li>
-<p><strong>Advanced Settings &gt; GroupId</strong> — Use your reversed domain here, or <em>tutorial</em> for the sake of this guide.</p>
+<p><strong>Advanced Settings &gt; GroupId</strong> — Use your reversed domain here or <em>tutorial</em> for the sake of this guide.</p>
 </li>
 <li>
 <p><strong>Advanced Settings &gt; ArtifactId</strong> — You can use the default value.</p>
@@ -664,7 +664,7 @@ Your dependency management system will have a different name (or no name at all 
 <div class="paragraph">
 <p>If this looks scary, don’t worry.
 We will only be using the <code>Main.kt</code> file and the <code>build.gradle.kts</code> file.
-In fact, to check that everything is working so far, double click on <em>Main</em> and click on the small green arrow on the left of <code>fun main</code>, then select the first option (<code>Run &#39;MainKt&#39;</code>).
+In fact, to check that everything is working so far, double-click on <em>Main</em> and click on the small green arrow on the left of <code>fun main</code>, then select the first option (<code>Run &#39;MainKt&#39;</code>).
 If you followed the steps correctly, <em>Hello World!</em> should appear in the console below.</p>
 </div>
 </div>
@@ -700,11 +700,11 @@ With this tutorial, you’ll be able to teach your bot basic behaviors, though m
 <div class="sect2">
 <h3 id="_creating_a_bot">Creating a Bot</h3>
 <div class="paragraph">
-<p>There are two mutually exclusive ways of <a href="https://core.telegram.org/bots/api#getting-updates">receiving updates</a> in your bot: either by <strong>polling</strong> for them, or by receiving them via a <strong>webhook</strong>.</p>
+<p>There are two mutually exclusive ways of <a href="https://core.telegram.org/bots/api#getting-updates">receiving updates</a> in your bot: either by <strong>polling</strong> for them or by receiving them via a <strong>webhook</strong>.</p>
 </div>
 <div class="paragraph">
 <p>Polling essentially means <a href="https://core.telegram.org/bots/api#getupdates">asking for the updates</a> in an endless loop, i.e. you pull the updates from Telegram servers.
-With <a href="https://core.telegram.org/bots/api#setwebhook">webhooks</a> updates are pushed into your bot by Telegram via HTTPS.</p>
+With <a href="https://core.telegram.org/bots/api#setwebhook">webhooks</a>, updates are pushed into your bot by Telegram via HTTPS.</p>
 </div>
 <div class="paragraph">
 <p>You decide which way suits you best, and the library provides you several methods to create bots depending on your choice.</p>
@@ -728,36 +728,36 @@ With <a href="https://core.telegram.org/bots/api#setwebhook">webhooks</a> update
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Add a <code>suspend</code> modifier to your <code>main</code> function, as the library makes a heavy use of <a href="https://kotlinlang.org/docs/coroutines-overview.html">coroutines</a>.</p>
+<p>Add a <code>suspend</code> modifier to your <code>main</code> function, as the library makes heavy use of <a href="https://kotlinlang.org/docs/coroutines-overview.html">coroutines</a>.</p>
 </li>
 <li>
-<p>It’s better to pass the token as an argument for your program, then hardcoding it.</p>
+<p>It’s better to pass the token as an argument for your program than hard-coding it.</p>
 </li>
 <li>
 <p><code>telegramBotWithBehaviourAndLongPolling</code> returns a pair of values: <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.bot/index.html#-1167693203%2FClasslikes%2F-1982836883">the bot itself</a> and a <a href="https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-job/"><code>Job</code></a>.
-We’re not very interested in the <code>bot</code> value, so we do not assign it to any variable, that’s waht <code>_</code> means.
-And the <code>job</code> is useful for our purpose, read below.</p>
+We’re not very interested in the <code>bot</code> value, so we do not assign it to any variable, that’s what <code>_</code> means.
+We’ll use this job later, read below.</p>
 </li>
 <li>
 <p><a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.updateshandlers/-flows-updates-filter/all-updates-flow.html"><code>allUpdatesFlow</code></a> is a <a href="https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-flow/"><code>Flow</code></a>, i.e. a lazy, potentially endless sequence of <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.types.update.abstracts/-update/index.html"><code>Updates</code></a>.
-Flows are used to listen or transform the values that <em>flow</em> through it.</p>
+Flows are used to listen to or transform the values that <em>flow</em> through them.</p>
 </li>
 <li>
 <p>Here we just listen for the values and print them.</p>
 </li>
 <li>
 <p>This listening process should occur in a <a href="https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-coroutine-scope/"><code>CoroutineScope</code></a>.
-For this simple example we’ll use a <a href="https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-global-scope/"><code>GlobalScope</code></a>.</p>
+For this simple example, we’ll use a <a href="https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-global-scope/"><code>GlobalScope</code></a>.</p>
 </li>
 <li>
 <p>Remember the job that we get at step #3?
-Here we wait for it’s completion.
-And this job would never actually complete on its own, because the number of updates your bot potentially receives is unbound.</p>
+Here we wait for its completion.
+And this job would never actually complete on its own because the number of updates your bot potentially receives is unbound.</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>You might be confused by all this coroutines jobs, scopes, flows, and, especially, by the waiting of the completion of an endless loop — it sounds like a nonsense!
+<p>You might be confused by all these coroutines, jobs, scopes, flows, and, especially, by the waiting for the completion of an endless loop — it sounds like nonsense!
 But those are the very basic concepts and patterns of Kotlin Coroutines.
 After finishing this tutorial you might want to <a href="https://kotlinlang.org/docs/coroutines-overview.html">read more</a> about them.</p>
 </div>
@@ -801,7 +801,7 @@ Now, on to making it a bit more intelligent.</p>
 <h2 id="_receiving_messages">Receiving Messages</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Every time someone sends a <strong>private message</strong> to your bot, the <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling/on-content-message.html"><code>onContentMessage</code></a> callback will be called and you’ll be able to handle the update (named <code>it</code>, if you don’t override the name of the parameter), which contains the message, along with a great deal of other info which you can see detailed here.</p>
+<p>Every time someone sends a <strong>private message</strong> to your bot, the <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling/on-content-message.html"><code>onContentMessage</code></a> callback will be called, and you’ll be able to handle the update (named <code>it</code>, if you don’t override the name of the parameter), which contains the message, along with a great deal of other info which you can see detailed here.</p>
 </div>
 <div class="paragraph">
 <p>Let’s focus on two values for now:</p>
@@ -835,7 +835,7 @@ Access it via <code>it.text</code>.</p>
 You can try <code>it.from.firstName</code>, <code>it.chat</code>, and dozens more.</p>
 </div>
 <div class="paragraph">
-<p>Knowing how to receive, process and print <strong>incoming messages</strong>, now it’s time to learn how to <strong>answer them</strong>.</p>
+<p>Knowing how to receive, process, and print <strong>incoming messages</strong>, now it’s time to learn how to <strong>answer them</strong>.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -887,7 +887,7 @@ You can try <code>it.from.firstName</code>, <code>it.chat</code>, and dozens mor
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>As long as we don’t build a complex behaviour for the bot here, simple <code>telegramBot</code> is enough for this example.</p>
+<p>As long as we don’t build a complex behavior for the bot here, a simple <code>telegramBot</code> is enough for this example.</p>
 </li>
 <li>
 <p>For this example, we’ll assume your ID is <code>1234</code>.
@@ -896,7 +896,7 @@ You could get your real ID from the updates received in the previous steps, or b
 </ol>
 </div>
 <div class="paragraph">
-<p>If you did everything correctly, your bot should text you Hello World! every time you launch your code.
+<p>If you did everything correctly, your bot should text you <em>Hello World!</em> every time you launch your code.
 Sending messages to groups or channels – assuming you have the relevant permissions – is as simple as replacing <code>1234</code> with the ID of the respective chat.</p>
 </div>
 <div class="admonitionblock tip">
@@ -946,10 +946,10 @@ Its functionality will be rather simple: every text message it receives will be 
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Here we’ll explore just another way to setup long polling and bot behaviour: <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.extensions.behaviour_builder/build-behaviour-with-long-polling.html"><code>buildBehaviourWithLongPolling</code></a>.</p>
+<p>Here we’ll explore just another way to set up long polling and bot behavior: <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.extensions.behaviour_builder/build-behaviour-with-long-polling.html"><code>buildBehaviourWithLongPolling</code></a>.</p>
 </li>
 <li>
-<p><a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling/on-content-message.html"><code>onContentMessage</code></a> will be called for every message with <em>content</em>, e.g. text, stickers, pictures.
+<p><a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling/on-content-message.html"><code>onContentMessage</code></a> will be called for every message with <em>content</em>, e.g. text, stickers, and pictures.
 There are messages with no content as well, like <a href="https://core.telegram.org/bots/api#chatjoinrequest">join requests</a>.</p>
 </li>
 <li>
@@ -1034,11 +1034,11 @@ For the purpose of this tutorial, we’ll implement two simple commands:</p>
 </span></span></code></pre></div>
 </div>
 <div class="paragraph">
-<p>The <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling/on-command.html"><code>onCommand</code></a> is called whenever the bot receives a comand that is passed as a parameter to the <code>onCommand</code>.</p>
+<p>The <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling/on-command.html"><code>onCommand</code></a> is called whenever the bot receives a command that is passed as a parameter to the <code>onCommand</code>.</p>
 </div>
 <div class="paragraph">
 <p>Next, let’s add an <a href="https://kotlinlang.org/docs/extensions.html">extension</a> for the <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.types.message.abstracts/-common-message/index.html"><code>CommonMessage</code></a> to check if it contains any commands.
-We’ll use this extention as a <em>filter</em> in the next step.</p>
+We’ll use this extension as a <em>filter</em> in the next step.</p>
 </div>
 <div class="paragraph">
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">CommonMessage</span>&lt;*&gt;.hasCommands(): Boolean =
@@ -1076,7 +1076,7 @@ Now the bot can <strong>execute commands</strong> and change its behavior accord
 </div>
 <div class="paragraph">
 <p>Naturally, this simplified logic will change the bot’s behavior for <strong>everyone</strong> – not just the person who sent the command.
-This can be fun for this tutorial but <strong>won’t work in a production environment</strong> – consider using a Map, dictionary or equivalent data structure to assign settings for individual users.</p>
+This can be fun for this tutorial but <strong>won’t work in a production environment</strong> – consider using a Map, dictionary, or equivalent data structure to assign settings for individual users.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -1087,7 +1087,7 @@ This can be fun for this tutorial but <strong>won’t work in a production envir
 <td class="content">
 <div class="paragraph">
 <p>Remember to always implement a few basic <a href="https://core.telegram.org/bots/features#global-commands">global commands</a>.
-You can practice by implementing a simple feedback to the <code>/start</code> command, which we intentionally left out.</p>
+You can practice by implementing simple feedback to the <code>/start</code> command, which we intentionally left out.</p>
 </div>
 </td>
 </tr>
@@ -1111,10 +1111,10 @@ These buttons can perform a wide variety of actions and can be customized for ea
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Reply Buttons</strong> — used to provide a list of predefined text <a href="https://core.telegram.org/bots/features#keyboards">reply options</a>.</p>
+<p><strong>Reply Buttons</strong> — are used to provide a list of predefined text <a href="https://core.telegram.org/bots/features#keyboards">reply options</a>.</p>
 </li>
 <li>
-<p><strong>Inline Buttons</strong> — used to offer quick navigation, shortcuts, URLs, games and <a href="https://core.telegram.org/bots/features#inline-keyboards">so much more</a>.</p>
+<p><strong>Inline Buttons</strong> — are used to offer quick navigation, shortcuts, URLs, games and <a href="https://core.telegram.org/bots/features#inline-keyboards">so much more</a>.</p>
 </li>
 </ul>
 </div>
@@ -1172,7 +1172,7 @@ These buttons can perform a wide variety of actions and can be customized for ea
 </td>
 <td class="content">
 <div class="paragraph">
-<p>You can place this code wherever you prefer, the important thing is making sure that keyboard variables are accessible from the method call that will send the new menu.
+<p>You can place this code wherever you prefer, the important thing is to make sure that keyboard variables are accessible from the method call that will send the new menu.
 If you’re confused by this concept and don’t know where to put them, just paste them above the command processing flow.
 Or just look at the final code <a href="https://github.com/madhead/from-botfather-to-hello-world/blob/main/src/main/kotlin/Main.kt">here</a>.</p>
 </div>
@@ -1198,7 +1198,7 @@ Or just look at the final code <a href="https://github.com/madhead/from-botfathe
 <h3 id="_menu_trigger">Menu Trigger</h3>
 <div class="paragraph">
 <p>We could send a new menu for each new user, but for simplicity let’s add a new command that will spawn a menu.
-We can achieve this by adding a new <code>onCommand(&#34;menu&#34;)</code> clause to the previous <em>behaviour block</em>.</p>
+We can achieve this by adding a new <code>onCommand(&#34;menu&#34;)</code> clause to the previous <em>behavior block</em>.</p>
 </div>
 <div class="paragraph">
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span>onCommand(<span style="color:#e6db74">&#34;menu&#34;</span>) {
@@ -1279,7 +1279,7 @@ You <strong>must always</strong> close new queries after processing them – if 
 <p>Processing in this context just means <strong>executing the action</strong> uniquely identified by the button, then <strong>closing the query</strong>.</p>
 </div>
 <div class="paragraph">
-<p>A very basic button handler could look something like:</p>
+<p>A very basic button handler could look something like this:</p>
 </div>
 <div class="paragraph">
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span>bot.buildBehaviourWithLongPolling() {
@@ -1309,7 +1309,7 @@ You <strong>must always</strong> close new queries after processing them – if 
 </div>
 <div class="paragraph">
 <p>With these handlers, whenever a button is tapped, your bot will automatically navigate between inline menus.
-Expanding on this concept allows for endless combinations of navigable submenus, settings and dynamic pages.</p>
+Expanding on this concept allows for endless combinations of navigable submenus, settings, and dynamic pages.</p>
 </div>
 </div>
 </div>
@@ -1318,14 +1318,13 @@ Expanding on this concept allows for endless combinations of navigable submenus,
 <div class="sectionbody">
 <div class="paragraph">
 <p>Telegram <strong>does not</strong> host an update database for you – once you process and consume an update, it will no longer be available.
-This means that features like user lists, message lists, current user inline menu, settings, etc.
-<strong>have to be implemented and maintained</strong> by bot developers.</p>
+This means that features like user lists, message lists, current user inline menus, settings, etc. <strong>have to be implemented and maintained</strong> by bot developers.</p>
 </div>
 <div class="paragraph">
 <p>If your bot needs one of these features and you want to get started on <strong>data persistence</strong>, we recommend that you look into <a href="https://en.wikipedia.org/wiki/Serialization">serialization</a> practices and libraries for your language of choice, as well as available databases.</p>
 </div>
 <div class="paragraph">
-<p>Implementing a database is out of scope for this guide, however, several guides are available online for simple embedded <strong>open source</strong> software solutions like <a href="https://www.sqlite.org/index.html">SQLite</a>, <a href="https://hsqldb.org">HyperSQL</a>, <a href="https://db.apache.org/derby">Derby</a> and many more.</p>
+<p>Implementing a database is out of scope for this guide, however, several guides are available online for simple embedded <strong>open source</strong> software solutions like <a href="https://www.sqlite.org/index.html">SQLite</a>, <a href="https://hsqldb.org">HyperSQL</a>, <a href="https://db.apache.org/derby">Derby</a>, and many more.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1335,7 +1334,7 @@ This means that features like user lists, message lists, current user inline men
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Your language of choice will also influence which databases are available and supported – the list above assumes you followed this Java tutorial.</p>
+<p>Your language of choice will also influence which databases are available and supported – the list above assumes you followed this Kotlin tutorial.</p>
 </div>
 </td>
 </tr>
@@ -1348,7 +1347,7 @@ This means that features like user lists, message lists, current user inline men
 <div class="sectionbody">
 <div class="paragraph">
 <p>So far, your bot has been running on your <strong>local machine</strong> – your PC.
-While this may be good for <strong>developing</strong>, <strong>testing</strong> and <strong>debugging</strong>, it is not ideal for a production environment.
+While this may be good for <strong>developing</strong>, <strong>testing</strong>, and <strong>debugging</strong>, it is not ideal for a production environment.
 You’ll want your bot to be available and responsive at all times, but your computer might not always be online.</p>
 </div>
 <div class="paragraph">
@@ -1401,7 +1400,7 @@ We will assume the runnable jar <code>TutorialBot.jar</code> and its database <c
 <p><strong>Run your application</strong></p>
 <div class="paragraph">
 <p>Depending on which language you chose, you might have to configure your server environment differently.
-If you chose Java, you just need to install a compatible JDK.</p>
+If you chose Kotlin, you just need to install a compatible JDK.</p>
 </div>
 <div class="paragraph">
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ apt install openjdk-17-jre
@@ -1433,7 +1432,7 @@ This means you’re ready to run your application.</p>
 <td class="content">
 <div class="paragraph">
 <p>To streamline and modularize this process, you could employ a specialized <a href="https://www.docker.com/resources/what-container/">docker container</a> or equivalent service.
-If you followed along in one of the equivalent examples (<a href="https://gitlab.com/Athamaxy/telegram-bot-tutorial/-/blob/main/TutorialBot.cs">C#</a>, <a href="https://gitlab.com/Athamaxy/telegram-bot-tutorial/-/blob/main/TutorialBot.py">Python</a>, <a href="https://gitlab.com/Athamaxy/telegram-bot-tutorial/-/blob/main/TutorialBot.go">Go</a> and <a href="https://gitlab.com/Athamaxy/telegram-bot-tutorial/-/tree/main/Nodejs">TypeScript</a>) you can find a detailed set of instructions to export and run your code <a href="https://gitlab.com/Athamaxy/telegram-bot-tutorial/-/tree/main">here</a>.</p>
+If you followed along in one of the equivalent examples (<a href="https://gitlab.com/Athamaxy/telegram-bot-tutorial/-/blob/main/TutorialBot.cs">C#</a>, <a href="https://gitlab.com/Athamaxy/telegram-bot-tutorial/-/blob/main/TutorialBot.py">Python</a>, <a href="https://gitlab.com/Athamaxy/telegram-bot-tutorial/-/blob/main/TutorialBot.go">Go</a>, and <a href="https://gitlab.com/Athamaxy/telegram-bot-tutorial/-/tree/main/Nodejs">TypeScript</a>) you can find a detailed set of instructions to export and run your code <a href="https://gitlab.com/Athamaxy/telegram-bot-tutorial/-/tree/main">here</a>.</p>
 </div>
 </td>
 </tr>
