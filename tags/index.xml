@@ -5,22 +5,76 @@
     <link>https://madhead.me/tags/</link>
     <description>Recent content in Tags on madhead</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 25 Oct 2022 00:23:00 +0200</lastBuildDate><atom:link href="https://madhead.me/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 02 May 2023 18:00:00 +0200</lastBuildDate><atom:link href="https://madhead.me/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>telegram</title>
-      <link>https://madhead.me/tags/telegram/</link>
-      <pubDate>Tue, 25 Oct 2022 00:23:00 +0200</pubDate>
+      <title>aws</title>
+      <link>https://madhead.me/tags/aws/</link>
+      <pubDate>Tue, 02 May 2023 18:00:00 +0200</pubDate>
       
-      <guid>https://madhead.me/tags/telegram/</guid>
+      <guid>https://madhead.me/tags/aws/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>aws lambda</title>
+      <link>https://madhead.me/tags/aws-lambda/</link>
+      <pubDate>Tue, 02 May 2023 18:00:00 +0200</pubDate>
+      
+      <guid>https://madhead.me/tags/aws-lambda/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ci</title>
+      <link>https://madhead.me/tags/ci/</link>
+      <pubDate>Tue, 02 May 2023 18:00:00 +0200</pubDate>
+      
+      <guid>https://madhead.me/tags/ci/</guid>
       <description></description>
     </item>
     
     <item>
       <title>github actions</title>
       <link>https://madhead.me/tags/github-actions/</link>
-      <pubDate>Sun, 10 Oct 2021 23:27:00 +0200</pubDate>
+      <pubDate>Tue, 02 May 2023 18:00:00 +0200</pubDate>
       
       <guid>https://madhead.me/tags/github-actions/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>neon</title>
+      <link>https://madhead.me/tags/neon/</link>
+      <pubDate>Tue, 02 May 2023 18:00:00 +0200</pubDate>
+      
+      <guid>https://madhead.me/tags/neon/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>postgresql</title>
+      <link>https://madhead.me/tags/postgresql/</link>
+      <pubDate>Tue, 02 May 2023 18:00:00 +0200</pubDate>
+      
+      <guid>https://madhead.me/tags/postgresql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://madhead.me/tags/python/</link>
+      <pubDate>Tue, 02 May 2023 18:00:00 +0200</pubDate>
+      
+      <guid>https://madhead.me/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>telegram</title>
+      <link>https://madhead.me/tags/telegram/</link>
+      <pubDate>Tue, 25 Oct 2022 00:23:00 +0200</pubDate>
+      
+      <guid>https://madhead.me/tags/telegram/</guid>
       <description></description>
     </item>
     
@@ -48,15 +102,6 @@
       <pubDate>Thu, 27 May 2021 22:19:00 +0200</pubDate>
       
       <guid>https://madhead.me/tags/linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>ci</title>
-      <link>https://madhead.me/tags/ci/</link>
-      <pubDate>Sun, 28 Mar 2021 00:30:00 +0300</pubDate>
-      
-      <guid>https://madhead.me/tags/ci/</guid>
       <description></description>
     </item>
     
@@ -187,15 +232,6 @@
     </item>
     
     <item>
-      <title>aws</title>
-      <link>https://madhead.me/tags/aws/</link>
-      <pubDate>Thu, 26 Sep 2019 09:00:00 +0300</pubDate>
-      
-      <guid>https://madhead.me/tags/aws/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>junit</title>
       <link>https://madhead.me/tags/junit/</link>
       <pubDate>Thu, 26 Sep 2019 09:00:00 +0300</pubDate>
@@ -228,15 +264,6 @@
       <pubDate>Tue, 23 Jul 2019 09:00:00 +0300</pubDate>
       
       <guid>https://madhead.me/tags/git/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>aws lambda</title>
-      <link>https://madhead.me/tags/aws-lambda/</link>
-      <pubDate>Fri, 05 Apr 2019 22:02:00 +0300</pubDate>
-      
-      <guid>https://madhead.me/tags/aws-lambda/</guid>
       <description></description>
     </item>
     

@@ -5,7 +5,30 @@
     <link>https://madhead.me/tags/ci/</link>
     <description>Recent content in ci on madhead</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 28 Mar 2021 00:30:00 +0300</lastBuildDate><atom:link href="https://madhead.me/tags/ci/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 02 May 2023 18:00:00 +0200</lastBuildDate><atom:link href="https://madhead.me/tags/ci/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PR preview environments with Neon, GitHub Actions, and AWS Lambda</title>
+      <link>https://madhead.me/posts/neonbranch/</link>
+      <pubDate>Tue, 02 May 2023 18:00:00 +0200</pubDate>
+      
+      <guid>https://madhead.me/posts/neonbranch/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;You might have heard about preview environments (AKA dynamic, or ephemeral environments) in the scope of software engineering and, particularly, this term is used when speaking about the SDLC.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;A preview environment — as opposed to a permanent one, like &amp;#34;Production&amp;#34;, or &amp;#34;TST&amp;#34;, or whatever you call them — is a short-lived environment, usually bound to a pull request.
+It is created on-demand when the PR is created; and destroyed when the PR is closed.
+It hosts a copy of the application and is used to test the changes introduced by the pull request.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;If you need more information, I encourage you to jump around a few articles on the Web to grasp the idea before continuing.
+I won’t go into details here, but instead, I’ll be focusing on the most challenging aspect of preview environments…&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;The database.&lt;/p&gt;
+&lt;/div&gt;</description>
+    </item>
+    
     <item>
       <title>Reading Java properties in GitHub Actions</title>
       <link>https://madhead.me/posts/read-java-properties/</link>

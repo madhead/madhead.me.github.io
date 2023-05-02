@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang='en' dir='auto'><head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='
+You might have heard about preview environments (AKA dynamic, or ephemeral environments) in the scope of software engineering and, particularly, this term is used when speaking about the SDLC.
+
+
+A preview environment — as opposed to a permanent one, like &#34;Production&#34;, or &#34;TST&#34;, or whatever you call them — is a short-lived environment, usually bound to a pull request.
+It is created on-demand when the PR is created; and destroyed when the PR is closed.
+It hosts a copy of the application and is used to test the changes introduced by the pull request.
+
+
+If you need more information, I encourage you to jump around a few articles on the Web to grasp the idea before continuing.
+I won’t go into details here, but instead, I’ll be focusing on the most challenging aspect of preview environments…
+
+
+The database.
+'>
+<meta name="monetization" content='$ilp.uphold.com/wgzRi7wDbPFf'>
+
+<meta property='og:title' content='PR preview environments with Neon, GitHub Actions, and AWS Lambda • madhead'>
+<meta property='og:description' content='
+You might have heard about preview environments (AKA dynamic, or ephemeral environments) in the scope of software engineering and, particularly, this term is used when speaking about the SDLC.
+
+
+A preview environment — as opposed to a permanent one, like &#34;Production&#34;, or &#34;TST&#34;, or whatever you call them — is a short-lived environment, usually bound to a pull request.
+It is created on-demand when the PR is created; and destroyed when the PR is closed.
+It hosts a copy of the application and is used to test the changes introduced by the pull request.
+
+
+If you need more information, I encourage you to jump around a few articles on the Web to grasp the idea before continuing.
+I won’t go into details here, but instead, I’ll be focusing on the most challenging aspect of preview environments…
+
+
+The database.
+'>
+<meta property='og:url' content='https://madhead.me/posts/neonbranch/'>
+<meta property='og:site_name' content='madhead'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='github actions'><meta property='article:tag' content='postgresql'><meta property='article:tag' content='ci'><meta property='article:tag' content='aws'><meta property='article:tag' content='aws lambda'><meta property='article:tag' content='neon'><meta property='article:tag' content='python'><meta property='article:published_time' content='2023-05-02T18:00:00&#43;02:00'/><meta property='article:modified_time' content='2023-05-02T18:00:00&#43;02:00'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.111.3">
+
+  <title>PR preview environments with Neon, GitHub Actions, and AWS Lambda • madhead</title>
+  <link rel='canonical' href='https://madhead.me/posts/neonbranch/'>
+  
+  
+  <link rel='icon' href='/favicon.ico'>
+<link rel='stylesheet' href='/assets/css/main.5c2014c4.css'><link rel='stylesheet' href='/css/admonitions.css'><link rel='stylesheet' href='/css/tables.css'><link rel='stylesheet' href='/css/spoilers.css'><style>
+:root{--color-accent:#000000;}
+</style>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SML2093FH8"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-SML2093FH8', { 'anonymize_ip': false });
+}
+</script>
+
+  
+
+</head>
+<body class='page type-posts has-sidebar'>
+
+  <div class='site'><div id='sidebar' class='sidebar'>
+  <a class='screen-reader-text' href='#main-menu'>Skip to Main Menu</a>
+
+  <div class='container'><section class='widget widget-about sep-after'>
+  <header>
+    
+    <div class='logo'>
+      <a href='/'>
+        <img src='/images/logo.svg'>
+      </a>
+    </div>
+    
+    <div class='desc'>
+    
+    </div>
+  </header>
+
+</section>
+<section class='widget widget-sidebar_menu sep-after'><nav id='sidebar-menu' class='menu sidebar-menu' aria-label='Sidebar Menu'>
+    <div class='container'>
+      <ul><li class='item'>
+  <a href='/posts/'>posts</a></li><li class='item'>
+  <a href='/tags/'>tags</a></li></ul>
+    </div>
+  </nav>
+
+</section>
+
+<section class='widget widget-sidebar_menu sep-after'>
+  <nav id='sidebar-menu' class='menu sidebar-menu' aria-label='Sidebar Menu'>
+    <div class='container'>
+      <ul><li class='item'>
+          <a href='https://ru.madhead.me/'>RU</a>
+        </li></ul>
+    </div>
+  </nav>
+</section><section class='widget widget-social_menu sep-after'><nav aria-label='Social Menu'>
+    <ul><li>
+        <a href='mailto:siarhei.krukau@gmail.com' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Contact via Email</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+<polyline points="22,6 12,13 2,6" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://t.me/madheab' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Telegram account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M23.91 3.79L20.3 20.84c-.25 1.21-.98 1.5-2 .94l-5.5-4.07-2.66 2.57c-.3.3-.55.56-1.1.56-.72 0-.6-.27-.84-.95L6.3 13.7l-5.45-1.7c-1.18-.35-1.19-1.16.26-1.75l21.26-8.2c.97-.43 1.9.24 1.53 1.73z" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://github.com/madhead' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Github account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://gitlab.com/madhead' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Gitlab account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M22.65 14.39L12 22.13 1.35 14.39a.84.84 0 0 1-.3-.94l1.22-3.78 2.44-7.51A.42.42 0 0 1 4.82 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.49h8.1l2.44-7.51A.42.42 0 0 1 18.6 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.51L23 13.45a.84.84 0 0 1-.35.94z" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://stackoverflow.com/users/750510' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Stackoverflow account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><line x1="3.472" y1="18.689" x2="16.612" y2="18.689" />
+<line x1="4.017" y1="12.715" x2="16.884" y2="15.404" />
+<line x1="5.991" y1="6.673" x2="17.906" y2="12.238" />
+<line x1="9.582" y1="1.021" x2="19.692" y2="9.430" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://linkedin.com/in/krukaus' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Linkedin account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+<rect x="2" y="9" width="4" height="12" />
+<circle cx="4" cy="4" r="2" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://instagram.com/m.a.d.h.e.a.d' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Instagram account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+<line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://www.youtube.com/channel/UCO2UZ6hUzjn9XQIdwwkcXJQ' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Youtube account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
+<polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://twitter.com/m_a_d_h_e_a_d' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Twitter account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://mastodon.online/@madhead' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Mastodon account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="m21.448 11.064v8.3572h-3.2914v-8.1115c0-1.7099-0.71521-2.5778-2.1459-2.5778-1.5818 0-2.3745 1.0295-2.3745 3.0653v4.4399h-3.272v-4.4399c0-2.0357-0.79292-3.0653-2.3746-3.0653-1.4305 0-2.1459 0.86789-2.1459 2.5778v8.1115h-3.2914v-8.3572c0-1.7081 0.43233-3.0653 1.3007-4.0694 0.89551-1.0042 2.0682-1.519 3.524-1.519 1.6844 0 2.9598 0.65121 4.623 0.65124 1.6632 2.7e-5 2.9387-0.65124 4.6231-0.65124 1.4556 0 2.6283 0.51477 3.524 1.519 0.86823 1.0042 1.3006 2.3615 1.3006 4.0694" fill="none" stroke="#000" stroke-width="2"/>
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</section></div>
+
+  <div class='sidebar-overlay'></div>
+</div><div class='main'><nav id='main-menu' class='menu main-menu' aria-label='Main Menu'>
+  <div class='container'>
+    <a class='screen-reader-text' href='#content'>Skip to Content</a>
+
+<button id='sidebar-toggler' class='sidebar-toggler' aria-controls='sidebar'>
+  <span class='screen-reader-text'>Toggle Sidebar</span>
+  <span class='open'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><line x1="3" y1="12" x2="21" y2="12" />
+<line x1="3" y1="6" x2="21" y2="6" />
+<line x1="3" y1="18" x2="21" y2="18" />
+</svg>
+</span>
+  <span class='close'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><line x1="18" y1="6" x2="6" y2="18" />
+<line x1="6" y1="6" x2="18" y2="18" />
+</svg>
+</span>
+</button>
+    <ul></ul>
+  </div>
+</nav><div class='header-widgets'>
+        <div class='container'></div>
+      </div>
+
+      <header id='header' class='header site-header'>
+        <div class='container sep-after'>
+          <div class='header-info'><p class='site-title title'>madhead</p><p class='desc site-desc'></p>
+          </div>
+        </div>
+      </header>
+
+      <main id='content'>
+
+
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
+  <div class='container sep-after'>
+    <div class='header-info'>
+      <h1 class='title'>PR preview environments with Neon, GitHub Actions, and AWS Lambda</h1>
+      
+
+    </div>
+    <div class='entry-meta'>
+  <span class='posted-on'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+<line x1="16" y1="2" x2="16" y2="6" />
+<line x1="8" y1="2" x2="8" y2="6" />
+<line x1="3" y1="10" x2="21" y2="10" />
+</svg>
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='2023-05-02T18:00:00&#43;02:00'>2023-05-02</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><circle cx="12" cy="12" r="10" />
+<polyline points="12 6 12 12 15 15" />
+</svg>
+11 mins to read
+</span>
+
+
+</div>
+
+
+  </div>
+</header>
+
+  
+  
+
+  <div class='container entry-content'>
+  <div class="paragraph">
+<p>You might have heard about preview environments (AKA dynamic, or ephemeral environments) in the scope of software engineering and, particularly, this term is used when speaking about the SDLC.</p>
+</div>
+<div class="paragraph">
+<p>A preview environment — as opposed to a permanent one, like &#34;Production&#34;, or &#34;TST&#34;, or whatever you call them — is a short-lived environment, usually bound to a pull request.
+It is created on-demand when the PR is created; and destroyed when the PR is closed.
+It hosts a copy of the application and is used to test the changes introduced by the pull request.</p>
+</div>
+<div class="paragraph">
+<p>If you need more information, I encourage you to jump around a few articles on the Web to grasp the idea before continuing.
+I won’t go into details here, but instead, I’ll be focusing on the most challenging aspect of preview environments…</p>
+</div>
+<div class="paragraph">
+<p>The database.</p>
+</div>
+<div class="sect1">
+<h2 id="_contents">Contents</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#problem">The tragedy of databases in preview environments</a></p>
+</li>
+<li>
+<p><a href="#neon">Meet Neon</a></p>
+</li>
+<li>
+<p><a href="#neonbranch">Exploring Neon branching with GitHub Actions and AWS Lambda</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="problem">The tragedy of databases in preview environments</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Materials about preview environments tend to cast little light on the database, leaving you with the approximate directions, like <em>&#34;create a copy of the database&#34;</em>, or <em>&#34;use a database per PR&#34;</em>, but no advice on how to achieve that.
+And for a reason!</p>
+</div>
+<div class="paragraph">
+<p>First of all, everyone’s application is indeed different, and there’s no one-size-fits-all solution.</p>
+</div>
+<div class="paragraph">
+<p>But the main reason, IMO, is that a database is very different from an application and it’s hard to copy it.
+Databases are persistent and stateful, while applications are ephemeral and stateless.
+Copying apps is the same as redeploying or scaling them, maybe with a different configuration.
+Copying databases is always a trick.</p>
+</div>
+<div class="paragraph">
+<p>What’s even worse, is that databases historically combine both storage and compute in them!
+I mean, a typical database consists of its data, represented as actual files, and a database engine, which is an application process on its own.
+Thus, copying a database is at least twice as hard as copying an application.
+Simple math!</p>
+</div>
+<div class="paragraph">
+<p>The options here range from cloning the database using dump / restore to using no copies at all, i.e. a shared DB for all the preview environments.
+Let’s roughly compare them.</p>
+</div>
+<div class="paragraph">
+<p></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;"/>
+<col style="width: 25%;"/>
+<col style="width: 25%;"/>
+<col style="width: 25%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-middle"></th>
+<th class="tableblock halign-center valign-middle">Dump / restore</th>
+<th class="tableblock halign-center valign-middle">Migration scripts</th>
+<th class="tableblock halign-center valign-middle">Shared DB</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Complexity</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #FFE485;"><p class="tableblock">High</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #FFAD8F;"><p class="tableblock">Medium</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #ADFFCE;"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Isolation</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #ADFFCE;"><p class="tableblock">High</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #ADFFCE;"><p class="tableblock">High</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #FFE485;"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Data freshness</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #FFAD8F;"><p class="tableblock">Medium</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #FFE485;"><p class="tableblock">No</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #ADFFCE;"><p class="tableblock">High</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Automation</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #FFE485;"><p class="tableblock">Low</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #FFAD8F;"><p class="tableblock">Medium</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #ADFFCE;"><p class="tableblock">No</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Here, <strong>complexity</strong> means the amount of effort required to implement the solution.
+Obviously, a shared environment requires no effort; migration scripts require creating a fresh database and running the migrations; and dump / restore requires creating a fresh database, creating a dump, transferring it to the fresh database, and restoring it.
+Don’t get me wrong, it’s not impossible, it’s just disproportionately hard and slow.</p>
+</div>
+<div class="paragraph">
+<p>Data <strong>isolation</strong> is high for both dump / restore and migration scripts approaches because each preview environment has its own database.
+A shared database, on the other hand, is not isolated at all.</p>
+</div>
+<div class="paragraph">
+<p>Data isolation is highly correlated with the ability to test and preview <strong>schema modifications</strong>.
+Actually, it’s the same thing, I just want to highlight it, because it’s important.
+If you have a shared database, you can’t easily modify the schema without breaking others.
+However, if you have a dedicated database, you can do whatever you want with it.
+The ability to test and preview schema modifications is a huge advantage of preview environments because it allows you to test the migrations before applying them to the production database.</p>
+</div>
+<div class="paragraph">
+<p>Isolation is the opposite of <strong>data freshness</strong>.
+I call it the ability for the preview environment to have the latest data from the upstream database.
+A shared database has the freshest data because it’s the same database.
+Dump / restore approach could provide fresh data as well, especially if you dump and restore the database on every PR.
+Migration scripts are the worst here because they don’t provide any data fresh data at all.
+Only the data captured in the migration / seed scripts would be available.</p>
+</div>
+<div class="paragraph">
+<p>Migration scripts approach is somewhat <strong>automated</strong>.
+In the best-case scenario, you would have a script that creates a fresh database (e.g. a Terraform or Helm), and a script that runs the migrations (e.g. Rails Migrations or Liquibase).
+Dumping and restoring is less automated because most probably, it would involve a bash scripting with, let’s say, <code>pg_dump</code> and <code>pg_restore</code> commands.
+No copy approach requires no automation at all.</p>
+</div>
+<div class="paragraph">
+<p>Compromises, compromises, compromises…
+As you see, you trade complexity for convenience.
+And because of that and because deep data isolation is rarely required, and because schema modification could be arranged manually, I suppose most projects start from a shared DB approach and never move further.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="neon">Meet Neon</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now, after such a long introduction, this section would be ridiculously (in a good way) short, even in my wordy style.</p>
+</div>
+<div class="paragraph">
+<p>Imagine there is a PostgreSQL database, that is:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Fully managed</p>
+</li>
+<li>
+<p>Serverless</p>
+</li>
+<li>
+<p>Autoscalable</p>
+</li>
+<li>
+<p>Auto-suspendable</p>
+</li>
+<li>
+<p>Separates storage and compute</p>
+</li>
+<li>
+<p>Branches in a second with a single button click or API call</p>
+</li>
+<li>
+<p>And, yes, provides REST API for everything</p>
+</li>
+<li>
+<p>Provides generous free tier to get you started</p>
+</li>
+<li>
+<p>Well-documented</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>It exists, and it is <a href="https://neon.tech">Neon</a>.</p>
+</div>
+<div class="paragraph">
+<p>Because of the unique architecture, with separated storage and compute, Neon enables instant copy-on-write branching.
+You could create a branch, i.e. a copy of the database, from virtually any point in time in the upstream database, and it would be created in seconds.
+It means, that you could branch off the production database, with the latest data, and still have full isolation.
+Being serverless also means that Neon is very elastic, it can scale up and down, and even suspend the compute completely when it’s not used.
+On top of that, Neon provides a REST API for everything, so you can automate the whole process.</p>
+</div>
+<div class="paragraph">
+<p>It’s simple to use, it’s highly isolated, it provides branches off the latest data, and it’s easily automatable.
+It’s perfect for preview environments.</p>
+</div>
+<div class="paragraph">
+<p></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;"/>
+<col style="width: 20%;"/>
+<col style="width: 20%;"/>
+<col style="width: 20%;"/>
+<col style="width: 20%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-middle"></th>
+<th class="tableblock halign-center valign-middle">Dump / restore</th>
+<th class="tableblock halign-center valign-middle">Migration scripts</th>
+<th class="tableblock halign-center valign-middle">Shared DB</th>
+<th class="tableblock halign-center valign-middle">Neon</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Complexity</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #FFE485;"><p class="tableblock">High</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #FFAD8F;"><p class="tableblock">Medium</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #ADFFCE;"><p class="tableblock">No</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #ADFFCE;"><p class="tableblock">Low</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Isolation</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #ADFFCE;"><p class="tableblock">High</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #ADFFCE;"><p class="tableblock">High</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #FFE485;"><p class="tableblock">No</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #ADFFCE;"><p class="tableblock">High</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Data freshness</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #FFAD8F;"><p class="tableblock">Medium</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #FFE485;"><p class="tableblock">No</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #ADFFCE;"><p class="tableblock">High</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #ADFFCE;"><p class="tableblock">High</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Automation</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #FFE485;"><p class="tableblock">Low</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #FFAD8F;"><p class="tableblock">Medium</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #ADFFCE;"><p class="tableblock">No</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #ADFFCE;"><p class="tableblock">High</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Drawbacks?
+Well, it’s in the technical preview stage yet.</p>
+</div>
+<div class="paragraph">
+<p>I don’t see a point in repeating the docs here, so here are some rabbit holes for you:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://neon.tech/docs/introduction/about">What is Neon?</a></p>
+</li>
+<li>
+<p><a href="https://neon.tech/branching">Instant branching for Postgres</a></p>
+</li>
+<li>
+<p><a href="https://neon.tech/docs/introduction/branching">Branching documentation</a></p>
+</li>
+<li>
+<p><a href="https://neon.tech/docs/introduction/architecture-overview">Neon architecture overview</a></p>
+</li>
+<li>
+<p><a href="https://neon.tech/docs/introduction/compute-lifecycle">Compute lifecycle</a></p>
+</li>
+<li>
+<p><a href="https://neon.tech/docs/introduction/autoscaling">Autoscaling</a></p>
+</li>
+<li>
+<p><a href="https://youtu.be/jjRasfbeYHk">Neon Developer workflow using Vercel and Github Actions</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="neonbranch">Exploring Neon branching with GitHub Actions and AWS Lambda</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Link for the impatient ones: <a href="https://github.com/madhead/neonbranch/">madhead/neonbranch</a>.</p>
+</div>
+<div class="paragraph">
+<p>Imagine an overengineered rock-paper-scissors game, storing game rules in a database and providing a REST API to calculate the winner.
+The API is of no interest today, so it’s just an AWS Lambda, implemented in Python and deployed with CDK.
+Meet the database:</p>
+</div>
+<div class="paragraph">
+<p></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3334%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-middle">player1</th>
+<th class="tableblock halign-center valign-middle">player2</th>
+<th class="tableblock halign-center valign-middle">winner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">rock</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">rock</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">NULL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">rock</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">paper</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">paper</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">rock</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">scissors</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">rock</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">paper</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">rock</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">paper</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">paper</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">paper</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">NULL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">paper</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">scissors</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">scissors</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">scissors</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">rock</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">rock</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">scissors</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">paper</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">scissors</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">scissors</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">scissors</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">NULL</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Now, imagine we’re working on two new features.
+The first one expands the game with Spock and lizard, and the second one adds textual descriptions for the outcomes:</p>
+</div>
+<div class="paragraph">
+<p></p><details><summary>
+<strong>What would the database look like</strong>
+</summary><div><p></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;"/>
+<col style="width: 25%;"/>
+<col style="width: 25%;"/>
+<col style="width: 25%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-middle">player1</th>
+<th class="tableblock halign-center valign-middle">player1</th>
+<th class="tableblock halign-center valign-middle">winner</th>
+<th class="tableblock halign-center valign-middle" style="background-color: #FFE485;">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">rock</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">rock</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">NULL</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #FFE485;"><p class="tableblock">It’s a tie</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">rock</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">paper</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">paper</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #FFE485;"><p class="tableblock">Paper covers rock</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">rock</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">scissors</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">rock</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #FFE485;"><p class="tableblock">Rock crushes scissors</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">paper</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">rock</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">paper</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #FFE485;"><p class="tableblock">Paper covers rock</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">paper</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">paper</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">NULL</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #FFE485;"><p class="tableblock">It’s a tie</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">paper</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">scissors</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">scissors</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #FFE485;"><p class="tableblock">Scissors cuts paper</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">scissors</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">rock</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">rock</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #FFE485;"><p class="tableblock">Rock crushes scissors</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">scissors</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">paper</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">scissors</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #FFE485;"><p class="tableblock">Scissors cuts paper</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">scissors</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">scissors</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">NULL</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #FFE485;"><p class="tableblock">It’s a tie</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">rock</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">spock</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">spock</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">☝️ Feature: descriptions</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">rock</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">lizard</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">rock</p></td>
+<td class="tableblock halign-center valign-middle" rowspan="15"><p class="tableblock">👈 Feature: Spock and lizard</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">paper</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">spock</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">paper</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">paper</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">lizard</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">lizard</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">scissors</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">spock</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">spock</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">scissors</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">lizard</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">lizard</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">spock</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">rock</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">spock</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">spock</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">paper</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">paper</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">spock</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">scissors</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">spock</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">spock</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">spock</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">NULL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">spock</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">lizard</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">lizard</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">lizard</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">rock</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">rock</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">lizard</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">paper</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">lizard</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">lizard</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">scissors</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">scissors</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">lizard</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">spock</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">lizard</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">lizard</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">lizard</p></td>
+<td class="tableblock halign-center valign-middle" style="background-color: #D6F2AA;"><p class="tableblock">NULL</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p></p></div></details><p></p>
+</div>
+<div class="paragraph">
+<p>We have these changes captured in Liquibase changelogs.
+The question is: how do we organize the CI pipelines?</p>
+</div>
+<div class="sect2">
+<h3 id="_events_that_trigger_workflows">Events that trigger workflows</h3>
+<div class="paragraph">
+<p>Remember, preview environments are ephemeral and bound to the PRs.
+So, let’s search for the appropriate triggers in <a href="https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request">Events that trigger workflows</a>.</p>
+</div>
+<div class="paragraph">
+<p>Three things could happen to a PR in regard to our scenario:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>It could be <a href="https://docs.github.com/en/webhooks-and-events/webhooks/webhook-events-and-payloads?actionType=opened#pull_request"><code>opened</code></a> or <a href="https://docs.github.com/en/webhooks-and-events/webhooks/webhook-events-and-payloads?actionType=reopened#pull_request"><code>reopened</code></a></p>
+</li>
+<li>
+<p>It could be <a href="https://docs.github.com/en/webhooks-and-events/webhooks/webhook-events-and-payloads?actionType=synchronize#pull_request"><code>synchronized</code></a></p>
+</li>
+<li>
+<p>It could be <a href="https://docs.github.com/en/webhooks-and-events/webhooks/webhook-events-and-payloads?actionType=closed#pull_request"><code>closed</code></a></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>When a PR is opened or reopened, we should create a new Neon branch, when a PR is closed we should delete the associated branch.
+When a PR is synchronized, we run the same workflow as when a PR is opened or reopened, as it would be made idempotent.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_workflows">Workflows</h3>
+<div class="paragraph">
+<p>So, we’ll need three workflows:</p>
+</div>
+<div class="paragraph">
+<p></p><details><summary>
+<strong>.github/workflows/pr-env-create.yml</strong>
+</summary><div><p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">name: Create PR environment
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+
+jobs:
+  pr-env-create:
+    steps:
+      - id: deploy
+        uses: ./.github/actions/deploy
+        name: Deploy
+        with:
+          environment: pr-${{ github.event.number }}
+          neon_project: ${{ vars.NEON_PROJECT }}
+          neon_token: ${{ secrets.NEON_TOKEN }}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p></p></div></details><p></p>
+</div>
+<div class="paragraph">
+<p></p><details><summary>
+<strong>.github/workflows/pr-env-sync.yml</strong>
+</summary><div><p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">name: Synchronize PR environment
+
+on:
+  pull_request:
+    types:
+      - synchronize
+
+# same as above</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p></p></div></details><p></p>
+</div>
+<div class="paragraph">
+<p></p><details><summary>
+<strong>.github/workflows/pr-env-destroy.yml</strong>
+</summary><div><p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">name: Destroy PR environment
+
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  pr-env-create:
+    steps:
+      - uses: ./.github/actions/destroy
+        name: Destroy
+        with:
+          environment: pr-${{ github.event.number }}
+          neon_project: ${{ vars.NEON_PROJECT }}
+          neon_token: ${{ secrets.NEON_TOKEN }}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p></p></div></details><p></p>
+</div>
+<div class="paragraph">
+<p>I extracted the common logic into two actions, <code>deploy</code> and <code>destroy</code>:</p>
+</div>
+<div class="sect3">
+<h4 id="_deploy_action">Deploy action</h4>
+<div class="paragraph">
+<p></p><details><summary>
+<strong>.github/actions/deploy/action.yml</strong>
+</summary><div><p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">name: Deploy
+description: Deploy the lambda
+
+inputs:
+  environment:
+  neon_project:
+  neon_token:
+
+outputs:
+  URL:
+  db_host:
+  db_user:
+  db_password:
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+
+    - run: python -m venv .venv
+      working-directory: deploy
+      shell: bash
+
+    - run: |
+        source .venv/bin/activate
+        python -m pip install -r requirements.txt
+      working-directory: deploy
+      shell: bash
+
+    - id: branch
+      run: |
+        source .venv/bin/activate
+        python branch.py
+      working-directory: deploy
+      shell: bash
+      env:
+        NEON_TOKEN: ${{ inputs.neon_token }}
+        NEON_PROJECT: ${{ inputs.neon_project }}
+        NEON_BRANCH: ${{ inputs.environment }}
+
+    - uses: actions/setup-java@v3
+      with:
+        distribution: &#34;temurin&#34;
+        java-version: 17
+    - run: ./gradlew update
+      working-directory: migrations
+      shell: bash
+      env:
+        NEON_HOST: ${{ steps.branch.outputs.db_host }}
+        NEON_DATABASE: ${{ inputs.neon_database }}
+        NEON_USER: ${{ steps.branch.outputs.db_user }}
+        NEON_PASSWORD: ${{ steps.branch.outputs.db_password }}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p></p></div></details><p></p>
+</div>
+<div class="paragraph">
+<p>The logic is pretty simple:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>We install Python</p>
+</li>
+<li>
+<p>We set up a virtual environment and install the dependencies</p>
+</li>
+<li>
+<p>We run a <code>branch.py</code> script which we’ll see in a moment</p>
+</li>
+<li>
+<p>We install Java to run Liquibase</p>
+</li>
+<li>
+<p>We run Liquibase</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_destroy_action">Destroy action</h4>
+<div class="paragraph">
+<p></p><details><summary>
+<strong>.github/actions/destroy/action.yml</strong>
+</summary><div><p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">name: Destroy
+description: Destroy the preview environment
+
+inputs:
+  environment:
+  neon_project:
+  neon_token:
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+
+    - run: python -m venv .venv
+      working-directory: deploy
+      shell: bash
+
+    - run: |
+        source .venv/bin/activate
+        python -m pip install -r requirements.txt
+      working-directory: deploy
+      shell: bash
+
+    - run: |
+        source .venv/bin/activate
+        python unbranch.py
+      working-directory: deploy
+      shell: bash
+      env:
+        NEON_TOKEN: ${{ inputs.neon_token }}
+        NEON_PROJECT: ${{ inputs.neon_project }}
+        NEON_BRANCH: ${{ inputs.environment }}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p></p></div></details><p></p>
+</div>
+<div class="paragraph">
+<p>We just run a different script, <code>unbranch.py</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_automation_scripts">Automation scripts</h3>
+<div class="paragraph">
+<p>Let’s extract Neon API calls into a separate Python module:</p>
+</div>
+<div class="paragraph">
+<p></p><details><summary>
+<strong>neon.py</strong>
+</summary><div><p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">import os
+import time
+
+import requests
+
+base_url = &#39;https://console.neon.tech/api/v2&#39;
+headers = {
+    &#39;Accept&#39;: &#39;application/json&#39;,
+    &#39;Authorization&#39;: f&#34;Bearer {os.environ[&#39;NEON_TOKEN&#39;]}&#34;
+}
+
+
+def find_project(project_name: str) -&gt; dict:
+    projects = requests.get(
+        url=f&#34;{base_url}/projects&#34;,
+        headers=headers,
+    ).json()[&#39;projects&#39;]
+
+    return next(project for project in projects if project[&#39;name&#39;] == project_name)
+
+
+def delete_branch(project: dict, name: str) -&gt; dict:
+    branches = requests.get(
+        url=f&#34;{base_url}/projects/{project[&#39;id&#39;]}/branches&#34;,
+        headers=headers,
+    ).json()[&#39;branches&#39;]
+    branch = next((branch for branch in branches if branch[&#39;name&#39;] == name))
+    requests.delete(
+        url=f&#34;{base_url}/projects/{project[&#39;id&#39;]}/branches/{branch[&#39;id&#39;]}&#34;,
+        headers=headers,
+    )
+
+
+def find_branches(project: dict, name: str) -&gt; (dict, dict):
+    branches = requests.get(
+        url=f&#34;{base_url}/projects/{project[&#39;id&#39;]}/branches&#34;,
+        headers=headers,
+    ).json()[&#39;branches&#39;]
+
+    primary_branch = next(branch for branch in branches if branch[&#39;primary&#39;])
+    if name:
+        branch = next((branch for branch in branches if branch[&#39;name&#39;] == name), None)
+    else:
+        branch = primary_branch
+
+    return primary_branch, branch
+
+
+def get_operation_details(project: dict, operation_id: str) -&gt; dict:
+    return requests.get(
+        url=f&#34;{base_url}/projects/{project[&#39;id&#39;]}/operations/{operation_id}&#34;,
+        headers=headers,
+    ).json()[&#39;operation&#39;]
+
+
+def create_branch(project: dict, parent: dict, name: str) -&gt; dict:
+    result = requests.post(
+        url=f&#34;{base_url}/projects/{project[&#39;id&#39;]}/branches&#34;,
+        headers=headers,
+        json={
+            &#39;endpoints&#39;: [
+                {
+                    &#39;type&#39;: &#39;read_write&#39;
+                }
+            ],
+            &#39;branch&#39;: {
+                &#39;parent_id&#39;: parent[&#39;id&#39;],
+                &#39;name&#39;: name,
+            }
+        },
+    ).json()
+    operations = result[&#39;operations&#39;]
+
+    for operation in operations:
+        while True:
+            operation_details = get_operation_details(project, operation[&#39;id&#39;])
+            if operation_details[&#39;status&#39;] == &#39;finished&#39;:
+                break
+            else:
+                time.sleep(5)
+
+    return result[&#39;branch&#39;]
+
+
+def find_endpoint(project: dict, branch: dict) -&gt; dict:
+    endpoints = requests.get(
+        url=f&#34;{base_url}/projects/{project[&#39;id&#39;]}/endpoints&#34;,
+        headers=headers,
+    ).json()[&#39;endpoints&#39;]
+
+    return next(endpoint for endpoint in endpoints if endpoint[&#39;branch_id&#39;] == branch[&#39;id&#39;])
+
+
+def find_role(project: dict, branch: dict) -&gt; dict:
+    roles = requests.get(
+        url=f&#34;{base_url}/projects/{project[&#39;id&#39;]}/branches/{branch[&#39;id&#39;]}/roles&#34;,
+        headers=headers,
+    ).json()[&#39;roles&#39;]
+
+    return next(role for role in roles if not role[&#39;protected&#39;])
+
+
+def get_password(project: dict, branch: dict, role: dict) -&gt; str:
+    return requests.get(
+        url=f&#34;{base_url}/projects/{project[&#39;id&#39;]}/branches/{branch[&#39;id&#39;]}/roles/{role[&#39;name&#39;]}/reveal_password&#34;,
+        headers=headers,
+    ).json()[&#39;password&#39;]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p></p></div></details><p></p>
+</div>
+<div class="paragraph">
+<p>As you see, just a bunch of functions to call Neon API.
+Let’s see how we use them in our scripts.</p>
+</div>
+<div class="paragraph">
+<p></p><details><summary>
+<strong>branch.py</strong>
+</summary><div><p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">import os
+
+import github
+import neon
+
+if __name__ == &#39;__main__&#39;:
+    project = neon.find_project(os.environ[&#39;NEON_PROJECT&#39;])
+    primary_branch, branch = neon.find_branches(project, os.environ.get(&#39;NEON_BRANCH&#39;))
+
+    if not branch:
+        branch = neon.create_branch(project, primary_branch, os.environ.get(&#39;NEON_BRANCH&#39;))
+
+    endpoint = neon.find_endpoint(project, branch)
+    role = neon.find_role(project, branch)
+    password = neon.get_password(project, branch, role)
+
+    github.mask(endpoint[&#39;host&#39;])
+    github.mask(role[&#39;name&#39;])
+    github.mask(password)
+
+    github.set_output(&#39;db_host&#39;, endpoint[&#39;host&#39;])
+    github.set_output(&#39;db_user&#39;, role[&#39;name&#39;])
+    github.set_output(&#39;db_password&#39;, password)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p></p></div></details><p></p>
+</div>
+<div class="paragraph">
+<p></p><details><summary>
+<strong>unbranch.py</strong>
+</summary><div><p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">import os
+
+import neon
+
+if __name__ == &#39;__main__&#39;:
+    neon.delete_branch(
+        neon.find_project(os.environ[&#39;NEON_PROJECT&#39;]),
+        os.environ[&#39;NEON_BRANCH&#39;],
+    )</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p></p></div></details><p></p>
+</div>
+<div class="paragraph">
+<p>While <code>unbranch.py</code> is pretty straightforward, <code>branch.py</code> is a bit more complicated.
+First, we find the project by its name.
+Then we find the primary branch we fork off and the branch for the preview environment.
+If the branch doesn’t exist, we create it.
+The creation of a branch is an asynchronous operation, so we have to wait for it to finish.
+Then we find the endpoint and the role for the new branch and get the password for the role.
+Finally, we mask the sensitive data and set the output variables for GitHub Actions.
+They are used later by other scripts, not shown here.</p>
+</div>
+<div class="paragraph">
+<p>And that’s it!
+We now have a fully automated workflow that creates a new database branch for each environment and deletes it when the environment is deleted.</p>
+</div>
+<div class="paragraph">
+<p>Explore the demo repository, <a href="https://github.com/madhead/neonbranch/">madhead/neonbranch</a> to learn more tricks, like <a href="https://docs.github.com/en/actions/using-jobs/using-environments-for-jobs#example-using-output-as-url">this</a>:</p>
+</div>
+<div class="paragraph">
+<figure class="align-center"><img src="//storage.googleapis.com/madheadme-static/posts/neonbranch/002.png"/>
+</figure>
+
+</div>
+<div class="paragraph">
+<p>Two more things before you go.</p>
+</div>
+<div class="paragraph">
+<p>First, there is an official Neon GitHub Action, but with a slightly different logic and use case: <a href="https://github.com/neondatabase/create-branch-action">neondatabase/create-branch-action</a>.</p>
+</div>
+<div class="paragraph">
+<p>Second, if you’re using Vercel, there is an article for that: <a href="https://neon.tech/blog/branching-with-preview-environments">A database for every preview environment using Neon, GitHub Actions, and Vercel</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+  
+<footer class='entry-footer'>
+  <div class='container sep-before'><div class='tags'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z" />
+<line x1="7" y1="7" x2="7" y2="7" />
+</svg>
+<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/github-actions/'>github actions</a>, <a class='tag' href='/tags/postgresql/'>postgresql</a>, <a class='tag' href='/tags/ci/'>ci</a>, <a class='tag' href='/tags/aws/'>aws</a>, <a class='tag' href='/tags/aws-lambda/'>aws lambda</a>, <a class='tag' href='/tags/neon/'>neon</a>, <a class='tag' href='/tags/python/'>python</a></div>
+
+  </div>
+</footer>
+
+
+</article>
+
+
+<section id='comments' class='comments'>
+  <div class='container sep-before'>
+    <div class='comments-area'><div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "madhead-me" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+  </div>
+</section>
+
+      </main>
+
+      <footer id='footer' class='footer'>
+        <div class='container sep-before'><div class='copyright'>
+  <p></p>
+</div>
+
+        </div>
+      </footer>
+
+    </div>
+  </div><script>window.__assets_js_src="/assets/js/"</script>
+
+<script src='/assets/js/main.eb49ae54.js'></script>
+
+</body>
+
+</html>
+
