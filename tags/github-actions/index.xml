@@ -5,12 +5,13 @@
     <link>https://madhead.me/tags/github-actions/</link>
     <description>Recent content in github actions on madhead</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 02 May 2023 18:00:00 +0200</lastBuildDate><atom:link href="https://madhead.me/tags/github-actions/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Tue, 02 May 2023 18:00:00 +0200</lastBuildDate>
+    <atom:link href="https://madhead.me/tags/github-actions/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>PR preview environments with Neon, GitHub Actions, and AWS Lambda</title>
       <link>https://madhead.me/posts/neonbranch/</link>
       <pubDate>Tue, 02 May 2023 18:00:00 +0200</pubDate>
-      
       <guid>https://madhead.me/posts/neonbranch/</guid>
       <description>&lt;div class=&#34;paragraph&#34;&gt;
 &lt;p&gt;You might have heard about preview environments (AKA dynamic, or ephemeral environments) in the scope of software engineering and, particularly, this term is used when speaking about the SDLC.&lt;/p&gt;
@@ -28,23 +29,19 @@ I won’t go into details here, but instead, I’ll be focusing on the most chal
 &lt;p&gt;The database.&lt;/p&gt;
 &lt;/div&gt;</description>
     </item>
-    
     <item>
       <title>Docker-based GitHub Actions in orphan branches</title>
       <link>https://madhead.me/posts/orphan-action/</link>
       <pubDate>Sun, 10 Oct 2021 23:27:00 +0200</pubDate>
-      
       <guid>https://madhead.me/posts/orphan-action/</guid>
       <description>GitHub Actions are great for sharing &amp;amp; reusing logic across your CI/CD pipelines. However, sometimes sharing is not the highest priority. Sometimes you only want to hide the complexity by exctacting &amp;amp; encapsulating multiple build steps and replacing them with a single action.
 Anyway, you have to create a GitHub action.
 You could use actions stored in the same repository as the workflow. Such actions must be either written in JavaScript or be Docker actions, i.</description>
     </item>
-    
     <item>
       <title>Reading Java properties in GitHub Actions</title>
       <link>https://madhead.me/posts/read-java-properties/</link>
       <pubDate>Sun, 28 Mar 2021 00:30:00 +0300</pubDate>
-      
       <guid>https://madhead.me/posts/read-java-properties/</guid>
       <description>&lt;div class=&#34;paragraph&#34;&gt;
 &lt;p&gt;Have you &lt;a href=&#34;../semver-utils&#34;&gt;heard&lt;/a&gt; that GitHub Actions are cool?&lt;/p&gt;
@@ -53,12 +50,10 @@ You could use actions stored in the same repository as the workflow. Such action
 &lt;p&gt;I just want to share another action with you, that you may find useful in your Java projects.&lt;/p&gt;
 &lt;/div&gt;</description>
     </item>
-    
     <item>
       <title>One-stop shop for working with semantic versions in your GitHub Actions workflows</title>
       <link>https://madhead.me/posts/semver-utils/</link>
       <pubDate>Thu, 25 Mar 2021 23:00:00 +0300</pubDate>
-      
       <guid>https://madhead.me/posts/semver-utils/</guid>
       <description>&lt;div class=&#34;paragraph&#34;&gt;
 &lt;p&gt;GitHub Actions are so cool!&lt;/p&gt;
@@ -68,12 +63,10 @@ You could use actions stored in the same repository as the workflow. Such action
 And it wasn’t hard at all, thanks to the way they work (although I’m going to &lt;a href=&#34;../../tags/rant&#34;&gt;rant&lt;/a&gt; about that in future articles).&lt;/p&gt;
 &lt;/div&gt;</description>
     </item>
-    
     <item>
       <title>Keeping Gradle up-to-date</title>
       <link>https://madhead.me/posts/keeping-gradle-up-to-date/</link>
       <pubDate>Tue, 16 Jul 2019 09:00:00 +0300</pubDate>
-      
       <guid>https://madhead.me/posts/keeping-gradle-up-to-date/</guid>
       <description>&lt;div class=&#34;paragraph&#34;&gt;
 &lt;p&gt;&lt;a href=&#34;https://gradle.org&#34;&gt;Gradle&lt;/a&gt; is an awesome build tool, and I am always looking forward to new versions to enjoy the latest features, performance improvements and bug fixes.
@@ -85,6 +78,5 @@ And I actually do that from time to time when I need to know the latest availabl
 But how can I keep Gradle up-to-date in the existing codebases?&lt;/p&gt;
 &lt;/div&gt;</description>
     </item>
-    
   </channel>
 </rss>

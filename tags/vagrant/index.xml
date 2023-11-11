@@ -5,12 +5,13 @@
     <link>https://madhead.me/tags/vagrant/</link>
     <description>Recent content in vagrant on madhead</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 17 Sep 2017 01:10:00 +0300</lastBuildDate><atom:link href="https://madhead.me/tags/vagrant/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Sun, 17 Sep 2017 01:10:00 +0300</lastBuildDate>
+    <atom:link href="https://madhead.me/tags/vagrant/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Speeding up Kitchen converges with Squid</title>
       <link>https://madhead.me/posts/kitchen-squid/</link>
       <pubDate>Sun, 17 Sep 2017 01:10:00 +0300</pubDate>
-      
       <guid>https://madhead.me/posts/kitchen-squid/</guid>
       <description>&lt;div class=&#34;paragraph&#34;&gt;
 &lt;p&gt;One day, you may find yourself smoking too often or drinking a lot of coffee while waiting for the files to be downloaded during provisioning of Vagrant / Kitchen VMs.
@@ -19,6 +20,5 @@ You can save precious seconds of your life with &lt;a href=&#34;http://www.squid
 Though some configuration is required, it wont take more than 5 minutes.&lt;/p&gt;
 &lt;/div&gt;</description>
     </item>
-    
   </channel>
 </rss>

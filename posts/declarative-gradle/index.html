@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang='en' dir='auto'><head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='
+Yesterday, JetBrains introduced Amper.
+Today, Gradle published another related article, named Declarative Gradle.
+
+
+Now, I can see the direction it is leaning towards, and I am afraid of this future.
+
+
+
+
+
+'>
+<meta name="monetization" content='$ilp.uphold.com/wgzRi7wDbPFf'>
+
+<meta property='og:title' content='Why Declarative Gradle is a cool thing I am afraid of: Maven strikes back • madhead'>
+<meta property='og:description' content='
+Yesterday, JetBrains introduced Amper.
+Today, Gradle published another related article, named Declarative Gradle.
+
+
+Now, I can see the direction it is leaning towards, and I am afraid of this future.
+
+
+
+
+
+'>
+<meta property='og:url' content='https://madhead.me/posts/declarative-gradle/'>
+<meta property='og:site_name' content='madhead'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='gradle'><meta property='article:tag' content='maven'><meta property='article:published_time' content='2023-11-10T20:00:00&#43;02:00'/><meta property='article:modified_time' content='2023-11-10T20:00:00&#43;02:00'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.120.4">
+
+  <title>Why Declarative Gradle is a cool thing I am afraid of: Maven strikes back • madhead</title>
+  <link rel='canonical' href='https://madhead.me/posts/declarative-gradle/'>
+  
+  
+  <link rel='icon' href='/favicon.ico'>
+<link rel='stylesheet' href='/assets/css/main.5c2014c4.css'><link rel='stylesheet' href='/css/admonitions.css'><link rel='stylesheet' href='/css/tables.css'><link rel='stylesheet' href='/css/spoilers.css'><style>
+:root{--color-accent:#000000;}
+</style>
+
+  
+
+</head>
+<body class='page type-posts has-sidebar'>
+
+  <div class='site'><div id='sidebar' class='sidebar'>
+  <a class='screen-reader-text' href='#main-menu'>Skip to Main Menu</a>
+
+  <div class='container'><section class='widget widget-about sep-after'>
+  <header>
+    
+    <div class='logo'>
+      <a href='/'>
+        <img src='/images/logo.svg'>
+      </a>
+    </div>
+    
+    <div class='desc'>
+    
+    </div>
+  </header>
+
+</section>
+<section class='widget widget-sidebar_menu sep-after'><nav id='sidebar-menu' class='menu sidebar-menu' aria-label='Sidebar Menu'>
+    <div class='container'>
+      <ul><li class='item'>
+  <a href='/posts/'>posts</a></li><li class='item'>
+  <a href='/tags/'>tags</a></li></ul>
+    </div>
+  </nav>
+
+</section>
+
+<section class='widget widget-sidebar_menu sep-after'>
+  <nav id='sidebar-menu' class='menu sidebar-menu' aria-label='Sidebar Menu'>
+    <div class='container'>
+      <ul><li class='item'>
+          <a href='https://ru.madhead.me/'>RU</a>
+        </li></ul>
+    </div>
+  </nav>
+</section><section class='widget widget-social_menu sep-after'><nav aria-label='Social Menu'>
+    <ul><li>
+        <a href='mailto:siarhei.krukau@gmail.com' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Contact via Email</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+<polyline points="22,6 12,13 2,6" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://t.me/madheab' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Telegram account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M23.91 3.79L20.3 20.84c-.25 1.21-.98 1.5-2 .94l-5.5-4.07-2.66 2.57c-.3.3-.55.56-1.1.56-.72 0-.6-.27-.84-.95L6.3 13.7l-5.45-1.7c-1.18-.35-1.19-1.16.26-1.75l21.26-8.2c.97-.43 1.9.24 1.53 1.73z" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://github.com/madhead' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Github account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://gitlab.com/madhead' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Gitlab account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M22.65 14.39L12 22.13 1.35 14.39a.84.84 0 0 1-.3-.94l1.22-3.78 2.44-7.51A.42.42 0 0 1 4.82 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.49h8.1l2.44-7.51A.42.42 0 0 1 18.6 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.51L23 13.45a.84.84 0 0 1-.35.94z" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://stackoverflow.com/users/750510' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Stackoverflow account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><line x1="3.472" y1="18.689" x2="16.612" y2="18.689" />
+<line x1="4.017" y1="12.715" x2="16.884" y2="15.404" />
+<line x1="5.991" y1="6.673" x2="17.906" y2="12.238" />
+<line x1="9.582" y1="1.021" x2="19.692" y2="9.430" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://linkedin.com/in/krukaus' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Linkedin account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+<rect x="2" y="9" width="4" height="12" />
+<circle cx="4" cy="4" r="2" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://instagram.com/m.a.d.h.e.a.d' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Instagram account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+<line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://www.youtube.com/channel/UCO2UZ6hUzjn9XQIdwwkcXJQ' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Youtube account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
+<polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://twitter.com/m_a_d_h_e_a_d' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Twitter account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://mastodon.online/@madhead' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Mastodon account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="m21.448 11.064v8.3572h-3.2914v-8.1115c0-1.7099-0.71521-2.5778-2.1459-2.5778-1.5818 0-2.3745 1.0295-2.3745 3.0653v4.4399h-3.272v-4.4399c0-2.0357-0.79292-3.0653-2.3746-3.0653-1.4305 0-2.1459 0.86789-2.1459 2.5778v8.1115h-3.2914v-8.3572c0-1.7081 0.43233-3.0653 1.3007-4.0694 0.89551-1.0042 2.0682-1.519 3.524-1.519 1.6844 0 2.9598 0.65121 4.623 0.65124 1.6632 2.7e-5 2.9387-0.65124 4.6231-0.65124 1.4556 0 2.6283 0.51477 3.524 1.519 0.86823 1.0042 1.3006 2.3615 1.3006 4.0694" fill="none" stroke="#000" stroke-width="2"/>
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</section></div>
+
+  <div class='sidebar-overlay'></div>
+</div><div class='main'><nav id='main-menu' class='menu main-menu' aria-label='Main Menu'>
+  <div class='container'>
+    <a class='screen-reader-text' href='#content'>Skip to Content</a>
+
+<button id='sidebar-toggler' class='sidebar-toggler' aria-controls='sidebar'>
+  <span class='screen-reader-text'>Toggle Sidebar</span>
+  <span class='open'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><line x1="3" y1="12" x2="21" y2="12" />
+<line x1="3" y1="6" x2="21" y2="6" />
+<line x1="3" y1="18" x2="21" y2="18" />
+</svg>
+</span>
+  <span class='close'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><line x1="18" y1="6" x2="6" y2="18" />
+<line x1="6" y1="6" x2="18" y2="18" />
+</svg>
+</span>
+</button>
+    <ul></ul>
+  </div>
+</nav><div class='header-widgets'>
+        <div class='container'></div>
+      </div>
+
+      <header id='header' class='header site-header'>
+        <div class='container sep-after'>
+          <div class='header-info'><p class='site-title title'>madhead</p><p class='desc site-desc'></p>
+          </div>
+        </div>
+      </header>
+
+      <main id='content'>
+
+
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
+  <div class='container sep-after'>
+    <div class='header-info'>
+      <h1 class='title'>Why Declarative Gradle is a cool thing I am afraid of: Maven strikes back</h1>
+      
+
+    </div>
+    <div class='entry-meta'>
+  <span class='posted-on'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+<line x1="16" y1="2" x2="16" y2="6" />
+<line x1="8" y1="2" x2="8" y2="6" />
+<line x1="3" y1="10" x2="21" y2="10" />
+</svg>
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='2023-11-10T20:00:00&#43;02:00'>2023-11-10</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><circle cx="12" cy="12" r="10" />
+<polyline points="12 6 12 12 15 15" />
+</svg>
+10 mins to read
+</span>
+
+
+</div>
+
+
+  </div>
+</header>
+
+  
+  
+
+  <div class='container entry-content'>
+  <div class="paragraph">
+<p>Yesterday, JetBrains <a href="https://blog.jetbrains.com/blog/2023/11/09/amper-improving-the-build-tooling-user-experience">introduced Amper</a>.
+Today, Gradle published another related article, named <a href="https://blog.gradle.org/declarative-gradle">Declarative Gradle</a>.</p>
+</div>
+<div class="paragraph">
+<p>Now, I can see the direction it is leaning towards, and I am afraid of this future.</p>
+</div>
+<div class="paragraph">
+<figure class="align-center"><img src="//storage.googleapis.com/madheadme-static/posts/declarative-gradle/001.jpg"/>
+</figure>
+
+</div>
+<div class="sect1">
+<h2 id="_history_of_java_build_tools_simplified_and_opinionated">History of Java Build Tools, simplified and opinionated</h2>
+<div class="sectionbody">
+<div class="admonitionblock warning">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>I won’t mention <a href="https://scala-sbt.org">SBT</a> and <a href="https://leiningen.org">Leiningen</a> here because, with all due respect, they are niche build tools.
+I also won’t discuss <a href="https://beust.com/kobalt">Kobalt</a> for the same reason (besides, it’s no longer actively maintained).
+Additionally, I won’t touch upon <a href="https://bazel.build">Bazel</a> and <a href="https://buck2.build">Buck</a> in this context, mainly because I’m not very familiar with them.
+If you have insights or comments about these tools, please feel free to share them in the comments 👇</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p>Let me provide a quick recall of the history of (Java) build tools.</p>
+</div>
+<div class="paragraph">
+<p>At the beginning, there was Ant.
+The fact of its existence is more information than a sensible person would typically need.</p>
+</div>
+<div class="paragraph">
+<p>Then arrived Maven, the cool kid on the block around 2005.
+Maven was a very specific solution to a very specific problem: it was a tool used by Apache to build its projects, mostly Java libraries, back at those days.
+Notably, the widely adopted <code>src/main/java</code> and <code>src/test/java</code> structure finds its roots in Apache’s practices from that era.
+This narrative somewhat parallels the (mostly fictitious) story <a href="https://www.reddit.com/r/space/comments/k4x1gq/the_connection_between_horses_asses_and_space">linking horse’s ass to space shuttles</a>.
+Following that, there was a Maven Golden Age lasting until the 2010s, largely attributed to the absence of substantial competition and the relatively simple nature of Java projects.</p>
+</div>
+<div class="paragraph">
+<p>Yet, the landscape changed.
+In no particular order:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Projects became more complex.</p>
+</li>
+<li>
+<p>Apps began to be packaged in Docker images.</p>
+</li>
+<li>
+<p>Projects started adopting a multi-module structure, with some extending to include thousands of individual modules.</p>
+</li>
+<li>
+<p>Build times increased.</p>
+</li>
+<li>
+<p>The evolution of build tools expanded their role beyond traditional building functions.</p>
+</li>
+<li>
+<p>Multi-language projects emerged, with a simple example being the development of a JavaScript frontend.</p>
+</li>
+<li>
+<p>…and then frontends evolved, the need to build them using tools like Webpack arose, though that’s a different story.</p>
+</li>
+<li>
+<p>Truly multi-platform projects unfolded.
+To clarify: while Java is multi-platform, developing for server, web, desktop, iOS, and Android from a single codebase became hip only recently.
+Yes, I am talking about Kotlin Multiplatform.</p>
+</li>
+<li>
+<p>…these multi-platform projects required the use of multi-platform dependencies.</p>
+</li>
+<li>
+<p>And so forth.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Maven struggled to keep pace.
+Its origins as a build tool for simple Java libraries within Apache left it unprepared for the evolving landscape.</p>
+</div>
+<div class="paragraph">
+<p>Consider build caching.
+Maven lacks a proper mechanism for it, except a local repository, but that’s not the same.
+Multi-platform dependencies are another challenge.
+The GAV notation (group, artifact, version), Maven’s Holy Grail, proves inadequate.
+And it still relies on a — completely fabricated and opinionated — build lifecycle, organized into dozen-or-something phases.
+Why not a Directed Acyclic Graph (DAG)?</p>
+</div>
+<div class="paragraph">
+<p>Enter Gradle, our savior.
+Despite being ridiculosly complex — sometimes — it was built on a simple idea — a Directed Acyclic Graph (DAG) — enabling it to evolve and adapt to new challenges.
+That’s why…​</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_gradle_is_the_most_advanced_build_tool_in_the_java_world">Gradle is the most advanced build tool in the Java world!</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Consider Android projects.
+They are arguably significantly more challenging than typical Java projects.
+Their builds involve tasks like processing resources and assets, supporting multiple target SDKs, managing various build flavors, and occasionally dealing with native code and dependencies targeting different CPU architectures.
+Yet Gradle became the default build tool for Android projects shortly after Android projects even get a build tool!
+If my memory serves me right, they jumped straight from Ant to Gradle, bypassing Maven, thanks to Google’s influence – a move that I find quite illustrative.</p>
+</div>
+<div class="paragraph">
+<p>Now, let’s explore other prominent projects in the Java landscape.
+Kotlin, Spring, Hibernate, RxJava — you name it, they all rely on Gradle.
+With two possible exceptions.
+Oracle isn’t particularly fond of Gradle, so don’t be surprised if you discover that GraalVM is built with Maven (it actually is, but the build process is more complex than just Maven vs. Gradle).
+And, of course, Apache remains loyal to Maven in projects like Hadoop and Spark.
+After all, it’s their child!
+Kafka is build with Gradle, though</p>
+</div>
+<div class="paragraph">
+<p>However, virtually every other major Java project uses Gradle — check your own dependencies!</p>
+</div>
+<div class="paragraph">
+<p>In essence, Gradle is a superset of Maven.
+In strict mathematical terms, ponder it for a moment.
+Everything achievable with Maven can be replicated with Gradle, but the reverse is not true.</p>
+</div>
+<div class="paragraph">
+<p>Gradle’s DAG is so simple and powerful that you could probably replicate any other build tool with it.
+The only limitation I could think of: due to the separation of configuration and execution phases, creating and injecting tasks into the DAG on the fly might not be possible.
+Or is it?
+Don’t try that at home!</p>
+</div>
+<div class="paragraph">
+<p>If you have any counterarguments at this juncture, please share them in the comments.
+I’m genuinely interested in understanding any aspects I might be overlooking 👇</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_why_strive_for_declarativeness">Why strive for declarativeness?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Alright, let’s establish a boundary here.</p>
+</div>
+<div class="paragraph">
+<p>Gradle is one of the most advanced build tools ever, and unquestionably, it is the most advanced build tool in the Java world.</p>
+</div>
+<div class="paragraph">
+<p>It’s based on a very simple yet scalable and extensible concept.</p>
+</div>
+<div class="paragraph">
+<p>However, this scalability and extensibility come at the cost of complexity, and not everyone enjoys its power at this price tag.</p>
+</div>
+<div class="paragraph">
+<p>So, a while back, a new trend emerged: declarative Gradle.
+I claim that this concept isn’t entirely novel, and the article I referred to at the beginning of this post essentially encapsulates what has already been circulating, rather than initiating the trend.</p>
+</div>
+<div class="paragraph">
+<p>The Android Gradle plugin serves as a noteworthy example of declarative Gradle that has been in existence for a considerable time.</p>
+</div>
+<div class="paragraph">
+<p></p><details><summary>
+Here’s a snippet from the <a href="https://developer.android.com/build">official documentation</a>
+</summary><div><p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">plugins {
+    id(&#34;com.android.application&#34;)
+}
+
+kotlin {
+    jvmToolchain(11)
+}
+
+android {
+    namespace = &#34;com.example.myapp&#34;
+
+    compileSdk = 33
+
+    defaultConfig {
+        applicationId = &#34;com.example.myapp&#34;
+        minSdk = 21
+        targetSdk = 33
+        versionCode = 1
+        versionName = &#34;1.0&#34;
+    }
+
+    buildTypes {
+        getByName(&#34;release&#34;) {
+            isMinifyEnabled = true
+            proguardFiles(
+                getDefaultProguardFile(&#34;proguard-android.txt&#34;),
+                &#34;proguard-rules.pro&#34;
+            )
+        }
+        getByName(&#34;debug&#34;) {
+            …
+        }
+    }
+
+    flavorDimensions += &#34;tier&#34;
+    productFlavors {
+        create(&#34;free&#34;) {
+            dimension = &#34;tier&#34;
+            applicationId = &#34;com.example.myapp.free&#34;
+        }
+
+        create(&#34;paid&#34;) {
+            dimension = &#34;tier&#34;
+            applicationId = &#34;com.example.myapp.paid&#34;
+        }
+    }
+}
+
+dependencies {
+    implementation(project(&#34;:lib&#34;))
+    implementation(&#34;androidx.appcompat:appcompat:1.6.1&#34;)
+    implementation(fileTree(mapOf(&#34;dir&#34; to &#34;libs&#34;, &#34;include&#34; to listOf(&#34;*.jar&#34;))))
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p></p></div></details><p></p>
+</div>
+<div class="paragraph">
+<p>Is it really declarative or imperative?</p>
+</div>
+<div class="paragraph">
+<p>Upon closer examination, you’ll notice that it is imperative!
+Statements like these</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>flavorDimensions += &#34;tier</code>,</p>
+</li>
+<li>
+<p><code>getByName(&#34;release&#34;)</code></p>
+</li>
+<li>
+<p><code>create(&#34;free&#34;)</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>…are extremely imperative!</p>
+</div>
+<div class="paragraph">
+<p>Or perhaps not?
+After all, it’s just DSL, isn’t it?
+And quite eloquent one, I must say.
+Assignments and maybe a bit of object creation and configuration are inevitable, especially when dealing with software models like this.</p>
+</div>
+<div class="paragraph">
+<p>What’s more important, is that we don’t see any conditions and loops here.
+They are the true evil of imperative programming, and here, there are none!</p>
+</div>
+<div class="paragraph">
+<p>Another example of declarative Gradle are so-called convention plugins.
+While the <a href="https://docs.gradle.org/current/userguide/custom_plugins.html">documentation about custom plugins</a> may not explicitly state and emphasize this term (which is a problem itself!), it is used in <a href="https://docs.gradle.org/current/samples/sample_convention_plugins.html">the samples</a>.
+There is also this cool guy on YouTube, advocating for these best practices as well, take a look!</p>
+</div>
+<div class="paragraph">
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/N95YI-szd78" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+</div>
+<div class="paragraph">
+<p>The idea behind convention plugins is really interesting, and it is very simililar to the AGP example above (in fact, AGP is a convention plugin!): to conceal all the complexity behind a simple DSL.
+Consider, for instance, another article of mine: <a href="https://madhead.me/posts/no-bullshit-maven-publish">No-bullshit guide on publishing your Gradle projects to Maven Central</a>.
+Now, instead of cluttering your build script with the cumbersome publishing block, you could create a convention plugin, resulting in a build script that looks something like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">plugins {
+    id(&#34;com.acme.publishing&#34;)
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>That’s it!
+You wouldn’t even have to configure the GAV, as the values could be inferred from the project itself.
+Moreover, this hypothetical plugin could be shared across your company, ensuring uniform publishing configurations for all company’s projects.</p>
+</div>
+<div class="paragraph">
+<p>Thats really imperative, and this is already available in Gradle!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_problem_with_the_declarative_gradle">The problem with the &#34;Declarative Gradle&#34;</h2>
+<div class="sectionbody">
+<div class="admonitionblock tip">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Kudos to the vigilant readers who spotted the inconsistency: I used the term &#34;Declarative Gradle&#34; with a capitalized &#39;D&#39; here, but earlier, I employed &#34;declarative Gradle&#34; with a lowercase &#39;d&#39;.</p>
+</div>
+<div class="paragraph">
+<p>And there’s a reason for that!</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p>As demonstrated in the previous section, Gradle is already declarative if you wish it to be!
+All the tools are at your disposal to conceal complexity behind a straightforward and declarative DSL.
+Granted, it requires an investment of time: reading the docs, tuning into YouTube, and the like.
+In larger companies, a dedicated build engineer might be a prudent choice.</p>
+</div>
+<div class="paragraph">
+<p>However, <a href="https://blog.gradle.org/declarative-gradle">the article</a> I linked at the beginning actually introduces a new term: Declarative Gradle, &#39;D&#39; capitalized.</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>This blog post explains the Gradle team’s perspective for what we call a developer-first software definition, or Declarative Gradle for short. This post outlines our plans for making the “elegant and declarative build language” part of our vision a reality.</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>If I understand correctly, &#34;Declarative Gradle&#34; is essentially the same concept as described above but perhaps more trademarked.
+In fact, &#34;Declarative Gradle&#34; seems to be a more manager-friendly term than &#34;convention plugin,&#34; and that’s perfectly fine.</p>
+</div>
+<div class="paragraph">
+<p>My concern lies in this:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>We plan to provide a restricted DSL that separates the software definition and build logic so that the build language is fully declarative. This will effectively enforce existing best practices.</p>
+</div>
+<div class="paragraph">
+<p>The restricted DSL will allow only a limited set of constructs, such as nesting blocks, assigning values, and selected method invocations. Generic control flow and calls to arbitrary methods will be disallowed. You will be able to write your build logic in any JVM language, such as Java, Kotlin, or Groovy, but that logic will reside in plugins (either local or published).</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>This is disheartening for me because it feels like a step back.</p>
+</div>
+<div class="paragraph">
+<p>This <em>is Maven</em>, to be precise.</p>
+</div>
+<div class="paragraph">
+<p>Maven is already a tool with a very restricted DSL (XML; funnily enough, XML <a href="https://stackoverflow.com/a/17912073/750510">could be</a> Turing-complete), where the entire complexity is hidden behind plugins crafted on top of an ambiguous and controversial API.
+Tinkering with the Maven API is genuinely challenging, while you could kick-start your Gradle plugin right in your build script.</p>
+</div>
+<div class="paragraph">
+<p><strong>Flexibility is the ultimate power of Gradle</strong>, and I am afraid of losing it.
+I’m afraid of Gradle loosing its charm.
+This is the reason why it is a better build tool than Maven (and this is the first time I’m actually saying that).
+It’s about freedom, a quality that doesn’t exist in Maven.</p>
+</div>
+<div class="paragraph">
+<p>Don’t get me wrong: it’s not advisable to incorporate complex, imperative build logic directly into a build script.
+There are effective ways to circumvent that, as outlined above and in the docs.
+In my nearly 10 years of using Gradle, I’ve never used a loop in a build script.
+I’ve used conditions a few times, probably less than 10 times overall, so less than once per year.
+However, I now know how to eliminate them completely.
+The last time I utilized <code>allprojects</code> or <code>subprojects</code> was likely 3-5 years ago, and I know how to avoid them as well.</p>
+</div>
+<div class="paragraph">
+<p>All these things are avoidable by acquainting yourself with the latest Gradle features.
+Dive into the release notes!
+Don’t shy away from using the latest Gradle version in your project either (because if you crave for Declarative Gradle™, an upgrade is inevitable).
+Embrace the best practices available.
+If you need a refresher on Gradle, watch <a href="https://www.youtube.com/playlist?list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE">that guy</a> on YouTube, he’s brilliant!</p>
+</div>
+<div class="paragraph">
+<p><strong>
+I am apprehensive that at the end of this &#34;declarativization&#34;, we might end up with a less powerful, restricted version of Gradle.
+I fear that the Maven mindset — the concept of having a limited but safe tool — might prevail.
+</strong></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_why_you_shouldnt_be_too_worried_and_some_artistic_assumptions">Why you shouldn’t be too worried (and some artistic assumptions)</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>I depicted Godzilla Gradle and Kong Amper in a fight, but in reality, Amper is built atop Gradle, making them more like allies.</p>
+</li>
+<li>
+<p><em>The existing DSL will continue to be fully supported.</em></p>
+</li>
+<li>
+<p>It won’t be XML! 🤞</p>
+</li>
+<li>
+<p>No idea or implementation triumphs without community support.
+Alarmists like me have a chance to resist ✊</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+
+  
+<footer class='entry-footer'>
+  <div class='container sep-before'><div class='tags'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z" />
+<line x1="7" y1="7" x2="7" y2="7" />
+</svg>
+<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/gradle/'>gradle</a>, <a class='tag' href='/tags/maven/'>maven</a></div>
+
+  </div>
+</footer>
+
+
+</article>
+
+
+<section id='comments' class='comments'>
+  <div class='container sep-before'>
+    <div class='comments-area'><div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "madhead-me" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+  </div>
+</section>
+
+      </main>
+
+      <footer id='footer' class='footer'>
+        <div class='container sep-before'><div class='copyright'>
+  <p></p>
+</div>
+
+        </div>
+      </footer>
+
+    </div>
+  </div><script>window.__assets_js_src="/assets/js/"</script>
+
+<script src='/assets/js/main.eb49ae54.js'></script>
+
+</body>
+
+</html>
+

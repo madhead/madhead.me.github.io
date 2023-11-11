@@ -5,12 +5,13 @@
     <link>https://madhead.me/tags/kotlin/</link>
     <description>Recent content in kotlin on madhead</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 18 Jun 2020 09:00:00 +0300</lastBuildDate><atom:link href="https://madhead.me/tags/kotlin/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Thu, 18 Jun 2020 09:00:00 +0300</lastBuildDate>
+    <atom:link href="https://madhead.me/tags/kotlin/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Learning Kafka: Kafka Connect &#43; Wikipedia</title>
       <link>https://madhead.me/posts/kafka-connect-wikipedia/</link>
       <pubDate>Thu, 18 Jun 2020 09:00:00 +0300</pubDate>
-      
       <guid>https://madhead.me/posts/kafka-connect-wikipedia/</guid>
       <description>&lt;div class=&#34;paragraph&#34;&gt;
 &lt;p&gt;I’ve been developing backend software for almost 10 years already and never had a chance to work closely with &lt;a href=&#34;https://kafka.apache.org&#34;&gt;Apache Kafka&lt;/a&gt;.
@@ -20,23 +21,19 @@ Join me in this article, where I’ll be developing a &lt;a href=&#34;https://ka
 I’ll develop a &lt;a href=&#34;https://kafka.apache.org/documentation/streams&#34;&gt;Kafka Streams&lt;/a&gt; application processing this topic in one of the future articles, so stay tuned.&lt;/p&gt;
 &lt;/div&gt;</description>
     </item>
-    
     <item>
       <title>How I fucked up with enum&#39;s hashCode</title>
       <link>https://madhead.me/posts/enums-fuckup/</link>
       <pubDate>Wed, 27 May 2020 09:00:00 +0300</pubDate>
-      
       <guid>https://madhead.me/posts/enums-fuckup/</guid>
       <description>&lt;div class=&#34;paragraph&#34;&gt;
 &lt;p&gt;A short story about a newbie’s mistake I’ve made recently.&lt;/p&gt;
 &lt;/div&gt;</description>
     </item>
-    
     <item>
       <title>Redis module in Kotlin/Native</title>
       <link>https://madhead.me/posts/kotlin-native-redis/</link>
       <pubDate>Wed, 11 Mar 2020 09:00:00 +0300</pubDate>
-      
       <guid>https://madhead.me/posts/kotlin-native-redis/</guid>
       <description>&lt;div class=&#34;paragraph&#34;&gt;
 &lt;p&gt;Those of you who have some experience with Redis may know that it is not just a simple cache or a plain key-value store, but actually a data structures server, supporting different kinds of values.
@@ -49,12 +46,10 @@ Some of the popular community-supported native types are &lt;a href=&#34;https:/
 But first, I want to say thanks to &lt;a href=&#34;https://research.jetbrains.org/researchers/artdegt&#34;&gt;Artyom Degtyarev&lt;/a&gt; from JetBrains, who helped a lot with Kotlin/Native in &lt;a href=&#34;https://kotlinlang.slack.com&#34;&gt;Kotlin Slack&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;</description>
     </item>
-    
     <item>
       <title>Speeding up the detekt task in a multi-project Gradle build.</title>
       <link>https://madhead.me/posts/detekt-faster/</link>
       <pubDate>Wed, 12 Feb 2020 09:00:00 +0300</pubDate>
-      
       <guid>https://madhead.me/posts/detekt-faster/</guid>
       <description>&lt;div class=&#34;paragraph&#34;&gt;
 &lt;p&gt;I’m going to tell you how to significantly speed up the &lt;code&gt;detekt&lt;/code&gt; task in a multi-project Gradle build.
@@ -62,12 +57,10 @@ Precise numbers vary depending on many factors, of course.
 In my case, in a build with 56 subprojects and ~7000 lines of code, it was about &lt;strong&gt;10 times faster&lt;/strong&gt;.&lt;/p&gt;
 &lt;/div&gt;</description>
     </item>
-    
     <item>
       <title>Kotlin/Native for AWS Lambda</title>
       <link>https://madhead.me/posts/kotlin-native-lambda/</link>
       <pubDate>Fri, 05 Apr 2019 22:02:00 +0300</pubDate>
-      
       <guid>https://madhead.me/posts/kotlin-native-lambda/</guid>
       <description>&lt;div class=&#34;paragraph&#34;&gt;
 &lt;p&gt;Amazon &lt;a href=&#34;https://aws.amazon.com/about-aws/whats-new/2018/11/aws-lambda-now-supports-custom-runtimes-and-layers&#34;&gt;announced&lt;/a&gt; Lambda Runtime API on AWS &lt;a href=&#34;https://reinvent.awsevents.com&#34;&gt;re:Invent&lt;/a&gt; 2018.
@@ -79,6 +72,5 @@ Yes, it’s now possible to author a function on PHP, Perl, Pascal (anybody?) or
 Let’s build an AWS Lambda function with &lt;a href=&#34;https://kotlinlang.org/docs/native-overview.html&#34;&gt;Kotlin/Native&lt;/a&gt;!&lt;/p&gt;
 &lt;/div&gt;</description>
     </item>
-    
   </channel>
 </rss>

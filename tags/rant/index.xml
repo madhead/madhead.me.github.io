@@ -5,12 +5,13 @@
     <link>https://madhead.me/tags/rant/</link>
     <description>Recent content in rant on madhead</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 27 Feb 2021 18:00:00 +0300</lastBuildDate><atom:link href="https://madhead.me/tags/rant/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Sat, 27 Feb 2021 18:00:00 +0300</lastBuildDate>
+    <atom:link href="https://madhead.me/tags/rant/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>No-bullshit guide on publishing your Gradle projects to Maven Central</title>
       <link>https://madhead.me/posts/no-bullshit-maven-publish/</link>
       <pubDate>Sat, 27 Feb 2021 18:00:00 +0300</pubDate>
-      
       <guid>https://madhead.me/posts/no-bullshit-maven-publish/</guid>
       <description>&lt;div class=&#34;paragraph&#34;&gt;
 &lt;p&gt;You’ve heard &lt;a href=&#34;https://jfrog.com/blog/into-the-sunset-bintray-jcenter-gocenter-and-chartcenter&#34;&gt;the news&lt;/a&gt;, haven’t you?
@@ -27,46 +28,38 @@ Good night, sweet prince.&lt;/p&gt;
 &lt;p&gt;It’s time to move your projects to Maven Central Repository, so I’ve gathered some info for you below to minimize the pain.&lt;/p&gt;
 &lt;/div&gt;</description>
     </item>
-    
     <item>
       <title>How I fucked up with a private key and newlines</title>
       <link>https://madhead.me/posts/private-key-newline-fuckup/</link>
       <pubDate>Tue, 09 Feb 2021 23:00:00 +0300</pubDate>
-      
       <guid>https://madhead.me/posts/private-key-newline-fuckup/</guid>
       <description>&lt;div class=&#34;paragraph&#34;&gt;
 &lt;p&gt;A short story about wasting a day on a single newline at the end of a private key.&lt;/p&gt;
 &lt;/div&gt;</description>
     </item>
-    
     <item>
       <title>How I fucked up with enum&#39;s hashCode</title>
       <link>https://madhead.me/posts/enums-fuckup/</link>
       <pubDate>Wed, 27 May 2020 09:00:00 +0300</pubDate>
-      
       <guid>https://madhead.me/posts/enums-fuckup/</guid>
       <description>&lt;div class=&#34;paragraph&#34;&gt;
 &lt;p&gt;A short story about a newbie’s mistake I’ve made recently.&lt;/p&gt;
 &lt;/div&gt;</description>
     </item>
-    
     <item>
       <title>Hard lesson from NVIDIA</title>
       <link>https://madhead.me/posts/nvidia-hard-lesson/</link>
       <pubDate>Sun, 19 Aug 2018 01:42:00 +0300</pubDate>
-      
       <guid>https://madhead.me/posts/nvidia-hard-lesson/</guid>
       <description>&lt;div class=&#34;paragraph&#34;&gt;
 &lt;p&gt;Last week I’ve managed to accidentally break my Linux installation.
 Probably, the first time for the last ten years where Linux behaved truly “unstable”.&lt;/p&gt;
 &lt;/div&gt;</description>
     </item>
-    
     <item>
       <title>Maven is not as stable as many think</title>
       <link>https://madhead.me/posts/maven-is-not-so-stable/</link>
       <pubDate>Sun, 19 Aug 2018 00:34:00 +0300</pubDate>
-      
       <guid>https://madhead.me/posts/maven-is-not-so-stable/</guid>
       <description>&lt;div class=&#34;paragraph&#34;&gt;
 &lt;p&gt;Sometimes I’m trying to show others that there is a better alternative to Maven: Gradle.
@@ -74,6 +67,5 @@ I’m trying to show them how Gradle can make things easy &amp;amp; possible whe
 I often hear in reply: “Gradle sucks because it’s a hipster technology. It’s new and unstable. Will you help me if something goes wrong?”.&lt;/p&gt;
 &lt;/div&gt;</description>
     </item>
-    
   </channel>
 </rss>

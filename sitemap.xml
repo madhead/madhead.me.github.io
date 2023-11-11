@@ -2,6 +2,64 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://madhead.me/tags/gradle/</loc>
+    <lastmod>2023-11-10T20:00:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://ru.madhead.me/tags/gradle/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://madhead.me/tags/gradle/"
+                />
+  </url><url>
+    <loc>https://madhead.me/</loc>
+    <lastmod>2023-11-10T20:00:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://ru.madhead.me/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://madhead.me/"
+                />
+  </url><url>
+    <loc>https://madhead.me/tags/maven/</loc>
+    <lastmod>2023-11-10T20:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://madhead.me/posts/</loc>
+    <lastmod>2023-11-10T20:00:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://ru.madhead.me/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://madhead.me/posts/"
+                />
+  </url><url>
+    <loc>https://madhead.me/tags/</loc>
+    <lastmod>2023-11-10T20:00:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://ru.madhead.me/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://madhead.me/tags/"
+                />
+  </url><url>
+    <loc>https://madhead.me/posts/declarative-gradle/</loc>
+    <lastmod>2023-11-10T20:00:00+02:00</lastmod>
+  </url><url>
     <loc>https://madhead.me/tags/aws/</loc>
     <lastmod>2023-05-02T18:00:00+02:00</lastmod>
   </url><url>
@@ -14,56 +72,17 @@
     <loc>https://madhead.me/tags/github-actions/</loc>
     <lastmod>2023-05-02T18:00:00+02:00</lastmod>
   </url><url>
-    <loc>https://madhead.me/</loc>
-    <lastmod>2023-05-02T18:00:00+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://ru.madhead.me/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://madhead.me/"
-                />
-  </url><url>
     <loc>https://madhead.me/tags/neon/</loc>
     <lastmod>2023-05-02T18:00:00+02:00</lastmod>
   </url><url>
     <loc>https://madhead.me/tags/postgresql/</loc>
     <lastmod>2023-05-02T18:00:00+02:00</lastmod>
   </url><url>
-    <loc>https://madhead.me/posts/</loc>
-    <lastmod>2023-05-02T18:00:00+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://ru.madhead.me/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://madhead.me/posts/"
-                />
-  </url><url>
     <loc>https://madhead.me/posts/neonbranch/</loc>
     <lastmod>2023-05-02T18:00:00+02:00</lastmod>
   </url><url>
     <loc>https://madhead.me/tags/python/</loc>
     <lastmod>2023-05-02T18:00:00+02:00</lastmod>
-  </url><url>
-    <loc>https://madhead.me/tags/</loc>
-    <lastmod>2023-05-02T18:00:00+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://ru.madhead.me/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://madhead.me/tags/"
-                />
   </url><url>
     <loc>https://madhead.me/posts/from-botfather-to-hello-world/</loc>
     <lastmod>2022-10-25T00:23:00+02:00</lastmod>
@@ -160,22 +179,6 @@
                 hreflang="en"
                 href="https://madhead.me/posts/imgmacrobot/"
                 />
-  </url><url>
-    <loc>https://madhead.me/tags/gradle/</loc>
-    <lastmod>2021-02-27T18:00:00+03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://ru.madhead.me/tags/gradle/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://madhead.me/tags/gradle/"
-                />
-  </url><url>
-    <loc>https://madhead.me/tags/maven/</loc>
-    <lastmod>2021-02-27T18:00:00+03:00</lastmod>
   </url><url>
     <loc>https://madhead.me/posts/no-bullshit-maven-publish/</loc>
     <lastmod>2021-02-27T18:00:00+03:00</lastmod>

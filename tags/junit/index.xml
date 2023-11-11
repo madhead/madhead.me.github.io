@@ -5,12 +5,13 @@
     <link>https://madhead.me/tags/junit/</link>
     <description>Recent content in junit on madhead</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 26 Sep 2019 09:00:00 +0300</lastBuildDate><atom:link href="https://madhead.me/tags/junit/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Thu, 26 Sep 2019 09:00:00 +0300</lastBuildDate>
+    <atom:link href="https://madhead.me/tags/junit/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>JUnit 5 extensions for AWS</title>
       <link>https://madhead.me/posts/aws-junit5/</link>
       <pubDate>Thu, 26 Sep 2019 09:00:00 +0300</pubDate>
-      
       <guid>https://madhead.me/posts/aws-junit5/</guid>
       <description>&lt;div class=&#34;paragraph&#34;&gt;
 &lt;p&gt;Do you test the code that uses AWS services?
@@ -23,6 +24,5 @@ These extensions can be used to inject clients for AWS service mocks provided by
 Both AWS Java SDK v 2.x and v 1.x are supported.&lt;/p&gt;
 &lt;/div&gt;</description>
     </item>
-    
   </channel>
 </rss>

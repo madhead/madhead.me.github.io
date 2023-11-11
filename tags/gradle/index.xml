@@ -5,12 +5,31 @@
     <link>https://madhead.me/tags/gradle/</link>
     <description>Recent content in gradle on madhead</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 27 Feb 2021 18:00:00 +0300</lastBuildDate><atom:link href="https://madhead.me/tags/gradle/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Fri, 10 Nov 2023 20:00:00 +0200</lastBuildDate>
+    <atom:link href="https://madhead.me/tags/gradle/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Why Declarative Gradle is a cool thing I am afraid of: Maven strikes back</title>
+      <link>https://madhead.me/posts/declarative-gradle/</link>
+      <pubDate>Fri, 10 Nov 2023 20:00:00 +0200</pubDate>
+      <guid>https://madhead.me/posts/declarative-gradle/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Yesterday, JetBrains &lt;a href=&#34;https://blog.jetbrains.com/blog/2023/11/09/amper-improving-the-build-tooling-user-experience&#34;&gt;introduced Amper&lt;/a&gt;.
+Today, Gradle published another related article, named &lt;a href=&#34;https://blog.gradle.org/declarative-gradle&#34;&gt;Declarative Gradle&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;p&gt;Now, I can see the direction it is leaning towards, and I am afraid of this future.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;paragraph&#34;&gt;
+&lt;figure class=&#34;align-center&#34;&gt;&lt;img src=&#34;//storage.googleapis.com/madheadme-static/posts/declarative-gradle/001.jpg&#34;/&gt;
+&lt;/figure&gt;
+
+&lt;/div&gt;</description>
+    </item>
     <item>
       <title>No-bullshit guide on publishing your Gradle projects to Maven Central</title>
       <link>https://madhead.me/posts/no-bullshit-maven-publish/</link>
       <pubDate>Sat, 27 Feb 2021 18:00:00 +0300</pubDate>
-      
       <guid>https://madhead.me/posts/no-bullshit-maven-publish/</guid>
       <description>&lt;div class=&#34;paragraph&#34;&gt;
 &lt;p&gt;You’ve heard &lt;a href=&#34;https://jfrog.com/blog/into-the-sunset-bintray-jcenter-gocenter-and-chartcenter&#34;&gt;the news&lt;/a&gt;, haven’t you?
@@ -27,12 +46,10 @@ Good night, sweet prince.&lt;/p&gt;
 &lt;p&gt;It’s time to move your projects to Maven Central Repository, so I’ve gathered some info for you below to minimize the pain.&lt;/p&gt;
 &lt;/div&gt;</description>
     </item>
-    
     <item>
       <title>Speeding up the detekt task in a multi-project Gradle build.</title>
       <link>https://madhead.me/posts/detekt-faster/</link>
       <pubDate>Wed, 12 Feb 2020 09:00:00 +0300</pubDate>
-      
       <guid>https://madhead.me/posts/detekt-faster/</guid>
       <description>&lt;div class=&#34;paragraph&#34;&gt;
 &lt;p&gt;I’m going to tell you how to significantly speed up the &lt;code&gt;detekt&lt;/code&gt; task in a multi-project Gradle build.
@@ -40,12 +57,10 @@ Precise numbers vary depending on many factors, of course.
 In my case, in a build with 56 subprojects and ~7000 lines of code, it was about &lt;strong&gt;10 times faster&lt;/strong&gt;.&lt;/p&gt;
 &lt;/div&gt;</description>
     </item>
-    
     <item>
       <title>Keeping Gradle up-to-date</title>
       <link>https://madhead.me/posts/keeping-gradle-up-to-date/</link>
       <pubDate>Tue, 16 Jul 2019 09:00:00 +0300</pubDate>
-      
       <guid>https://madhead.me/posts/keeping-gradle-up-to-date/</guid>
       <description>&lt;div class=&#34;paragraph&#34;&gt;
 &lt;p&gt;&lt;a href=&#34;https://gradle.org&#34;&gt;Gradle&lt;/a&gt; is an awesome build tool, and I am always looking forward to new versions to enjoy the latest features, performance improvements and bug fixes.
@@ -57,12 +72,10 @@ And I actually do that from time to time when I need to know the latest availabl
 But how can I keep Gradle up-to-date in the existing codebases?&lt;/p&gt;
 &lt;/div&gt;</description>
     </item>
-    
     <item>
       <title>Kotlin/Native for AWS Lambda</title>
       <link>https://madhead.me/posts/kotlin-native-lambda/</link>
       <pubDate>Fri, 05 Apr 2019 22:02:00 +0300</pubDate>
-      
       <guid>https://madhead.me/posts/kotlin-native-lambda/</guid>
       <description>&lt;div class=&#34;paragraph&#34;&gt;
 &lt;p&gt;Amazon &lt;a href=&#34;https://aws.amazon.com/about-aws/whats-new/2018/11/aws-lambda-now-supports-custom-runtimes-and-layers&#34;&gt;announced&lt;/a&gt; Lambda Runtime API on AWS &lt;a href=&#34;https://reinvent.awsevents.com&#34;&gt;re:Invent&lt;/a&gt; 2018.
@@ -74,12 +87,10 @@ Yes, it’s now possible to author a function on PHP, Perl, Pascal (anybody?) or
 Let’s build an AWS Lambda function with &lt;a href=&#34;https://kotlinlang.org/docs/native-overview.html&#34;&gt;Kotlin/Native&lt;/a&gt;!&lt;/p&gt;
 &lt;/div&gt;</description>
     </item>
-    
     <item>
       <title>Maven is not as stable as many think</title>
       <link>https://madhead.me/posts/maven-is-not-so-stable/</link>
       <pubDate>Sun, 19 Aug 2018 00:34:00 +0300</pubDate>
-      
       <guid>https://madhead.me/posts/maven-is-not-so-stable/</guid>
       <description>&lt;div class=&#34;paragraph&#34;&gt;
 &lt;p&gt;Sometimes I’m trying to show others that there is a better alternative to Maven: Gradle.
@@ -87,6 +98,5 @@ I’m trying to show them how Gradle can make things easy &amp;amp; possible whe
 I often hear in reply: “Gradle sucks because it’s a hipster technology. It’s new and unstable. Will you help me if something goes wrong?”.&lt;/p&gt;
 &lt;/div&gt;</description>
     </item>
-    
   </channel>
 </rss>
