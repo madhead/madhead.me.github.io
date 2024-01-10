@@ -376,8 +376,8 @@ error: Failed to create: /var/cache/yum/metadata</pre>
 </div>
 <div class="paragraph">
 <p>Third, this is an ephemeral solution, a dirty and time-consuming hack.
-It means even if I manage to get <code>tar</code> installed, this solution would not work in the future for other pods unless we add <code>tar</code> to the image.
-I knew for sure that my team would not be happy with adding extra stuff to the image <code>tar</code> just for the sake of copying a file.</p>
+I mean, even if I manage to get <code>tar</code> installed, this solution would not work in the future for other pods unless we add <code>tar</code> to the image.
+I knew for sure that my team would not be happy with adding extra stuff to the image just for the sake of copying a file.</p>
 </div>
 <div class="paragraph">
 <p>So I found the <a href="https://fabianlee.org/2022/09/10/kubernetes-copying-files-into-and-out-of-containers-without-kubectl-cp/">exec-cat-output-redirectin</a> hack.
