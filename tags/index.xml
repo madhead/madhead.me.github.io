@@ -6,8 +6,64 @@
     <description>Recent content in Tags on madhead</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 10 Nov 2023 20:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 10 Jan 2024 12:40:00 +0200</lastBuildDate>
     <atom:link href="https://madhead.me/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>curl</title>
+      <link>https://madhead.me/tags/curl/</link>
+      <pubDate>Wed, 10 Jan 2024 12:40:00 +0200</pubDate>
+      <guid>https://madhead.me/tags/curl/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>docker</title>
+      <link>https://madhead.me/tags/docker/</link>
+      <pubDate>Wed, 10 Jan 2024 12:40:00 +0200</pubDate>
+      <guid>https://madhead.me/tags/docker/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>kubectl</title>
+      <link>https://madhead.me/tags/kubectl/</link>
+      <pubDate>Wed, 10 Jan 2024 12:40:00 +0200</pubDate>
+      <guid>https://madhead.me/tags/kubectl/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>lifehack</title>
+      <link>https://madhead.me/tags/lifehack/</link>
+      <pubDate>Wed, 10 Jan 2024 12:40:00 +0200</pubDate>
+      <guid>https://madhead.me/tags/lifehack/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>linux</title>
+      <link>https://madhead.me/tags/linux/</link>
+      <pubDate>Wed, 10 Jan 2024 12:40:00 +0200</pubDate>
+      <guid>https://madhead.me/tags/linux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ngrok</title>
+      <link>https://madhead.me/tags/ngrok/</link>
+      <pubDate>Wed, 10 Jan 2024 12:40:00 +0200</pubDate>
+      <guid>https://madhead.me/tags/ngrok/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>rant</title>
+      <link>https://madhead.me/tags/rant/</link>
+      <pubDate>Wed, 10 Jan 2024 12:40:00 +0200</pubDate>
+      <guid>https://madhead.me/tags/rant/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>tar</title>
+      <link>https://madhead.me/tags/tar/</link>
+      <pubDate>Wed, 10 Jan 2024 12:40:00 +0200</pubDate>
+      <guid>https://madhead.me/tags/tar/</guid>
+      <description></description>
+    </item>
     <item>
       <title>gradle</title>
       <link>https://madhead.me/tags/gradle/</link>
@@ -93,20 +149,6 @@
       <description></description>
     </item>
     <item>
-      <title>linux</title>
-      <link>https://madhead.me/tags/linux/</link>
-      <pubDate>Thu, 27 May 2021 22:19:00 +0200</pubDate>
-      <guid>https://madhead.me/tags/linux/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>rant</title>
-      <link>https://madhead.me/tags/rant/</link>
-      <pubDate>Sat, 27 Feb 2021 18:00:00 +0300</pubDate>
-      <guid>https://madhead.me/tags/rant/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>fuckup</title>
       <link>https://madhead.me/tags/fuckup/</link>
       <pubDate>Tue, 09 Feb 2021 23:00:00 +0300</pubDate>
@@ -125,13 +167,6 @@
       <link>https://madhead.me/tags/ansible/</link>
       <pubDate>Mon, 08 Feb 2021 21:00:00 +0300</pubDate>
       <guid>https://madhead.me/tags/ansible/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>docker</title>
-      <link>https://madhead.me/tags/docker/</link>
-      <pubDate>Thu, 24 Dec 2020 22:05:00 +0300</pubDate>
-      <guid>https://madhead.me/tags/docker/</guid>
       <description></description>
     </item>
     <item>
@@ -188,13 +223,6 @@
       <link>https://madhead.me/tags/junit/</link>
       <pubDate>Thu, 26 Sep 2019 09:00:00 +0300</pubDate>
       <guid>https://madhead.me/tags/junit/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>lifehack</title>
-      <link>https://madhead.me/tags/lifehack/</link>
-      <pubDate>Tue, 20 Aug 2019 09:00:00 +0300</pubDate>
-      <guid>https://madhead.me/tags/lifehack/</guid>
       <description></description>
     </item>
     <item>

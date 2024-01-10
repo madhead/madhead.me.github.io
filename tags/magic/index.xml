@@ -13,13 +13,7 @@
       <link>https://madhead.me/posts/oneliners-1/</link>
       <pubDate>Wed, 04 Jul 2018 04:47:00 +0300</pubDate>
       <guid>https://madhead.me/posts/oneliners-1/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;
-&lt;p&gt;So, you want to use AWS SSM parameters instead of AWS Lambda environment variables?
-But you already have dozens of variables defined?&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;paragraph&#34;&gt;
-&lt;p&gt;Keep calm (tested in production) and use this one-liner.&lt;/p&gt;
-&lt;/div&gt;</description>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;So, you want to use AWS SSM parameters instead of AWS Lambda environment variables?&#xA;But you already have dozens of variables defined?&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Keep calm (tested in production) and use this one-liner.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
     </item>
   </channel>
 </rss>

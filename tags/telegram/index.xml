@@ -13,75 +13,35 @@
       <link>https://madhead.me/posts/from-botfather-to-hello-world/</link>
       <pubDate>Tue, 25 Oct 2022 00:23:00 +0200</pubDate>
       <guid>https://madhead.me/posts/from-botfather-to-hello-world/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;
-&lt;p&gt;Great news, everybody: a few days ago, Telegram team updated their Bot API documentation!
-Among other things, they now have an &lt;a href=&#34;https://core.telegram.org/bots/tutorial&#34;&gt;end-to-end tutorial&lt;/a&gt; on the bot creation process: starting from bot registration in &lt;a href=&#34;https://t.me/BotFather&#34;&gt;@BotFather&lt;/a&gt;, going all the way to database &amp;amp; deployment options.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;paragraph&#34;&gt;
-&lt;p&gt;Unfortunately, it features Java, Maven, and &lt;a href=&#34;https://github.com/rubenlagus/TelegramBots&#34;&gt;rubenlagus/TelegramBots&lt;/a&gt; library.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;paragraph&#34;&gt;
-&lt;p&gt;So, I’ve decided to copycat it, upgrading the examples to Kotlin, Gradle, and &lt;a href=&#34;https://github.com/InsanusMokrassar/TelegramBotAPI&#34;&gt;InsanusMokrassar/TelegramBotAPI&lt;/a&gt;!
-Read my version below 👇🏼&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;admonitionblock important&#34;&gt;
-&lt;table&gt;
-&lt;tbody&gt;&lt;tr&gt;
-&lt;td class=&#34;icon&#34;&gt;
-&lt;div class=&#34;title&#34;&gt;Important&lt;/div&gt;
-&lt;/td&gt;
-&lt;td class=&#34;content&#34;&gt;
-&lt;div class=&#34;paragraph&#34;&gt;
-&lt;p&gt;Parts of the text below are shamelessly copy-pasted from the &lt;a href=&#34;https://core.telegram.org/bots/tutorial&#34;&gt;original tutorial&lt;/a&gt;.
-But don’t be tough on me: I respect copyright and authorship and in this case, I’m appealing for the &lt;a href=&#34;https://en.wikipedia.org/wiki/Fair_use&#34;&gt;fair use doctrine&lt;/a&gt;, which, I believe, this article would fall into.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;</description>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Great news, everybody: a few days ago, Telegram team updated their Bot API documentation!&#xA;Among other things, they now have an &lt;a href=&#34;https://core.telegram.org/bots/tutorial&#34;&gt;end-to-end tutorial&lt;/a&gt; on the bot creation process: starting from bot registration in &lt;a href=&#34;https://t.me/BotFather&#34;&gt;@BotFather&lt;/a&gt;, going all the way to database &amp;amp; deployment options.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Unfortunately, it features Java, Maven, and &lt;a href=&#34;https://github.com/rubenlagus/TelegramBots&#34;&gt;rubenlagus/TelegramBots&lt;/a&gt; library.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;So, I’ve decided to copycat it, upgrading the examples to Kotlin, Gradle, and &lt;a href=&#34;https://github.com/InsanusMokrassar/TelegramBotAPI&#34;&gt;InsanusMokrassar/TelegramBotAPI&lt;/a&gt;!&#xA;Read my version below 👇🏼&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;admonitionblock important&#34;&gt;&#xA;&lt;table&gt;&#xA;&lt;tbody&gt;&lt;tr&gt;&#xA;&lt;td class=&#34;icon&#34;&gt;&#xA;&lt;div class=&#34;title&#34;&gt;Important&lt;/div&gt;&#xA;&lt;/td&gt;&#xA;&lt;td class=&#34;content&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Parts of the text below are shamelessly copy-pasted from the &lt;a href=&#34;https://core.telegram.org/bots/tutorial&#34;&gt;original tutorial&lt;/a&gt;.&#xA;But don’t be tough on me: I respect copyright and authorship and in this case, I’m appealing for the &lt;a href=&#34;https://en.wikipedia.org/wiki/Fair_use&#34;&gt;fair use doctrine&lt;/a&gt;, which, I believe, this article would fall into.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;/td&gt;&#xA;&lt;/tr&gt;&#xA;&lt;/tbody&gt;&lt;/table&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
       <title>Tyzenhaus</title>
       <link>https://madhead.me/posts/tyzenhaus/</link>
       <pubDate>Tue, 14 Sep 2021 09:00:00 +0300</pubDate>
       <guid>https://madhead.me/posts/tyzenhaus/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;https://t.me/TyzenhausBot&#34;&gt;Tyzenhaus&lt;/a&gt; is a Telegram bot to simplify shared expenses in chats.
-It’s like Splitwise, but simpler and doesn’t required any apps except Telegram..&lt;/p&gt;
-&lt;/div&gt;</description>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://t.me/TyzenhausBot&#34;&gt;Tyzenhaus&lt;/a&gt; is a Telegram bot to simplify shared expenses in chats.&#xA;It’s like Splitwise, but simpler and doesn’t required any apps except Telegram..&lt;/p&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
       <title>ImgMacroBot</title>
       <link>https://madhead.me/posts/imgmacrobot/</link>
       <pubDate>Tue, 16 Mar 2021 09:00:00 +0300</pubDate>
       <guid>https://madhead.me/posts/imgmacrobot/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;https://t.me/ImgMacroBot&#34;&gt;@ImgMacroBot&lt;/a&gt; &lt;del&gt;is&lt;/del&gt;was an &lt;a href=&#34;https://core.telegram.org/bots/inline&#34;&gt;inline&lt;/a&gt; Telegram bot for &lt;a href=&#34;https://en.wikipedia.org/wiki/Image_macro&#34;&gt;image macros&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;</description>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://t.me/ImgMacroBot&#34;&gt;@ImgMacroBot&lt;/a&gt; &lt;del&gt;is&lt;/del&gt;was an &lt;a href=&#34;https://core.telegram.org/bots/inline&#34;&gt;inline&lt;/a&gt; Telegram bot for &lt;a href=&#34;https://en.wikipedia.org/wiki/Image_macro&#34;&gt;image macros&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
       <title>Hosting multiple Telegram bots with NGINX, self-signed certificates and Ansible</title>
       <link>https://madhead.me/posts/nginx-tg-bots/</link>
       <pubDate>Mon, 08 Feb 2021 21:00:00 +0300</pubDate>
       <guid>https://madhead.me/posts/nginx-tg-bots/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;
-&lt;p&gt;Imagine you have a few cool ideas for &lt;a href=&#34;https://core.telegram.org/bots&#34;&gt;Telegram bots&lt;/a&gt;.
-Bots have two options of communicating with Telegram servers: either by polling the events by using &lt;a href=&#34;https://core.telegram.org/bots/api#getupdates&#34;&gt;&lt;code&gt;getUpdates&lt;/code&gt;&lt;/a&gt; or by registering a &lt;a href=&#34;https://core.telegram.org/bots/api#setwebhook&#34;&gt;webhook&lt;/a&gt; and receiving the updates as HTTPS POST requests.
-But who the heck uses polling today?
-Right, nobody does that, and webhooks are the option.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;paragraph&#34;&gt;
-&lt;p&gt;And here be dragons.&lt;/p&gt;
-&lt;/div&gt;</description>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Imagine you have a few cool ideas for &lt;a href=&#34;https://core.telegram.org/bots&#34;&gt;Telegram bots&lt;/a&gt;.&#xA;Bots have two options of communicating with Telegram servers: either by polling the events by using &lt;a href=&#34;https://core.telegram.org/bots/api#getupdates&#34;&gt;&lt;code&gt;getUpdates&lt;/code&gt;&lt;/a&gt; or by registering a &lt;a href=&#34;https://core.telegram.org/bots/api#setwebhook&#34;&gt;webhook&lt;/a&gt; and receiving the updates as HTTPS POST requests.&#xA;But who the heck uses polling today?&#xA;Right, nobody does that, and webhooks are the option.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;And here be dragons.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
       <title>YouTube Watch Later Telegram Bot</title>
       <link>https://madhead.me/posts/ywltb/</link>
       <pubDate>Wed, 20 May 2020 09:00:00 +0300</pubDate>
       <guid>https://madhead.me/posts/ywltb/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;
-&lt;p&gt;YWLTB — or YouTube Watch Later Telegram Bot — &lt;del&gt;is&lt;/del&gt;was a Telegram bot that &lt;del&gt;does&lt;/del&gt;did one simple thing: add incoming YouTube videos into your &amp;#34;Watch Later&amp;#34; playlist.&lt;/p&gt;
-&lt;/div&gt;</description>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;YWLTB — or YouTube Watch Later Telegram Bot — &lt;del&gt;is&lt;/del&gt;was a Telegram bot that &lt;del&gt;does&lt;/del&gt;did one simple thing: add incoming YouTube videos into your &amp;#34;Watch Later&amp;#34; playlist.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
     </item>
   </channel>
 </rss>
