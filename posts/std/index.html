@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang='en' dir='auto'><head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='What’s a Single Table Design? The world learned about the idea of Single Table Design (STD) for DynamoDB somewhere in 2019, probably when this article came out. STD wasn’t just a weird idea by some unknown blogger like me, or an AWS DevRel, or any other kind of Internet freak, but it actually has its roots in the official Amazon DynamoDB documentation. Here:
+You should maintain as few tables as possible in a DynamoDB application.'>
+<meta name="monetization" content='$ilp.uphold.com/wgzRi7wDbPFf'>
+
+<meta property='og:title' content='On DynamoDB&#39;s Single Table Design • madhead'>
+<meta property='og:description' content='What’s a Single Table Design? The world learned about the idea of Single Table Design (STD) for DynamoDB somewhere in 2019, probably when this article came out. STD wasn’t just a weird idea by some unknown blogger like me, or an AWS DevRel, or any other kind of Internet freak, but it actually has its roots in the official Amazon DynamoDB documentation. Here:
+You should maintain as few tables as possible in a DynamoDB application.'>
+<meta property='og:url' content='https://madhead.me/posts/std/'>
+<meta property='og:site_name' content='madhead'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='aws'><meta property='article:tag' content='aws dynamodb'><meta property='article:tag' content='rant'><meta property='article:published_time' content='2024-02-23T17:24:00&#43;03:00'/><meta property='article:modified_time' content='2024-02-23T17:24:00&#43;03:00'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.123.3">
+
+  <title>On DynamoDB&#39;s Single Table Design • madhead</title>
+  <link rel='canonical' href='https://madhead.me/posts/std/'>
+  
+  
+  <link rel='icon' href='/favicon.ico'>
+<link rel='stylesheet' href='/assets/css/main.5c2014c4.css'><link rel='stylesheet' href='/css/admonitions.css'><link rel='stylesheet' href='/css/tables.css'><link rel='stylesheet' href='/css/spoilers.css'><style>
+:root{--color-accent:#000000;}
+</style>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SML2093FH8"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-SML2093FH8', { 'anonymize_ip': false });
+}
+</script>
+
+  
+
+</head>
+<body class='page type-posts has-sidebar'>
+
+  <div class='site'><div id='sidebar' class='sidebar'>
+  <a class='screen-reader-text' href='#main-menu'>Skip to Main Menu</a>
+
+  <div class='container'><section class='widget widget-about sep-after'>
+  <header>
+    
+    <div class='logo'>
+      <a href='/'>
+        <img src='/images/logo.svg'>
+      </a>
+    </div>
+    
+    <div class='desc'>
+    
+    </div>
+  </header>
+
+</section>
+<section class='widget widget-sidebar_menu sep-after'><nav id='sidebar-menu' class='menu sidebar-menu' aria-label='Sidebar Menu'>
+    <div class='container'>
+      <ul><li class='item'>
+  <a href='/posts/'>posts</a></li><li class='item'>
+  <a href='/tags/'>tags</a></li></ul>
+    </div>
+  </nav>
+
+</section>
+
+<section class='widget widget-sidebar_menu sep-after'>
+  <nav id='sidebar-menu' class='menu sidebar-menu' aria-label='Sidebar Menu'>
+    <div class='container'>
+      <ul><li class='item'>
+          <a href='https://ru.madhead.me/'>RU</a>
+        </li></ul>
+    </div>
+  </nav>
+</section><section class='widget widget-social_menu sep-after'><nav aria-label='Social Menu'>
+    <ul><li>
+        <a href='mailto:siarhei.krukau@gmail.com' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Contact via Email</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+<polyline points="22,6 12,13 2,6" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://t.me/madheab' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Telegram account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M23.91 3.79L20.3 20.84c-.25 1.21-.98 1.5-2 .94l-5.5-4.07-2.66 2.57c-.3.3-.55.56-1.1.56-.72 0-.6-.27-.84-.95L6.3 13.7l-5.45-1.7c-1.18-.35-1.19-1.16.26-1.75l21.26-8.2c.97-.43 1.9.24 1.53 1.73z" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://github.com/madhead' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Github account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://gitlab.com/madhead' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Gitlab account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M22.65 14.39L12 22.13 1.35 14.39a.84.84 0 0 1-.3-.94l1.22-3.78 2.44-7.51A.42.42 0 0 1 4.82 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.49h8.1l2.44-7.51A.42.42 0 0 1 18.6 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.51L23 13.45a.84.84 0 0 1-.35.94z" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://stackoverflow.com/users/750510' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Stackoverflow account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><line x1="3.472" y1="18.689" x2="16.612" y2="18.689" />
+<line x1="4.017" y1="12.715" x2="16.884" y2="15.404" />
+<line x1="5.991" y1="6.673" x2="17.906" y2="12.238" />
+<line x1="9.582" y1="1.021" x2="19.692" y2="9.430" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://linkedin.com/in/krukaus' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Linkedin account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+<rect x="2" y="9" width="4" height="12" />
+<circle cx="4" cy="4" r="2" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://instagram.com/m.a.d.h.e.a.d' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Instagram account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+<line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://www.youtube.com/channel/UCO2UZ6hUzjn9XQIdwwkcXJQ' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Youtube account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
+<polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://twitter.com/m_a_d_h_e_a_d' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Twitter account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://mastodon.online/@madhead' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Mastodon account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="m21.448 11.064v8.3572h-3.2914v-8.1115c0-1.7099-0.71521-2.5778-2.1459-2.5778-1.5818 0-2.3745 1.0295-2.3745 3.0653v4.4399h-3.272v-4.4399c0-2.0357-0.79292-3.0653-2.3746-3.0653-1.4305 0-2.1459 0.86789-2.1459 2.5778v8.1115h-3.2914v-8.3572c0-1.7081 0.43233-3.0653 1.3007-4.0694 0.89551-1.0042 2.0682-1.519 3.524-1.519 1.6844 0 2.9598 0.65121 4.623 0.65124 1.6632 2.7e-5 2.9387-0.65124 4.6231-0.65124 1.4556 0 2.6283 0.51477 3.524 1.519 0.86823 1.0042 1.3006 2.3615 1.3006 4.0694" fill="none" stroke="#000" stroke-width="2"/>
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</section></div>
+
+  <div class='sidebar-overlay'></div>
+</div><div class='main'><nav id='main-menu' class='menu main-menu' aria-label='Main Menu'>
+  <div class='container'>
+    <a class='screen-reader-text' href='#content'>Skip to Content</a>
+
+<button id='sidebar-toggler' class='sidebar-toggler' aria-controls='sidebar'>
+  <span class='screen-reader-text'>Toggle Sidebar</span>
+  <span class='open'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><line x1="3" y1="12" x2="21" y2="12" />
+<line x1="3" y1="6" x2="21" y2="6" />
+<line x1="3" y1="18" x2="21" y2="18" />
+</svg>
+</span>
+  <span class='close'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><line x1="18" y1="6" x2="6" y2="18" />
+<line x1="6" y1="6" x2="18" y2="18" />
+</svg>
+</span>
+</button>
+    <ul></ul>
+  </div>
+</nav><div class='header-widgets'>
+        <div class='container'></div>
+      </div>
+
+      <header id='header' class='header site-header'>
+        <div class='container sep-after'>
+          <div class='header-info'><p class='site-title title'>madhead</p><p class='desc site-desc'></p>
+          </div>
+        </div>
+      </header>
+
+      <main id='content'>
+
+
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
+  <div class='container sep-after'>
+    <div class='header-info'>
+      <h1 class='title'>On DynamoDB&#39;s Single Table Design</h1>
+      
+
+    </div>
+    <div class='entry-meta'>
+  <span class='posted-on'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+<line x1="16" y1="2" x2="16" y2="6" />
+<line x1="8" y1="2" x2="8" y2="6" />
+<line x1="3" y1="10" x2="21" y2="10" />
+</svg>
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='2024-02-23T17:24:00&#43;03:00'>2024-02-23</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><circle cx="12" cy="12" r="10" />
+<polyline points="12 6 12 12 15 15" />
+</svg>
+8 mins to read
+</span>
+
+
+</div>
+
+
+  </div>
+</header>
+
+  
+  
+
+  <div class='container entry-content'>
+  <div class="paragraph">
+<figure class="align-center"><img src="//storage.googleapis.com/madheadme-static/posts/std/001.png"/>
+</figure>
+
+</div>
+<div class="sect1">
+<h2 id="_whats_a_single_table_design">What’s a Single Table Design?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The world learned about the idea of Single Table Design (STD) for DynamoDB somewhere in 2019, probably when <a href="https://www.trek10.com/blog/dynamodb-single-table-relational-modeling">this article</a> came out.
+STD wasn’t just a weird idea by some unknown blogger like me, or an AWS DevRel, or any other kind of Internet freak, but it actually has its roots in the official Amazon DynamoDB documentation.
+<a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-general-nosql-design.html">Here</a>:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>You should maintain <strong>as few tables as possible</strong> in a DynamoDB application. Having fewer tables keeps things more scalable, requires less permissions management, and reduces overhead for your DynamoDB application. It can also help keep backup costs lower overall.</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>And then, a few prominent AWS folks spun this recommendation to the extreme into what we now know as STD: <strong>use a single table for all your data</strong>.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Of course, <strong>no one meant literally a single table</strong>, but the suggestion was to downsize.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p>At the core of STD, as we’ll discover later, is something called Index Overloading.
+It involves leveraging every available index to its maximum potential — thereby <em>&#34;overloading&#34;</em> — to store heterogeneous data.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>DynamoDB had a limit of 5 Global Secondary Indices (those were of a particular interest for the STD) back at those days, now the limit is increased to 20 GSIs per table by default.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p>As a reference implementation, a rather simplistic little application with just a couple of entities was presented to the public, hardly conveying the <strong>potential dangers</strong> of this approach.
+A bit later, another article about STD found its home in the official AWS Blog as well.
+Here are the links: <a href="https://www.trek10.com/blog/dynamodb-single-table-relational-modeling">1</a> | <a href="https://www.alexdebrie.com/posts/dynamodb-single-table">2</a> | <a href="https://aws.amazon.com/blogs/compute/creating-a-single-table-design-with-amazon-dynamodb">3</a>.</p>
+</div>
+<div class="paragraph">
+<p>How outraged I was!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_whats_wrong_with_std">What’s wrong with STD?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>It wasn’t the STD concept itself that irked me, but the <strong>assertiveness with which it was being pushed</strong>!
+I remember I couldn’t hold back and even shot some DMs at our local AWS community champs, demanding answers.</p>
+</div>
+<div class="paragraph">
+<p>My emotions rooted in the fear that someone on my project might want to adopt this approach.
+Ironically enough, considering I was working solo back then.
+With several dozen tables in our project, merging them all into one was just madness.
+It might have been efficient, but it would surely enrage anyone who had to work with and maintain it.</p>
+</div>
+<div class="paragraph">
+<p>For instance, the article in the AWS Blog mentions a nifty little constraint in the domain model that limits the size of a single record.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The maximum item size in DynamoDB is 400 KB, which includes both attribute names and attribute values.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p>It goes like this: <em>we’re only storing 300 data points per event, so the data will fit</em>.
+Isn’t that fortunate?
+And if <em>it doesn’t fit, well, just split it somehow into several parts</em>, you are on your own now!
+But on our project, we already had entities exceeded that limit.
+And we had already resorted to tricks like ZIP compression on the application side, which had already complicated maintenance: such tables are impossible to view in the console.</p>
+</div>
+<div class="paragraph">
+<p>I wasn’t alone in my frustration.
+<a href="https://www.reddit.com/r/aws/comments/aimmg7/how_many_people_are_doing_true_single_table">Here</a>&#39;s an example of one of the STD discussions on Reddit.
+Some users found the whole idea <em>&#34;overwhelming&#34;</em>, though there were just as many enthusiasts.</p>
+</div>
+<div class="paragraph">
+<p>For me, it was obvious that <strong>the approach is at least debatable and not suitable for every situation</strong>.
+But being pessimistic about developers in general, I was concerned they might start applying it indiscriminately, ignoring the specific and realities of the project.
+The official documentation, and the hype, were just too persuasive!</p>
+</div>
+<div class="paragraph">
+<p>Moreover, this approach is <strong>too complex</strong> if you try to implement it.
+And it’s <strong>not flexible</strong>.
+It forces you to think far ahead, really far ahead.
+So much far ahead, that you need to get it right for ages and from the first attempt: modifying an already created STD table, or adding a new type of query to it, is practically impossible.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_oh_how_the_tables_have_turned">Oh how the tables have turned!</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Rick Houlihan, the <em>&#34;Inventor of @DynamoDB #SingleTableDesign&#34;</em>, has apparently faced so much criticism over time that he felt compelled to defend himself on X.
+His defence, though, is more like <em>&#34;it was just three of us musketeers, standing agains whole Cardinal’s guard&#34;</em>.
+Yesterday, he twitted:</p>
+</div>
+<div class="paragraph">
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">I hear a lot of criticism of the work I did on DynamoDB Single Table Design these days. I even saw <a href="https://twitter.com/alexbdebrie?ref_src=twsrc%5Etfw">@alexbdebrie</a> apologizing for being an advocate the other day. The core concept behind STD, however, has always been the same as it is for all <a href="https://twitter.com/hashtag/NoSQL?src=hash&amp;ref_src=twsrc%5Etfw">#NoSQL</a> databases. <br><br>What is accessed…</p>&mdash; Rick Houlihan (@houlihan_rick) <a href="https://twitter.com/houlihan_rick/status/1760469859761029228?ref_src=twsrc%5Etfw">February 22, 2024</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+</div>
+<div class="paragraph">
+<p>But let’s take a closer look at what he’s saying…</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>I even saw @alexbdebrie apologizing for being an advocate the other day.</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Oh, that’s indeed to much, no one should apologize for great experiments!</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Anyone who tells you a different story than the one that follows is wrong. I led the team that invented the Single Table Design pattern. I have facts, they have at best half-informed opinions. There are 3 people in this world who could tell this story.</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>That’s the musketeers part…</p>
+</div>
+<div class="paragraph">
+<p>Then follow several paragraphs explaining Index Overloading.
+And I think that’s exactrly what the problem with Index Overloading / STD is.
+It’s so complex, that requires explanation after being available for about five years already.
+Maybe, it was just a little bit too much for the average developer from the very beginning?</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>The drawback of doing this was that indexes became more and more polluted with unrelated Item types as the number of access patterns they supported increased.</p>
+</div>
+</blockquote>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Because of this it was not easy to drop and recreate indexes without table scans and batch updates which became expensive at scale.</p>
+</div>
+</blockquote>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>The pattern also introduced heavy cognitive load on developers as using abstract naming for index attributes meant it was not always immediately apparent when looking at the data how the data was being indexed unless the values assigned to the generic keys were self-explanatory.</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>I couldn’t agree more!</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>All of these things were tradeoffs for applying the Index Overloading pattern, not core issues with Single Table Design itself. They were often deemed acceptable inconveniences considering the benefit of having effectively unlimited GSI’s. Most of the problems that drove the need for Index Overloading have been resolved over the years as DynamoDB has added support for 25 GSI’s, introduced on demand pricing, and eliminated the need to allocate capacity individually for each index. As a result the pattern should really be considered deprecated today.</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Ah…
+Here we go again, aren’t we?
+We’ve just seen that even 5 indices are too much for the average developer, and now we have to deal with 25?</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>I’m not sure why Rick is talking about 25 GSIs, as the official documentation still mentions 20.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Additionally, many people over the years have also taken STD to an extreme that was never intended. Mixing configuration and operational data, maintaining a single table across service boundaries, or storing unrelated data that is not accessed together in the same table. Despite the fact that there are some people out there trying very hard to rewrite history around this, none of these things were ever recommended as best practices.</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Here I have to disagree.
+Did we see STD articles in the AWS Blog?
+We did!
+Is it the official source?
+It is!
+If the official AWS Blog is not a place for the best practices, then where is the place?</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>It is easy to look at the product as it exists today and criticize the design patterns of yesterday that were invented to deal with API deficiencies that no longer exist. I read some serious garbage every now and then written by people I feel should know better, Those people really had very little exposure to the process of solving the problems we faced when the patterns they criticize were introduced.</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>I’m sorry, to hear that, Rick, we failed your expectations.
+But that’s the nature of the crowd, isn’t it?
+Remember how developers make cults around some design patterns?
+Yet the <a href="https://en.wikipedia.org/wiki/Software_design_pattern">wiki definition</a> of a design pattern literally says &#34;contextual&#34;:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>In software engineering, a software design pattern is a general, reusable solution to a commonly occurring problem <strong>within a given context</strong> in software design.</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Yet patterns are everywhere, often applied out of context.
+Same as programming languages, databases and lots of other things in the IT world.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_whats_the_moral_of_this_rant">What’s the moral of this rant?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>It’s possible to brilliantly overcome certain technological limitations and propose unconventional and effective solutions to some problems.
+But it’s important to be cautious and thoughtful when conveying these ideas to a layperson.
+Architects, come down from your Ivory towers!
+Don’t overestimate the intellectual capabilities of developers, but also don’t overvalue your own ideas.</p>
+</div>
+<div class="paragraph">
+<p>Every problem has its context, which is often lost.
+But this goes both ways!
+Just as developers sometimes fail to understand the applicability limits of patterns and solutions, architects sometimes neglect the context in which development occurs.
+You know: tight schedule, low skill…</p>
+</div>
+<div class="paragraph">
+<p>Don’t be sorry for the great idea you gave us you and don’t be angry at us for misusing it.</p>
+</div>
+</div>
+</div>
+
+</div>
+
+  
+<footer class='entry-footer'>
+  <div class='container sep-before'><div class='tags'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z" />
+<line x1="7" y1="7" x2="7" y2="7" />
+</svg>
+<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/aws/'>Aws</a>, <a class='tag' href='/tags/aws-dynamodb/'>Aws Dynamodb</a>, <a class='tag' href='/tags/rant/'>Rant</a></div>
+
+  </div>
+</footer>
+
+
+</article>
+
+
+
+
+      </main>
+
+      <footer id='footer' class='footer'>
+        <div class='container sep-before'><div class='copyright'>
+  <p></p>
+</div>
+
+        </div>
+      </footer>
+
+    </div>
+  </div><script>window.__assets_js_src="/assets/js/"</script>
+
+<script src='/assets/js/main.eb49ae54.js'></script>
+
+</body>
+
+</html>
+

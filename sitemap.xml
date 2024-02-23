@@ -2,6 +2,57 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://madhead.me/tags/aws/</loc>
+    <lastmod>2024-02-23T17:24:00+03:00</lastmod>
+  </url><url>
+    <loc>https://madhead.me/tags/aws-dynamodb/</loc>
+    <lastmod>2024-02-23T17:24:00+03:00</lastmod>
+  </url><url>
+    <loc>https://madhead.me/</loc>
+    <lastmod>2024-02-23T17:24:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://ru.madhead.me/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://madhead.me/"
+                />
+  </url><url>
+    <loc>https://madhead.me/posts/std/</loc>
+    <lastmod>2024-02-23T17:24:00+03:00</lastmod>
+  </url><url>
+    <loc>https://madhead.me/posts/</loc>
+    <lastmod>2024-02-23T17:24:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://ru.madhead.me/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://madhead.me/posts/"
+                />
+  </url><url>
+    <loc>https://madhead.me/tags/rant/</loc>
+    <lastmod>2024-02-23T17:24:00+03:00</lastmod>
+  </url><url>
+    <loc>https://madhead.me/tags/</loc>
+    <lastmod>2024-02-23T17:24:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://ru.madhead.me/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://madhead.me/tags/"
+                />
+  </url><url>
     <loc>https://madhead.me/posts/kubectl-cp/</loc>
     <lastmod>2024-01-10T12:40:00+02:00</lastmod>
   </url><url>
@@ -50,50 +101,8 @@
                 href="https://madhead.me/tags/linux/"
                 />
   </url><url>
-    <loc>https://madhead.me/</loc>
-    <lastmod>2024-01-10T12:40:00+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://ru.madhead.me/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://madhead.me/"
-                />
-  </url><url>
     <loc>https://madhead.me/tags/ngrok/</loc>
     <lastmod>2024-01-10T12:40:00+02:00</lastmod>
-  </url><url>
-    <loc>https://madhead.me/posts/</loc>
-    <lastmod>2024-01-10T12:40:00+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://ru.madhead.me/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://madhead.me/posts/"
-                />
-  </url><url>
-    <loc>https://madhead.me/tags/rant/</loc>
-    <lastmod>2024-01-10T12:40:00+02:00</lastmod>
-  </url><url>
-    <loc>https://madhead.me/tags/</loc>
-    <lastmod>2024-01-10T12:40:00+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://ru.madhead.me/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://madhead.me/tags/"
-                />
   </url><url>
     <loc>https://madhead.me/tags/tar/</loc>
     <lastmod>2024-01-10T12:40:00+02:00</lastmod>
@@ -116,9 +125,6 @@
   </url><url>
     <loc>https://madhead.me/posts/declarative-gradle/</loc>
     <lastmod>2023-11-10T20:00:00+02:00</lastmod>
-  </url><url>
-    <loc>https://madhead.me/tags/aws/</loc>
-    <lastmod>2023-05-02T18:00:00+02:00</lastmod>
   </url><url>
     <loc>https://madhead.me/tags/aws-lambda/</loc>
     <lastmod>2023-05-02T18:00:00+02:00</lastmod>
@@ -289,6 +295,9 @@
                 href="https://madhead.me/posts/ywltb/"
                 />
   </url><url>
+    <loc>https://madhead.me/tags/kotlin/native/</loc>
+    <lastmod>2020-03-11T09:00:00+03:00</lastmod>
+  </url><url>
     <loc>https://madhead.me/tags/redis/</loc>
     <lastmod>2020-03-11T09:00:00+03:00</lastmod>
   </url><url>
@@ -428,7 +437,5 @@
                 hreflang="en"
                 href="https://madhead.me/posts/hello-world/"
                 />
-  </url><url>
-    <loc>https://madhead.me/tags/kotlin/native/</loc>
   </url>
 </urlset>
