@@ -19,7 +19,7 @@ I often hear in reply: “Gradle sucks because it’s a hipster technology. It�
 <meta property='og:site_name' content='madhead'>
 <meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='maven'><meta property='article:tag' content='gradle'><meta property='article:tag' content='rant'><meta property='article:published_time' content='2018-08-19T00:34:00&#43;03:00'/><meta property='article:modified_time' content='2018-08-19T00:34:00&#43;03:00'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.123.3">
+<meta name="generator" content="Hugo 0.128.2">
 
   <title>Maven is not as stable as many think • madhead</title>
   <link rel='canonical' href='https://madhead.me/posts/maven-is-not-so-stable/'>
@@ -30,16 +30,25 @@ I often hear in reply: “Gradle sucks because it’s a hipster technology. It�
 :root{--color-accent:#000000;}
 </style>
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SML2093FH8"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-SML2093FH8', { 'anonymize_ip': false });
-}
-</script>
+  
+    
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-SML2093FH8"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-SML2093FH8');
+        }
+      </script>
+    
+  
+
 
   
 
@@ -354,7 +363,7 @@ NOTE: Maven 3.3.x can build Flink, but will not properly shade away certain depe
 <p>Or, to be more visual:</p>
 </div>
 <div class="paragraph">
-<figure><img src="//storage.googleapis.com/madheadme-static/posts/maven-is-not-so-stable/001.jpg"/>
+<figure><img src="//storage.googleapis.com/madheadme-static/posts/maven-is-not-so-stable/001.jpg">
 </figure>
 
 </div>

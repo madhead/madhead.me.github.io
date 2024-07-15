@@ -27,7 +27,7 @@ Let’s build an AWS Lambda function with Kotlin/Native!
 <meta property='og:site_name' content='madhead'>
 <meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='kotlin'><meta property='article:tag' content='kotlin/native'><meta property='article:tag' content='aws'><meta property='article:tag' content='aws lambda'><meta property='article:tag' content='gradle'><meta property='article:tag' content='pet projects'><meta property='article:tag' content='linux'><meta property='article:published_time' content='2019-04-05T22:02:00&#43;03:00'/><meta property='article:modified_time' content='2019-04-05T22:02:00&#43;03:00'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.123.3">
+<meta name="generator" content="Hugo 0.128.2">
 
   <title>Kotlin/Native for AWS Lambda • madhead</title>
   <link rel='canonical' href='https://madhead.me/posts/kotlin-native-lambda/'>
@@ -38,16 +38,25 @@ Let’s build an AWS Lambda function with Kotlin/Native!
 :root{--color-accent:#000000;}
 </style>
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SML2093FH8"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-SML2093FH8', { 'anonymize_ip': false });
-}
-</script>
+  
+    
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-SML2093FH8"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-SML2093FH8');
+        }
+      </script>
+    
+  
+
 
   
 
@@ -371,7 +380,7 @@ For <a href="https://docs.aws.amazon.com/lambda/latest/dg/java-programming-model
 <p>Here is a picture to help you grasp a function’s lifecycle:</p>
 </div>
 <div class="paragraph">
-<figure><img src="//storage.googleapis.com/madheadme-static/posts/kotlin-native-lambda/001.png"/>
+<figure><img src="//storage.googleapis.com/madheadme-static/posts/kotlin-native-lambda/001.png">
 </figure>
 
 </div>
@@ -447,7 +456,7 @@ Also note the way how the function interacts with the AWS Lambda: by calling HTT
 Latest IntelliJ IDEA supports Kotlin/Native… natively, so it can be done with “File” → “New” → “Project…” → “Kotlin” → “Kotlin/Native”:</p>
 </div>
 <div class="paragraph">
-<figure><img src="//storage.googleapis.com/madheadme-static/posts/kotlin-native-lambda/002.png"/>
+<figure><img src="//storage.googleapis.com/madheadme-static/posts/kotlin-native-lambda/002.png">
 </figure>
 
 </div>

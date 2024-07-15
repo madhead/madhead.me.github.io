@@ -15,7 +15,7 @@ A short story about a newbie’s mistake I’ve made recently.
 <meta property='og:site_name' content='madhead'>
 <meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='java'><meta property='article:tag' content='kotlin'><meta property='article:tag' content='fuckup'><meta property='article:tag' content='rant'><meta property='article:published_time' content='2020-05-27T09:00:00&#43;03:00'/><meta property='article:modified_time' content='2020-05-27T09:00:00&#43;03:00'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.123.3">
+<meta name="generator" content="Hugo 0.128.2">
 
   <title>How I fucked up with enum&#39;s hashCode • madhead</title>
   <link rel='canonical' href='https://madhead.me/posts/enums-fuckup/'>
@@ -26,16 +26,25 @@ A short story about a newbie’s mistake I’ve made recently.
 :root{--color-accent:#000000;}
 </style>
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SML2093FH8"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-SML2093FH8', { 'anonymize_ip': false });
-}
-</script>
+  
+    
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-SML2093FH8"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-SML2093FH8');
+        }
+      </script>
+    
+  
+
 
   
 
@@ -357,7 +366,7 @@ data class FeedItem(
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/List.html#hashCode()"><code>List#hashCode()</code></a> is stable as well as long as it’s elements have stable hash codes.</p>
 </div>
 <div class="paragraph">
-<figure class="align-center"><img src="//storage.googleapis.com/madheadme-static/posts/enums-fuckup/001.gif"/>
+<figure class="align-center"><img src="//storage.googleapis.com/madheadme-static/posts/enums-fuckup/001.gif">
 </figure>
 
 </div>

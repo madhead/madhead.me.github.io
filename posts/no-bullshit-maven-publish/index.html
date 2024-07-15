@@ -37,7 +37,7 @@ It’s time to move your projects to Maven Central Repository, so I’ve gathere
 <meta property='og:site_name' content='madhead'>
 <meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='gradle'><meta property='article:tag' content='maven'><meta property='article:tag' content='rant'><meta property='article:published_time' content='2021-02-27T18:00:00&#43;03:00'/><meta property='article:modified_time' content='2021-02-27T18:00:00&#43;03:00'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.123.3">
+<meta name="generator" content="Hugo 0.128.2">
 
   <title>No-bullshit guide on publishing your Gradle projects to Maven Central • madhead</title>
   <link rel='canonical' href='https://madhead.me/posts/no-bullshit-maven-publish/'>
@@ -48,16 +48,25 @@ It’s time to move your projects to Maven Central Repository, so I’ve gathere
 :root{--color-accent:#000000;}
 </style>
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SML2093FH8"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-SML2093FH8', { 'anonymize_ip': false });
-}
-</script>
+  
+    
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-SML2093FH8"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-SML2093FH8');
+        }
+      </script>
+    
+  
+
 
   
 
@@ -607,7 +616,7 @@ If not — do not proceed until it is resolved.</p>
 <p>If you think everything is good…</p>
 </div>
 <div class="paragraph">
-<figure class="align-center"><img src="//storage.googleapis.com/madheadme-static/posts/no-bullshit-maven-publish/001.png"/>
+<figure class="align-center"><img src="//storage.googleapis.com/madheadme-static/posts/no-bullshit-maven-publish/001.png">
 </figure>
 
 </div>
@@ -630,7 +639,7 @@ It will build the project, sign the artifacts and publish them to the OSSRH repo
 They are stored in a temporary &#34;staging repository&#34;:</p>
 </div>
 <div class="paragraph">
-<figure class="align-center"><img src="//storage.googleapis.com/madheadme-static/posts/no-bullshit-maven-publish/002.png"/>
+<figure class="align-center"><img src="//storage.googleapis.com/madheadme-static/posts/no-bullshit-maven-publish/002.png">
 </figure>
 
 </div>
