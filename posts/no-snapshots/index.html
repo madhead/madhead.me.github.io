@@ -2,21 +2,21 @@
 <html lang='en' dir='auto'><head>
   <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<meta name='description' content=''>
+<meta name='description' content='SNAPSHOTs are a confusing Maven concept. Maven is a pre-historic build tool, invented inside The Apache Software Foundation to build its (mostly Java) projects back in the 2000s. It is, thus, very opinionated, just like this post. Those opinions — including SNAPSHOTS, maven-release-plugin, POM, repository and project layouts, and many more — are still alive today and spoil modern projects.
+Even ASF does not use Maven to build some of its projects anymore: Beam, Groovy, Lucene, Geode, POI, and Solr are not built with Maven.'>
 <meta name="monetization" content='$ilp.uphold.com/wgzRi7wDbPFf'>
 
-<meta property='og:title' content='Tag: Inkscape • madhead'>
-<meta property='og:description' content=''>
-<meta property='og:url' content='https://madhead.me/tags/inkscape/'>
+<meta property='og:title' content='No SNAPSHOTs • madhead'>
+<meta property='og:description' content='SNAPSHOTs are a confusing Maven concept. Maven is a pre-historic build tool, invented inside The Apache Software Foundation to build its (mostly Java) projects back in the 2000s. It is, thus, very opinionated, just like this post. Those opinions — including SNAPSHOTS, maven-release-plugin, POM, repository and project layouts, and many more — are still alive today and spoil modern projects.
+Even ASF does not use Maven to build some of its projects anymore: Beam, Groovy, Lucene, Geode, POI, and Solr are not built with Maven.'>
+<meta property='og:url' content='https://madhead.me/posts/no-snapshots/'>
 <meta property='og:site_name' content='madhead'>
-<meta property='og:type' content='website'><meta property='og:updated_time' content='2024-07-28T02:41:00&#43;02:00'/><meta name='twitter:card' content='summary'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='maven'><meta property='article:published_time' content='2024-07-28T02:41:00&#43;02:00'/><meta property='article:modified_time' content='2024-07-28T02:41:00&#43;02:00'/><meta name='twitter:card' content='summary'>
 
 <meta name="generator" content="Hugo 0.129.0">
 
-  <title>Tag: Inkscape • madhead</title>
-  <link rel='canonical' href='https://madhead.me/tags/inkscape/'>
-  
-    <link href="https://madhead.me/tags/inkscape/index.xml" rel="alternate" type="application/rss+xml" title="madhead" />
+  <title>No SNAPSHOTs • madhead</title>
+  <link rel='canonical' href='https://madhead.me/posts/no-snapshots/'>
   
   
   <link rel='icon' href='/favicon.ico'>
@@ -47,7 +47,7 @@
   
 
 </head>
-<body class='term type-tags taxonomy-tag has-sidebar'>
+<body class='page type-posts has-sidebar'>
 
   <div class='site'><div id='sidebar' class='sidebar'>
   <a class='screen-reader-text' href='#main-menu'>Skip to Main Menu</a>
@@ -278,44 +278,127 @@
       <main id='content'>
 
 
-<header class='header'>
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
   <div class='container sep-after'>
     <div class='header-info'>
-      <h1 class='title'><span class='taxonomy-name'>Tag: </span>Inkscape</h1>
-
+      <h1 class='title'>No SNAPSHOTs</h1>
       
 
     </div>
+    <div class='entry-meta'>
+  <span class='posted-on'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+<line x1="16" y1="2" x2="16" y2="6" />
+<line x1="8" y1="2" x2="8" y2="6" />
+<line x1="3" y1="10" x2="21" y2="10" />
+</svg>
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='2024-07-28T02:41:00&#43;02:00'>2024-07-28</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><circle cx="12" cy="12" r="10" />
+<polyline points="12 6 12 12 15 15" />
+</svg>
+2 mins to read
+</span>
+
+
+</div>
+
+
   </div>
 </header>
 
-
-
-
-<div class='container list-container'>
-  <ul class='list'>
-    
-      <li class='item'>
-  <div class='meta'>
-    <span>
-  <span class='screen-reader-text'>Posted on </span>
-  <time datetime='2018-08-12T04:58:00&#43;03:00'>2018-08-12</time>
-</span>
-
-  </div>
-  <header class='item-header'>
-    <h3 class='item-title'>
-      <a href='/posts/back-to-the-inkscape/'>BTTF-like sticker @ Inkscape</a>
-    </h3>
-  </header>
-</li>
-
-    
-  </ul>
-
+  
   
 
+  <div class='container entry-content'>
+  <div class="paragraph">
+<figure class="align-center"><img src="//storage.googleapis.com/madheadme-static/posts/no-snapshots/001.jpg">
+</figure>
+
 </div>
+<div class="paragraph">
+<p><strong>SNAPSHOTs are a <a href="https://stackoverflow.com/q/5901378/750510">confusing</a> Maven concept.</strong>
+Maven is a <a href="https://github.com/apache/maven/commit/3db476f1a2b6826d0aee4e9937cb73ae14cd7fae">pre-historic</a> build tool, invented inside The Apache Software Foundation to build its (mostly Java) projects back in the 2000s.
+It is, thus, very opinionated, just like this post.
+Those opinions — including <code>SNAPSHOTS</code>, <code>maven-release-plugin</code>, <abbr title="Project Object Model">POM</abbr>, repository and project layouts, and many more — are still alive today and spoil modern projects.</p>
+</div>
+<div class="paragraph">
+<p>Even <abbr title="Apache Software Foundation">ASF</abbr> does not use Maven to build some of its projects anymore: <a href="https://github.com/apache/beam">Beam</a>, <a href="https://github.com/apache/groovy">Groovy</a>, <a href="https://github.com/apache/lucene">Lucene</a>, <a href="https://github.com/apache/geode">Geode</a>, <a href="https://github.com/apache/poi">POI</a>, and <a href="https://github.com/apache/solr">Solr</a> are not built with Maven.
+Those are not the most popular ASF projects, I know, but still, it is something.</p>
+</div>
+<div class="paragraph">
+<p><strong>Artifacts must be immutable</strong>, and two artifacts with the same version must be the same.
+That is not the case with <strong>SNAPSHOTs</strong>: they <strong>are mutable by definition</strong> and every new build could change the artifact published under the <code>SNAPSHOT</code> version.</p>
+</div>
+<div class="paragraph">
+<p>Because of that, <strong><code>SNAPSHOT</code> artifacts require special treatment.</strong>
+They have their own <code>updatePolicy</code>.
+By the way, do you, fellow Maven users, know off the top of your head, <a href="https://maven.apache.org/ref/3.9.8/maven-settings/settings.html#snapshots">how often are they updated by default</a>?
+<span class="spoiler">Daily</span>.
+SNAPSHOTs are usually uploaded to a separate repository and they are not — obviously — accepted by the Maven Central.</p>
+</div>
+<div class="paragraph">
+<p><strong>SNAPSHOTs are a potential source of errors.</strong>
+Hopefully, only during the development and testing process, because no one should use them in production.</p>
+</div>
+<div class="paragraph">
+<p>Stick to something like <a href="https://semver.org">Semantic Versioning</a>, and use pre-release identifiers and unique build identifiers instead of SNAPSHOTs.
+BTW, &#34;SNAPSHOT&#34; is a valid Semver pre-release identifier, however to guarantee artifact immutability, you should include additional metadata in the version, like unique build number, commit hash, or timestamp, etc.</p>
+</div>
+<div class="paragraph">
+<p>Abandoning SNAPSHOTs doesn’t mean that you cannot use the &#34;latest&#34; or &#34;dynamic&#34; version of the artifact in your project.
+Modern build tools support <a href="https://docs.gradle.org/current/userguide/dynamic_versions.html">dynamic versions</a>, <a href="https://docs.gradle.org/current/userguide/rich_versions.html">rich versions</a>, <a href="https://yarnpkg.com/advanced/lexicon#range">version</a> <a href="https://python-poetry.org/docs/dependency-specification">ranges</a>, <a href="https://yarnpkg.com/features/constraints">constraints</a>, and other cool stuff.
+I am pretty sure your build tool has it.</p>
+</div>
+<div class="paragraph">
+<p>Just to be clear: published artifacts must be immutable, and SNAPSHOTs are not, but you could still have a dynamic version (or a dynamic, but locked/pinned, version) in your projects.</p>
+</div>
+
+</div>
+
+  
+<footer class='entry-footer'>
+  <div class='container sep-before'><div class='tags'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z" />
+<line x1="7" y1="7" x2="7" y2="7" />
+</svg>
+<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/maven/'>Maven</a></div>
+
+  </div>
+</footer>
+
+
+</article>
+
+
+
 
       </main>
 

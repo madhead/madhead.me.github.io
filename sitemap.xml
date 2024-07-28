@@ -2,14 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://madhead.me/tags/aws/</loc>
-    <lastmod>2024-02-23T17:24:00+03:00</lastmod>
-  </url><url>
-    <loc>https://madhead.me/tags/aws-dynamodb/</loc>
-    <lastmod>2024-02-23T17:24:00+03:00</lastmod>
-  </url><url>
     <loc>https://madhead.me/</loc>
-    <lastmod>2024-02-23T17:24:00+03:00</lastmod>
+    <lastmod>2024-07-28T02:41:00+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ru"
@@ -21,11 +15,14 @@
                 href="https://madhead.me/"
                 />
   </url><url>
-    <loc>https://madhead.me/posts/std/</loc>
-    <lastmod>2024-02-23T17:24:00+03:00</lastmod>
+    <loc>https://madhead.me/tags/maven/</loc>
+    <lastmod>2024-07-28T02:41:00+02:00</lastmod>
+  </url><url>
+    <loc>https://madhead.me/posts/no-snapshots/</loc>
+    <lastmod>2024-07-28T02:41:00+02:00</lastmod>
   </url><url>
     <loc>https://madhead.me/posts/</loc>
-    <lastmod>2024-02-23T17:24:00+03:00</lastmod>
+    <lastmod>2024-07-28T02:41:00+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ru"
@@ -37,11 +34,8 @@
                 href="https://madhead.me/posts/"
                 />
   </url><url>
-    <loc>https://madhead.me/tags/rant/</loc>
-    <lastmod>2024-02-23T17:24:00+03:00</lastmod>
-  </url><url>
     <loc>https://madhead.me/tags/</loc>
-    <lastmod>2024-02-23T17:24:00+03:00</lastmod>
+    <lastmod>2024-07-28T02:41:00+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ru"
@@ -52,6 +46,18 @@
                 hreflang="en"
                 href="https://madhead.me/tags/"
                 />
+  </url><url>
+    <loc>https://madhead.me/tags/aws/</loc>
+    <lastmod>2024-02-23T17:24:00+03:00</lastmod>
+  </url><url>
+    <loc>https://madhead.me/tags/aws-dynamodb/</loc>
+    <lastmod>2024-02-23T17:24:00+03:00</lastmod>
+  </url><url>
+    <loc>https://madhead.me/posts/std/</loc>
+    <lastmod>2024-02-23T17:24:00+03:00</lastmod>
+  </url><url>
+    <loc>https://madhead.me/tags/rant/</loc>
+    <lastmod>2024-02-23T17:24:00+03:00</lastmod>
   </url><url>
     <loc>https://madhead.me/posts/kubectl-cp/</loc>
     <lastmod>2024-01-10T12:40:00+02:00</lastmod>
@@ -119,9 +125,6 @@
                 hreflang="en"
                 href="https://madhead.me/tags/gradle/"
                 />
-  </url><url>
-    <loc>https://madhead.me/tags/maven/</loc>
-    <lastmod>2023-11-10T20:00:00+02:00</lastmod>
   </url><url>
     <loc>https://madhead.me/posts/declarative-gradle/</loc>
     <lastmod>2023-11-10T20:00:00+02:00</lastmod>

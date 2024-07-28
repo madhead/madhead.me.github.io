@@ -6,8 +6,15 @@
     <description>Recent content in Posts on madhead</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 23 Feb 2024 17:24:00 +0300</lastBuildDate>
+    <lastBuildDate>Sun, 28 Jul 2024 02:41:00 +0200</lastBuildDate>
     <atom:link href="https://madhead.me/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>No SNAPSHOTs</title>
+      <link>https://madhead.me/posts/no-snapshots/</link>
+      <pubDate>Sun, 28 Jul 2024 02:41:00 +0200</pubDate>
+      <guid>https://madhead.me/posts/no-snapshots/</guid>
+      <description>SNAPSHOTs are a confusing Maven concept. Maven is a pre-historic build tool, invented inside The Apache Software Foundation to build its (mostly Java) projects back in the 2000s. It is, thus, very opinionated, just like this post. Those opinions — including SNAPSHOTS, maven-release-plugin, POM, repository and project layouts, and many more — are still alive today and spoil modern projects.&#xA;Even ASF does not use Maven to build some of its projects anymore: Beam, Groovy, Lucene, Geode, POI, and Solr are not built with Maven.</description>
+    </item>
     <item>
       <title>On DynamoDB&#39;s Single Table Design</title>
       <link>https://madhead.me/posts/std/</link>
