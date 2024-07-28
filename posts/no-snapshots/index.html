@@ -2,12 +2,12 @@
 <html lang='en' dir='auto'><head>
   <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<meta name='description' content='SNAPSHOTs are a confusing Maven concept. Maven is a pre-historic build tool, invented inside The Apache Software Foundation to build its (mostly Java) projects back in the 2000s. It is, thus, very opinionated, just like this post. Those opinions — including SNAPSHOTS, maven-release-plugin, POM, repository and project layouts, and many more — are still alive today and spoil modern projects.
+<meta name='description' content='SNAPSHOTs are a confusing Maven concept. Maven is a pre-historic build tool, invented inside The Apache Software Foundation to build its (mostly Java) projects back in the 2000s. It is, thus, very opinionated, just like this post. Those opinions — including SNAPSHOTs, maven-release-plugin, POM, repository and project layouts, and many more — are still alive today and spoil modern projects.
 Even ASF does not use Maven to build some of its projects anymore: Beam, Groovy, Lucene, Geode, POI, and Solr are not built with Maven.'>
 <meta name="monetization" content='$ilp.uphold.com/wgzRi7wDbPFf'>
 
 <meta property='og:title' content='No SNAPSHOTs • madhead'>
-<meta property='og:description' content='SNAPSHOTs are a confusing Maven concept. Maven is a pre-historic build tool, invented inside The Apache Software Foundation to build its (mostly Java) projects back in the 2000s. It is, thus, very opinionated, just like this post. Those opinions — including SNAPSHOTS, maven-release-plugin, POM, repository and project layouts, and many more — are still alive today and spoil modern projects.
+<meta property='og:description' content='SNAPSHOTs are a confusing Maven concept. Maven is a pre-historic build tool, invented inside The Apache Software Foundation to build its (mostly Java) projects back in the 2000s. It is, thus, very opinionated, just like this post. Those opinions — including SNAPSHOTs, maven-release-plugin, POM, repository and project layouts, and many more — are still alive today and spoil modern projects.
 Even ASF does not use Maven to build some of its projects anymore: Beam, Groovy, Lucene, Geode, POI, and Solr are not built with Maven.'>
 <meta property='og:url' content='https://madhead.me/posts/no-snapshots/'>
 <meta property='og:site_name' content='madhead'>
@@ -340,7 +340,7 @@ Even ASF does not use Maven to build some of its projects anymore: Beam, Groovy,
 <p><strong>SNAPSHOTs are a <a href="https://stackoverflow.com/q/5901378/750510">confusing</a> Maven concept.</strong>
 Maven is a <a href="https://github.com/apache/maven/commit/3db476f1a2b6826d0aee4e9937cb73ae14cd7fae">pre-historic</a> build tool, invented inside The Apache Software Foundation to build its (mostly Java) projects back in the 2000s.
 It is, thus, very opinionated, just like this post.
-Those opinions — including <code>SNAPSHOTS</code>, <code>maven-release-plugin</code>, <abbr title="Project Object Model">POM</abbr>, repository and project layouts, and many more — are still alive today and spoil modern projects.</p>
+Those opinions — including SNAPSHOTs, <code>maven-release-plugin</code>, <abbr title="Project Object Model">POM</abbr>, repository and project layouts, and many more — are still alive today and spoil modern projects.</p>
 </div>
 <div class="paragraph">
 <p>Even <abbr title="Apache Software Foundation">ASF</abbr> does not use Maven to build some of its projects anymore: <a href="https://github.com/apache/beam">Beam</a>, <a href="https://github.com/apache/groovy">Groovy</a>, <a href="https://github.com/apache/lucene">Lucene</a>, <a href="https://github.com/apache/geode">Geode</a>, <a href="https://github.com/apache/poi">POI</a>, and <a href="https://github.com/apache/solr">Solr</a> are not built with Maven.
@@ -348,12 +348,12 @@ Those are not the most popular ASF projects, I know, but still, it is something.
 </div>
 <div class="paragraph">
 <p><strong>Artifacts must be immutable</strong>, and two artifacts with the same version must be the same.
-That is not the case with <strong>SNAPSHOTs</strong>: they <strong>are mutable by definition</strong> and every new build could change the artifact published under the <code>SNAPSHOT</code> version.</p>
+That is not the case with <strong>SNAPSHOTs</strong>: they <strong>are mutable by definition</strong> and every new build could change the artifact published under the <code>-SNAPSHOT</code> version.</p>
 </div>
 <div class="paragraph">
 <p>Because of that, <strong><code>SNAPSHOT</code> artifacts require special treatment.</strong>
 They have their own <code>updatePolicy</code>.
-By the way, do you, fellow Maven users, know off the top of your head, <a href="https://maven.apache.org/ref/3.9.8/maven-settings/settings.html#snapshots">how often are they updated by default</a>?
+Do you, fellow Maven users, know off the top of your head, <a href="https://maven.apache.org/ref/3.9.8/maven-settings/settings.html#snapshots">how often are they updated by default</a>?
 <span class="spoiler">Daily</span>.
 SNAPSHOTs are usually uploaded to a separate repository and they are not — obviously — accepted by the Maven Central.</p>
 </div>
@@ -363,7 +363,7 @@ Hopefully, only during the development and testing process, because no one shoul
 </div>
 <div class="paragraph">
 <p>Stick to something like <a href="https://semver.org">Semantic Versioning</a>, and use pre-release identifiers and unique build identifiers instead of SNAPSHOTs.
-BTW, &#34;SNAPSHOT&#34; is a valid Semver pre-release identifier, however to guarantee artifact immutability, you should include additional metadata in the version, like unique build number, commit hash, or timestamp, etc.</p>
+By the way, &#34;SNAPSHOT&#34; is a valid Semver pre-release identifier, however to guarantee artifact immutability, you should include additional metadata in the version, like unique build number, commit hash, or timestamp, etc.</p>
 </div>
 <div class="paragraph">
 <p>Abandoning SNAPSHOTs doesn’t mean that you cannot use the &#34;latest&#34; or &#34;dynamic&#34; version of the artifact in your project.
