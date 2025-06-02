@@ -13,14 +13,14 @@
       <link>https://madhead.me/posts/no-snapshots/</link>
       <pubDate>Sun, 28 Jul 2024 02:41:00 +0200</pubDate>
       <guid>https://madhead.me/posts/no-snapshots/</guid>
-      <description>SNAPSHOTs are a confusing Maven concept. Maven is a pre-historic build tool, invented inside The Apache Software Foundation to build its (mostly Java) projects back in the 2000s. It is, thus, very opinionated, just like this post. Those opinions — including SNAPSHOTs, maven-release-plugin, POM, repository and project layouts, and many more — are still alive today and spoil modern projects.&#xA;Even ASF does not use Maven to build some of its projects anymore: Beam, Groovy, Lucene, Geode, POI, and Solr are not built with Maven.</description>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;figure class=&#34;align-center&#34;&gt;&lt;img src=&#34;//storage.googleapis.com/madheadme-static/posts/no-snapshots/001.jpg&#34;&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;strong&gt;SNAPSHOTs are a &lt;a href=&#34;https://stackoverflow.com/q/5901378/750510&#34;&gt;confusing&lt;/a&gt; Maven concept.&lt;/strong&gt;&#xA;Maven is a &lt;a href=&#34;https://github.com/apache/maven/commit/3db476f1a2b6826d0aee4e9937cb73ae14cd7fae&#34;&gt;pre-historic&lt;/a&gt; build tool, invented inside The Apache Software Foundation to build its (mostly Java) projects back in the 2000s.&#xA;It is, thus, very opinionated, just like this post.&#xA;Those opinions — including SNAPSHOTs, &lt;code&gt;maven-release-plugin&lt;/code&gt;, &lt;abbr title=&#34;Project Object Model&#34;&gt;POM&lt;/abbr&gt;, repository and project layouts, and many more — are still alive today and spoil modern projects.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Even &lt;abbr title=&#34;Apache Software Foundation&#34;&gt;ASF&lt;/abbr&gt; does not use Maven to build some of its projects anymore: &lt;a href=&#34;https://github.com/apache/beam&#34;&gt;Beam&lt;/a&gt;, &lt;a href=&#34;https://github.com/apache/groovy&#34;&gt;Groovy&lt;/a&gt;, &lt;a href=&#34;https://github.com/apache/lucene&#34;&gt;Lucene&lt;/a&gt;, &lt;a href=&#34;https://github.com/apache/geode&#34;&gt;Geode&lt;/a&gt;, &lt;a href=&#34;https://github.com/apache/poi&#34;&gt;POI&lt;/a&gt;, and &lt;a href=&#34;https://github.com/apache/solr&#34;&gt;Solr&lt;/a&gt; are not built with Maven.&#xA;Those are not the most popular ASF projects, I know, but still, it is something.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
       <title>On DynamoDB&#39;s Single Table Design</title>
       <link>https://madhead.me/posts/std/</link>
       <pubDate>Fri, 23 Feb 2024 17:24:00 +0300</pubDate>
       <guid>https://madhead.me/posts/std/</guid>
-      <description>What’s a Single Table Design? The world learned about the idea of Single Table Design (STD) for DynamoDB somewhere in 2019, probably when this article came out. STD wasn’t just a weird idea by some unknown blogger like me, or an AWS DevRel, or any other kind of Internet freak, but it actually has its roots in the official Amazon DynamoDB documentation. Here:&#xA;You should maintain as few tables as possible in a DynamoDB application.</description>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;figure class=&#34;align-center&#34;&gt;&lt;img src=&#34;//storage.googleapis.com/madheadme-static/posts/std/001.png&#34;&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_whats_a_single_table_design&#34;&gt;What’s a Single Table Design?&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;The world learned about the idea of Single Table Design (STD) for DynamoDB somewhere in 2019, probably when &lt;a href=&#34;https://www.trek10.com/blog/dynamodb-single-table-relational-modeling&#34;&gt;this article&lt;/a&gt; came out.&#xA;STD wasn’t just a weird idea by some unknown blogger like me, or an AWS DevRel, or any other kind of Internet freak, but it actually has its roots in the official Amazon DynamoDB documentation.&#xA;&lt;a href=&#34;https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-general-nosql-design.html&#34;&gt;Here&lt;/a&gt;:&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;quoteblock&#34;&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;You should maintain &lt;strong&gt;as few tables as possible&lt;/strong&gt; in a DynamoDB application. Having fewer tables keeps things more scalable, requires less permissions management, and reduces overhead for your DynamoDB application. It can also help keep backup costs lower overall.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
       <title>Copying a file from a Kubernetes pod in a highly hostile environment</title>
@@ -55,7 +55,7 @@
       <link>https://madhead.me/posts/orphan-action/</link>
       <pubDate>Sun, 10 Oct 2021 23:27:00 +0200</pubDate>
       <guid>https://madhead.me/posts/orphan-action/</guid>
-      <description>GitHub Actions are great for sharing &amp;amp; reusing logic across your CI/CD pipelines. However, sometimes sharing is not the highest priority. Sometimes you only want to hide the complexity by exctacting &amp;amp; encapsulating multiple build steps and replacing them with a single action.&#xA;Anyway, you have to create a GitHub action.&#xA;You could use actions stored in the same repository as the workflow. Such actions must be either written in JavaScript or be Docker actions, i.</description>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;GitHub Actions are great for sharing &amp;amp; reusing logic across your CI/CD pipelines.&#xA;However, sometimes sharing is not the highest priority.&#xA;Sometimes you only want to hide the complexity by exctacting &amp;amp; encapsulating multiple build steps and replacing them with a single action.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Anyway, you have to create a GitHub action.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;You could use actions &lt;a href=&#34;https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#example-using-an-action-in-the-same-repository-as-the-workflow&#34;&gt;stored in the same repository as the workflow&lt;/a&gt;.&#xA;Such actions must be either written in JavaScript or be Docker actions, i.e. have a &lt;code&gt;Dockerfile&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
       <title>Tyzenhaus</title>
@@ -69,14 +69,14 @@
       <link>https://madhead.me/posts/ggp/</link>
       <pubDate>Wed, 21 Jul 2021 21:43:00 +0200</pubDate>
       <guid>https://madhead.me/posts/ggp/</guid>
-      <description>Let me tell about a pet project I did recently.&#xA;It’s name is &amp;#34;Grand Guide Pedestrian&amp;#34;. It’s a virtual interactive experience where a player controls another human, a hero, who walks in the city like it’s a GTA game. No gunfire, no car thefts, no other crimes, though.&#xA;Look at the demo:&#xA;And here is the data flow:&#xA;A hero streams a video from his camera to the restreamer, who then streams it back to a player.</description>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Let me tell about a pet project I did recently.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;It’s name is &amp;#34;Grand Guide Pedestrian&amp;#34;.&#xA;It’s a virtual interactive experience where a player controls another human, a hero, who walks in the city like it’s a GTA game.&#xA;No gunfire, no car thefts, no other crimes, though.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Look at the demo:&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;&#xA;      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/75KIuUGGg3I?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;&#xA;    &lt;/div&gt;</description>
     </item>
     <item>
       <title>Sony α6300 as a webcam on Manjaro Lunux</title>
       <link>https://madhead.me/posts/dslr-webcam/</link>
       <pubDate>Thu, 27 May 2021 22:19:00 +0200</pubDate>
       <guid>https://madhead.me/posts/dslr-webcam/</guid>
-      <description> Original article.&#xA;Change USB connection in settings on camera to PC Remote.&#xA;sudo pacman -S gphoto2 v4l-utils v4l2loopback-dkms ffmpeg sudo modprobe v4l2loopback exclusive_caps=1 max_buffers=2 v4l2-ctl --list-devices gphoto2 --stdout --capture-movie | ffmpeg -i - -vcodec rawvideo -pix_fmt yuv420p -threads 8 -f v4l2 /dev/video&amp;lt;N&amp;gt; #from v4l2-ctl output </description>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://hanspinckaers.com/using-a-sony-alpha-camera-as-a-webcam-in-ubuntu&#34;&gt;Original article&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Change USB connection in settings on camera to PC Remote.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;listingblock&#34;&gt;&#xA;&lt;div class=&#34;content&#34;&gt;&#xA;&lt;pre class=&#34;highlight&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo pacman -S gphoto2 v4l-utils v4l2loopback-dkms ffmpeg&#xA;sudo modprobe v4l2loopback exclusive_caps=1 max_buffers=2&#xA;v4l2-ctl --list-devices&#xA;gphoto2 --stdout --capture-movie | ffmpeg -i - -vcodec rawvideo -pix_fmt yuv420p -threads 8 -f v4l2 /dev/video&amp;lt;N&amp;gt; #from v4l2-ctl output&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
       <title>Reading Java properties in GitHub Actions</title>
@@ -265,7 +265,7 @@
       <link>https://madhead.me/posts/git-bash-docker-mounts/</link>
       <pubDate>Wed, 21 Mar 2018 16:50:00 +0300</pubDate>
       <guid>https://madhead.me/posts/git-bash-docker-mounts/</guid>
-      <description> Just use double slashes when mounting and accessing directories from Git Bash in Docker on Windows:&#xA;docker run --rm -it -v //c//Users//Siarhei_Krukau//Downloads:/test alpine ls -la //test </description>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Just use double slashes when mounting and accessing directories from Git Bash in Docker on Windows:&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;listingblock&#34;&gt;&#xA;&lt;div class=&#34;content&#34;&gt;&#xA;&lt;pre class=&#34;highlight&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;docker run --rm -it -v //c//Users//Siarhei_Krukau//Downloads:/test alpine ls -la //test&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
       <title>Speeding up Kitchen converges with Squid</title>
@@ -279,7 +279,7 @@
       <link>https://madhead.me/posts/hello-world/</link>
       <pubDate>Mon, 05 Jun 2017 23:44:25 +0300</pubDate>
       <guid>https://madhead.me/posts/hello-world/</guid>
-      <description>Hello, world! So, I’ve decided to run my own blog. I will write my thoughts here from time to time.</description>
+      <description>&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_hello_world&#34;&gt;Hello, world!&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;So, I’ve decided to run my own blog.&#xA;I will write my thoughts here from time to time.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
   </channel>
 </rss>

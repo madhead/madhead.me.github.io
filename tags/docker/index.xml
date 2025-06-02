@@ -41,7 +41,7 @@
       <link>https://madhead.me/posts/git-bash-docker-mounts/</link>
       <pubDate>Wed, 21 Mar 2018 16:50:00 +0300</pubDate>
       <guid>https://madhead.me/posts/git-bash-docker-mounts/</guid>
-      <description> Just use double slashes when mounting and accessing directories from Git Bash in Docker on Windows:&#xA;docker run --rm -it -v //c//Users//Siarhei_Krukau//Downloads:/test alpine ls -la //test </description>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Just use double slashes when mounting and accessing directories from Git Bash in Docker on Windows:&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;listingblock&#34;&gt;&#xA;&lt;div class=&#34;content&#34;&gt;&#xA;&lt;pre class=&#34;highlight&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;docker run --rm -it -v //c//Users//Siarhei_Krukau//Downloads:/test alpine ls -la //test&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
   </channel>
 </rss>

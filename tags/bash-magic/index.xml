@@ -13,7 +13,7 @@
       <link>https://madhead.me/posts/dslr-webcam/</link>
       <pubDate>Thu, 27 May 2021 22:19:00 +0200</pubDate>
       <guid>https://madhead.me/posts/dslr-webcam/</guid>
-      <description> Original article.&#xA;Change USB connection in settings on camera to PC Remote.&#xA;sudo pacman -S gphoto2 v4l-utils v4l2loopback-dkms ffmpeg sudo modprobe v4l2loopback exclusive_caps=1 max_buffers=2 v4l2-ctl --list-devices gphoto2 --stdout --capture-movie | ffmpeg -i - -vcodec rawvideo -pix_fmt yuv420p -threads 8 -f v4l2 /dev/video&amp;lt;N&amp;gt; #from v4l2-ctl output </description>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://hanspinckaers.com/using-a-sony-alpha-camera-as-a-webcam-in-ubuntu&#34;&gt;Original article&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Change USB connection in settings on camera to PC Remote.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;listingblock&#34;&gt;&#xA;&lt;div class=&#34;content&#34;&gt;&#xA;&lt;pre class=&#34;highlight&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo pacman -S gphoto2 v4l-utils v4l2loopback-dkms ffmpeg&#xA;sudo modprobe v4l2loopback exclusive_caps=1 max_buffers=2&#xA;v4l2-ctl --list-devices&#xA;gphoto2 --stdout --capture-movie | ffmpeg -i - -vcodec rawvideo -pix_fmt yuv420p -threads 8 -f v4l2 /dev/video&amp;lt;N&amp;gt; #from v4l2-ctl output&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
       <title>AWS Lambda environment variables → AWS SSM parameters in one (long) bash line</title>

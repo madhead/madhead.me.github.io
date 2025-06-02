@@ -2,30 +2,60 @@
 <html lang='en' dir='auto'><head>
   <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<meta name='description' content='What’s a Single Table Design? The world learned about the idea of Single Table Design (STD) for DynamoDB somewhere in 2019, probably when this article came out. STD wasn’t just a weird idea by some unknown blogger like me, or an AWS DevRel, or any other kind of Internet freak, but it actually has its roots in the official Amazon DynamoDB documentation. Here:
-You should maintain as few tables as possible in a DynamoDB application.'>
+<meta name='description' content='
+
+
+
+
+
+What’s a Single Table Design?
+
+
+The world learned about the idea of Single Table Design (STD) for DynamoDB somewhere in 2019, probably when this article came out.
+STD wasn’t just a weird idea by some unknown blogger like me, or an AWS DevRel, or any other kind of Internet freak, but it actually has its roots in the official Amazon DynamoDB documentation.
+Here:
+
+
+
+
+You should maintain as few tables as possible in a DynamoDB application. Having fewer tables keeps things more scalable, requires less permissions management, and reduces overhead for your DynamoDB application. It can also help keep backup costs lower overall.
+'>
 <meta name="monetization" content='$ilp.uphold.com/wgzRi7wDbPFf'>
 
 <meta property='og:title' content='On DynamoDB&#39;s Single Table Design • madhead'>
-<meta property='og:description' content='What’s a Single Table Design? The world learned about the idea of Single Table Design (STD) for DynamoDB somewhere in 2019, probably when this article came out. STD wasn’t just a weird idea by some unknown blogger like me, or an AWS DevRel, or any other kind of Internet freak, but it actually has its roots in the official Amazon DynamoDB documentation. Here:
-You should maintain as few tables as possible in a DynamoDB application.'>
+<meta property='og:description' content='
+
+
+
+
+
+What’s a Single Table Design?
+
+
+The world learned about the idea of Single Table Design (STD) for DynamoDB somewhere in 2019, probably when this article came out.
+STD wasn’t just a weird idea by some unknown blogger like me, or an AWS DevRel, or any other kind of Internet freak, but it actually has its roots in the official Amazon DynamoDB documentation.
+Here:
+
+
+
+
+You should maintain as few tables as possible in a DynamoDB application. Having fewer tables keeps things more scalable, requires less permissions management, and reduces overhead for your DynamoDB application. It can also help keep backup costs lower overall.
+'>
 <meta property='og:url' content='https://madhead.me/posts/std/'>
 <meta property='og:site_name' content='madhead'>
 <meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='aws'><meta property='article:tag' content='aws dynamodb'><meta property='article:tag' content='rant'><meta property='article:published_time' content='2024-02-23T17:24:00&#43;03:00'/><meta property='article:modified_time' content='2024-02-23T17:24:00&#43;03:00'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.129.0">
+<meta name="generator" content="Hugo 0.147.7">
 
   <title>On DynamoDB&#39;s Single Table Design • madhead</title>
   <link rel='canonical' href='https://madhead.me/posts/std/'>
   
   
   <link rel='icon' href='/favicon.ico'>
-<link rel='stylesheet' href='/assets/css/main.5c2014c4.css'><link rel='stylesheet' href='/css/admonitions.css'><link rel='stylesheet' href='/css/tables.css'><link rel='stylesheet' href='/css/spoilers.css'><style>
+<link rel='stylesheet' href='/assets/css/main.e0989a78.css'><link rel='stylesheet' href='/css/admonitions.css'><link rel='stylesheet' href='/css/tables.css'><link rel='stylesheet' href='/css/spoilers.css'><style>
 :root{--color-accent:#000000;}
 </style>
 
-  
-    
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-SML2093FH8"></script>
       <script>
         var doNotTrack = false;
@@ -40,10 +70,6 @@ You should maintain as few tables as possible in a DynamoDB application.'>
           gtag('config', 'G-SML2093FH8');
         }
       </script>
-    
-  
-
-
   
 
 </head>
@@ -645,7 +671,7 @@ You know: tight schedule, low skill…</p>
     </div>
   </div><script>window.__assets_js_src="/assets/js/"</script>
 
-<script src='/assets/js/main.eb49ae54.js'></script>
+<script src='/assets/js/main.330687e7.js'></script>
 
 </body>
 
