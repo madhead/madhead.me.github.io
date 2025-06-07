@@ -2,31 +2,21 @@
 <html lang='en' dir='auto'><head>
   <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<meta name='description' content='
-GitHub Actions are so cool!
-
-
-Check out our recording about them @ Ministry of Testing Abu Dhabi if you want a quick sneak peek, but today I want to self-advertise one of the reusable Actions I made for you.
-And it wasn’t hard at all, thanks to the way they work (although I’m going to rant about that in future articles).
-'>
+<meta name='description' content=''>
 <meta name="monetization" content='$ilp.uphold.com/wgzRi7wDbPFf'>
 
-<meta property='og:title' content='One-stop shop for working with semantic versions in your GitHub Actions workflows • madhead'>
-<meta property='og:description' content='
-GitHub Actions are so cool!
-
-
-Check out our recording about them @ Ministry of Testing Abu Dhabi if you want a quick sneak peek, but today I want to self-advertise one of the reusable Actions I made for you.
-And it wasn’t hard at all, thanks to the way they work (although I’m going to rant about that in future articles).
-'>
-<meta property='og:url' content='https://madhead.me/posts/semver-utils/'>
+<meta property='og:title' content='Tag: Coroutines • madhead'>
+<meta property='og:description' content=''>
+<meta property='og:url' content='https://madhead.me/tags/coroutines/'>
 <meta property='og:site_name' content='madhead'>
-<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='pet projects'><meta property='article:tag' content='ci'><meta property='article:tag' content='github actions'><meta property='article:published_time' content='2021-03-25T23:00:00&#43;03:00'/><meta property='article:modified_time' content='2021-03-25T23:00:00&#43;03:00'/><meta name='twitter:card' content='summary'>
+<meta property='og:type' content='website'><meta property='og:updated_time' content='2025-06-03T02:02:00&#43;02:00'/><meta name='twitter:card' content='summary'>
 
 <meta name="generator" content="Hugo 0.147.7">
 
-  <title>One-stop shop for working with semantic versions in your GitHub Actions workflows • madhead</title>
-  <link rel='canonical' href='https://madhead.me/posts/semver-utils/'>
+  <title>Tag: Coroutines • madhead</title>
+  <link rel='canonical' href='https://madhead.me/tags/coroutines/'>
+  
+    <link href="https://madhead.me/tags/coroutines/index.xml" rel="alternate" type="application/rss+xml" title="madhead" />
   
   
   <script src="https://unpkg.com/kotlin-playground" data-selector=".kotlin-code"></script>
@@ -53,7 +43,7 @@ And it wasn’t hard at all, thanks to the way they work (although I’m going t
   
 
 </head>
-<body class='page type-posts has-sidebar'>
+<body class='term type-tags taxonomy-tag has-sidebar'>
 
   <div class='site'><div id='sidebar' class='sidebar'>
   <a class='screen-reader-text' href='#main-menu'>Skip to Main Menu</a>
@@ -284,127 +274,44 @@ And it wasn’t hard at all, thanks to the way they work (although I’m going t
       <main id='content'>
 
 
-<article lang='en' class='entry'>
-  <header class='header entry-header'>
+<header class='header'>
   <div class='container sep-after'>
     <div class='header-info'>
-      <h1 class='title'>One-stop shop for working with semantic versions in your GitHub Actions workflows</h1>
+      <h1 class='title'><span class='taxonomy-name'>Tag: </span>Coroutines</h1>
+
       
 
     </div>
-    <div class='entry-meta'>
-  <span class='posted-on'><svg
-  class="icon"
-  xmlns="http://www.w3.org/2000/svg"
-  viewbox="0 0 24 24"
-  stroke-linecap="round"
-  stroke-linejoin="round"
-  stroke-width="2"
-  aria-hidden="true"
-><rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-<line x1="16" y1="2" x2="16" y2="6" />
-<line x1="8" y1="2" x2="8" y2="6" />
-<line x1="3" y1="10" x2="21" y2="10" />
-</svg>
-<span class='screen-reader-text'>Posted on </span>
-  <time class='entry-date' datetime='2021-03-25T23:00:00&#43;03:00'>2021-03-25</time>
-</span>
-
-  
-  
-<span class='reading-time'><svg
-  class="icon"
-  xmlns="http://www.w3.org/2000/svg"
-  viewbox="0 0 24 24"
-  stroke-linecap="round"
-  stroke-linejoin="round"
-  stroke-width="2"
-  aria-hidden="true"
-><circle cx="12" cy="12" r="10" />
-<polyline points="12 6 12 12 15 15" />
-</svg>
-2 mins to read
-</span>
-
-
-</div>
-
-
   </div>
 </header>
 
-  
-  
 
-  <div class='container entry-content'>
-  <div class="paragraph">
-<p>GitHub Actions are so cool!</p>
-</div>
-<div class="paragraph">
-<p>Check out <a href="https://youtu.be/-sr9_AItFQQ">our recording</a> about them @ <a href="https://www.youtube.com/channel/UCFMIGfAAUXUqnnNcWpdezJQ">Ministry of Testing Abu Dhabi</a> if you want a quick sneak peek, but today I want to self-advertise one of the reusable Actions I made for you.
-And it wasn’t hard at all, thanks to the way they work (although I’m going to <a href="../../tags/rant">rant</a> about that in future articles).</p>
-</div>
-<div class="paragraph">
-<p>You have heard about <a href="https://semver.org">Semantic Versioning</a>, haven’t you?
-If you are a developer you probably know a lot of libraries using Semantic Versioning.
-Chances are, you even use it for your projects.</p>
-</div>
-<div class="paragraph">
-<p>Sometimes during CI/CD in such projects, you need to take simple actions with versions: compare and parse them.
-E.g. you may want to check that a PR to the <code>main</code> branch increases the version (<code>$new_version</code> &gt; <code>$old_version</code>) or you may want to create or update a <code>v$major.$minor</code> / <code>v$major</code> tag whenever you release your project.</p>
-</div>
-<div class="paragraph">
-<p>This is what <code><a href="https://github.com/marketplace/actions/semver-utils">madhead/semver-utils</a></code> is for!
-Just drop it into your workflow and use it for various operations with versions:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-yml" data-lang="yml">- uses: madhead/semver-utils@latest
-  id: version
-  with:
-    version: 1.2.3
-    compare-to: 2.1.0
-- run: |
-    echo &#34;${{ steps.version.outputs.major }}&#34;             # 1
-    echo &#34;${{ steps.version.outputs.minor }}&#34;             # 2
-    echo &#34;${{ steps.version.outputs.patch }}&#34;             # 3
-    echo &#34;${{ steps.version.outputs.comparison-result }}&#34; # &lt;</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Yeah, it supports only a few operations currently, but those are the ones I needed badly in other projects.
-Actions are super easy to create using TypeScript (or Docker, for more sophisticated ones), so I’ve made an action for myself (and others) in just one night.
-I’ve <a href="https://github.com/madhead/semver-utils/issues">planned</a> some extra features for upcoming releases, so check it out or maybe open an issue with a feature you’re missing?
-I just want to know if it is useful or not.</p>
-</div>
-<div class="paragraph">
-<p>I want this action to become a one-stop shop for working with semantic versions in your GitHub Actions workflows one day!</p>
-</div>
-</div>
 
-  
-<footer class='entry-footer'>
-  <div class='container sep-before'><div class='tags'><svg
-  class="icon"
-  xmlns="http://www.w3.org/2000/svg"
-  viewbox="0 0 24 24"
-  stroke-linecap="round"
-  stroke-linejoin="round"
-  stroke-width="2"
-  aria-hidden="true"
-><path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z" />
-<line x1="7" y1="7" x2="7" y2="7" />
-</svg>
-<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/pet-projects/'>Pet Projects</a>, <a class='tag' href='/tags/ci/'>Ci</a>, <a class='tag' href='/tags/github-actions/'>Github Actions</a></div>
+
+<div class='container list-container'>
+  <ul class='list'>
+    
+      <li class='item'>
+  <div class='meta'>
+    <span>
+  <span class='screen-reader-text'>Posted on </span>
+  <time datetime='2025-06-03T02:02:00&#43;02:00'>2025-06-03</time>
+</span>
 
   </div>
-</footer>
+  <header class='item-header'>
+    <h3 class='item-title'>
+      <a href='/posts/chm-not-concurrent-runblocking-not-blocking/'>When ConcurrentHashMap is not concurrent and runBlocking is not blocking</a>
+    </h3>
+  </header>
+</li>
 
+    
+  </ul>
 
-</article>
+  
 
-
-
+</div>
 
       </main>
 

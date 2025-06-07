@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang='en' dir='auto'><head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='
+A (click)bait? Let me explain.
+'>
+<meta name="monetization" content='$ilp.uphold.com/wgzRi7wDbPFf'>
+
+<meta property='og:title' content='When ConcurrentHashMap is not concurrent and runBlocking is not blocking • madhead'>
+<meta property='og:description' content='
+A (click)bait? Let me explain.
+'>
+<meta property='og:url' content='https://madhead.me/posts/chm-not-concurrent-runblocking-not-blocking/'>
+<meta property='og:site_name' content='madhead'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='kotlin'><meta property='article:tag' content='coroutines'><meta property='article:published_time' content='2025-06-03T02:02:00&#43;02:00'/><meta property='article:modified_time' content='2025-06-03T02:02:00&#43;02:00'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.147.7">
+
+  <title>When ConcurrentHashMap is not concurrent and runBlocking is not blocking • madhead</title>
+  <link rel='canonical' href='https://madhead.me/posts/chm-not-concurrent-runblocking-not-blocking/'>
+  
+  
+  <script src="https://unpkg.com/kotlin-playground" data-selector=".kotlin-code"></script>
+
+<link rel='icon' href='/favicon.ico'>
+<link rel='stylesheet' href='/assets/css/main.e0989a78.css'><link rel='stylesheet' href='/css/admonitions.css'><link rel='stylesheet' href='/css/tables.css'><link rel='stylesheet' href='/css/spoilers.css'><style>
+:root{--color-accent:#000000;}
+</style>
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-SML2093FH8"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-SML2093FH8');
+        }
+      </script>
+  
+
+</head>
+<body class='page type-posts has-sidebar'>
+
+  <div class='site'><div id='sidebar' class='sidebar'>
+  <a class='screen-reader-text' href='#main-menu'>Skip to Main Menu</a>
+
+  <div class='container'><section class='widget widget-about sep-after'>
+  <header>
+    
+    <div class='logo'>
+      <a href='/'>
+        <img src='/images/logo.svg'>
+      </a>
+    </div>
+    
+    <div class='desc'>
+    
+    </div>
+  </header>
+
+</section>
+<section class='widget widget-sidebar_menu sep-after'><nav id='sidebar-menu' class='menu sidebar-menu' aria-label='Sidebar Menu'>
+    <div class='container'>
+      <ul><li class='item'>
+  <a href='/posts/'>posts</a></li><li class='item'>
+  <a href='/tags/'>tags</a></li></ul>
+    </div>
+  </nav>
+
+</section>
+
+<section class='widget widget-sidebar_menu sep-after'>
+  <nav id='sidebar-menu' class='menu sidebar-menu' aria-label='Sidebar Menu'>
+    <div class='container'>
+      <ul><li class='item'>
+          <a href='https://ru.madhead.me/'>RU</a>
+        </li></ul>
+    </div>
+  </nav>
+</section><section class='widget widget-social_menu sep-after'><nav aria-label='Social Menu'>
+    <ul><li>
+        <a href='mailto:siarhei.krukau@gmail.com' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Contact via Email</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+<polyline points="22,6 12,13 2,6" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://t.me/madheab' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Telegram account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M23.91 3.79L20.3 20.84c-.25 1.21-.98 1.5-2 .94l-5.5-4.07-2.66 2.57c-.3.3-.55.56-1.1.56-.72 0-.6-.27-.84-.95L6.3 13.7l-5.45-1.7c-1.18-.35-1.19-1.16.26-1.75l21.26-8.2c.97-.43 1.9.24 1.53 1.73z" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://github.com/madhead' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Github account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://gitlab.com/madhead' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Gitlab account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M22.65 14.39L12 22.13 1.35 14.39a.84.84 0 0 1-.3-.94l1.22-3.78 2.44-7.51A.42.42 0 0 1 4.82 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.49h8.1l2.44-7.51A.42.42 0 0 1 18.6 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.51L23 13.45a.84.84 0 0 1-.35.94z" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://stackoverflow.com/users/750510' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Stackoverflow account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><line x1="3.472" y1="18.689" x2="16.612" y2="18.689" />
+<line x1="4.017" y1="12.715" x2="16.884" y2="15.404" />
+<line x1="5.991" y1="6.673" x2="17.906" y2="12.238" />
+<line x1="9.582" y1="1.021" x2="19.692" y2="9.430" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://linkedin.com/in/krukaus' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Linkedin account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+<rect x="2" y="9" width="4" height="12" />
+<circle cx="4" cy="4" r="2" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://instagram.com/m.a.d.h.e.a.d' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Instagram account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+<line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://www.youtube.com/channel/UCO2UZ6hUzjn9XQIdwwkcXJQ' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Youtube account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
+<polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://twitter.com/m_a_d_h_e_a_d' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Twitter account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://mastodon.online/@madhead' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Mastodon account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="m21.448 11.064v8.3572h-3.2914v-8.1115c0-1.7099-0.71521-2.5778-2.1459-2.5778-1.5818 0-2.3745 1.0295-2.3745 3.0653v4.4399h-3.272v-4.4399c0-2.0357-0.79292-3.0653-2.3746-3.0653-1.4305 0-2.1459 0.86789-2.1459 2.5778v8.1115h-3.2914v-8.3572c0-1.7081 0.43233-3.0653 1.3007-4.0694 0.89551-1.0042 2.0682-1.519 3.524-1.519 1.6844 0 2.9598 0.65121 4.623 0.65124 1.6632 2.7e-5 2.9387-0.65124 4.6231-0.65124 1.4556 0 2.6283 0.51477 3.524 1.519 0.86823 1.0042 1.3006 2.3615 1.3006 4.0694" fill="none" stroke="#000" stroke-width="2"/>
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</section></div>
+
+  <div class='sidebar-overlay'></div>
+</div><div class='main'><nav id='main-menu' class='menu main-menu' aria-label='Main Menu'>
+  <div class='container'>
+    <a class='screen-reader-text' href='#content'>Skip to Content</a>
+
+<button id='sidebar-toggler' class='sidebar-toggler' aria-controls='sidebar'>
+  <span class='screen-reader-text'>Toggle Sidebar</span>
+  <span class='open'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><line x1="3" y1="12" x2="21" y2="12" />
+<line x1="3" y1="6" x2="21" y2="6" />
+<line x1="3" y1="18" x2="21" y2="18" />
+</svg>
+</span>
+  <span class='close'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><line x1="18" y1="6" x2="6" y2="18" />
+<line x1="6" y1="6" x2="18" y2="18" />
+</svg>
+</span>
+</button>
+    <ul></ul>
+  </div>
+</nav><div class='header-widgets'>
+        <div class='container'></div>
+      </div>
+
+      <header id='header' class='header site-header'>
+        <div class='container sep-after'>
+          <div class='header-info'><p class='site-title title'>madhead</p><p class='desc site-desc'></p>
+          </div>
+        </div>
+      </header>
+
+      <main id='content'>
+
+
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
+  <div class='container sep-after'>
+    <div class='header-info'>
+      <h1 class='title'>When ConcurrentHashMap is not concurrent and runBlocking is not blocking</h1>
+      
+
+    </div>
+    <div class='entry-meta'>
+  <span class='posted-on'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+<line x1="16" y1="2" x2="16" y2="6" />
+<line x1="8" y1="2" x2="8" y2="6" />
+<line x1="3" y1="10" x2="21" y2="10" />
+</svg>
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='2025-06-03T02:02:00&#43;02:00'>2025-06-03</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><circle cx="12" cy="12" r="10" />
+<polyline points="12 6 12 12 15 15" />
+</svg>
+6 mins to read
+</span>
+
+
+</div>
+
+
+  </div>
+</header>
+
+  
+  
+
+  <div class='container entry-content'>
+  <div class="paragraph">
+<p>A (click)bait? Let me explain.</p>
+</div>
+<div class="paragraph">
+<p>Take a look at this simple code. Can you predict what will be printed?</p>
+</div>
+<div class="paragraph">
+<code class="language-kotlin kotlin-code"match-brackets="true"
+>
+
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import java.util.concurrent.ConcurrentHashMap
+
+//sampleStart
+fun main() {
+   val map = ConcurrentHashMap&lt;String, String&gt;()
+
+   runBlocking {
+       launch {
+           map.computeIfAbsent(&#34;key&#34;) {
+               runBlocking {
+                   delay(100)
+                   &#34;value1&#34;
+               }
+           }
+       }
+       launch {
+           map.computeIfAbsent(&#34;key&#34;) {
+               runBlocking {
+                   delay(500)
+                   &#34;value2&#34;
+               }
+           }
+       }
+   }
+
+   println(map[&#34;key&#34;])
+}
+//sampleEnd
+
+</code>
+
+</div>
+<div class="paragraph">
+<p>Before we dive into what’s wrong here, let’s address an obvious concern:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Does this code even make sense? It looks weird. Surely not a real-world code!</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>But it kind of is.
+Sure, it’s synthetic and simplified, but it represents a valid real-world scenario I encountered recently.
+The essence is straightforward: we have a <code>ConcurrentHashMap</code> and two concurrent computations, both trying to set the value for the same key.</p>
+</div>
+<div class="paragraph">
+<p>In the real world, things were a bit more involved.
+We had to preload some data from a third-party service during the startup of a Spring Boot application.
+But Spring doesn’t support suspending functions in <code>@PostConstruct</code>, <code>InitializingBean</code>, or <code>@EventListener</code>.
+So we went with the simplest option: wrapping the logic in <code>runBlocking</code>.</p>
+</div>
+<div class="paragraph">
+<p>To speed things up, we performed the calls in parallel (using <code>async</code> in the real code).
+While each request was loading different data, they all required service-scoped JWTs issued by another token service.
+These tokens are short-lived and cached using the service name as the key.
+And that cache (Caffeine) is, essentially, a <code>ConcurrentHashMap</code>.</p>
+</div>
+<div class="paragraph">
+<p>So, if two parallel requests for the same service kick off and no token is cached yet, both will try to call the token service and cache the result.
+Since Java’s <code>computeIfAbsent</code> doesn’t accept <code>suspend</code> functions, we wrapped that in another <code>runBlocking</code>.</p>
+</div>
+<div class="paragraph">
+<p>A code smell?
+Maybe.
+Nested <code>runBlocking</code>s, expensive compurations inside <code>computeIfAbsent</code>…
+But hey, <code>ConcurrentHashMap</code> is <em>concurrent</em>, right?
+At worst, we’d waste a call or two to the token service.
+One thread wins and sets the value; the other one moves on.</p>
+</div>
+<div class="paragraph">
+<p>Except…
+The code is completely broken:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>Exception in thread &#34;main&#34; java.lang.IllegalStateException: Recursive update
+ at java.base/java.util.concurrent.ConcurrentHashMap.computeIfAbsent(ConcurrentHashMap.java:1763)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Let’s dig in.</p>
+</div>
+<div class="paragraph">
+<p>The exception is thrown <a href="https://github.com/openjdk/jdk/blob/890adb6410dab4606a4f26a942aed02fb2f55387/src/java.base/share/classes/java/util/concurrent/ConcurrentHashMap.java#L1763">here</a>.
+So there is a variable <code>f</code> which is an instance of a <code>ReservationNode</code>.
+And <a href="https://github.com/openjdk/jdk/blob/890adb6410dab4606a4f26a942aed02fb2f55387/src/java.base/share/classes/java/util/concurrent/ConcurrentHashMap.java#L2265-L2276">the docs for that class</a> immediately prove that we’re on a right track:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>A place-holder node used in computeIfAbsent and compute.</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Going back in the flow brings us to <a href="https://github.com/openjdk/jdk/blob/890adb6410dab4606a4f26a942aed02fb2f55387/src/java.base/share/classes/java/util/concurrent/ConcurrentHashMap.java#L1701-L1703">these lines</a>.
+There’s a strange bit: it synchronizes on a local variable. Weird? Yes. But there’s a <a href="https://stackoverflow.com/a/47753079/750510">good reason</a>: that’s how <code>ConcurrentHashMap</code> avoids locking the entire map.
+Simplifying a bit: it reserves a slot for the key and synchronizes on that specific entry.
+Only one thread may enter that block.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>IntelliJ IDEA has a neat feature, helping quickly understand how the execution got to a particular point, called “Analyze Data Flow”.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p>Let’s sprinkle in some logging to observe the threads in action:</p>
+</div>
+<div class="paragraph">
+<code class="language-kotlin kotlin-code" data-highlight-only match-brackets="true"
+>
+
+fun printlnWithThreadName(message: Any?) {
+    println(&#34;[${Thread.currentThread().name}] $message&#34;)
+}
+
+</code>
+
+</div>
+<div class="paragraph">
+<p>Here’s the code again with logging:</p>
+</div>
+<div class="paragraph">
+<code class="language-kotlin kotlin-code"match-brackets="true"
+>
+
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import java.util.concurrent.ConcurrentHashMap
+
+fun printlnWithThreadName(message: Any?) {
+    println(&#34;[${Thread.currentThread().name}] $message&#34;)
+}
+
+//sampleStart
+fun main() {
+    printlnWithThreadName(&#34;Started main&#34;)
+    val map = ConcurrentHashMap&lt;String, String&gt;()
+
+    runBlocking {
+        printlnWithThreadName(&#34;Entered runBlocking&#34;)
+        launch {
+            printlnWithThreadName(&#34;Started launch (1)&#34;)
+            map.computeIfAbsent(&#34;key&#34;) {
+                printlnWithThreadName(&#34;Computing key (1)&#34;)
+                runBlocking {
+                    printlnWithThreadName(&#34;Computing key (1), inside runBlocking&#34;)
+                    delay(100)
+                    &#34;value1&#34;
+                }
+            }
+        }
+        launch {
+            printlnWithThreadName(&#34;Started launch (2)&#34;)
+            map.computeIfAbsent(&#34;key&#34;) {
+                printlnWithThreadName(&#34;Computing key (2)&#34;)
+                runBlocking {
+                    printlnWithThreadName(&#34;Computing key (2), inside runBlocking&#34;)
+                    delay(500)
+                    &#34;value2&#34;
+                }
+            }
+        }
+    }
+
+    println(map[&#34;key&#34;])
+}
+//sampleEnd
+
+</code>
+
+</div>
+<div class="paragraph">
+<p>And the output:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>[main] Started main
+[main @coroutine#1] Entered runBlocking
+[main @coroutine#2] Started launch (1)
+[main @coroutine#2] Computing key (1)
+[main @coroutine#3] Started launch (2)
+[main @coroutine#4] Computing key (1), inside runBlocking</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Turns out, <code>runBlocking</code>… isn’t truly blocking in the way one might expect.
+So how is it starting multiple computations?
+They’re not running in parallel, after all, a single thread can’t do that.
+But they do appear to be running concurrently.
+No surprise there: that’s exactly how coroutines work.
+It’s cooperative multitasking: when a coroutine suspends, the thread can resume another coroutine that’s ready to continue.
+Multiple coroutines can take turns on a single thread.</p>
+</div>
+<div class="paragraph">
+<p>This is when the <code>runBlocking</code>&#39;s documentation starts to make sense:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>The default <a href="https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-coroutine-dispatcher/index.html"><code>CoroutineDispatcher</code></a> for this builder is an internal implementation of event loop that processes continuations in this blocked thread until the completion of this coroutine.
+See <a href="https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-coroutine-dispatcher/index.html"><code>CoroutineDispatcher</code></a> for the other implementations that are provided by <code>kotlinx.coroutines</code>.</p>
+</div>
+<div class="paragraph">
+<p>When <a href="https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-coroutine-dispatcher/index.html"><code>CoroutineDispatcher</code></a> is explicitly specified in the <a href="https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/run-blocking.html">context</a>, then the new coroutine runs in the context of the specified dispatcher while the current thread is blocked.
+If the specified dispatcher is an event loop of another <code>runBlocking</code>, then this invocation uses the outer event loop.</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>So: <code>runBlocking</code> does block the calling thread until the coroutine completes.
+However, within that thread, it runs an event loop to dispatch and resume coroutines created inside the same <code>runBlocking</code> block.
+Since all these coroutines run on the same thread, what happens when they hit a synchronized block, like the one inside the <code>computeIfAbsent</code>?
+In other words: if a coroutine enters a synchronized block and then suspends, could another coroutine resume on the same thread while the monitor is still held?
+Is it just… let in?</p>
+</div>
+<div class="paragraph">
+<p>Turns out that the answer is &#34;yes&#34;.
+And that’s the problem.</p>
+</div>
+<div class="paragraph">
+<p><code>ConcurrentHashMap</code> is thread-safe, but not coroutine-safe.</p>
+</div>
+<div class="paragraph">
+<p>Another finding: those <code>launch</code> blocks (or <code>async</code>s) are generally pointless.
+Of course IO operations like this benefit from suspension, but there’s no actual parallelism if everything is running on a single thread.</p>
+</div>
+<div class="paragraph">
+<p>The code had been running like this for ages.
+What revealed the issue?
+I was updating our HTTP clients, introducing that exact token cache and discovered a bug in the preload logic!</p>
+</div>
+<div class="paragraph">
+<p>Let’s give the outer runBlocking a proper <code>CoroutineDispatcher</code>:</p>
+</div>
+<div class="paragraph">
+<code class="language-kotlin kotlin-code"match-brackets="true"
+>
+
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import java.util.concurrent.ConcurrentHashMap
+
+fun printlnWithThreadName(message: Any?) {
+    println(&#34;[${Thread.currentThread().name}] $message&#34;)
+}
+
+//sampleStart
+fun main() {
+    printlnWithThreadName(&#34;Started main&#34;)
+    val map = ConcurrentHashMap&lt;String, String&gt;()
+
+    runBlocking(Dispatchers.IO) {
+        printlnWithThreadName(&#34;Entered runBlocking&#34;)
+        launch {
+            printlnWithThreadName(&#34;Started launch (1)&#34;)
+            map.computeIfAbsent(&#34;key&#34;) {
+                printlnWithThreadName(&#34;Computing key (1)&#34;)
+                runBlocking {
+                    printlnWithThreadName(&#34;Computing key (1), inside runBlocking&#34;)
+                    delay(100)
+                    &#34;value1&#34;
+                }
+            }
+        }
+        launch {
+            printlnWithThreadName(&#34;Started launch (2)&#34;)
+            map.computeIfAbsent(&#34;key&#34;) {
+                printlnWithThreadName(&#34;Computing key (2)&#34;)
+                runBlocking {
+                    printlnWithThreadName(&#34;Computing key (2), inside runBlocking&#34;)
+                    delay(500)
+                    &#34;value2&#34;
+                }
+            }
+        }
+    }
+
+    println(map[&#34;key&#34;])
+}
+//sampleEnd
+
+</code>
+
+</div>
+<div class="paragraph">
+<p>Now, everything works:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>[main] Started main
+[DefaultDispatcher-worker-2 @coroutine#1] Entered runBlocking
+[DefaultDispatcher-worker-3 @coroutine#2] Started launch (1)
+[DefaultDispatcher-worker-3 @coroutine#2] Computing key (1)
+[DefaultDispatcher-worker-1 @coroutine#3] Started launch (2)
+[DefaultDispatcher-worker-3 @coroutine#4] Computing key (1), inside runBlocking
+value1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Even limiting parallelism to one (e.g., <code>Dispatchers.IO.limitedParallelism(1)</code>, try it!) seems to fix the issue.
+Is the root cause in the event-loop nature of the default dispatcher in <code>runBlocking</code>?</p>
+</div>
+<div class="paragraph">
+<p>I still think, that the <code>ConcurrentHashMap</code> is not, generally, coroutine-safe.
+Even if you’re using multiple physical threads with a proper dispatcher, there’s still a chance that two <code>computeIfAbsent</code> operations could be scheduled on the same thread if they’re suspendable.
+Although this case would be very rare.</p>
+</div>
+<div class="paragraph">
+<p>What do you think?</p>
+</div>
+<div class="paragraph">
+<p>P.S. Another folks argued about <code>ConcurrentHashMap</code>&#39;s safety in coroutine world in Kotlin Slack <a href="https://slack-chats.kotlinlang.org/t/488773/is-there-a-problem-using-concurrenthashmap-with-coroutines-i">here</a>. Also, there is a discussion of a very similar case already in the <code>kotlinx.coroutines</code> GitHub: <a href="https://github.com/Kotlin/kotlinx.coroutines/issues/3982">#3982</a>.</p>
+</div>
+</div>
+
+  
+<footer class='entry-footer'>
+  <div class='container sep-before'><div class='tags'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z" />
+<line x1="7" y1="7" x2="7" y2="7" />
+</svg>
+<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/kotlin/'>Kotlin</a>, <a class='tag' href='/tags/coroutines/'>Coroutines</a></div>
+
+  </div>
+</footer>
+
+
+</article>
+
+
+
+
+      </main>
+
+      <footer id='footer' class='footer'>
+        <div class='container sep-before'><div class='copyright'>
+  <p></p>
+</div>
+
+        </div>
+      </footer>
+
+    </div>
+  </div><script>window.__assets_js_src="/assets/js/"</script>
+
+<script src='/assets/js/main.330687e7.js'></script>
+
+</body>
+
+</html>
+

@@ -2,8 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://madhead.me/tags/coroutines/</loc>
+    <lastmod>2025-06-03T02:02:00+02:00</lastmod>
+  </url><url>
+    <loc>https://madhead.me/tags/kotlin/</loc>
+    <lastmod>2025-06-03T02:02:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://ru.madhead.me/tags/kotlin/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://madhead.me/tags/kotlin/"
+                />
+  </url><url>
     <loc>https://madhead.me/</loc>
-    <lastmod>2024-07-28T02:41:00+02:00</lastmod>
+    <lastmod>2025-06-03T02:02:00+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ru"
@@ -15,14 +31,8 @@
                 href="https://madhead.me/"
                 />
   </url><url>
-    <loc>https://madhead.me/tags/maven/</loc>
-    <lastmod>2024-07-28T02:41:00+02:00</lastmod>
-  </url><url>
-    <loc>https://madhead.me/posts/no-snapshots/</loc>
-    <lastmod>2024-07-28T02:41:00+02:00</lastmod>
-  </url><url>
     <loc>https://madhead.me/posts/</loc>
-    <lastmod>2024-07-28T02:41:00+02:00</lastmod>
+    <lastmod>2025-06-03T02:02:00+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ru"
@@ -35,7 +45,7 @@
                 />
   </url><url>
     <loc>https://madhead.me/tags/</loc>
-    <lastmod>2024-07-28T02:41:00+02:00</lastmod>
+    <lastmod>2025-06-03T02:02:00+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ru"
@@ -46,6 +56,15 @@
                 hreflang="en"
                 href="https://madhead.me/tags/"
                 />
+  </url><url>
+    <loc>https://madhead.me/posts/chm-not-concurrent-runblocking-not-blocking/</loc>
+    <lastmod>2025-06-03T02:02:00+02:00</lastmod>
+  </url><url>
+    <loc>https://madhead.me/tags/maven/</loc>
+    <lastmod>2024-07-28T02:41:00+02:00</lastmod>
+  </url><url>
+    <loc>https://madhead.me/posts/no-snapshots/</loc>
+    <lastmod>2024-07-28T02:41:00+02:00</lastmod>
   </url><url>
     <loc>https://madhead.me/tags/aws/</loc>
     <lastmod>2024-02-23T17:24:00+03:00</lastmod>
@@ -262,19 +281,6 @@
   </url><url>
     <loc>https://madhead.me/tags/kafka/</loc>
     <lastmod>2020-06-18T09:00:00+03:00</lastmod>
-  </url><url>
-    <loc>https://madhead.me/tags/kotlin/</loc>
-    <lastmod>2020-06-18T09:00:00+03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://ru.madhead.me/tags/kotlin/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://madhead.me/tags/kotlin/"
-                />
   </url><url>
     <loc>https://madhead.me/posts/kafka-connect-wikipedia/</loc>
     <lastmod>2020-06-18T09:00:00+03:00</lastmod>

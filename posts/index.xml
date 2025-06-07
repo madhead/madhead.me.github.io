@@ -6,8 +6,15 @@
     <description>Recent content in Posts on madhead</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 28 Jul 2024 02:41:00 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 03 Jun 2025 02:02:00 +0200</lastBuildDate>
     <atom:link href="https://madhead.me/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>When ConcurrentHashMap is not concurrent and runBlocking is not blocking</title>
+      <link>https://madhead.me/posts/chm-not-concurrent-runblocking-not-blocking/</link>
+      <pubDate>Tue, 03 Jun 2025 02:02:00 +0200</pubDate>
+      <guid>https://madhead.me/posts/chm-not-concurrent-runblocking-not-blocking/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;A (click)bait? Let me explain.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
     <item>
       <title>No SNAPSHOTs</title>
       <link>https://madhead.me/posts/no-snapshots/</link>

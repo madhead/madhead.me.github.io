@@ -6,8 +6,22 @@
     <description>Recent content in Tags on madhead</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 28 Jul 2024 02:41:00 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 03 Jun 2025 02:02:00 +0200</lastBuildDate>
     <atom:link href="https://madhead.me/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Coroutines</title>
+      <link>https://madhead.me/tags/coroutines/</link>
+      <pubDate>Tue, 03 Jun 2025 02:02:00 +0200</pubDate>
+      <guid>https://madhead.me/tags/coroutines/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kotlin</title>
+      <link>https://madhead.me/tags/kotlin/</link>
+      <pubDate>Tue, 03 Jun 2025 02:02:00 +0200</pubDate>
+      <guid>https://madhead.me/tags/kotlin/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Maven</title>
       <link>https://madhead.me/tags/maven/</link>
@@ -195,13 +209,6 @@
       <link>https://madhead.me/tags/kafka/</link>
       <pubDate>Thu, 18 Jun 2020 09:00:00 +0300</pubDate>
       <guid>https://madhead.me/tags/kafka/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Kotlin</title>
-      <link>https://madhead.me/tags/kotlin/</link>
-      <pubDate>Thu, 18 Jun 2020 09:00:00 +0300</pubDate>
-      <guid>https://madhead.me/tags/kotlin/</guid>
       <description></description>
     </item>
     <item>
