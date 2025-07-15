@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang='en' dir='auto'><head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='
+
+
+
+
+
+Recently, I treated myself with a few extra keys on my mechanical keyboard (just flexin&#39; here), and I decided to set them up to switch keyboard layouts modelessly.
+Little did I know that trying to make this seemingly simple feature work in GNOME would turn into a ridiculously tough challenge.
+That’s how my pet project, Shyriiwook (also on GitHub as madhead/shyriiwook), came to life.
+'>
+<meta name="monetization" content='$ilp.uphold.com/wgzRi7wDbPFf'>
+
+<meta property='og:title' content='Modeless Keyboard Layout Switching in GNOME with Shyriiwook • madhead'>
+<meta property='og:description' content='
+
+
+
+
+
+Recently, I treated myself with a few extra keys on my mechanical keyboard (just flexin&#39; here), and I decided to set them up to switch keyboard layouts modelessly.
+Little did I know that trying to make this seemingly simple feature work in GNOME would turn into a ridiculously tough challenge.
+That’s how my pet project, Shyriiwook (also on GitHub as madhead/shyriiwook), came to life.
+'>
+<meta property='og:url' content='https://madhead.me/posts/shyriiwook/'>
+<meta property='og:site_name' content='madhead'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='pet projects'><meta property='article:tag' content='GNOME'><meta property='article:tag' content='linux'><meta property='article:tag' content='lifehack'><meta property='article:tag' content='rant'><meta property='article:published_time' content='2025-07-15T00:29:00&#43;02:00'/><meta property='article:modified_time' content='2025-07-15T00:29:00&#43;02:00'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.148.1">
+
+  <title>Modeless Keyboard Layout Switching in GNOME with Shyriiwook • madhead</title>
+  <link rel='canonical' href='https://madhead.me/posts/shyriiwook/'>
+  
+  
+  <script src="https://unpkg.com/kotlin-playground" data-selector=".kotlin-code"></script>
+
+<link rel='icon' href='/favicon.ico'>
+<link rel='stylesheet' href='/assets/css/main.e0989a78.css'><link rel='stylesheet' href='/css/admonitions.css'><link rel='stylesheet' href='/css/tables.css'><link rel='stylesheet' href='/css/spoilers.css'><style>
+:root{--color-accent:#000000;}
+</style>
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-SML2093FH8"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-SML2093FH8');
+        }
+      </script>
+  
+
+</head>
+<body class='page type-posts has-sidebar'>
+
+  <div class='site'><div id='sidebar' class='sidebar'>
+  <a class='screen-reader-text' href='#main-menu'>Skip to Main Menu</a>
+
+  <div class='container'><section class='widget widget-about sep-after'>
+  <header>
+    
+    <div class='logo'>
+      <a href='/'>
+        <img src='/images/logo.svg'>
+      </a>
+    </div>
+    
+    <div class='desc'>
+    
+    </div>
+  </header>
+
+</section>
+<section class='widget widget-sidebar_menu sep-after'><nav id='sidebar-menu' class='menu sidebar-menu' aria-label='Sidebar Menu'>
+    <div class='container'>
+      <ul><li class='item'>
+  <a href='/posts/'>posts</a></li><li class='item'>
+  <a href='/tags/'>tags</a></li></ul>
+    </div>
+  </nav>
+
+</section>
+
+<section class='widget widget-sidebar_menu sep-after'>
+  <nav id='sidebar-menu' class='menu sidebar-menu' aria-label='Sidebar Menu'>
+    <div class='container'>
+      <ul><li class='item'>
+          <a href='https://ru.madhead.me/'>RU</a>
+        </li></ul>
+    </div>
+  </nav>
+</section><section class='widget widget-social_menu sep-after'><nav aria-label='Social Menu'>
+    <ul><li>
+        <a href='mailto:siarhei.krukau@gmail.com' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Contact via Email</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+<polyline points="22,6 12,13 2,6" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://t.me/madheab' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Telegram account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M23.91 3.79L20.3 20.84c-.25 1.21-.98 1.5-2 .94l-5.5-4.07-2.66 2.57c-.3.3-.55.56-1.1.56-.72 0-.6-.27-.84-.95L6.3 13.7l-5.45-1.7c-1.18-.35-1.19-1.16.26-1.75l21.26-8.2c.97-.43 1.9.24 1.53 1.73z" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://github.com/madhead' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Github account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://gitlab.com/madhead' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Gitlab account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M22.65 14.39L12 22.13 1.35 14.39a.84.84 0 0 1-.3-.94l1.22-3.78 2.44-7.51A.42.42 0 0 1 4.82 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.49h8.1l2.44-7.51A.42.42 0 0 1 18.6 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.51L23 13.45a.84.84 0 0 1-.35.94z" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://stackoverflow.com/users/750510' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Stackoverflow account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><line x1="3.472" y1="18.689" x2="16.612" y2="18.689" />
+<line x1="4.017" y1="12.715" x2="16.884" y2="15.404" />
+<line x1="5.991" y1="6.673" x2="17.906" y2="12.238" />
+<line x1="9.582" y1="1.021" x2="19.692" y2="9.430" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://linkedin.com/in/krukaus' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Linkedin account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+<rect x="2" y="9" width="4" height="12" />
+<circle cx="4" cy="4" r="2" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://instagram.com/m.a.d.h.e.a.d' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Instagram account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+<line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://www.youtube.com/channel/UCO2UZ6hUzjn9XQIdwwkcXJQ' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Youtube account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
+<polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://twitter.com/m_a_d_h_e_a_d' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Twitter account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://mastodon.online/@madhead' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Mastodon account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="m21.448 11.064v8.3572h-3.2914v-8.1115c0-1.7099-0.71521-2.5778-2.1459-2.5778-1.5818 0-2.3745 1.0295-2.3745 3.0653v4.4399h-3.272v-4.4399c0-2.0357-0.79292-3.0653-2.3746-3.0653-1.4305 0-2.1459 0.86789-2.1459 2.5778v8.1115h-3.2914v-8.3572c0-1.7081 0.43233-3.0653 1.3007-4.0694 0.89551-1.0042 2.0682-1.519 3.524-1.519 1.6844 0 2.9598 0.65121 4.623 0.65124 1.6632 2.7e-5 2.9387-0.65124 4.6231-0.65124 1.4556 0 2.6283 0.51477 3.524 1.519 0.86823 1.0042 1.3006 2.3615 1.3006 4.0694" fill="none" stroke="#000" stroke-width="2"/>
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</section></div>
+
+  <div class='sidebar-overlay'></div>
+</div><div class='main'><nav id='main-menu' class='menu main-menu' aria-label='Main Menu'>
+  <div class='container'>
+    <a class='screen-reader-text' href='#content'>Skip to Content</a>
+
+<button id='sidebar-toggler' class='sidebar-toggler' aria-controls='sidebar'>
+  <span class='screen-reader-text'>Toggle Sidebar</span>
+  <span class='open'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><line x1="3" y1="12" x2="21" y2="12" />
+<line x1="3" y1="6" x2="21" y2="6" />
+<line x1="3" y1="18" x2="21" y2="18" />
+</svg>
+</span>
+  <span class='close'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><line x1="18" y1="6" x2="6" y2="18" />
+<line x1="6" y1="6" x2="18" y2="18" />
+</svg>
+</span>
+</button>
+    <ul></ul>
+  </div>
+</nav><div class='header-widgets'>
+        <div class='container'></div>
+      </div>
+
+      <header id='header' class='header site-header'>
+        <div class='container sep-after'>
+          <div class='header-info'><p class='site-title title'>madhead</p><p class='desc site-desc'></p>
+          </div>
+        </div>
+      </header>
+
+      <main id='content'>
+
+
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
+  <div class='container sep-after'>
+    <div class='header-info'>
+      <h1 class='title'>Modeless Keyboard Layout Switching in GNOME with Shyriiwook</h1>
+      
+
+    </div>
+    <div class='entry-meta'>
+  <span class='posted-on'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+<line x1="16" y1="2" x2="16" y2="6" />
+<line x1="8" y1="2" x2="8" y2="6" />
+<line x1="3" y1="10" x2="21" y2="10" />
+</svg>
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='2025-07-15T00:29:00&#43;02:00'>2025-07-15</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><circle cx="12" cy="12" r="10" />
+<polyline points="12 6 12 12 15 15" />
+</svg>
+4 mins to read
+</span>
+
+
+</div>
+
+
+  </div>
+</header>
+
+  
+  
+
+  <div class='container entry-content'>
+  <div class="paragraph">
+<figure><img src="//storage.googleapis.com/madheadme-static/posts/shyriiwook/001.png">
+</figure>
+
+</div>
+<div class="paragraph">
+<p>Recently, I treated myself with a few extra keys on my mechanical keyboard (just flexin&#39; here), and I decided to set them up to switch keyboard layouts modelessly.
+Little did I know that trying to make this seemingly simple feature work in GNOME would turn into a ridiculously tough challenge.
+That’s how my pet project, <a href="https://extensions.gnome.org/extension/6691/shyriiwook">Shyriiwook</a> (also on GitHub as <a href="https://github.com/madhead/shyriiwook">madhead/shyriiwook</a>), came to life.</p>
+</div>
+<div class="sect1">
+<h2 id="_contents">Contents</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#problem">The Problem</a></p>
+</li>
+<li>
+<p><a href="#struggle">The Struggle</a></p>
+</li>
+<li>
+<p><a href="#solution">The Solution</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="problem">The Problem</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For my US-based readers who might need a broader explanation: what exactly is a keyboard layout, and why do we need to switch them?
+Well, consider juggling two languages in your daily life, like English and Russian. In my case, it’s even more complex with Belarusian, Polish, occasional Ukrainian, and a sprinkle of Greek glyphs.
+Clearly, fitting all these on a single keyboard isn’t feasible, so we resort to switching between keyboard layouts.
+A quick press of a magic key combination, and your keyboard starts typing in a different language!</p>
+</div>
+<div class="paragraph">
+<p>That was a bit simplified (and stereotypical towards Americans).
+In my case, though, I maintain only two primary layouts: one for Latin characters covering English and Polish, and another for Cyrillic encompassing Russian, Belarusian, and Ukrainian.
+I use something called <a href="https://en.wikipedia.org/wiki/Compose_key">Compose Key</a> to input extra glyphs, like <code>ў</code> or <code>ę</code>, as well as Greek letters.
+Okay, enough flexing.</p>
+</div>
+<div class="paragraph">
+<p>Now, the snag lies in the fact that the key combination to switch layouts is <em>typically</em> the same for all layouts, and they cycle in a predetermined sequence.
+For example, I use <kbd>Win</kbd> + <kbd>Space</kbd> to toggle between my layouts, and they cycle like this:</p>
+</div>
+<div class="paragraph">
+<figure><img src="//storage.googleapis.com/madheadme-static/posts/shyriiwook/002.gif">
+</figure>
+
+</div>
+<div class="paragraph">
+<p>Here’s the problem: there’s a concealed <strong>state</strong>, a <strong>mode</strong> in this approach.
+This mode is obviously the current layout, <em>typically</em> global to the whole system, but some prefer per-window layout switching.</p>
+</div>
+<div class="paragraph">
+<figure><img src="//storage.googleapis.com/madheadme-static/posts/shyriiwook/003.png">
+</figure>
+
+</div>
+<div class="paragraph">
+<p>It either forces you to keep that mode, the current layout, in your head, or leads to inevitable mistakes when you forget to switch the layout back.
+Again, it might be inobvious to happy users of Latin-based alphabets, but being a developer and discussing programming (a topic full of English words, and code) in Russian is frustrating.</p>
+</div>
+<div class="paragraph">
+<p>And I’m not the alone ranting about modality.
+There’s an entire <a href="https://en.wikipedia.org/wiki/Mode_(user_interface)#Mode_errors">article on the Wiki</a> shedding light on some of these problems.</p>
+</div>
+<div class="paragraph">
+<p>So, it’s not me, who invented the idea of modeless keyboard layout switching.
+It’s straightforward: each language has its <strong>dedicated key combination</strong>, and you could switch between them at any time, without having to remember the current layout.
+So, for instance, I could set up my keyboard so that <kbd>Win</kbd> + <kbd>F1</kbd> always and unconditionally switches to the English layout, and <kbd>Win</kbd> + <kbd>F2</kbd> switches to the Russian layout.
+Of course, if you are already in the requested layout, those key combinations would do nothing.</p>
+</div>
+<div class="paragraph">
+<figure><img src="//storage.googleapis.com/madheadme-static/posts/shyriiwook/004.gif">
+</figure>
+
+</div>
+<div class="paragraph">
+<p>How challenging could it possibly be to achieve this in GNOME?</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="struggle">The Struggle</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Turns out, it’s not that easy.
+Trying to make this work felt more like digital archaeology: digging through the sediment layers of GNOME and Linux input configuration history.</p>
+</div>
+<div class="paragraph">
+<p>The earliest method I came across was the <code>setxkbmap</code> command.
+It’s still around and very low-level, which is impressive.
+Unfortunately, it doesn’t play nicely with GNOME Shell.
+At least not with mine.
+It does switch the layout, but GNOME Shell doesn’t seem to notice it.
+The UI indicator gets stuck, and the keyboard shortcuts stop working until you restart the session.</p>
+</div>
+<div class="paragraph">
+<p>Yeah, no. Moving on.</p>
+</div>
+<div class="paragraph">
+<p>Then there’s the more &#34;modern&#34; approach, often recommended online: <code>gsettings set org.gnome.desktop.input-sources current</code>
+I suspect it stopped working somewhere <a href="https://askubuntu.com/q/1039950/171572">around</a> 2018, however some people still recommend it.</p>
+</div>
+<div class="paragraph">
+<p>They wasted my time, moving on!</p>
+</div>
+<div class="paragraph">
+<p>Then came the <code>gdbus call … method org.gnome.Shell.Eval …</code> trick.
+Basically, <code>eval()</code> for your desktop environment.
+As with every other <code>eval()</code> in every other <del>programming</del>scripting language, it was considered unsafe, got deprecated and put to oblivion.</p>
+</div>
+<div class="paragraph">
+<p>Fair enough, but it leaves me without a solution, so moving on!</p>
+</div>
+<div class="paragraph">
+<p>Then someone tried to bring <code>Eval</code> <a href="https://github.com/ramottamado/eval-gjs">back from the dead</a>, and someone else repackaged it as a GNOME extension without attribution, so the original author had to put a warning in their repo.</p>
+</div>
+<div class="paragraph">
+<p>That warning is scary, moving on!</p>
+</div>
+<div class="paragraph">
+<p>Ah, wait, that’s it.
+No more options seem to exist.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="solution">The Solution</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Eventually, I gave up on trying to find a solution, and just wrote an extension instead.</p>
+</div>
+<div class="paragraph">
+<p>It’s called <a href="https://extensions.gnome.org/extension/6691/shyriiwook">Shyriiwook</a>, and it’s <a href="https://github.com/madhead/shyriiwook">OSS</a>, of course</p>
+</div>
+<div class="paragraph">
+<p>It works by exposing a D-Bus interface, but without any <code>Evals</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ gdbus introspect \
+    --session \
+    --dest org.gnome.Shell \
+    --object-path /me/madhead/Shyriiwook \
+    --only-properties
+
+node /me/madhead/Shyriiwook {
+  interface me.madhead.Shyriiwook {
+    properties:
+      readonly as availableLayouts = [&#39;us&#39;, &#39;by+ru&#39;];
+      readonly s currentLayout = &#39;us&#39;;
+  };
+};
+
+$ gdbus call \
+    --session \
+    --dest org.gnome.Shell \
+    --object-path /me/madhead/Shyriiwook \
+    --method me.madhead.Shyriiwook.activate &#34;by+ru&#34;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>By using the last command, you assign a dedicated shortcut to each layout.
+No cycling, no guessing, no hidden state, just press the key, get the layout.</p>
+</div>
+<div class="paragraph">
+<p>I hope, the total time I saved for the humanity on switching keyboard layouts is worth the time I spent on this project 🙂</p>
+</div>
+<div class="paragraph">
+<figure><img src="//storage.googleapis.com/madheadme-static/posts/shyriiwook/005.png">
+</figure>
+
+</div>
+</div>
+</div>
+</div>
+
+  
+<footer class='entry-footer'>
+  <div class='container sep-before'><div class='tags'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z" />
+<line x1="7" y1="7" x2="7" y2="7" />
+</svg>
+<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/pet-projects/'>Pet Projects</a>, <a class='tag' href='/tags/gnome/'>GNOME</a>, <a class='tag' href='/tags/linux/'>Linux</a>, <a class='tag' href='/tags/lifehack/'>Lifehack</a>, <a class='tag' href='/tags/rant/'>Rant</a></div>
+
+  </div>
+</footer>
+
+
+</article>
+
+
+<section id='comments' class='comments'>
+  <div class='container sep-before'>
+    <div class='comments-area'><div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "madhead-me" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+  </div>
+</section>
+
+      </main>
+
+      <footer id='footer' class='footer'>
+        <div class='container sep-before'><div class='copyright'>
+  <p></p>
+</div>
+
+        </div>
+      </footer>
+
+    </div>
+  </div><script>window.__assets_js_src="/assets/js/"</script>
+
+<script src='/assets/js/main.330687e7.js'></script>
+
+</body>
+
+</html>
+

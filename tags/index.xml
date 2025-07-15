@@ -6,8 +6,43 @@
     <description>Recent content in Tags on madhead</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 03 Jun 2025 02:02:00 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 15 Jul 2025 00:29:00 +0200</lastBuildDate>
     <atom:link href="https://madhead.me/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GNOME</title>
+      <link>https://madhead.me/tags/gnome/</link>
+      <pubDate>Tue, 15 Jul 2025 00:29:00 +0200</pubDate>
+      <guid>https://madhead.me/tags/gnome/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Lifehack</title>
+      <link>https://madhead.me/tags/lifehack/</link>
+      <pubDate>Tue, 15 Jul 2025 00:29:00 +0200</pubDate>
+      <guid>https://madhead.me/tags/lifehack/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>https://madhead.me/tags/linux/</link>
+      <pubDate>Tue, 15 Jul 2025 00:29:00 +0200</pubDate>
+      <guid>https://madhead.me/tags/linux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Pet Projects</title>
+      <link>https://madhead.me/tags/pet-projects/</link>
+      <pubDate>Tue, 15 Jul 2025 00:29:00 +0200</pubDate>
+      <guid>https://madhead.me/tags/pet-projects/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Rant</title>
+      <link>https://madhead.me/tags/rant/</link>
+      <pubDate>Tue, 15 Jul 2025 00:29:00 +0200</pubDate>
+      <guid>https://madhead.me/tags/rant/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Coroutines</title>
       <link>https://madhead.me/tags/coroutines/</link>
@@ -44,13 +79,6 @@
       <description></description>
     </item>
     <item>
-      <title>Rant</title>
-      <link>https://madhead.me/tags/rant/</link>
-      <pubDate>Fri, 23 Feb 2024 17:24:00 +0300</pubDate>
-      <guid>https://madhead.me/tags/rant/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Curl</title>
       <link>https://madhead.me/tags/curl/</link>
       <pubDate>Wed, 10 Jan 2024 12:40:00 +0200</pubDate>
@@ -69,20 +97,6 @@
       <link>https://madhead.me/tags/kubectl/</link>
       <pubDate>Wed, 10 Jan 2024 12:40:00 +0200</pubDate>
       <guid>https://madhead.me/tags/kubectl/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Lifehack</title>
-      <link>https://madhead.me/tags/lifehack/</link>
-      <pubDate>Wed, 10 Jan 2024 12:40:00 +0200</pubDate>
-      <guid>https://madhead.me/tags/lifehack/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Linux</title>
-      <link>https://madhead.me/tags/linux/</link>
-      <pubDate>Wed, 10 Jan 2024 12:40:00 +0200</pubDate>
-      <guid>https://madhead.me/tags/linux/</guid>
       <description></description>
     </item>
     <item>
@@ -153,13 +167,6 @@
       <link>https://madhead.me/tags/telegram/</link>
       <pubDate>Tue, 25 Oct 2022 00:23:00 +0200</pubDate>
       <guid>https://madhead.me/tags/telegram/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Pet Projects</title>
-      <link>https://madhead.me/tags/pet-projects/</link>
-      <pubDate>Tue, 14 Sep 2021 09:00:00 +0300</pubDate>
-      <guid>https://madhead.me/tags/pet-projects/</guid>
       <description></description>
     </item>
     <item>

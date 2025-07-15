@@ -6,8 +6,15 @@
     <description>Recent content in Linux on madhead</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 10 Jan 2024 12:40:00 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 15 Jul 2025 00:29:00 +0200</lastBuildDate>
     <atom:link href="https://madhead.me/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Modeless Keyboard Layout Switching in GNOME with Shyriiwook</title>
+      <link>https://madhead.me/posts/shyriiwook/</link>
+      <pubDate>Tue, 15 Jul 2025 00:29:00 +0200</pubDate>
+      <guid>https://madhead.me/posts/shyriiwook/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;figure&gt;&lt;img src=&#34;//storage.googleapis.com/madheadme-static/posts/shyriiwook/001.png&#34;&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Recently, I treated myself with a few extra keys on my mechanical keyboard (just flexin&amp;#39; here), and I decided to set them up to switch keyboard layouts modelessly.&#xA;Little did I know that trying to make this seemingly simple feature work in GNOME would turn into a ridiculously tough challenge.&#xA;That’s how my pet project, &lt;a href=&#34;https://extensions.gnome.org/extension/6691/shyriiwook&#34;&gt;Shyriiwook&lt;/a&gt; (also on GitHub as &lt;a href=&#34;https://github.com/madhead/shyriiwook&#34;&gt;madhead/shyriiwook&lt;/a&gt;), came to life.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
     <item>
       <title>Copying a file from a Kubernetes pod in a highly hostile environment</title>
       <link>https://madhead.me/posts/kubectl-cp/</link>

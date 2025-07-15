@@ -2,6 +2,93 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://madhead.me/tags/gnome/</loc>
+    <lastmod>2025-07-15T00:29:00+02:00</lastmod>
+  </url><url>
+    <loc>https://madhead.me/tags/lifehack/</loc>
+    <lastmod>2025-07-15T00:29:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://ru.madhead.me/tags/lifehack/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://madhead.me/tags/lifehack/"
+                />
+  </url><url>
+    <loc>https://madhead.me/tags/linux/</loc>
+    <lastmod>2025-07-15T00:29:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://ru.madhead.me/tags/linux/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://madhead.me/tags/linux/"
+                />
+  </url><url>
+    <loc>https://madhead.me/</loc>
+    <lastmod>2025-07-15T00:29:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://ru.madhead.me/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://madhead.me/"
+                />
+  </url><url>
+    <loc>https://madhead.me/posts/shyriiwook/</loc>
+    <lastmod>2025-07-15T00:29:00+02:00</lastmod>
+  </url><url>
+    <loc>https://madhead.me/tags/pet-projects/</loc>
+    <lastmod>2025-07-15T00:29:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://ru.madhead.me/tags/pet-projects/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://madhead.me/tags/pet-projects/"
+                />
+  </url><url>
+    <loc>https://madhead.me/posts/</loc>
+    <lastmod>2025-07-15T00:29:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://ru.madhead.me/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://madhead.me/posts/"
+                />
+  </url><url>
+    <loc>https://madhead.me/tags/rant/</loc>
+    <lastmod>2025-07-15T00:29:00+02:00</lastmod>
+  </url><url>
+    <loc>https://madhead.me/tags/</loc>
+    <lastmod>2025-07-15T00:29:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://ru.madhead.me/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://madhead.me/tags/"
+                />
+  </url><url>
     <loc>https://madhead.me/tags/coroutines/</loc>
     <lastmod>2025-06-03T02:02:00+02:00</lastmod>
   </url><url>
@@ -16,45 +103,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://madhead.me/tags/kotlin/"
-                />
-  </url><url>
-    <loc>https://madhead.me/</loc>
-    <lastmod>2025-06-03T02:02:00+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://ru.madhead.me/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://madhead.me/"
-                />
-  </url><url>
-    <loc>https://madhead.me/posts/</loc>
-    <lastmod>2025-06-03T02:02:00+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://ru.madhead.me/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://madhead.me/posts/"
-                />
-  </url><url>
-    <loc>https://madhead.me/tags/</loc>
-    <lastmod>2025-06-03T02:02:00+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://ru.madhead.me/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://madhead.me/tags/"
                 />
   </url><url>
     <loc>https://madhead.me/posts/chm-not-concurrent-runblocking-not-blocking/</loc>
@@ -73,9 +121,6 @@
     <lastmod>2024-02-23T17:24:00+03:00</lastmod>
   </url><url>
     <loc>https://madhead.me/posts/std/</loc>
-    <lastmod>2024-02-23T17:24:00+03:00</lastmod>
-  </url><url>
-    <loc>https://madhead.me/tags/rant/</loc>
     <lastmod>2024-02-23T17:24:00+03:00</lastmod>
   </url><url>
     <loc>https://madhead.me/posts/kubectl-cp/</loc>
@@ -99,32 +144,6 @@
   </url><url>
     <loc>https://madhead.me/tags/kubectl/</loc>
     <lastmod>2024-01-10T12:40:00+02:00</lastmod>
-  </url><url>
-    <loc>https://madhead.me/tags/lifehack/</loc>
-    <lastmod>2024-01-10T12:40:00+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://ru.madhead.me/tags/lifehack/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://madhead.me/tags/lifehack/"
-                />
-  </url><url>
-    <loc>https://madhead.me/tags/linux/</loc>
-    <lastmod>2024-01-10T12:40:00+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://ru.madhead.me/tags/linux/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://madhead.me/tags/linux/"
-                />
   </url><url>
     <loc>https://madhead.me/tags/ngrok/</loc>
     <lastmod>2024-01-10T12:40:00+02:00</lastmod>
@@ -187,19 +206,6 @@
   </url><url>
     <loc>https://madhead.me/posts/orphan-action/</loc>
     <lastmod>2021-10-10T23:27:00+02:00</lastmod>
-  </url><url>
-    <loc>https://madhead.me/tags/pet-projects/</loc>
-    <lastmod>2021-09-14T09:00:00+03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://ru.madhead.me/tags/pet-projects/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://madhead.me/tags/pet-projects/"
-                />
   </url><url>
     <loc>https://madhead.me/posts/tyzenhaus/</loc>
     <lastmod>2021-09-14T09:00:00+03:00</lastmod>
