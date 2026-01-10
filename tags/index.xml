@@ -6,8 +6,22 @@
     <description>Recent content in Tags on madhead</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 15 Jul 2025 00:29:00 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 10 Jan 2026 22:12:00 +0100</lastBuildDate>
     <atom:link href="https://madhead.me/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fuckup</title>
+      <link>https://madhead.me/tags/fuckup/</link>
+      <pubDate>Sat, 10 Jan 2026 22:12:00 +0100</pubDate>
+      <guid>https://madhead.me/tags/fuckup/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Redis</title>
+      <link>https://madhead.me/tags/redis/</link>
+      <pubDate>Sat, 10 Jan 2026 22:12:00 +0100</pubDate>
+      <guid>https://madhead.me/tags/redis/</guid>
+      <description></description>
+    </item>
     <item>
       <title>GNOME</title>
       <link>https://madhead.me/tags/gnome/</link>
@@ -177,13 +191,6 @@
       <description></description>
     </item>
     <item>
-      <title>Fuckup</title>
-      <link>https://madhead.me/tags/fuckup/</link>
-      <pubDate>Tue, 09 Feb 2021 23:00:00 +0300</pubDate>
-      <guid>https://madhead.me/tags/fuckup/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Ssh</title>
       <link>https://madhead.me/tags/ssh/</link>
       <pubDate>Tue, 09 Feb 2021 23:00:00 +0300</pubDate>
@@ -230,13 +237,6 @@
       <link>https://madhead.me/tags/kotlin/native/</link>
       <pubDate>Wed, 11 Mar 2020 09:00:00 +0300</pubDate>
       <guid>https://madhead.me/tags/kotlin/native/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Redis</title>
-      <link>https://madhead.me/tags/redis/</link>
-      <pubDate>Wed, 11 Mar 2020 09:00:00 +0300</pubDate>
-      <guid>https://madhead.me/tags/redis/</guid>
       <description></description>
     </item>
     <item>

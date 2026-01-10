@@ -2,23 +2,25 @@
 <html lang='en' dir='auto'><head>
   <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<meta name='description' content=''>
+<meta name='description' content='
+A small performance story about Redis, bad assumptions, and how a stupid solution turned out to be the best one.
+'>
 <meta name="monetization" content='$ilp.uphold.com/wgzRi7wDbPFf'>
 
-<meta property='og:title' content='Posts • madhead'>
-<meta property='og:description' content=''>
-<meta property='og:url' content='https://madhead.me/posts/'>
+<meta property='og:title' content='When being dumb is the best solution • madhead'>
+<meta property='og:description' content='
+A small performance story about Redis, bad assumptions, and how a stupid solution turned out to be the best one.
+'>
+<meta property='og:url' content='https://madhead.me/posts/redis-upset/'>
 <meta property='og:site_name' content='madhead'>
-<meta property='og:type' content='website'><meta property='og:updated_time' content='2025-07-15T00:29:00&#43;02:00'/><meta name='twitter:card' content='summary'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='redis'><meta property='article:tag' content='fuckup'><meta property='article:published_time' content='2026-01-10T22:12:00&#43;01:00'/><meta property='article:modified_time' content='2026-01-10T22:12:00&#43;01:00'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.148.2">
+<meta name="generator" content="Hugo 0.154.4">
 
-  <title>Posts • madhead</title>
-  <link rel='canonical' href='https://madhead.me/posts/'>
+  <title>When being dumb is the best solution • madhead</title>
+  <link rel='canonical' href='https://madhead.me/posts/redis-upset/'>
   
-    <link href="https://madhead.me/posts/index.xml" rel="alternate" type="application/rss+xml" title="madhead" />
   
-  <link rel='alternate' hreflang='en' href='https://madhead.me/posts/'><link rel='alternate' hreflang='x-default' href='https://madhead.me/posts/'><link rel='alternate' hreflang='ru' href='https://ru.madhead.me/posts/'>
   <script src="https://unpkg.com/kotlin-playground" data-selector=".kotlin-code"></script>
 
 <link rel='icon' href='/favicon.ico'>
@@ -29,7 +31,7 @@
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-SML2093FH8"></script>
       <script>
         var doNotTrack = false;
-        if ( false ) {
+        if ( true ) {
           var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
           var doNotTrack = (dnt == "1" || dnt == "yes");
         }
@@ -43,7 +45,7 @@
   
 
 </head>
-<body class='section type-posts has-sidebar'>
+<body class='page type-posts has-sidebar'>
 
   <div class='site'><div id='sidebar' class='sidebar'>
   <a class='screen-reader-text' href='#main-menu'>Skip to Main Menu</a>
@@ -274,218 +276,16 @@
       <main id='content'>
 
 
-<header class='header'>
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
   <div class='container sep-after'>
     <div class='header-info'>
-      <h1 class='title'>Posts</h1>
-
+      <h1 class='title'>When being dumb is the best solution</h1>
       
 
     </div>
-  </div>
-</header>
-
-
-
-
-<div class='container list-container'>
-  <ul class='list'>
-    
-      <li class='item'>
-  <div class='meta'>
-    <span>
-  <span class='screen-reader-text'>Posted on </span>
-  <time datetime='2025-07-15T00:29:00&#43;02:00'>2025-07-15</time>
-</span>
-
-  </div>
-  <header class='item-header'>
-    <h3 class='item-title'>
-      <a href='/posts/shyriiwook/'>Modeless Keyboard Layout Switching in GNOME with Shyriiwook</a>
-    </h3>
-  </header>
-</li>
-
-    
-      <li class='item'>
-  <div class='meta'>
-    <span>
-  <span class='screen-reader-text'>Posted on </span>
-  <time datetime='2025-06-03T02:02:00&#43;02:00'>2025-06-03</time>
-</span>
-
-  </div>
-  <header class='item-header'>
-    <h3 class='item-title'>
-      <a href='/posts/chm-not-concurrent-runblocking-not-blocking/'>When ConcurrentHashMap is not concurrent and runBlocking is not blocking</a>
-    </h3>
-  </header>
-</li>
-
-    
-      <li class='item'>
-  <div class='meta'>
-    <span>
-  <span class='screen-reader-text'>Posted on </span>
-  <time datetime='2024-07-28T02:41:00&#43;02:00'>2024-07-28</time>
-</span>
-
-  </div>
-  <header class='item-header'>
-    <h3 class='item-title'>
-      <a href='/posts/no-snapshots/'>No SNAPSHOTs</a>
-    </h3>
-  </header>
-</li>
-
-    
-      <li class='item'>
-  <div class='meta'>
-    <span>
-  <span class='screen-reader-text'>Posted on </span>
-  <time datetime='2024-02-23T17:24:00&#43;03:00'>2024-02-23</time>
-</span>
-
-  </div>
-  <header class='item-header'>
-    <h3 class='item-title'>
-      <a href='/posts/std/'>On DynamoDB&#39;s Single Table Design</a>
-    </h3>
-  </header>
-</li>
-
-    
-      <li class='item'>
-  <div class='meta'>
-    <span>
-  <span class='screen-reader-text'>Posted on </span>
-  <time datetime='2024-01-10T12:40:00&#43;02:00'>2024-01-10</time>
-</span>
-
-  </div>
-  <header class='item-header'>
-    <h3 class='item-title'>
-      <a href='/posts/kubectl-cp/'>Copying a file from a Kubernetes pod in a highly hostile environment</a>
-    </h3>
-  </header>
-</li>
-
-    
-      <li class='item'>
-  <div class='meta'>
-    <span>
-  <span class='screen-reader-text'>Posted on </span>
-  <time datetime='2023-11-10T20:00:00&#43;02:00'>2023-11-10</time>
-</span>
-
-  </div>
-  <header class='item-header'>
-    <h3 class='item-title'>
-      <a href='/posts/declarative-gradle/'>Why Declarative Gradle is a cool thing I am afraid of: Maven strikes back</a>
-    </h3>
-  </header>
-</li>
-
-    
-      <li class='item'>
-  <div class='meta'>
-    <span>
-  <span class='screen-reader-text'>Posted on </span>
-  <time datetime='2023-05-02T18:00:00&#43;02:00'>2023-05-02</time>
-</span>
-
-  </div>
-  <header class='item-header'>
-    <h3 class='item-title'>
-      <a href='/posts/neonbranch/'>PR preview environments with Neon, GitHub Actions, and AWS Lambda</a>
-    </h3>
-  </header>
-</li>
-
-    
-      <li class='item'>
-  <div class='meta'>
-    <span>
-  <span class='screen-reader-text'>Posted on </span>
-  <time datetime='2022-10-25T00:23:00&#43;02:00'>2022-10-25</time>
-</span>
-
-  </div>
-  <header class='item-header'>
-    <h3 class='item-title'>
-      <a href='/posts/from-botfather-to-hello-world/'>From BotFather to &#39;Hello World&#39;</a>
-    </h3>
-  </header>
-</li>
-
-    
-      <li class='item'>
-  <div class='meta'>
-    <span>
-  <span class='screen-reader-text'>Posted on </span>
-  <time datetime='2021-10-10T23:27:00&#43;02:00'>2021-10-10</time>
-</span>
-
-  </div>
-  <header class='item-header'>
-    <h3 class='item-title'>
-      <a href='/posts/orphan-action/'>Docker-based GitHub Actions in orphan branches</a>
-    </h3>
-  </header>
-</li>
-
-    
-      <li class='item'>
-  <div class='meta'>
-    <span>
-  <span class='screen-reader-text'>Posted on </span>
-  <time datetime='2021-09-14T09:00:00&#43;03:00'>2021-09-14</time>
-</span>
-
-  </div>
-  <header class='item-header'>
-    <h3 class='item-title'>
-      <a href='/posts/tyzenhaus/'>Tyzenhaus</a>
-    </h3>
-  </header>
-</li>
-
-    
-  </ul>
-
-  
-<nav id='pagination'>
-  <div class='page-links'>
-
-    
-      
-      <span aria-current='page' class='page-link current'>
-        <span class='screen-reader-text'>Current page: </span>1</span>
-      
-    
-      
-      <a class='page-link' href='/posts/page/2/'>
-        <span class='screen-reader-text'>Page: </span>2</a>
-      
-    
-      
-        <span class='page-link dots'>&hellip;</span>
-        
-      
-    
-      
-        
-      
-    
-      
-      <a class='page-link' href='/posts/page/5/'>
-        <span class='screen-reader-text'>Page: </span>5</a>
-      
-    
-
-    
-    <a class='page-link next' href='/posts/page/2/'>
-      <span class='screen-reader-text'>Next page</span><svg
+    <div class='entry-meta'>
+  <span class='posted-on'><svg
   class="icon"
   xmlns="http://www.w3.org/2000/svg"
   viewbox="0 0 24 24"
@@ -493,17 +293,227 @@
   stroke-linejoin="round"
   stroke-width="2"
   aria-hidden="true"
-><line x1="4" y1="12" x2="20" y2="12" />
-<polyline points="14 6 20 12 14 18" />
+><rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+<line x1="16" y1="2" x2="16" y2="6" />
+<line x1="8" y1="2" x2="8" y2="6" />
+<line x1="3" y1="10" x2="21" y2="10" />
 </svg>
-</a>
-    
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='2026-01-10T22:12:00&#43;01:00'>2026-01-10</time>
+</span>
 
-  </div>
-</nav>
+  
+  
+<span class='reading-time'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><circle cx="12" cy="12" r="10" />
+<polyline points="12 6 12 12 15 15" />
+</svg>
+4 mins to read
+</span>
 
 
 </div>
+
+
+  </div>
+</header>
+
+  
+  
+
+  <div class='container entry-content'>
+  <div class="paragraph">
+<p>A small performance story about Redis, bad assumptions, and how a stupid solution turned out to be the best one.</p>
+</div>
+<div class="paragraph">
+<p>About a year ago, I was responsible for a feature that required storing a set of numbers in Redis.
+The data model, without any simplifications, looked like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+  &#34;memberId1:allow&#34;: [1, 2, 3],
+  &#34;memberId2:disallow&#34;: [4, 5, 6],
+  …
+  &#34;memberIdN:&lt;flag&gt;&#34;: [7, 8, 9]
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>flag</code> here is the most important part of the key: it indicates whether the numbers in the list represent an allow or a disallow list of products for a given member.</p>
+</div>
+<div class="paragraph">
+<p>To retrieve the data for a member, we only needed to fetch two keys, with one of them always guaranteed to be empty.
+We then filtered all available products based on those lists.</p>
+</div>
+<div class="paragraph">
+<p>Without much doubt, I decided to store those lists as <a href="https://redis.io/docs/latest/develop/data-types/sets">Redis sets</a> and retrieve them using <a href="https://redis.io/docs/latest/commands/smembers"><code>SMEMBERS</code></a>.
+The data was loaded by an offline process, so write performance was never a concern.
+So far, so good, and, most importantly, smart and proper!
+You have to use sets for… sets, right?</p>
+</div>
+<div class="paragraph">
+<p>The first issue was very simple: I forgot about the size of the data.
+The total number of data items is not important, but I made some assumptions about the set sizes and didn’t anticipate 15K+ elements.</p>
+</div>
+<div class="paragraph">
+<p>But, for quite a while, everything was fine.
+My guess is that the users of this API gradually increased the size of those sets.
+We don’t own the data, merely get it from one place and one responsible team, store it, and serve it to the other teams.
+At the same time, the feedback loop was broken.
+Well, our processes are far from perfect.</p>
+</div>
+<div class="paragraph">
+<p>Then one day, we started seeing bottlenecks in that service in our own metrics.</p>
+</div>
+<div class="paragraph">
+<p>After some investigation, I found that <code>SMEMBERS</code> was taking too long and periodically blocked all of our pods.
+As far as I understand, <code>SMEMBERS</code> is an O(N) blocking operation.
+For large sets, it took long enough to cause trouble.</p>
+</div>
+<div class="paragraph">
+<p>Clients would time out and retry the request, usually hitting a different pod.
+Eventually, all pods ended up busy retrieving large sets.
+They did complete eventually, but by then the clients had already given up, even after retries.</p>
+</div>
+<div class="paragraph">
+<p>(Un)luckily, this data was not critical.
+The clients had a fallback mechanism, so for users the issue was unnoticeable.
+From our side, things went back to normal after a few seconds.</p>
+</div>
+<div class="paragraph">
+<p>The first fix was straightforward: I replaced <code>SMEMBERS</code> with <a href="https://redis.io/docs/latest/commands/sscan"><code>SSCAN</code></a>.</p>
+</div>
+<div class="paragraph">
+<p><code>SSCAN</code> is non-blocking and yields control back to the event loop after retrieving a small chunk of data.
+That immediately fixed the issue on our side: no more blocked pods.</p>
+</div>
+<div class="paragraph">
+<p>The clients were still broken.
+<code>SSCAN</code> takes even longer to retrieve the full dataset, so client-side timeouts were still happening.</p>
+</div>
+<div class="paragraph">
+<p>Eventually, they complained, and I had to fix it properly.</p>
+</div>
+<div class="paragraph">
+<p>My first idea was to change the shape of the data entirely and store it like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+  &#34;memberId1:1&#34;: &#34;allow&#34;,
+  &#34;memberId2:2&#34;: &#34;allow&#34;,
+  &#34;memberId3:3&#34;: &#34;allow&#34;,
+  …
+  &#34;memberIdN:7&#34;: &#34;&lt;flag&gt;&#34;,
+  &#34;memberIdN:8&#34;: &#34;&lt;flag&gt;&#34;,
+  &#34;memberIdN:9&#34;: &#34;&lt;flag&gt;&#34;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This would require a fairly large refactoring.
+We would need to fetch values for all the products we’re potentially interested in (using <a href="https://redis.io/docs/latest/commands/mget"><code>MGET</code></a>) and then filterim them based on the returned data.</p>
+</div>
+<div class="paragraph">
+<p>Doable, but messy.
+Not to mention the need to retrieve thoutsands of keys for each request!</p>
+</div>
+<div class="paragraph">
+<p>Then I had another idea.
+What if I stopped trying to use the &#34;proper&#34; data structure?
+What if, instead of a set, I just stored the list as a JSON array in a plain string value?</p>
+</div>
+<div class="paragraph">
+<p>16K five-digit numbers, with commas, spaces (and two brackets!), is only 0.1 MB of data.
+That’s not much.</p>
+</div>
+<div class="paragraph">
+<p>I changed just a few lines of code and ran a benchmark.
+I used <a href="https://github.com/openjdk/jmh">JMH</a>, but that is on ovekill here too.
+Also, it is not recommended for IO-bound benchmarks.
+But I just wanted a rough idea of the performance difference.</p>
+</div>
+<div class="paragraph">
+<p>Here are the results:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>15797 elements:
+
+Baseline (SSCAN): 75799.793 ± 448.298 ms/op
+JSON string:         83.643 ± 5.498 ms/op</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>That’s <strong>three orders of magnitude faster</strong> than the proper SSCAN-based approach.</p>
+</div>
+<div class="sect1">
+<h2 id="_moral">Moral</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The moral of the story is simple: don’t overthink things.
+The &#34;proper&#34; data structure is not always the best one.
+Trust the benchmarks.</p>
+</div>
+</div>
+</div>
+</div>
+
+  
+<footer class='entry-footer'>
+  <div class='container sep-before'><div class='tags'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z" />
+<line x1="7" y1="7" x2="7" y2="7" />
+</svg>
+<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/redis/'>Redis</a>, <a class='tag' href='/tags/fuckup/'>Fuckup</a></div>
+
+  </div>
+</footer>
+
+
+</article>
+
+
+<section id='comments' class='comments'>
+  <div class='container sep-before'>
+    <div class='comments-area'><div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "madhead-me" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+  </div>
+</section>
 
       </main>
 

@@ -6,8 +6,15 @@
     <description>Recent content in Redis on madhead</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 11 Mar 2020 09:00:00 +0300</lastBuildDate>
+    <lastBuildDate>Sat, 10 Jan 2026 22:12:00 +0100</lastBuildDate>
     <atom:link href="https://madhead.me/tags/redis/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>When being dumb is the best solution</title>
+      <link>https://madhead.me/posts/redis-upset/</link>
+      <pubDate>Sat, 10 Jan 2026 22:12:00 +0100</pubDate>
+      <guid>https://madhead.me/posts/redis-upset/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;A small performance story about Redis, bad assumptions, and how a stupid solution turned out to be the best one.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
     <item>
       <title>Redis module in Kotlin/Native</title>
       <link>https://madhead.me/posts/kotlin-native-redis/</link>
