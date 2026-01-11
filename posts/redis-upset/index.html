@@ -455,13 +455,28 @@ JSON string:         83.643 ± 5.498 ms/op</code></pre>
 <div class="paragraph">
 <p>That’s <strong>three orders of magnitude faster</strong> than the proper SSCAN-based approach.</p>
 </div>
+<div class="paragraph">
+<p>A particularly attentive reader — a rare species in the era of AI summaries — may wonder: why not use <code>SMEMBERS</code> again?
+Well, it’s still slightly slower:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>15797 elements:
+
+SMEMBERS:            109.332 ± 81.587 ms/op</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So, the dumbest solution possible wins.
+And we’ll ask the clients to tweak their retries / timeouts.</p>
+</div>
 <div class="sect1">
 <h2 id="_moral">Moral</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The moral of the story is simple: don’t overthink things.
 The &#34;proper&#34; data structure is not always the best one.
-Trust the benchmarks.</p>
+Measure and benchmark different approaches, even if they seem dumb at first.</p>
 </div>
 </div>
 </div>
