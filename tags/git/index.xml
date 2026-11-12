@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Git on madhead</title>
-    <link>https://madhead.me/tags/git/</link>
-    <description>Recent content in Git on madhead</description>
-    <generator>Hugo</generator>
-    <language>en</language>
-    <lastBuildDate>Tue, 23 Jul 2019 09:00:00 +0300</lastBuildDate>
-    <atom:link href="https://madhead.me/tags/git/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Do you need a local master branch?</title>
-      <link>https://madhead.me/posts/do-you-need-a-local-master-branch/</link>
-      <pubDate>Tue, 23 Jul 2019 09:00:00 +0300</pubDate>
-      <guid>https://madhead.me/posts/do-you-need-a-local-master-branch/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;I noticed recently that I’ve (almost) never used a local &lt;code&gt;master&lt;/code&gt; branch in Git.&#xA;I only use it in simple one-off playground repos that I don’t plan to support and never in professional development or in “serious” pet-projects.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;So, is it really required?&lt;/p&gt;&#xA;&lt;/div&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Git on madhead</title>
+		<link>https://madhead.me/tags/git/</link>
+		<description>Recent content in Git on madhead</description>
+		<generator>Hugo</generator>
+		<language>en</language>
+		
+		
+		
+		
+			<lastBuildDate>Tue, 23 Jul 2019 09:00:00 +0300</lastBuildDate>
+		
+			<atom:link href="https://madhead.me/tags/git/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Do you need a local master branch?</title>
+				<link>https://madhead.me/posts/do-you-need-a-local-master-branch/</link>
+				<pubDate>Tue, 23 Jul 2019 09:00:00 +0300</pubDate>
+				<guid>https://madhead.me/posts/do-you-need-a-local-master-branch/</guid>
+				<description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;I noticed recently that I’ve (almost) never used a local &lt;code&gt;master&lt;/code&gt; branch in Git.&#xA;I only use it in simple one-off playground repos that I don’t plan to support and never in professional development or in “serious” pet-projects.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;So, is it really required?&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+			</item>
+	</channel>
 </rss>

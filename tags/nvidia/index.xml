@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Nvidia on madhead</title>
-    <link>https://madhead.me/tags/nvidia/</link>
-    <description>Recent content in Nvidia on madhead</description>
-    <generator>Hugo</generator>
-    <language>en</language>
-    <lastBuildDate>Sun, 19 Aug 2018 01:42:00 +0300</lastBuildDate>
-    <atom:link href="https://madhead.me/tags/nvidia/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Hard lesson from NVIDIA</title>
-      <link>https://madhead.me/posts/nvidia-hard-lesson/</link>
-      <pubDate>Sun, 19 Aug 2018 01:42:00 +0300</pubDate>
-      <guid>https://madhead.me/posts/nvidia-hard-lesson/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Last week I’ve managed to accidentally break my Linux installation.&#xA;Probably, the first time for the last ten years where Linux behaved truly “unstable”.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Nvidia on madhead</title>
+		<link>https://madhead.me/tags/nvidia/</link>
+		<description>Recent content in Nvidia on madhead</description>
+		<generator>Hugo</generator>
+		<language>en</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 19 Aug 2018 01:42:00 +0300</lastBuildDate>
+		
+			<atom:link href="https://madhead.me/tags/nvidia/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Hard lesson from NVIDIA</title>
+				<link>https://madhead.me/posts/nvidia-hard-lesson/</link>
+				<pubDate>Sun, 19 Aug 2018 01:42:00 +0300</pubDate>
+				<guid>https://madhead.me/posts/nvidia-hard-lesson/</guid>
+				<description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Last week I’ve managed to accidentally break my Linux installation.&#xA;Probably, the first time for the last ten years where Linux behaved truly “unstable”.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+			</item>
+	</channel>
 </rss>

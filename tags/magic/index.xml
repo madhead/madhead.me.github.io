@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Magic on madhead</title>
-    <link>https://madhead.me/tags/magic/</link>
-    <description>Recent content in Magic on madhead</description>
-    <generator>Hugo</generator>
-    <language>en</language>
-    <lastBuildDate>Wed, 04 Jul 2018 04:47:00 +0300</lastBuildDate>
-    <atom:link href="https://madhead.me/tags/magic/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>AWS Lambda environment variables → AWS SSM parameters in one (long) bash line</title>
-      <link>https://madhead.me/posts/oneliners-1/</link>
-      <pubDate>Wed, 04 Jul 2018 04:47:00 +0300</pubDate>
-      <guid>https://madhead.me/posts/oneliners-1/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;So, you want to use AWS SSM parameters instead of AWS Lambda environment variables?&#xA;But you already have dozens of variables defined?&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Keep calm (tested in production) and use this one-liner.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Magic on madhead</title>
+		<link>https://madhead.me/tags/magic/</link>
+		<description>Recent content in Magic on madhead</description>
+		<generator>Hugo</generator>
+		<language>en</language>
+		
+		
+		
+		
+			<lastBuildDate>Wed, 04 Jul 2018 04:47:00 +0300</lastBuildDate>
+		
+			<atom:link href="https://madhead.me/tags/magic/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>AWS Lambda environment variables → AWS SSM parameters in one (long) bash line</title>
+				<link>https://madhead.me/posts/oneliners-1/</link>
+				<pubDate>Wed, 04 Jul 2018 04:47:00 +0300</pubDate>
+				<guid>https://madhead.me/posts/oneliners-1/</guid>
+				<description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;So, you want to use AWS SSM parameters instead of AWS Lambda environment variables?&#xA;But you already have dozens of variables defined?&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Keep calm (tested in production) and use this one-liner.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+			</item>
+	</channel>
 </rss>

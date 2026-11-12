@@ -1,61 +1,73 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Linux on madhead</title>
-    <link>https://madhead.me/tags/linux/</link>
-    <description>Recent content in Linux on madhead</description>
-    <generator>Hugo</generator>
-    <language>en</language>
-    <lastBuildDate>Tue, 15 Jul 2025 00:29:00 +0200</lastBuildDate>
-    <atom:link href="https://madhead.me/tags/linux/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Modeless Keyboard Layout Switching in GNOME with Shyriiwook</title>
-      <link>https://madhead.me/posts/shyriiwook/</link>
-      <pubDate>Tue, 15 Jul 2025 00:29:00 +0200</pubDate>
-      <guid>https://madhead.me/posts/shyriiwook/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;figure&gt;&lt;img src=&#34;//storage.googleapis.com/madheadme-static/posts/shyriiwook/001.png&#34;&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Recently, I treated myself with a few extra keys on my mechanical keyboard (just flexin&amp;#39; here), and I decided to set them up to switch keyboard layouts modelessly.&#xA;Little did I know that trying to make this seemingly simple feature work in GNOME would turn into a ridiculously tough challenge.&#xA;That’s how my pet project, &lt;a href=&#34;https://extensions.gnome.org/extension/6691/shyriiwook&#34;&gt;Shyriiwook&lt;/a&gt; (also on GitHub as &lt;a href=&#34;https://github.com/madhead/shyriiwook&#34;&gt;madhead/shyriiwook&lt;/a&gt;), came to life.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
-    </item>
-    <item>
-      <title>Copying a file from a Kubernetes pod in a highly hostile environment</title>
-      <link>https://madhead.me/posts/kubectl-cp/</link>
-      <pubDate>Wed, 10 Jan 2024 12:40:00 +0200</pubDate>
-      <guid>https://madhead.me/posts/kubectl-cp/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Do you want to get a binary file from a Kubernetes pod in an highly &lt;del&gt;hostile&lt;/del&gt;secure environment where you can’t use &lt;code&gt;kubectl cp&lt;/code&gt;?&#xA;Read on!&lt;/p&gt;&#xA;&lt;/div&gt;</description>
-    </item>
-    <item>
-      <title>Sony α6300 as a webcam on Manjaro Lunux</title>
-      <link>https://madhead.me/posts/dslr-webcam/</link>
-      <pubDate>Thu, 27 May 2021 22:19:00 +0200</pubDate>
-      <guid>https://madhead.me/posts/dslr-webcam/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://hanspinckaers.com/using-a-sony-alpha-camera-as-a-webcam-in-ubuntu&#34;&gt;Original article&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Change USB connection in settings on camera to PC Remote.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;listingblock&#34;&gt;&#xA;&lt;div class=&#34;content&#34;&gt;&#xA;&lt;pre class=&#34;highlight&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo pacman -S gphoto2 v4l-utils v4l2loopback-dkms ffmpeg&#xA;sudo modprobe v4l2loopback exclusive_caps=1 max_buffers=2&#xA;v4l2-ctl --list-devices&#xA;gphoto2 --stdout --capture-movie | ffmpeg -i - -vcodec rawvideo -pix_fmt yuv420p -threads 8 -f v4l2 /dev/video&amp;lt;N&amp;gt; #from v4l2-ctl output&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;</description>
-    </item>
-    <item>
-      <title>Kotlin/Native for AWS Lambda</title>
-      <link>https://madhead.me/posts/kotlin-native-lambda/</link>
-      <pubDate>Fri, 05 Apr 2019 22:02:00 +0300</pubDate>
-      <guid>https://madhead.me/posts/kotlin-native-lambda/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Amazon &lt;a href=&#34;https://aws.amazon.com/about-aws/whats-new/2018/11/aws-lambda-now-supports-custom-runtimes-and-layers&#34;&gt;announced&lt;/a&gt; Lambda Runtime API on AWS &lt;a href=&#34;https://reinvent.awsevents.com&#34;&gt;re:Invent&lt;/a&gt; 2018.&#xA;It allows developers, among other things, to build Lambda functions using any technology they want via so-called &lt;a href=&#34;https://docs.aws.amazon.com/lambda/latest/dg/runtimes-custom.html&#34;&gt;Custom Runtimes&lt;/a&gt;.&#xA;Yes, it’s now possible to author a function on PHP, Perl, Pascal (anybody?) or even Bash (they use it in the &lt;a href=&#34;https://docs.aws.amazon.com/lambda/latest/dg/runtimes-walkthrough.html&#34;&gt;docs&lt;/a&gt;)!&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Nice, isn’t it?&#xA;Let’s build an AWS Lambda function with &lt;a href=&#34;https://kotlinlang.org/docs/native-overview.html&#34;&gt;Kotlin/Native&lt;/a&gt;!&lt;/p&gt;&#xA;&lt;/div&gt;</description>
-    </item>
-    <item>
-      <title>Hard lesson from NVIDIA</title>
-      <link>https://madhead.me/posts/nvidia-hard-lesson/</link>
-      <pubDate>Sun, 19 Aug 2018 01:42:00 +0300</pubDate>
-      <guid>https://madhead.me/posts/nvidia-hard-lesson/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Last week I’ve managed to accidentally break my Linux installation.&#xA;Probably, the first time for the last ten years where Linux behaved truly “unstable”.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
-    </item>
-    <item>
-      <title>Using Monday as a first day of week in KDE 5</title>
-      <link>https://madhead.me/posts/kde-calendar-monday/</link>
-      <pubDate>Sat, 18 Aug 2018 22:01:00 +0300</pubDate>
-      <guid>https://madhead.me/posts/kde-calendar-monday/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;code&gt;en_US.UTF-8&lt;/code&gt; is a great locale and I am using it for my KDE desktop because it gives me full English UI, whereeas other locales can result in semi-translated UIs.&#xA;But it has some flaws.&#xA;For example, weeks begin on Sunday in USA.&#xA;It’s not how we do here in Europe and it’s really annoying to see Sunday as a first day of week in a calendar widget.&#xA;Unfortunatelly, there is no knob for this setting (or my Google-fu failed me), so let’s fix it in a dirty way.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
-    </item>
-    <item>
-      <title>Preserving MongoDB shell history in Docker</title>
-      <link>https://madhead.me/posts/preserving-mongo-history-in-docker/</link>
-      <pubDate>Sat, 07 Jul 2018 05:24:00 +0300</pubDate>
-      <guid>https://madhead.me/posts/preserving-mongo-history-in-docker/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;So, you run &lt;code&gt;mongo&lt;/code&gt; in disposable Docker containers and want to preserve shell history?&#xA;Say no more, pal.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Linux on madhead</title>
+		<link>https://madhead.me/tags/linux/</link>
+		<description>Recent content in Linux on madhead</description>
+		<generator>Hugo</generator>
+		<language>en</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 12 Nov 2026 09:00:00 +0300</lastBuildDate>
+		
+			<atom:link href="https://madhead.me/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>How Herdr broke my sound</title>
+				<link>https://madhead.me/posts/herdr-pulseaudio/</link>
+				<pubDate>Thu, 12 Nov 2026 09:00:00 +0300</pubDate>
+				<guid>https://madhead.me/posts/herdr-pulseaudio/</guid>
+				<description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Imagine: you install a new terminal tool, reboot your laptop, and suddenly your audio is gone.&#xA;PulseAudio refuses to start, the volume mixer hangs on &amp;#34;Establishing connection to PulseAudio. Please wait…&amp;#34;, and your system settings show zero audio outputs.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;I don’t even need to do that, as it happened to me.&#xA;How does a terminal multiplexer manage to nuke PulseAudio?&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Watch closely.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+			</item>
+			<item>
+				<title>Modeless Keyboard Layout Switching in GNOME with Shyriiwook</title>
+				<link>https://madhead.me/posts/shyriiwook/</link>
+				<pubDate>Tue, 15 Jul 2025 00:29:00 +0200</pubDate>
+				<guid>https://madhead.me/posts/shyriiwook/</guid>
+				<description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;figure&gt;&lt;img src=&#34;//storage.googleapis.com/madheadme-static/posts/shyriiwook/001.png&#34;&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Recently, I treated myself with a few extra keys on my mechanical keyboard (just flexin&amp;#39; here), and I decided to set them up to switch keyboard layouts modelessly.&#xA;Little did I know that trying to make this seemingly simple feature work in GNOME would turn into a ridiculously tough challenge.&#xA;That’s how my pet project, &lt;a href=&#34;https://extensions.gnome.org/extension/6691/shyriiwook&#34;&gt;Shyriiwook&lt;/a&gt; (also on GitHub as &lt;a href=&#34;https://github.com/madhead/shyriiwook&#34;&gt;madhead/shyriiwook&lt;/a&gt;), came to life.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+			</item>
+			<item>
+				<title>Copying a file from a Kubernetes pod in a highly hostile environment</title>
+				<link>https://madhead.me/posts/kubectl-cp/</link>
+				<pubDate>Wed, 10 Jan 2024 12:40:00 +0200</pubDate>
+				<guid>https://madhead.me/posts/kubectl-cp/</guid>
+				<description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Do you want to get a binary file from a Kubernetes pod in an highly &lt;del&gt;hostile&lt;/del&gt;secure environment where you can’t use &lt;code&gt;kubectl cp&lt;/code&gt;?&#xA;Read on!&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+			</item>
+			<item>
+				<title>Sony α6300 as a webcam on Manjaro Lunux</title>
+				<link>https://madhead.me/posts/dslr-webcam/</link>
+				<pubDate>Thu, 27 May 2021 22:19:00 +0200</pubDate>
+				<guid>https://madhead.me/posts/dslr-webcam/</guid>
+				<description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://hanspinckaers.com/using-a-sony-alpha-camera-as-a-webcam-in-ubuntu&#34;&gt;Original article&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Change USB connection in settings on camera to PC Remote.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;listingblock&#34;&gt;&#xA;&lt;div class=&#34;content&#34;&gt;&#xA;&lt;pre class=&#34;highlight&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo pacman -S gphoto2 v4l-utils v4l2loopback-dkms ffmpeg&#xA;sudo modprobe v4l2loopback exclusive_caps=1 max_buffers=2&#xA;v4l2-ctl --list-devices&#xA;gphoto2 --stdout --capture-movie | ffmpeg -i - -vcodec rawvideo -pix_fmt yuv420p -threads 8 -f v4l2 /dev/video&amp;lt;N&amp;gt; #from v4l2-ctl output&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;</description>
+			</item>
+			<item>
+				<title>Kotlin/Native for AWS Lambda</title>
+				<link>https://madhead.me/posts/kotlin-native-lambda/</link>
+				<pubDate>Fri, 05 Apr 2019 22:02:00 +0300</pubDate>
+				<guid>https://madhead.me/posts/kotlin-native-lambda/</guid>
+				<description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Amazon &lt;a href=&#34;https://aws.amazon.com/about-aws/whats-new/2018/11/aws-lambda-now-supports-custom-runtimes-and-layers&#34;&gt;announced&lt;/a&gt; Lambda Runtime API on AWS &lt;a href=&#34;https://reinvent.awsevents.com&#34;&gt;re:Invent&lt;/a&gt; 2018.&#xA;It allows developers, among other things, to build Lambda functions using any technology they want via so-called &lt;a href=&#34;https://docs.aws.amazon.com/lambda/latest/dg/runtimes-custom.html&#34;&gt;Custom Runtimes&lt;/a&gt;.&#xA;Yes, it’s now possible to author a function on PHP, Perl, Pascal (anybody?) or even Bash (they use it in the &lt;a href=&#34;https://docs.aws.amazon.com/lambda/latest/dg/runtimes-walkthrough.html&#34;&gt;docs&lt;/a&gt;)!&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Nice, isn’t it?&#xA;Let’s build an AWS Lambda function with &lt;a href=&#34;https://kotlinlang.org/docs/native-overview.html&#34;&gt;Kotlin/Native&lt;/a&gt;!&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+			</item>
+			<item>
+				<title>Hard lesson from NVIDIA</title>
+				<link>https://madhead.me/posts/nvidia-hard-lesson/</link>
+				<pubDate>Sun, 19 Aug 2018 01:42:00 +0300</pubDate>
+				<guid>https://madhead.me/posts/nvidia-hard-lesson/</guid>
+				<description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Last week I’ve managed to accidentally break my Linux installation.&#xA;Probably, the first time for the last ten years where Linux behaved truly “unstable”.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+			</item>
+			<item>
+				<title>Using Monday as a first day of week in KDE 5</title>
+				<link>https://madhead.me/posts/kde-calendar-monday/</link>
+				<pubDate>Sat, 18 Aug 2018 22:01:00 +0300</pubDate>
+				<guid>https://madhead.me/posts/kde-calendar-monday/</guid>
+				<description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;code&gt;en_US.UTF-8&lt;/code&gt; is a great locale and I am using it for my KDE desktop because it gives me full English UI, whereeas other locales can result in semi-translated UIs.&#xA;But it has some flaws.&#xA;For example, weeks begin on Sunday in USA.&#xA;It’s not how we do here in Europe and it’s really annoying to see Sunday as a first day of week in a calendar widget.&#xA;Unfortunatelly, there is no knob for this setting (or my Google-fu failed me), so let’s fix it in a dirty way.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+			</item>
+			<item>
+				<title>Preserving MongoDB shell history in Docker</title>
+				<link>https://madhead.me/posts/preserving-mongo-history-in-docker/</link>
+				<pubDate>Sat, 07 Jul 2018 05:24:00 +0300</pubDate>
+				<guid>https://madhead.me/posts/preserving-mongo-history-in-docker/</guid>
+				<description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;So, you run &lt;code&gt;mongo&lt;/code&gt; in disposable Docker containers and want to preserve shell history?&#xA;Say no more, pal.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+			</item>
+	</channel>
 </rss>

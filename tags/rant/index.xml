@@ -1,68 +1,73 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Rant on madhead</title>
-    <link>https://madhead.me/tags/rant/</link>
-    <description>Recent content in Rant on madhead</description>
-    <generator>Hugo</generator>
-    <language>en</language>
-    <lastBuildDate>Tue, 15 Jul 2025 00:29:00 +0200</lastBuildDate>
-    <atom:link href="https://madhead.me/tags/rant/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Modeless Keyboard Layout Switching in GNOME with Shyriiwook</title>
-      <link>https://madhead.me/posts/shyriiwook/</link>
-      <pubDate>Tue, 15 Jul 2025 00:29:00 +0200</pubDate>
-      <guid>https://madhead.me/posts/shyriiwook/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;figure&gt;&lt;img src=&#34;//storage.googleapis.com/madheadme-static/posts/shyriiwook/001.png&#34;&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Recently, I treated myself with a few extra keys on my mechanical keyboard (just flexin&amp;#39; here), and I decided to set them up to switch keyboard layouts modelessly.&#xA;Little did I know that trying to make this seemingly simple feature work in GNOME would turn into a ridiculously tough challenge.&#xA;That’s how my pet project, &lt;a href=&#34;https://extensions.gnome.org/extension/6691/shyriiwook&#34;&gt;Shyriiwook&lt;/a&gt; (also on GitHub as &lt;a href=&#34;https://github.com/madhead/shyriiwook&#34;&gt;madhead/shyriiwook&lt;/a&gt;), came to life.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
-    </item>
-    <item>
-      <title>On DynamoDB&#39;s Single Table Design</title>
-      <link>https://madhead.me/posts/std/</link>
-      <pubDate>Fri, 23 Feb 2024 17:24:00 +0300</pubDate>
-      <guid>https://madhead.me/posts/std/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;figure class=&#34;align-center&#34;&gt;&lt;img src=&#34;//storage.googleapis.com/madheadme-static/posts/std/001.png&#34;&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_whats_a_single_table_design&#34;&gt;What’s a Single Table Design?&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;The world learned about the idea of Single Table Design (STD) for DynamoDB somewhere in 2019, probably when &lt;a href=&#34;https://www.trek10.com/blog/dynamodb-single-table-relational-modeling&#34;&gt;this article&lt;/a&gt; came out.&#xA;STD wasn’t just a weird idea by some unknown blogger like me, or an AWS DevRel, or any other kind of Internet freak, but it actually has its roots in the official Amazon DynamoDB documentation.&#xA;&lt;a href=&#34;https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-general-nosql-design.html&#34;&gt;Here&lt;/a&gt;:&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;quoteblock&#34;&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;You should maintain &lt;strong&gt;as few tables as possible&lt;/strong&gt; in a DynamoDB application. Having fewer tables keeps things more scalable, requires less permissions management, and reduces overhead for your DynamoDB application. It can also help keep backup costs lower overall.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
-    </item>
-    <item>
-      <title>Copying a file from a Kubernetes pod in a highly hostile environment</title>
-      <link>https://madhead.me/posts/kubectl-cp/</link>
-      <pubDate>Wed, 10 Jan 2024 12:40:00 +0200</pubDate>
-      <guid>https://madhead.me/posts/kubectl-cp/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Do you want to get a binary file from a Kubernetes pod in an highly &lt;del&gt;hostile&lt;/del&gt;secure environment where you can’t use &lt;code&gt;kubectl cp&lt;/code&gt;?&#xA;Read on!&lt;/p&gt;&#xA;&lt;/div&gt;</description>
-    </item>
-    <item>
-      <title>No-bullshit guide on publishing your Gradle projects to Maven Central</title>
-      <link>https://madhead.me/posts/no-bullshit-maven-publish/</link>
-      <pubDate>Sat, 27 Feb 2021 18:00:00 +0300</pubDate>
-      <guid>https://madhead.me/posts/no-bullshit-maven-publish/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;You’ve heard &lt;a href=&#34;https://jfrog.com/blog/into-the-sunset-bintray-jcenter-gocenter-and-chartcenter&#34;&gt;the news&lt;/a&gt;, haven’t you?&#xA;JFrog is closing JCenter — probably the best Maven-compatible repository ever.&#xA;It was kind of a &amp;#34;default&amp;#34; in Gradle — a drop-in replacement for Maven Central Repository — for years.&#xA;Plus it hosted some extra artifacts from the projects that decided to not deploy into Central (and now I understand why).&#xA;With its own Gradle plugin, JCenter was drop-dead easy to publish: just a dozen of config lines, a single task invocation — and your library is available to everybody.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;It was great.&#xA;Good night, sweet prince.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;It’s time to move your projects to Maven Central Repository, so I’ve gathered some info for you below to minimize the pain.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
-    </item>
-    <item>
-      <title>How I fucked up with a private key and newlines</title>
-      <link>https://madhead.me/posts/private-key-newline-fuckup/</link>
-      <pubDate>Tue, 09 Feb 2021 23:00:00 +0300</pubDate>
-      <guid>https://madhead.me/posts/private-key-newline-fuckup/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;A short story about wasting a day on a single newline at the end of a private key.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
-    </item>
-    <item>
-      <title>How I fucked up with enum&#39;s hashCode</title>
-      <link>https://madhead.me/posts/enums-fuckup/</link>
-      <pubDate>Wed, 27 May 2020 09:00:00 +0300</pubDate>
-      <guid>https://madhead.me/posts/enums-fuckup/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;A short story about a newbie’s mistake I’ve made recently.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
-    </item>
-    <item>
-      <title>Hard lesson from NVIDIA</title>
-      <link>https://madhead.me/posts/nvidia-hard-lesson/</link>
-      <pubDate>Sun, 19 Aug 2018 01:42:00 +0300</pubDate>
-      <guid>https://madhead.me/posts/nvidia-hard-lesson/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Last week I’ve managed to accidentally break my Linux installation.&#xA;Probably, the first time for the last ten years where Linux behaved truly “unstable”.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
-    </item>
-    <item>
-      <title>Maven is not as stable as many think</title>
-      <link>https://madhead.me/posts/maven-is-not-so-stable/</link>
-      <pubDate>Sun, 19 Aug 2018 00:34:00 +0300</pubDate>
-      <guid>https://madhead.me/posts/maven-is-not-so-stable/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Sometimes I’m trying to show others that there is a better alternative to Maven: Gradle.&#xA;I’m trying to show them how Gradle can make things easy &amp;amp; possible whereas achieving the same results in Maven are Herculean labors or literally impossible.&#xA;I often hear in reply: “Gradle sucks because it’s a hipster technology. It’s new and unstable. Will you help me if something goes wrong?”.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Rant on madhead</title>
+		<link>https://madhead.me/tags/rant/</link>
+		<description>Recent content in Rant on madhead</description>
+		<generator>Hugo</generator>
+		<language>en</language>
+		
+		
+		
+		
+			<lastBuildDate>Tue, 15 Jul 2025 00:29:00 +0200</lastBuildDate>
+		
+			<atom:link href="https://madhead.me/tags/rant/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Modeless Keyboard Layout Switching in GNOME with Shyriiwook</title>
+				<link>https://madhead.me/posts/shyriiwook/</link>
+				<pubDate>Tue, 15 Jul 2025 00:29:00 +0200</pubDate>
+				<guid>https://madhead.me/posts/shyriiwook/</guid>
+				<description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;figure&gt;&lt;img src=&#34;//storage.googleapis.com/madheadme-static/posts/shyriiwook/001.png&#34;&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Recently, I treated myself with a few extra keys on my mechanical keyboard (just flexin&amp;#39; here), and I decided to set them up to switch keyboard layouts modelessly.&#xA;Little did I know that trying to make this seemingly simple feature work in GNOME would turn into a ridiculously tough challenge.&#xA;That’s how my pet project, &lt;a href=&#34;https://extensions.gnome.org/extension/6691/shyriiwook&#34;&gt;Shyriiwook&lt;/a&gt; (also on GitHub as &lt;a href=&#34;https://github.com/madhead/shyriiwook&#34;&gt;madhead/shyriiwook&lt;/a&gt;), came to life.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+			</item>
+			<item>
+				<title>On DynamoDB&#39;s Single Table Design</title>
+				<link>https://madhead.me/posts/std/</link>
+				<pubDate>Fri, 23 Feb 2024 17:24:00 +0300</pubDate>
+				<guid>https://madhead.me/posts/std/</guid>
+				<description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;figure class=&#34;align-center&#34;&gt;&lt;img src=&#34;//storage.googleapis.com/madheadme-static/posts/std/001.png&#34;&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_whats_a_single_table_design&#34;&gt;What’s a Single Table Design?&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;The world learned about the idea of Single Table Design (STD) for DynamoDB somewhere in 2019, probably when &lt;a href=&#34;https://www.trek10.com/blog/dynamodb-single-table-relational-modeling&#34;&gt;this article&lt;/a&gt; came out.&#xA;STD wasn’t just a weird idea by some unknown blogger like me, or an AWS DevRel, or any other kind of Internet freak, but it actually has its roots in the official Amazon DynamoDB documentation.&#xA;&lt;a href=&#34;https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-general-nosql-design.html&#34;&gt;Here&lt;/a&gt;:&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;quoteblock&#34;&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;You should maintain &lt;strong&gt;as few tables as possible&lt;/strong&gt; in a DynamoDB application. Having fewer tables keeps things more scalable, requires less permissions management, and reduces overhead for your DynamoDB application. It can also help keep backup costs lower overall.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;And then, a few prominent AWS folks spun this recommendation to the extreme into what we now know as STD: &lt;strong&gt;use a single table for all your data&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;admonitionblock important&#34;&gt;&#xA;&lt;table&gt;&#xA;&lt;tbody&gt;&lt;tr&gt;&#xA;&lt;td class=&#34;icon&#34;&gt;&#xA;&lt;div class=&#34;title&#34;&gt;Important&lt;/div&gt;&#xA;&lt;/td&gt;&#xA;&lt;td class=&#34;content&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Of course, &lt;strong&gt;no one meant literally a single table&lt;/strong&gt;, but the suggestion was to downsize.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;/td&gt;&#xA;&lt;/tr&gt;&#xA;&lt;/tbody&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;At the core of STD, as we’ll discover later, is something called Index Overloading.&#xA;It involves leveraging every available index to its maximum potential — thereby &lt;em&gt;&amp;#34;overloading&amp;#34;&lt;/em&gt; — to store heterogeneous data.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;admonitionblock note&#34;&gt;&#xA;&lt;table&gt;&#xA;&lt;tbody&gt;&lt;tr&gt;&#xA;&lt;td class=&#34;icon&#34;&gt;&#xA;&lt;div class=&#34;title&#34;&gt;Note&lt;/div&gt;&#xA;&lt;/td&gt;&#xA;&lt;td class=&#34;content&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;DynamoDB had a limit of 5 Global Secondary Indices (those were of a particular interest for the STD) back at those days, now the limit is increased to 20 GSIs per table by default.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;/td&gt;&#xA;&lt;/tr&gt;&#xA;&lt;/tbody&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;As a reference implementation, a rather simplistic little application with just a couple of entities was presented to the public, hardly conveying the &lt;strong&gt;potential dangers&lt;/strong&gt; of this approach.&#xA;A bit later, another article about STD found its home in the official AWS Blog as well.&#xA;Here are the links: &lt;a href=&#34;https://www.trek10.com/blog/dynamodb-single-table-relational-modeling&#34;&gt;1&lt;/a&gt; | &lt;a href=&#34;https://www.alexdebrie.com/posts/dynamodb-single-table&#34;&gt;2&lt;/a&gt; | &lt;a href=&#34;https://aws.amazon.com/blogs/compute/creating-a-single-table-design-with-amazon-dynamodb&#34;&gt;3&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;How outraged I was!&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;</description>
+			</item>
+			<item>
+				<title>Copying a file from a Kubernetes pod in a highly hostile environment</title>
+				<link>https://madhead.me/posts/kubectl-cp/</link>
+				<pubDate>Wed, 10 Jan 2024 12:40:00 +0200</pubDate>
+				<guid>https://madhead.me/posts/kubectl-cp/</guid>
+				<description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Do you want to get a binary file from a Kubernetes pod in an highly &lt;del&gt;hostile&lt;/del&gt;secure environment where you can’t use &lt;code&gt;kubectl cp&lt;/code&gt;?&#xA;Read on!&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+			</item>
+			<item>
+				<title>No-bullshit guide on publishing your Gradle projects to Maven Central</title>
+				<link>https://madhead.me/posts/no-bullshit-maven-publish/</link>
+				<pubDate>Sat, 27 Feb 2021 18:00:00 +0300</pubDate>
+				<guid>https://madhead.me/posts/no-bullshit-maven-publish/</guid>
+				<description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;You’ve heard &lt;a href=&#34;https://jfrog.com/blog/into-the-sunset-bintray-jcenter-gocenter-and-chartcenter&#34;&gt;the news&lt;/a&gt;, haven’t you?&#xA;JFrog is closing JCenter — probably the best Maven-compatible repository ever.&#xA;It was kind of a &amp;#34;default&amp;#34; in Gradle — a drop-in replacement for Maven Central Repository — for years.&#xA;Plus it hosted some extra artifacts from the projects that decided to not deploy into Central (and now I understand why).&#xA;With its own Gradle plugin, JCenter was drop-dead easy to publish: just a dozen of config lines, a single task invocation — and your library is available to everybody.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;It was great.&#xA;Good night, sweet prince.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;It’s time to move your projects to Maven Central Repository, so I’ve gathered some info for you below to minimize the pain.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+			</item>
+			<item>
+				<title>How I fucked up with a private key and newlines</title>
+				<link>https://madhead.me/posts/private-key-newline-fuckup/</link>
+				<pubDate>Tue, 09 Feb 2021 23:00:00 +0300</pubDate>
+				<guid>https://madhead.me/posts/private-key-newline-fuckup/</guid>
+				<description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;A short story about wasting a day on a single newline at the end of a private key.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+			</item>
+			<item>
+				<title>How I fucked up with enum&#39;s hashCode</title>
+				<link>https://madhead.me/posts/enums-fuckup/</link>
+				<pubDate>Wed, 27 May 2020 09:00:00 +0300</pubDate>
+				<guid>https://madhead.me/posts/enums-fuckup/</guid>
+				<description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;A short story about a newbie’s mistake I’ve made recently.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+			</item>
+			<item>
+				<title>Hard lesson from NVIDIA</title>
+				<link>https://madhead.me/posts/nvidia-hard-lesson/</link>
+				<pubDate>Sun, 19 Aug 2018 01:42:00 +0300</pubDate>
+				<guid>https://madhead.me/posts/nvidia-hard-lesson/</guid>
+				<description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Last week I’ve managed to accidentally break my Linux installation.&#xA;Probably, the first time for the last ten years where Linux behaved truly “unstable”.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+			</item>
+			<item>
+				<title>Maven is not as stable as many think</title>
+				<link>https://madhead.me/posts/maven-is-not-so-stable/</link>
+				<pubDate>Sun, 19 Aug 2018 00:34:00 +0300</pubDate>
+				<guid>https://madhead.me/posts/maven-is-not-so-stable/</guid>
+				<description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Sometimes I’m trying to show others that there is a better alternative to Maven: Gradle.&#xA;I’m trying to show them how Gradle can make things easy &amp;amp; possible whereas achieving the same results in Maven are Herculean labors or literally impossible.&#xA;I often hear in reply: “Gradle sucks because it’s a hipster technology. It’s new and unstable. Will you help me if something goes wrong?”.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+			</item>
+	</channel>
 </rss>

@@ -37,7 +37,7 @@ It’s time to move your projects to Maven Central Repository, so I’ve gathere
 <meta property='og:site_name' content='madhead'>
 <meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='gradle'><meta property='article:tag' content='maven'><meta property='article:tag' content='rant'><meta property='article:published_time' content='2021-02-27T18:00:00&#43;03:00'/><meta property='article:modified_time' content='2021-02-27T18:00:00&#43;03:00'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.154.4">
+<meta name="generator" content="Hugo 0.169.0">
 
   <title>No-bullshit guide on publishing your Gradle projects to Maven Central • madhead</title>
   <link rel='canonical' href='https://madhead.me/posts/no-bullshit-maven-publish/'>
@@ -447,10 +447,10 @@ That’s basically how public and private keys work to achieve some degree of tr
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://keys.openpgp.org" class="bare">https://keys.openpgp.org</a></p>
+<p><a class="bare" href="https://keys.openpgp.org">https://keys.openpgp.org</a></p>
 </li>
 <li>
-<p><a href="https://keyserver.ubuntu.com" class="bare">https://keyserver.ubuntu.com</a></p>
+<p><a class="bare" href="https://keyserver.ubuntu.com">https://keyserver.ubuntu.com</a></p>
 </li>
 </ul>
 </div>
@@ -680,7 +680,7 @@ Successive publications will be synced automatically once the sync is turned on.
 Maven Central team meber <a href="#comment-5900031092">said in the comments</a> that this step is not needed.</p>
 </div>
 <div class="paragraph">
-<p>It will take a few minutes for the artifacts to appear in the Central (<a href="https://repo1.maven.org/maven2" class="bare">https://repo1.maven.org/maven2</a>) after you release them, but the search (<a href="https://search.maven.org" class="bare">https://search.maven.org</a>) may be updating a few hours.</p>
+<p>It will take a few minutes for the artifacts to appear in the Central (<a class="bare" href="https://repo1.maven.org/maven2">https://repo1.maven.org/maven2</a>) after you release them, but the search (<a class="bare" href="https://search.maven.org">https://search.maven.org</a>) may be updating a few hours.</p>
 </div>
 <div class="paragraph">
 <p>Now you’re done!
@@ -809,8 +809,9 @@ nexusPublishing {
         (d.head || d.body).appendChild(s);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+	
 </div>
   </div>
 </section>

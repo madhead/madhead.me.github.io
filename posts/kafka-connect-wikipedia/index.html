@@ -23,7 +23,7 @@ I’ll develop a Kafka Streams application processing this topic in one of the f
 <meta property='og:site_name' content='madhead'>
 <meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='kotlin'><meta property='article:tag' content='kafka'><meta property='article:tag' content='pet projects'><meta property='article:published_time' content='2020-06-18T09:00:00&#43;03:00'/><meta property='article:modified_time' content='2020-06-18T09:00:00&#43;03:00'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.154.4">
+<meta name="generator" content="Hugo 0.169.0">
 
   <title>Learning Kafka: Kafka Connect &#43; Wikipedia • madhead</title>
   <link rel='canonical' href='https://madhead.me/posts/kafka-connect-wikipedia/'>
@@ -679,9 +679,9 @@ Flies fly in and fly out and the chameleon periodically fires its tongue to catc
 </div>
 <div class="paragraph">
 <figure class="align-center"><img src="//storage.googleapis.com/madheadme-static/posts/kafka-connect-wikipedia/001.png"
-    alt="Image by Clker-Free-Vector-Images from Pixabay."><figcaption>
-      <p>Image by <a href="https://pixabay.com/users/Clker-Free-Vector-Images-3736">Clker-Free-Vector-Images</a> from <a href="https://pixabay.com">Pixabay</a>.</p>
-    </figcaption>
+			alt="Image by Clker-Free-Vector-Images from Pixabay."><figcaption>
+			<p>Image by <a href="https://pixabay.com/users/Clker-Free-Vector-Images-3736">Clker-Free-Vector-Images</a> from <a href="https://pixabay.com">Pixabay</a>.</p>
+		</figcaption>
 </figure>
 
 </div>
@@ -888,8 +888,8 @@ This configuration matches schemas provided to the <code>SourceRecord</code> con
 </ol>
 </div>
 <div class="paragraph">
-<p>After running the cURL command a new connector named &#34;wiki&#34; should appear at <a href="http://localhost:8083/connectors" class="bare">http://localhost:8083/connectors</a>.
-Open <a href="http://localhost:8083/connectors/wiki" class="bare">http://localhost:8083/connectors/wiki</a> to check its details.</p>
+<p>After running the cURL command a new connector named &#34;wiki&#34; should appear at <a class="bare" href="http://localhost:8083/connectors">http://localhost:8083/connectors</a>.
+Open <a class="bare" href="http://localhost:8083/connectors/wiki">http://localhost:8083/connectors/wiki</a> to check its details.</p>
 </div>
 <div class="paragraph">
 <p>Finally, when everything is running, all that is left is to check the topic:</p>
@@ -978,8 +978,9 @@ I hope you are not afraid of Kafka Connect anymore: a basic connector is just tw
         (d.head || d.body).appendChild(s);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+	
 </div>
   </div>
 </section>

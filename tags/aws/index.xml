@@ -1,54 +1,59 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Aws on madhead</title>
-    <link>https://madhead.me/tags/aws/</link>
-    <description>Recent content in Aws on madhead</description>
-    <generator>Hugo</generator>
-    <language>en</language>
-    <lastBuildDate>Fri, 23 Feb 2024 17:24:00 +0300</lastBuildDate>
-    <atom:link href="https://madhead.me/tags/aws/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>On DynamoDB&#39;s Single Table Design</title>
-      <link>https://madhead.me/posts/std/</link>
-      <pubDate>Fri, 23 Feb 2024 17:24:00 +0300</pubDate>
-      <guid>https://madhead.me/posts/std/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;figure class=&#34;align-center&#34;&gt;&lt;img src=&#34;//storage.googleapis.com/madheadme-static/posts/std/001.png&#34;&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_whats_a_single_table_design&#34;&gt;What’s a Single Table Design?&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;The world learned about the idea of Single Table Design (STD) for DynamoDB somewhere in 2019, probably when &lt;a href=&#34;https://www.trek10.com/blog/dynamodb-single-table-relational-modeling&#34;&gt;this article&lt;/a&gt; came out.&#xA;STD wasn’t just a weird idea by some unknown blogger like me, or an AWS DevRel, or any other kind of Internet freak, but it actually has its roots in the official Amazon DynamoDB documentation.&#xA;&lt;a href=&#34;https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-general-nosql-design.html&#34;&gt;Here&lt;/a&gt;:&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;quoteblock&#34;&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;You should maintain &lt;strong&gt;as few tables as possible&lt;/strong&gt; in a DynamoDB application. Having fewer tables keeps things more scalable, requires less permissions management, and reduces overhead for your DynamoDB application. It can also help keep backup costs lower overall.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
-    </item>
-    <item>
-      <title>PR preview environments with Neon, GitHub Actions, and AWS Lambda</title>
-      <link>https://madhead.me/posts/neonbranch/</link>
-      <pubDate>Tue, 02 May 2023 18:00:00 +0200</pubDate>
-      <guid>https://madhead.me/posts/neonbranch/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;You might have heard about preview environments (AKA dynamic, or ephemeral environments) in the scope of software engineering and, particularly, this term is used when speaking about the SDLC.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;A preview environment — as opposed to a permanent one, like &amp;#34;Production&amp;#34;, or &amp;#34;TST&amp;#34;, or whatever you call them — is a short-lived environment, usually bound to a pull request.&#xA;It is created on-demand when the PR is created; and destroyed when the PR is closed.&#xA;It hosts a copy of the application and is used to test the changes introduced by the pull request.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;If you need more information, I encourage you to jump around a few articles on the Web to grasp the idea before continuing.&#xA;I won’t go into details here, but instead, I’ll be focusing on the most challenging aspect of preview environments…&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;The database.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
-    </item>
-    <item>
-      <title>JUnit 5 extensions for AWS</title>
-      <link>https://madhead.me/posts/aws-junit5/</link>
-      <pubDate>Thu, 26 Sep 2019 09:00:00 +0300</pubDate>
-      <guid>https://madhead.me/posts/aws-junit5/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Do you test the code that uses AWS services?&#xA;Do you use JUnit 5 in your tests?&#xA;If you do both, I may have something useful for you.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/madhead/aws-junit5&#34;&gt;JUnit 5 extensions for AWS&lt;/a&gt;: a few JUnit 5 extensions that could be useful for testing AWS-related code.&#xA;These extensions can be used to inject clients for AWS service mocks provided by tools like &lt;a href=&#34;https://github.com/localstack/localstack&#34;&gt;localstack&lt;/a&gt;.&#xA;Both AWS Java SDK v 2.x and v 1.x are supported.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
-    </item>
-    <item>
-      <title>Kotlin/Native for AWS Lambda</title>
-      <link>https://madhead.me/posts/kotlin-native-lambda/</link>
-      <pubDate>Fri, 05 Apr 2019 22:02:00 +0300</pubDate>
-      <guid>https://madhead.me/posts/kotlin-native-lambda/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Amazon &lt;a href=&#34;https://aws.amazon.com/about-aws/whats-new/2018/11/aws-lambda-now-supports-custom-runtimes-and-layers&#34;&gt;announced&lt;/a&gt; Lambda Runtime API on AWS &lt;a href=&#34;https://reinvent.awsevents.com&#34;&gt;re:Invent&lt;/a&gt; 2018.&#xA;It allows developers, among other things, to build Lambda functions using any technology they want via so-called &lt;a href=&#34;https://docs.aws.amazon.com/lambda/latest/dg/runtimes-custom.html&#34;&gt;Custom Runtimes&lt;/a&gt;.&#xA;Yes, it’s now possible to author a function on PHP, Perl, Pascal (anybody?) or even Bash (they use it in the &lt;a href=&#34;https://docs.aws.amazon.com/lambda/latest/dg/runtimes-walkthrough.html&#34;&gt;docs&lt;/a&gt;)!&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Nice, isn’t it?&#xA;Let’s build an AWS Lambda function with &lt;a href=&#34;https://kotlinlang.org/docs/native-overview.html&#34;&gt;Kotlin/Native&lt;/a&gt;!&lt;/p&gt;&#xA;&lt;/div&gt;</description>
-    </item>
-    <item>
-      <title>Java classes for server-side App Store receipts validation</title>
-      <link>https://madhead.me/posts/appstore-receipts-validator-j/</link>
-      <pubDate>Tue, 13 Nov 2018 21:00:00 +0300</pubDate>
-      <guid>https://madhead.me/posts/appstore-receipts-validator-j/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;I’m working on a bunch of apps that need to verify App Store receipts on a JVM-based server.&#xA;The process &lt;a href=&#34;https://developer.apple.com/documentation/appstorereceipts&#34;&gt;is described in Apples’s Documentation Archive&lt;/a&gt; but lacks of any SDK / libraries (at least for JVM).&#xA;So I made one to improve code reuse.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
-    </item>
-    <item>
-      <title>Java classes for AWS Lambda Proxy Integration</title>
-      <link>https://madhead.me/posts/lambda-proxy-integration-java/</link>
-      <pubDate>Tue, 13 Nov 2018 20:00:00 +0300</pubDate>
-      <guid>https://madhead.me/posts/lambda-proxy-integration-java/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;When I had to &lt;a href=&#34;https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html&#34;&gt;configure Lambda Proxy Integrations in AWS API Gateway&lt;/a&gt; for the second time for a week I thought about extracting Java classes in a small library for later reuse.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Aws on madhead</title>
+		<link>https://madhead.me/tags/aws/</link>
+		<description>Recent content in Aws on madhead</description>
+		<generator>Hugo</generator>
+		<language>en</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 23 Feb 2024 17:24:00 +0300</lastBuildDate>
+		
+			<atom:link href="https://madhead.me/tags/aws/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>On DynamoDB&#39;s Single Table Design</title>
+				<link>https://madhead.me/posts/std/</link>
+				<pubDate>Fri, 23 Feb 2024 17:24:00 +0300</pubDate>
+				<guid>https://madhead.me/posts/std/</guid>
+				<description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;figure class=&#34;align-center&#34;&gt;&lt;img src=&#34;//storage.googleapis.com/madheadme-static/posts/std/001.png&#34;&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_whats_a_single_table_design&#34;&gt;What’s a Single Table Design?&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;The world learned about the idea of Single Table Design (STD) for DynamoDB somewhere in 2019, probably when &lt;a href=&#34;https://www.trek10.com/blog/dynamodb-single-table-relational-modeling&#34;&gt;this article&lt;/a&gt; came out.&#xA;STD wasn’t just a weird idea by some unknown blogger like me, or an AWS DevRel, or any other kind of Internet freak, but it actually has its roots in the official Amazon DynamoDB documentation.&#xA;&lt;a href=&#34;https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-general-nosql-design.html&#34;&gt;Here&lt;/a&gt;:&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;quoteblock&#34;&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;You should maintain &lt;strong&gt;as few tables as possible&lt;/strong&gt; in a DynamoDB application. Having fewer tables keeps things more scalable, requires less permissions management, and reduces overhead for your DynamoDB application. It can also help keep backup costs lower overall.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;And then, a few prominent AWS folks spun this recommendation to the extreme into what we now know as STD: &lt;strong&gt;use a single table for all your data&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;admonitionblock important&#34;&gt;&#xA;&lt;table&gt;&#xA;&lt;tbody&gt;&lt;tr&gt;&#xA;&lt;td class=&#34;icon&#34;&gt;&#xA;&lt;div class=&#34;title&#34;&gt;Important&lt;/div&gt;&#xA;&lt;/td&gt;&#xA;&lt;td class=&#34;content&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Of course, &lt;strong&gt;no one meant literally a single table&lt;/strong&gt;, but the suggestion was to downsize.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;/td&gt;&#xA;&lt;/tr&gt;&#xA;&lt;/tbody&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;At the core of STD, as we’ll discover later, is something called Index Overloading.&#xA;It involves leveraging every available index to its maximum potential — thereby &lt;em&gt;&amp;#34;overloading&amp;#34;&lt;/em&gt; — to store heterogeneous data.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;admonitionblock note&#34;&gt;&#xA;&lt;table&gt;&#xA;&lt;tbody&gt;&lt;tr&gt;&#xA;&lt;td class=&#34;icon&#34;&gt;&#xA;&lt;div class=&#34;title&#34;&gt;Note&lt;/div&gt;&#xA;&lt;/td&gt;&#xA;&lt;td class=&#34;content&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;DynamoDB had a limit of 5 Global Secondary Indices (those were of a particular interest for the STD) back at those days, now the limit is increased to 20 GSIs per table by default.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;/td&gt;&#xA;&lt;/tr&gt;&#xA;&lt;/tbody&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;As a reference implementation, a rather simplistic little application with just a couple of entities was presented to the public, hardly conveying the &lt;strong&gt;potential dangers&lt;/strong&gt; of this approach.&#xA;A bit later, another article about STD found its home in the official AWS Blog as well.&#xA;Here are the links: &lt;a href=&#34;https://www.trek10.com/blog/dynamodb-single-table-relational-modeling&#34;&gt;1&lt;/a&gt; | &lt;a href=&#34;https://www.alexdebrie.com/posts/dynamodb-single-table&#34;&gt;2&lt;/a&gt; | &lt;a href=&#34;https://aws.amazon.com/blogs/compute/creating-a-single-table-design-with-amazon-dynamodb&#34;&gt;3&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;How outraged I was!&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;</description>
+			</item>
+			<item>
+				<title>PR preview environments with Neon, GitHub Actions, and AWS Lambda</title>
+				<link>https://madhead.me/posts/neonbranch/</link>
+				<pubDate>Tue, 02 May 2023 18:00:00 +0200</pubDate>
+				<guid>https://madhead.me/posts/neonbranch/</guid>
+				<description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;You might have heard about preview environments (AKA dynamic, or ephemeral environments) in the scope of software engineering and, particularly, this term is used when speaking about the SDLC.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;A preview environment — as opposed to a permanent one, like &amp;#34;Production&amp;#34;, or &amp;#34;TST&amp;#34;, or whatever you call them — is a short-lived environment, usually bound to a pull request.&#xA;It is created on-demand when the PR is created; and destroyed when the PR is closed.&#xA;It hosts a copy of the application and is used to test the changes introduced by the pull request.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;If you need more information, I encourage you to jump around a few articles on the Web to grasp the idea before continuing.&#xA;I won’t go into details here, but instead, I’ll be focusing on the most challenging aspect of preview environments…&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;The database.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+			</item>
+			<item>
+				<title>JUnit 5 extensions for AWS</title>
+				<link>https://madhead.me/posts/aws-junit5/</link>
+				<pubDate>Thu, 26 Sep 2019 09:00:00 +0300</pubDate>
+				<guid>https://madhead.me/posts/aws-junit5/</guid>
+				<description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Do you test the code that uses AWS services?&#xA;Do you use JUnit 5 in your tests?&#xA;If you do both, I may have something useful for you.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/madhead/aws-junit5&#34;&gt;JUnit 5 extensions for AWS&lt;/a&gt;: a few JUnit 5 extensions that could be useful for testing AWS-related code.&#xA;These extensions can be used to inject clients for AWS service mocks provided by tools like &lt;a href=&#34;https://github.com/localstack/localstack&#34;&gt;localstack&lt;/a&gt;.&#xA;Both AWS Java SDK v 2.x and v 1.x are supported.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+			</item>
+			<item>
+				<title>Kotlin/Native for AWS Lambda</title>
+				<link>https://madhead.me/posts/kotlin-native-lambda/</link>
+				<pubDate>Fri, 05 Apr 2019 22:02:00 +0300</pubDate>
+				<guid>https://madhead.me/posts/kotlin-native-lambda/</guid>
+				<description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Amazon &lt;a href=&#34;https://aws.amazon.com/about-aws/whats-new/2018/11/aws-lambda-now-supports-custom-runtimes-and-layers&#34;&gt;announced&lt;/a&gt; Lambda Runtime API on AWS &lt;a href=&#34;https://reinvent.awsevents.com&#34;&gt;re:Invent&lt;/a&gt; 2018.&#xA;It allows developers, among other things, to build Lambda functions using any technology they want via so-called &lt;a href=&#34;https://docs.aws.amazon.com/lambda/latest/dg/runtimes-custom.html&#34;&gt;Custom Runtimes&lt;/a&gt;.&#xA;Yes, it’s now possible to author a function on PHP, Perl, Pascal (anybody?) or even Bash (they use it in the &lt;a href=&#34;https://docs.aws.amazon.com/lambda/latest/dg/runtimes-walkthrough.html&#34;&gt;docs&lt;/a&gt;)!&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Nice, isn’t it?&#xA;Let’s build an AWS Lambda function with &lt;a href=&#34;https://kotlinlang.org/docs/native-overview.html&#34;&gt;Kotlin/Native&lt;/a&gt;!&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+			</item>
+			<item>
+				<title>Java classes for server-side App Store receipts validation</title>
+				<link>https://madhead.me/posts/appstore-receipts-validator-j/</link>
+				<pubDate>Tue, 13 Nov 2018 21:00:00 +0300</pubDate>
+				<guid>https://madhead.me/posts/appstore-receipts-validator-j/</guid>
+				<description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;I’m working on a bunch of apps that need to verify App Store receipts on a JVM-based server.&#xA;The process &lt;a href=&#34;https://developer.apple.com/documentation/appstorereceipts&#34;&gt;is described in Apples’s Documentation Archive&lt;/a&gt; but lacks of any SDK / libraries (at least for JVM).&#xA;So I made one to improve code reuse.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+			</item>
+			<item>
+				<title>Java classes for AWS Lambda Proxy Integration</title>
+				<link>https://madhead.me/posts/lambda-proxy-integration-java/</link>
+				<pubDate>Tue, 13 Nov 2018 20:00:00 +0300</pubDate>
+				<guid>https://madhead.me/posts/lambda-proxy-integration-java/</guid>
+				<description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;When I had to &lt;a href=&#34;https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html&#34;&gt;configure Lambda Proxy Integrations in AWS API Gateway&lt;/a&gt; for the second time for a week I thought about extracting Java classes in a small library for later reuse.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+			</item>
+	</channel>
 </rss>

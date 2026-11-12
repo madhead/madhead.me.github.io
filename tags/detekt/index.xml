@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Detekt on madhead</title>
-    <link>https://madhead.me/tags/detekt/</link>
-    <description>Recent content in Detekt on madhead</description>
-    <generator>Hugo</generator>
-    <language>en</language>
-    <lastBuildDate>Wed, 12 Feb 2020 09:00:00 +0300</lastBuildDate>
-    <atom:link href="https://madhead.me/tags/detekt/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Speeding up the detekt task in a multi-project Gradle build.</title>
-      <link>https://madhead.me/posts/detekt-faster/</link>
-      <pubDate>Wed, 12 Feb 2020 09:00:00 +0300</pubDate>
-      <guid>https://madhead.me/posts/detekt-faster/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;I’m going to tell you how to significantly speed up the &lt;code&gt;detekt&lt;/code&gt; task in a multi-project Gradle build.&#xA;Precise numbers vary depending on many factors, of course.&#xA;In my case, in a build with 56 subprojects and ~7000 lines of code, it was about &lt;strong&gt;10 times faster&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Detekt on madhead</title>
+		<link>https://madhead.me/tags/detekt/</link>
+		<description>Recent content in Detekt on madhead</description>
+		<generator>Hugo</generator>
+		<language>en</language>
+		
+		
+		
+		
+			<lastBuildDate>Wed, 12 Feb 2020 09:00:00 +0300</lastBuildDate>
+		
+			<atom:link href="https://madhead.me/tags/detekt/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Speeding up the detekt task in a multi-project Gradle build.</title>
+				<link>https://madhead.me/posts/detekt-faster/</link>
+				<pubDate>Wed, 12 Feb 2020 09:00:00 +0300</pubDate>
+				<guid>https://madhead.me/posts/detekt-faster/</guid>
+				<description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;I’m going to tell you how to significantly speed up the &lt;code&gt;detekt&lt;/code&gt; task in a multi-project Gradle build.&#xA;Precise numbers vary depending on many factors, of course.&#xA;In my case, in a build with 56 subprojects and ~7000 lines of code, it was about &lt;strong&gt;10 times faster&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+			</item>
+	</channel>
 </rss>

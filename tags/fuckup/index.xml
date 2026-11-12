@@ -1,33 +1,38 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Fuckup on madhead</title>
-    <link>https://madhead.me/tags/fuckup/</link>
-    <description>Recent content in Fuckup on madhead</description>
-    <generator>Hugo</generator>
-    <language>en</language>
-    <lastBuildDate>Sat, 10 Jan 2026 22:12:00 +0100</lastBuildDate>
-    <atom:link href="https://madhead.me/tags/fuckup/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>When being dumb is the best solution</title>
-      <link>https://madhead.me/posts/redis-upset/</link>
-      <pubDate>Sat, 10 Jan 2026 22:12:00 +0100</pubDate>
-      <guid>https://madhead.me/posts/redis-upset/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;A small performance story about Redis, bad assumptions, and how a stupid solution turned out to be the best one.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
-    </item>
-    <item>
-      <title>How I fucked up with a private key and newlines</title>
-      <link>https://madhead.me/posts/private-key-newline-fuckup/</link>
-      <pubDate>Tue, 09 Feb 2021 23:00:00 +0300</pubDate>
-      <guid>https://madhead.me/posts/private-key-newline-fuckup/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;A short story about wasting a day on a single newline at the end of a private key.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
-    </item>
-    <item>
-      <title>How I fucked up with enum&#39;s hashCode</title>
-      <link>https://madhead.me/posts/enums-fuckup/</link>
-      <pubDate>Wed, 27 May 2020 09:00:00 +0300</pubDate>
-      <guid>https://madhead.me/posts/enums-fuckup/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;A short story about a newbie’s mistake I’ve made recently.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Fuckup on madhead</title>
+		<link>https://madhead.me/tags/fuckup/</link>
+		<description>Recent content in Fuckup on madhead</description>
+		<generator>Hugo</generator>
+		<language>en</language>
+		
+		
+		
+		
+			<lastBuildDate>Sat, 10 Jan 2026 22:12:00 +0100</lastBuildDate>
+		
+			<atom:link href="https://madhead.me/tags/fuckup/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>When being dumb is the best solution</title>
+				<link>https://madhead.me/posts/redis-upset/</link>
+				<pubDate>Sat, 10 Jan 2026 22:12:00 +0100</pubDate>
+				<guid>https://madhead.me/posts/redis-upset/</guid>
+				<description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;A small performance story about Redis, bad assumptions, and how a stupid solution turned out to be the best one.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+			</item>
+			<item>
+				<title>How I fucked up with a private key and newlines</title>
+				<link>https://madhead.me/posts/private-key-newline-fuckup/</link>
+				<pubDate>Tue, 09 Feb 2021 23:00:00 +0300</pubDate>
+				<guid>https://madhead.me/posts/private-key-newline-fuckup/</guid>
+				<description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;A short story about wasting a day on a single newline at the end of a private key.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+			</item>
+			<item>
+				<title>How I fucked up with enum&#39;s hashCode</title>
+				<link>https://madhead.me/posts/enums-fuckup/</link>
+				<pubDate>Wed, 27 May 2020 09:00:00 +0300</pubDate>
+				<guid>https://madhead.me/posts/enums-fuckup/</guid>
+				<description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;A short story about a newbie’s mistake I’ve made recently.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+			</item>
+	</channel>
 </rss>
